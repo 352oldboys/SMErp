@@ -8,7 +8,7 @@ public class SalesController {
 	
 	@RequestMapping("/finance/purchase.do")
 	public void purchase() {
-		
+    
 	}
-	
+
 }
