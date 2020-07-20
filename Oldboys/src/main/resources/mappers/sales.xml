@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="SelectAll">
-		SELECT * FROM SALES
+		SELECT * FROM SALESd
 		ORDER BY SALES DESC
 	</select>
 	
