@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="salMapper">
+	
+	<select id="selectOne">
+		SELECT * FROM SALES
+		WHERE USERNO = #{userNo}
+	</select>
+	
+	<select id="SelectAll">
+		SELECT * FROM SALES
+		ORDER BY SALES DESC
+	</select>
+	
+	<update id="updateSal">
+		UPDATE SALES
+		<set>
+		salUserno = #{userNo},
+		salQuantity = #{quantity},
+		salUnitPrice = #{unitPrice}	
+		</set>
+		WHERE productNo = #{productNo}
+	</update>
+	
+	<delete id="deleteSal">
+		DELETE FROM SALES
+		WHERE USERNO = #{productNo}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
