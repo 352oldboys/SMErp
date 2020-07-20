@@ -45,10 +45,11 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>인사관리</span>
+          <span>인사 관리</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+          	<a class="collapse-item" href="#">직원 정보</a>
             <a class="collapse-item" href="#">출결</a>
             <a class="collapse-item" href="#">휴가</a>
           </div>
@@ -84,7 +85,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>재고관리</span>
+          <span>재고 관리</span>
         </a>
        <!--  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -107,7 +108,7 @@
         </a>
          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">매입</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/finance/purchase.do">매입</a>
             <a class="collapse-item" href="#">매입 세금계산서 관리</a>
           </div>
         </div> 
@@ -124,6 +125,19 @@
             <a class="collapse-item" href="#">매출</a>
           </div>
         </div>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-target="#collapseFinance" aria-expanded="true" aria-controls="collapseFinance">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>회계 관리</span>
+        </a>
+        <!-- <div id="collapseFinance" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="#">거래처 관리</a>
+            <a class="collapse-item" href="#">매출</a>
+          </div>
+        </div> -->
       </li>
       
       <li class="nav-item">
