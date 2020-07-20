@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.kh.spring.erp.finance.sales.model.vo.Sales" alias="Sales" />
+		<typeAlias type="com.kh.spring.erp.finance.purchase.model.vo.Purchase" alias="Purchase" />
+	</typeAliases>
+	
+	<typeHandlers>
+		<!--  특정 타입을 변경해주는 typeHandler 등록 태그 -->
+		<package name="com.kh.spring.common" />
+	</typeHandlers>
+	
+</configuration>
+
+
+
+
+
+
+
+
+
+
