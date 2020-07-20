@@ -358,7 +358,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><h5>매입</h5> 
-                        <a href="Purchase.do">(자세히 보러가기)</a>
+                        <a href="#">(자세히 보러가기)</a>
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                     </div>
@@ -377,7 +377,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><h5>매출</h5>
-                        <a href="sales.do" style="color:#1cc88a!important;">(자세히 보러가기)</a>
+                        <a href="#" style="color:#1cc88a!important;">(자세히 보러가기)</a>
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                     </div>
