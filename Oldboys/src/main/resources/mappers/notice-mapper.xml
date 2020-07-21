@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+	
+	<select id="selectNoticeList" resultType="Notice">
+		SELECT A.*, (SELECT COUNT(*) FROM ATTACHMENT WHERE NNO = A.NNO) FILECOUNT
+		FROM NOTICE A ORDER BY NDATE DESC, NNO DESC
+	</select>
+	
+	<select id="selectNoticeTotalContent" resultType="_int">
+		SELECT COUNT(*) FROM NOTICE
+	</select>
+
+	<insert id="insertNotice">
+		INSERT INTO NOTICE(NNO, NTITLE, NWRITER, NCONTENT) 
+		VALUES (SEQ_NNO.NEXTVAL,#{nTitle},#{nWriter},#{nContent})
+		<!--  전달한 board객체의 boardNo 프로퍼티에 결과값을 담는다.  -->
+		<selectKey keyProperty="nNo" resultType="_int" order="AFTER"> 
+		      SELECT SEQ_NNO.CURRVAL FROM DUAL 
+		</selectKey>
+	</insert>
+	
+	<insert id="insertAttachment">
+		<!--  다른방식  -->
+		<selectKey keyProperty="nNo" resultType="_int" order="BEFORE"> 
+		    SELECT SEQ_NNO.CURRVAL FROM DUAL 
+		</selectKey>
+		INSERT INTO ATTACHMENT(ATTACHMENTNO, NNO, ORIGINALFILENAME, RENAMEDFILENAME) 
+		VALUES (SEQ_ATTACHMENTNO.NEXTVAL, #{nNo}, #{originalFileName}, #{renamedFileName})
+	</insert>
+
+	<select id="selectOneNotice" parameterType="_int" resultType="Notice">
+		SELECT * FROM NOTICE
+		WHERE NNO = #{nNo}
+	</select>
+	
+	<select id="selectAttachmentList" parameterType="_int" resultType="Attachment">
+		SELECT * FROM ATTACHMENT
+		WHERE NNO = #{nNo}
+	</select>
+	
+	<update id="updateNotice" parameterType="Notice">
+		UPDATE NOTICE SET
+		NTITLE = #{nTitle},
+		NCONTENT = #{nContent}
+		WHERE NNO = #{nNo}
+	</update>
+	
+	<insert id="updateAttachment" parameterType="Attachment">
+		INSERT INTO ATTACHMENT
+		VALUES (SEQ_ATTACHMENTNO.NEXTVAL, #{nNo},
+		        #{originalFileName}, #{renamedFileName},
+		        DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<delete id="deleteAttachment" parameterType="_int">
+		DELETE FROM ATTACHMENT
+		WHERE NNO = #{nNo}
+	</delete>
+	
+	<delete id="deleteNotice" parameterType="_int">
+		DELETE FROM NOTICE
+		WHERE NNO = #{nNo}
+	</delete>
+	
+	<delete id="deleteAttachmentOne" parameterType="_int">
+		DELETE FROM ATTACHMENT
+		WHERE ATTACHMENTNO = #{attNo}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

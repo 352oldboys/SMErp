@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.writeBtn{
+	display:inline; 
+	text-align :right;
+	outline:0;
+	background:#00ff0000;
+	color:#4e73df;
+	border:0;
+}
+.boardList{
+	display:inline;
+	text-align :left;
+	outline:0; 
+	background:#00ff0000;
+	color:#4e73df;
+	border:0;
+}
+.form-control{
+	width:350px;
+	height:300px;
+}
