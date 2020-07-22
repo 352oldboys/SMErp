@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.notice.model.vo.Attachment;
 
 public class Notice implements Serializable{
 	
@@ -72,6 +72,20 @@ private static final long serialVersionUID = 486L;
 		this.readCount = readCount;
 	}
 	
+	public int getFileCount() {
+		return fileCount;
+	}
+	public void setFileCount(int fileCount) {
+		this.fileCount = fileCount;
+	}
+
+	public List<Attachment> getFiles() {
+		return files;
+	}
+	public void setFiles(List<Attachment> files) {
+		this.files = files;
+	}
+
 	//첨부파일 갯수 확인용 가상 변수
 	private int fileCount;
 	

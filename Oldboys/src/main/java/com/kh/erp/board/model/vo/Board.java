@@ -93,7 +93,25 @@ public class Board implements Serializable{
 	}
 
 	
-	//첨부파일 갯수 확인용 가상 변수
+	public int getFileCount() {
+		return fileCount;
+	}
+
+	public void setFileCount(int fileCount) {
+		this.fileCount = fileCount;
+	}
+
+
+		public List<Attachment> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<Attachment> files) {
+		this.files = files;
+	}
+
+
+		//첨부파일 갯수 확인용 가상 변수
 		private int fileCount;
 		
 		// 첨부파일을 담을 변수 추가

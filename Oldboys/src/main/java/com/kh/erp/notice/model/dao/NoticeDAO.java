@@ -8,7 +8,7 @@ import com.kh.erp.notice.model.vo.Notice;
 
 public interface NoticeDAO {
 
-	 List<Map<String, String>> selectBoardList(int cPage, int numPerPage);
+	 List<Map<String, String>> selectNoticeList(int cPage, int numPerPage);
 
 	   int selectNoticeTotalContents();
 

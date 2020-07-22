@@ -20,7 +20,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public List<Map<String, String>> selectNoticeList(int cPage, int numPerPage) {
 		
-		return noticeDAO.selectBoardList(cPage, numPerPage);
+		return noticeDAO.selectNoticeList(cPage, numPerPage);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public int insertNotice(Notice notice, List<Attachment> attachList) {
 		int result = 0;
-		int boardNo = 0;
+		int nNo = 0;
 		
 		try{
 			result = noticeDAO.insertNotice(notice);
