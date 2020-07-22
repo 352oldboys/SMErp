@@ -6,10 +6,10 @@ import java.util.Map;
 import com.kh.erp.notice.model.vo.Attachment;
 import com.kh.erp.notice.model.vo.Notice;
 
-public class NoticeService {
+public interface NoticeService {
 
-	static int BOARD_SERVICE_ERROR = 0;
-	   static int BOARD_SERVICE_COMPLETE = 1;
+	static int NOTICE_SERVICE_ERROR = 0;
+	   static int NOTICE_SERVICE_COMPLETE = 1;
 	   
 	   List<Map<String, String>> selectNoticeList(int cPage, int numPerPage);
 

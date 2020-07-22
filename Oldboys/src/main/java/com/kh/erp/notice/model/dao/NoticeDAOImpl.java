@@ -12,7 +12,7 @@ import com.kh.erp.notice.model.vo.Attachment;
 import com.kh.erp.notice.model.vo.Notice;
 
 @Repository("noticeDAO")
-public class NoticeDAOImpl {
+public class NoticeDAOImpl implements NoticeDAO{
 
 	@Autowired
 	SqlSessionTemplate sqlSession;
@@ -30,7 +30,7 @@ public class NoticeDAOImpl {
 	}
 
 	@Override
-	   public int insertBoard(Notice notice) {
+	   public int insertNotice(Notice notice) {
 	      return sqlSession.insert("noticeMapper.insertNotice", notice);
 	   }
 
@@ -77,4 +77,4 @@ public class NoticeDAOImpl {
 
 }
 
-}
+

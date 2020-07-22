@@ -9,17 +9,13 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.kh.spring.erp.finance.sales.model.vo.Sales" alias="Sales" />
-		<typeAlias type="com.kh.spring.erp.finance.purchase.model.vo.Purchase" alias="Purchase" />
+		<typeAlias type="com.kh.erp.finance.sales.model.vo.Sales" alias="Sales" />
 		 <typeAlias type="com.kh.erp.notice.model.vo.Notice" alias="Notice"/>
+		 <typeAlias type="com.kh.erp.notice.model.vo.Attachment" alias="Attachment"/>
 		 <typeAlias type="com.kh.erp.board.model.vo.Board" alias="Board"/>
-		 <typeAlias type="com.kh.erp.board.model.vo.Attachment" alias="Attachment"/>
 	</typeAliases>
 	
-	<typeHandlers>
-		<!--  특정 타입을 변경해주는 typeHandler 등록 태그 -->
-		<package name="com.kh.spring.common" />
-	</typeHandlers>
+
 	
 </configuration>
 
