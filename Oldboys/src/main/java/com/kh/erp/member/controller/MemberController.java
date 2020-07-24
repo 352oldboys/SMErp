@@ -130,10 +130,13 @@ public class MemberController {
 	
 	@RequestMapping("/member/memberLogout.do")
 	public String MemberOut(SessionStatus status) {
+		String msg="";
 		if(!status.isComplete())
 			status.setComplete();
 		
-		return "/";
+		msg = "로그아웃되었습니다 오늘도 좋은 하루되세요!";
+		
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/member/memberView.do")
