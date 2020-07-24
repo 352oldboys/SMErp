@@ -99,6 +99,7 @@ public class MemberController {
 			if(bcryptPasswordEncoder.matches(password,m.getPassword())) {
 				msg = "로그인 성공";
 				mav.addObject("member", m);
+				System.out.println("m : " + m);
 			}else{
 				msg = "로그인 실패 [ 비밀번호가 틀렸습니다. ]";
 				loc = "/";

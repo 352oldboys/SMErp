@@ -2,6 +2,7 @@ package com.kh.erp.member.model.vo;
 
 public class Member {
 
+	private int userNo;
 	private String userId;
 	private String password;
 	private String regNo;
@@ -17,8 +18,9 @@ public class Member {
 	public Member() { super(); }
 
 	public Member(String userId, String password, String regNo, String businessName, String phone, String gender,
-			String name, int age, String email, String address, String status) {
+			String name, int age, String email, String address, String status, int userNo) {
 		super();
+		this.userNo = userNo;
 		this.userId = userId;
 		this.password = password;
 		this.regNo = regNo;
@@ -32,11 +34,22 @@ public class Member {
 		this.status = status;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Member [userId=" + userId + ", password=" + password + ", regNo=" + regNo + ", businessName="
-				+ businessName + ", phone=" + phone + ", gender=" + gender + ", name=" + name + ", age=" + age
-				+ ", email=" + email + ", address=" + address + ", status=" + status + "]";
+		return "Member [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", regNo=" + regNo
+				+ ", businessName=" + businessName + ", phone=" + phone + ", gender=" + gender + ", name=" + name
+				+ ", age=" + age + ", email=" + email + ", address=" + address + ", status=" + status + "]";
+	}
+
+	
+	public int getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public String getUserId() {

@@ -12,5 +12,7 @@ public interface ScheduleService {
 	int insertSchedule(Schedule schedule);
 	
 	List<Schedule> scheduleList(Schedule schedule);
+
+	Schedule selectOneSchedule(int userNo);
 	
 }

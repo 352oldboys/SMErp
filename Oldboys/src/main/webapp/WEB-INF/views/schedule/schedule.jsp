@@ -42,10 +42,8 @@
 				<td><input type="hidden"  value="${s.color}" id="scheduleColor"/></td>
 				<td><input type="hidden"  value="${s.content}" id="scheduleContent" /></td>
 			</tr>
-			</c:forEach> --%>
-
-			
-	
+			</c:forEach> --%>						
+	<input type="hidden"  value="${schedule.userNo}" name="userNo" id="userNo"/>
   
    			<!-- 일자 클릭시 메뉴오픈 -->
 	<!-- 		        <div id="contextMenu" class="dropdown clearfix">

@@ -13,6 +13,11 @@
 		SELECT * FROM SCHEDULE
 	</select>
 	
+	<select id="selectOneSchedule" parameterType="_int" resultType="Schedule">
+		SELECT * FROM SCHEDULE
+		WHERE USERNO = ${userNo}
+	</select>
+	
 </mapper>
 
 

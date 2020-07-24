@@ -29,12 +29,13 @@ public class ScheduleController {
 		
 		scheduleService.insertSchedule(schedule);
 		
-		return "redirect:/schedule/scheduleList.do?userNo=1";
+		return "redirect:/schedule/scheduleList.do";
 		
 	}
 	
 	@RequestMapping("/schedule/scheduleList.do")
-	public String scheduleList(Schedule schedule, Model model) {
+	public String scheduleList(Schedule schedule, Model model, 
+													@RequestParam int userNo) {
 	
 		System.out.println("schedule : " + schedule);
 		List<Schedule> list = scheduleService.scheduleList(schedule);
@@ -43,7 +44,7 @@ public class ScheduleController {
 
 		
 		model.addAttribute("slist", list);
-		/* model.addAttribute("schedule", scheduleService.selectOneSchedule(userNo); */
+		model.addAttribute("schedule", scheduleService.selectOneSchedule(userNo));
 		
 		return "schedule/schedule";
 		
