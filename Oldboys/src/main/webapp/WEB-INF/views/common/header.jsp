@@ -9,7 +9,7 @@
 	<!-- Custom styles for this template-->
 	<link href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	
-	<link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/vendor/datatables/datatables.min.css" rel="stylesheet">
 
  
     <!-- Sidebar -->
@@ -49,7 +49,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          	<a class="collapse-item" href="#">직원 정보</a>
+          	<a class="collapse-item" href="${pageContext.request.contextPath}/employee/employeeList.do">인사정보</a>
             <a class="collapse-item" href="#">출결</a>
             <a class="collapse-item" href="#">휴가</a>
           </div>

@@ -28,7 +28,7 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/chart.js/Chart.min.js"/></script>
   
   <script src="${pageContext.request.contextPath}/resources/vendor/datatables/jquery.dataTables.js"/></script>
-  <script src="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.js"/></script>
+  <script src="${pageContext.request.contextPath}/resources/vendor/datatables/datatables.min.js"/></script>
   <script src="${pageContext.request.contextPath}/resources/js/demo/datatables-demo.js"></script>
 
 	  <!-- Page level custom scripts -->
