@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PurchaseMapper">
+	
+	<select id="selectPurList" resultType="Purchase">
+		SELECT * FROM PURCHASE
+	</select>
+	
+	<insert id="insertPur">
+		INSERT INTO PURCHASE
+		VALUES(PURCHASE_PRODUCTNO.NEXTVAL, #{businessCode}, #{userNo}, 
+		#{itemCode}, #{product}, #{quantity}, #{price}, #{origin}, #{day})
+	</insert>
+	
+	<update id="updatePur">
+		UPDATE PURCHASE
+		<set>
+		ITEMCODE = #{itemCode},
+		BUSINESSCODE = #{BUSINESSCODE},
+		ORIGIN = #{origin},
+		PRODUCT = #{product},
+		PRICE = #{price},
+		QYANTITY = #{quantity}
+		</set>
+		WHERE PURDUCTNO = #{productNo}
+	</update>
+	
+	<delete id="deletePur">
+		DELETE FROM PURCHASE
+		WHERE PURDUCTNO = #{productNo}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
