@@ -448,7 +448,7 @@
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="resources/img/undraw_posting_photo.svg" alt="">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="${pageContext.request.contextPath}/resources/img/undraw_posting_photo.svg" alt="">
                   </div>
                   <br />
                   <p>이달의 매입 조금 많은 편입니다. <br /> 
@@ -465,7 +465,7 @@
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="resources/img/undraw_posting_photo.svg" alt="">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="${pageContext.request.contextPath}/resources/img/undraw_posting_photo.svg" alt="">
                   </div>
                   <br />
                   <p>이달의 매출은 상당히 좋습니다. <br />이 페이스를 유지하여 관리하시면 될 것 같습니다.</p>
