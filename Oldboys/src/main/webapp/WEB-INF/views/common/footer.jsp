@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-white"  style="margin-top:20%;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2020</span>
@@ -34,7 +34,6 @@
 	  <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
-      
   <script>
 	$(function(){
 		$("#dataTable_filter").css("float","right");	

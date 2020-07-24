@@ -80,7 +80,7 @@ public class NoticeController {
 					@RequestParam(value="upFile", required = false) MultipartFile[] upFile) {
 				
 				// 1. 파일을 저장할 경로 생성
-				String saveDir = session.getServletContext().getRealPath("/resources/upload/notice");
+				String saveDir = session.getServletContext().getRealPath("/resources/nupload/notice");
 				
 				List<Attachment> attachList = new ArrayList<Attachment>();
 				
@@ -182,7 +182,7 @@ public class NoticeController {
 				originBoard.setnContent(notice.getnContent());
 				
 				// 1. 파일을 저장할 경로 생성
-				String saveDir = session.getServletContext().getRealPath("/resources/upload/notice");
+				String saveDir = session.getServletContext().getRealPath("/resources/nupload/notice");
 				
 				List<Attachment> attachList = noticeService.selectAttachmentList(nNo);
 				if(attachList == null) attachList = new ArrayList<Attachment>();
@@ -259,7 +259,7 @@ public class NoticeController {
 			public String noticeDelete(@RequestParam int nNo, HttpSession session, Model model) {
 				
 				List<Attachment> delList = noticeService.selectAttachmentList(nNo);
-				String saveDir = session.getServletContext().getRealPath("/resources/upload/notice");
+				String saveDir = session.getServletContext().getRealPath("/resources/nupload/notice");
 				
 				// 첨부 파일 삭제
 				for(Attachment at : delList) new File(saveDir + "/" + at.getRenamedFileName()).delete();
@@ -287,7 +287,7 @@ public class NoticeController {
 			public boolean fileDelete(@RequestParam int attNo, @RequestParam String rName,
 					                  HttpSession session) {
 				
-				String saveDir = session.getServletContext().getRealPath("/resources/upload/notice");
+				String saveDir = session.getServletContext().getRealPath("/resources/nupload/notice");
 				
 				boolean check = noticeService.deleteFile(attNo) != 0 ? true : false;
 				
@@ -310,7 +310,7 @@ public class NoticeController {
 			                        						  HttpServletResponse response){
 			      
 			      //파일저장디렉토리
-			      String saveDirectory = request.getSession().getServletContext().getRealPath("/resources/upload/notice");   
+			      String saveDirectory = request.getSession().getServletContext().getRealPath("/resources/nupload/notice");   
 			   
 			      BufferedInputStream bis = null;
 			      ServletOutputStream sos = null;

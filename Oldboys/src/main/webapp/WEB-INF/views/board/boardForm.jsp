@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>게시글 작성</title>
 	<style>
-		div#board-container{width:400px; margin:0 auto; text-align:center;}
+		div#board-container{width:1000px; margin:0 auto; text-align:center;}
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
@@ -17,7 +17,7 @@
 	<script>
 	/* textarea에도 required속성을 적용가능하지만, 공백이 입력된 경우 대비 유효성검사를 실시함. */
 	function validate(){
-		var content = $("[name=boardContent]").val();
+		var content = $("[name=bContent]").val();
 		if(content.trim().length==0){
 			alert("내용을 입력하세요");
 			return false;
@@ -41,12 +41,12 @@
 </head>
 <body>
 	<div id="container">
-	 <div id="wrapper">
+	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
 			<form name="boardFrm" action="${pageContext.request.contextPath}/board/boardFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
-				<input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" required>
-				<input type="text" class="form-control" name="boardWriter" value="${member.userId}" readonly required>
+				<input type="text" class="form-control" placeholder="제목" name="bTitle" id="bTitle" required>
+				<input type="text" class="form-control" name="bWriter" value="${member.userId}" readonly required>
 				<!-- input:file소스 : https://getbootstrap.com/docs/4.1/components/input-group/#custom-file-input -->
 				<!-- style.css에서 div의  padding:10px을 제거함 -->
 				<div class="input-group mb-3" style="padding:0px;">
@@ -67,7 +67,7 @@
 				    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
 				  </div>
 				</div>
-			    <textarea class="form-control" name="boardContent" placeholder="내용" required></textarea>
+			    <textarea class="form-control" name="bContent" placeholder="내용" required style="height:500px;"></textarea>
 				<br />
 				<input type="submit" class="btn btn-outline-success" value="저장" >
 			</form>

@@ -1,4 +1,4 @@
-package com.kh.erp.board.model.service;
+  package com.kh.erp.board.model.service;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.erp.board.model.dao.BoardDAO;
 import com.kh.erp.board.model.exception.BoardException;
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.board.model.vo.BoardFile;
 import com.kh.erp.board.model.vo.Board;
 
 @Service("boardService")
@@ -30,24 +30,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int insertBoard(Board board, List<Attachment> attachList) {
+	public int insertBoard(Board board, List<BoardFile> fileList) {
 		int result = 0;
-		int boardNo = 0;
+		int bNo = 0;
 		
 		try{
 			result = boardDAO.insertBoard(board);
 			if(result == BOARD_SERVICE_ERROR) throw new BoardException();
 			
-			boardNo = board.getBoardNo(); //boardNo를 리턴함.
+			bNo = board.getbNo(); //boardNo를 리턴함.
 			
-			//현재 Attachment객체의 boardNo는 값이 없다. 
-			//1. 가져온 boardNo를 대입하던지
-			//2. mapper의 insert문에서 selectKey를 사용함
-			if(attachList.size()>0){
-				for(Attachment a : attachList){
-					// a.setBoardNo(boardNo); //게시물번호 대입
+			if(fileList.size()>0){
+				for(BoardFile b : fileList){
 					
-					result = boardDAO.insertAttachment(a);
+					
+					result = boardDAO.insertBoardFile(b);
 					if(result == BOARD_SERVICE_ERROR) throw new BoardException();
 				}
 			}
@@ -59,20 +56,20 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Board selectOneBoard(int boardNo) {
-		return boardDAO.selectOneBoard(boardNo);
+	public Board selectOneBoard(int bNo) {
+		return boardDAO.selectOneBoard(bNo);
 	}
 
 	@Override
-	public List<Attachment> selectAttachmentList(int boardNo) {
-		return boardDAO.selectAttachmentList(boardNo);
+	public List<BoardFile> selectBoardFileList(int bNo) {
+		return boardDAO.selectBoardFileList(bNo);
 	}
 
 	@Override
-	public int updateBoard(Board board, List<Attachment> attachList) {
+	public int updateBoard(Board board, List<BoardFile> fileList) {
 		int result = 0;
 		
-		List<Attachment> originList = boardDAO.selectAttachmentList(board.getBoardNo());
+		List<BoardFile> originList = boardDAO.selectBoardFileList(board.getbNo());
 		
 		try {
 		result = boardDAO.updateBoard(board);
@@ -80,13 +77,13 @@ public class BoardServiceImpl implements BoardService {
 		if(result == BOARD_SERVICE_ERROR) throw new BoardException();
 		
 		if(originList.size() > 0) { // 이전 첨부파일이 있다면 삭제처리하기
-			result = boardDAO.deleteAttachment(board.getBoardNo());
+			result = boardDAO.deleteBoardFile(board.getbNo());
 			if(result == BOARD_SERVICE_ERROR) throw new BoardException();
 		}
 		
-		if(attachList.size() > 0) { // 변경된 첨부파일이 있다면
-			for(Attachment a : attachList) {
-				result = boardDAO.updateAttachment(a);
+		if(fileList.size() > 0) { // 변경된 첨부파일이 있다면
+			for(BoardFile b : fileList) {
+				result = boardDAO.updateBoardFile(b);
 				
 				if(result == BOARD_SERVICE_ERROR) throw new BoardException();
 			}
@@ -99,10 +96,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int deleteBoard(int boardNo) {
-		int result = boardDAO.deleteBoard(boardNo);
+	public int deleteBoard(int bNo) {
+		int result = boardDAO.deleteBoard(bNo);
 		
-		if( result == BOARD_SERVICE_ERROR && boardDAO.selectAttachmentList(boardNo).size()>0)
+		if( result == BOARD_SERVICE_ERROR && boardDAO.selectBoardFileList(bNo).size()>0)
 			throw new BoardException();
 	
 		else if(result > BOARD_SERVICE_ERROR) result = BOARD_SERVICE_COMPLETE;
@@ -112,9 +109,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int deleteFile(int attNo) {
+	public int deleteFile(int bfNo) {
 
-		return boardDAO.deleteFile(attNo);
+		return boardDAO.deleteFile(bfNo);
 	}
 
 }

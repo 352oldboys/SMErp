@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>게시글 작성</title>
 	<style>
-		div#board-container{width:400px; margin:0 auto; text-align:center;}
+		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
@@ -45,8 +45,8 @@
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
 			<form name="boardFrm" action="${pageContext.request.contextPath}/notice/noticeFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
-				<input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" required>
-				<input type="text" class="form-control" name="boardWriter" value="${member.userId}" readonly required>
+				<input type="text" class="form-control" placeholder="제목" name="nTitle" id="nTitle" required>
+				<input type="text" class="form-control" name="nWriter" value="${member.userId}" readonly required>
 				<!-- input:file소스 : https://getbootstrap.com/docs/4.1/components/input-group/#custom-file-input -->
 				<!-- style.css에서 div의  padding:10px을 제거함 -->
 				<div class="input-group mb-3" style="padding:0px;">
@@ -67,7 +67,7 @@
 				    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
 				  </div>
 				</div>
-			    <textarea class="form-control" name="boardContent" placeholder="내용" required></textarea>
+			    <textarea class="form-control" name="nContent" placeholder="내용" required "></textarea>
 				<br />
 				<input type="submit" class="btn btn-outline-success" value="저장" >
 			</form>

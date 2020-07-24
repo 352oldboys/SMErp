@@ -18,13 +18,22 @@
          location.href = "${pageContext.request.contextPath}/board/boardForm.do";
       }
       
-      $(function(){
+/*       $(function(){
          $("tr[id]").on("click",function(){
             var boardNo = $(this).attr("id");
-            console.log("bordNo="+boardNo);
+            console.log("boardNo="+boardNo);
             location.href = "${pageContext.request.contextPath}/board/boardView.do?no="+boardNo;
          });
-      });
+      }); */
+      function a() {
+      	$("tr[id]").on("click", function(){
+              var bNo = $(this).attr("id");
+              console.log("bNo="+bNo);
+              location.href = "${pageContext.request.contextPath}/board/boardView.do?no="+bNo;
+           });    	
+			
+		}
+      
    </script>
 </head>
 <body>
@@ -44,11 +53,11 @@
                   <th>조회수</th>
                </tr>
                <c:forEach items="${list}" var="b"> 
-               <tr id="${b.boardNo}">
-                  <td>${b.boardNo}</td>
-                  <td>${b.boardTitle}</td>
-                  <td>${b.boardWriter}</td>
-                  <td>${b.boardDate}</td>
+               <tr id="${b.bNo}" onclick=a();>
+                  <td>${b.bNo}</td>
+                  <td>${b.bTitle}</td>
+                  <td>${b.bWriter}</td>
+                  <td>${b.bDate}</td>
                   <td align="center">
                      <c:if test="${b.fileCount>0}">
                         <img alt="첨부파일" src="${pageContext.request.contextPath}/resources/images/file.png" width=16px>
@@ -65,7 +74,6 @@
     <!-- End of Content Wrapper -->
         </div>
     <!-- End of Content Wrapper -->
-      
-   </div>
+
 </body>
 </html>

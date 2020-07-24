@@ -5,115 +5,92 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.board.model.vo.BoardFile;
 
 public class Board implements Serializable{
 
 	private static final long serialVersionUID = 486L;
 	
-	private int boardNo;
-	private String boardTitle;
-	private String boardWriter;
-	private String boardContent;
-	private Date boardDate;
+	private int bNo;
+	private String bTitle;
+	private String bWriter;
+	private String bContent;
+	private Date bDate;
 	private int readCount;
-
+	private int fileCount;
+	private List<BoardFile> files = new ArrayList<BoardFile>();
 	public Board() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Board(int boardNo, String boardTitle, String boardWriter, String boardContent, Date boardDate,
-			int readCount) {
+	public Board(int bNo, String bTitle, String bWriter, String bContent, Date bDate, int readCount, int fileCount,
+			List<BoardFile> files) {
 		super();
-		this.boardNo = boardNo;
-		this.boardTitle = boardTitle;
-		this.boardWriter = boardWriter;
-		this.boardContent = boardContent;
-		this.boardDate = boardDate;
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bWriter = bWriter;
+		this.bContent = bContent;
+		this.bDate = bDate;
 		this.readCount = readCount;
+		this.fileCount = fileCount;
+		this.files = files;
 	}
-
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardWriter=" + boardWriter
-				+ ", boardContent=" + boardContent + ", boardDate=" + boardDate + ", readCount=" + readCount + "]";
+		return "Board [bNo=" + bNo + ", bTitle=" + bTitle + ", bWriter=" + bWriter + ", bContent=" + bContent
+				+ ", bDate=" + bDate + ", readCount=" + readCount + ", fileCount=" + fileCount + ", files=" + files
+				+ "]";
 	}
-
-	public int getBoardNo() {
-		return boardNo;
+	public int getbNo() {
+		return bNo;
 	}
-
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
+	public void setbNo(int bNo) {
+		this.bNo = bNo;
 	}
-
-	public String getBoardTitle() {
-		return boardTitle;
+	public String getbTitle() {
+		return bTitle;
 	}
-
-	public void setBoardTitle(String boardTitle) {
-		this.boardTitle = boardTitle;
+	public void setbTitle(String bTitle) {
+		this.bTitle = bTitle;
 	}
-
-	public String getBoardWriter() {
-		return boardWriter;
+	public String getbWriter() {
+		return bWriter;
 	}
-
-	public void setBoardWriter(String boardWriter) {
-		this.boardWriter = boardWriter;
+	public void setbWriter(String bWriter) {
+		this.bWriter = bWriter;
 	}
-
-	public String getBoardContent() {
-		return boardContent;
+	public String getbContent() {
+		return bContent;
 	}
-
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
 	}
-
-	public Date getBoardDate() {
-		return boardDate;
+	public Date getbDate() {
+		return bDate;
 	}
-
-	public void setBoardDate(Date boardDate) {
-		this.boardDate = boardDate;
+	public void setbDate(Date bDate) {
+		this.bDate = bDate;
 	}
-
 	public int getReadCount() {
 		return readCount;
 	}
-
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
 	public int getFileCount() {
 		return fileCount;
 	}
-
 	public void setFileCount(int fileCount) {
 		this.fileCount = fileCount;
 	}
-
-
-		public List<Attachment> getFiles() {
+	public List<BoardFile> getFiles() {
 		return files;
 	}
-
-	public void setFiles(List<Attachment> files) {
+	public void setFiles(List<BoardFile> files) {
 		this.files = files;
 	}
+	
 
 
-		//첨부파일 갯수 확인용 가상 변수
-		private int fileCount;
-		
-		// 첨부파일을 담을 변수 추가
-		private List<Attachment> files = new ArrayList<Attachment>();
+
 }

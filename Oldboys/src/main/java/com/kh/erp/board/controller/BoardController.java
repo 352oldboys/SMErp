@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.erp.board.model.exception.BoardException;
 import com.kh.erp.board.model.service.BoardService;
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.board.model.vo.BoardFile;
 import com.kh.erp.board.model.vo.Board;
 import com.kh.erp.common.util.Utils;
 
@@ -64,97 +64,55 @@ public class BoardController {
 	
 	@RequestMapping("/board/boardForm.do")
 	public void boardForm() {
-		// view 이름이 지정되지 않았을 경우,
-		// viewNameTranslator 객체가 url의 경로를 통해,
-		// view가 받을 이름을 유추하여 지어낸다.
-		// /board/boardForm.do --> /board/boardForm.jsp
-		// 간편하지만, 실제 개발 시에는 명확한 값전달이
-		// 우선시 되기 때문에 권장하지는 않는다.
-		// return "board/boardForm";
+
 	}
 	
 	@RequestMapping("/board/boardFormEnd.do")
 	public String insertBoard(Board board,  Model model, HttpSession session,
 			@RequestParam(value="upFile", required = false) MultipartFile[] upFile) {
 		
-		// 1. 파일을 저장할 경로 생성
 		String saveDir = session.getServletContext().getRealPath("/resources/upload/board");
 		
-		List<Attachment> attachList = new ArrayList<Attachment>();
+		List<BoardFile> fileList = new ArrayList<BoardFile>();
 		
-		// 2. 폴더 유무 확인 후 생성
 		File dir = new File(saveDir);
 		
 		System.out.println("폴더가 있나요? " + dir.exists());
 		
 		if(dir.exists() == false) dir.mkdirs();
 		
-		// 3. 파일 업로드 시작 (MultipartFile 사용 시 )
 		for(MultipartFile f : upFile) {
 			if(!f.isEmpty()) {
-				// 원본 이름 가져오기
+		
 				String originName = f.getOriginalFilename();
 				String ext = originName.substring(originName.lastIndexOf(".")+1);
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
 				
 				int rndNum = (int)(Math.random() * 1000);
 				
-				// 서버에서 저장 후 관리할 파일 명
 				String renamedName = sdf.format(new Date()) + "_" + rndNum + "." + ext;
 				
-				// 실제 파일을 지정한 파일명으로 변환하며 데이터를 저장한다.
 				try {
 					f.transferTo(new File(saveDir + "/" + renamedName));
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
 				
-				Attachment at = new Attachment();
-				at.setOriginalFileName(originName);
-				at.setRenamedFileName(renamedName);
+				BoardFile bf = new BoardFile();
+				bf.setOriginalFileName(originName);
+				bf.setRenamedFileName(renamedName);
 				
-				attachList.add(at);
+				fileList.add(bf);
 			}
 		}
 		
-		/***** MultipartHttpServletRequest/getFileNames를 이용한 파일 업로드 처리 로직  시작 *****/
-		/***** 주의 사항 : upload하는 파일의 name명이 모두 달라야함 *****/
-//		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest)request;
-//		getFile하나의 파일명만 접근가능함. 같은 name값으로 전송된 파일을 처리할 수 없다.
-//		MultipartFile upFile = multipartRequest.getFile("upFile");
-//		logger.debug("upFile="+upFile);
-		
-		// 복수 개의 업로드파일을 처리하기 위한 로직 getFileNames
-		/*Iterator<String> iterator = multipartRequest.getFileNames();
-	    MultipartFile f = null;
-	    while(iterator.hasNext()){
-	        f = multipartRequest.getFile(iterator.next());
-	        if( !f.isEmpty()){
-	        	//파일명 재생성
-				String originalFileName = f.getOriginalFilename();
-				String ext = originalFileName.substring(originalFileName.lastIndexOf(".")+1);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-				int rndNum = (int)(Math.random()*1000);
-				String renamedFileName = sdf.format(new Date(System.currentTimeMillis()))+"_"+rndNum+"."+ext;
-				try {
-					f.transferTo(new File(saveDirectory+"/"+renamedFileName));
-				} catch (IllegalStateException | IOException e) {
-					e.printStackTrace();
-				}
-				//vo객체에 담기
-				Attachment attach = new Attachment();
-				attach.setOriginalFileName(originalFileName);
-				attach.setRenamedFileName(renamedFileName);
-				attachList.add(attach);
-	        }
-	    }*/
 	    /***** MultipartHttpServletRequest/getFileNames를 이용한 파일 업로드 처리 로직  끝 *****/
 		
 		int result;
 		
 		try {
 			
-			result = boardService.insertBoard(board, attachList);
+			result = boardService.insertBoard(board, fileList);
 			
 		} catch(Exception e) {
 			
@@ -167,7 +125,7 @@ public class BoardController {
 		
 		if(result > 0) {
 			msg = "게시글 등록 성공!";
-			loc = "/board/boardView.do?no="+board.getBoardNo();
+			loc = "/board/boardView.do?no="+board.getbNo();
 			
 		} else {
 			msg = "게시글 등록 실패!";
@@ -182,19 +140,19 @@ public class BoardController {
 	public String selectOne(@RequestParam int no, Model model) {
 		Board b = boardService.selectOneBoard(no);
 		
-		List<Attachment> list = boardService.selectAttachmentList(no);
+		List<BoardFile> list = boardService.selectBoardFileList(no);
 		
 		model.addAttribute("board", b)
-		     .addAttribute("attachmentList", list);
+		     .addAttribute("boardfileList", list);
 		
 		return "board/boardView";
 	}
 	
 	@RequestMapping("/board/boardUpdateView.do")
-	public String boardUpdateView(@RequestParam int boardNo, Model model) {
+	public String boardUpdateView(@RequestParam int bNo, Model model) {
 		
-		model.addAttribute("board", boardService.selectOneBoard(boardNo))
-		     .addAttribute("attachmentList", boardService.selectAttachmentList(boardNo));
+		model.addAttribute("board", boardService.selectOneBoard(bNo))
+		     .addAttribute("boardfileList", boardService.selectBoardFileList(bNo));
 		
 		return "board/boardUpdateView";
 	}
@@ -204,19 +162,19 @@ public class BoardController {
 			      @RequestParam(value="upFile", required=false) MultipartFile[] upFiles,
 			      HttpSession session, Model model) {
 		
-		int boardNo = board.getBoardNo();
+		int bNo = board.getbNo();
 		
 		// 원본 게시글 내용 수정
-		Board originBoard = boardService.selectOneBoard(boardNo);
+		Board originBoard = boardService.selectOneBoard(bNo);
 		
-		originBoard.setBoardTitle(board.getBoardTitle());
-		originBoard.setBoardContent(board.getBoardContent());
+		originBoard.setbTitle(board.getbTitle());
+		originBoard.setbContent(board.getbContent());
 		
 		// 1. 파일을 저장할 경로 생성
 		String saveDir = session.getServletContext().getRealPath("/resources/upload/board");
 		
-		List<Attachment> attachList = boardService.selectAttachmentList(boardNo);
-		if(attachList == null) attachList = new ArrayList<Attachment>();
+		List<BoardFile> fileList = boardService.selectBoardFileList(bNo);
+		if(fileList == null) fileList = new ArrayList<BoardFile>();
 		
 		// 2. 폴더 유무 확인 후 생성
 		File dir = new File(saveDir);
@@ -228,20 +186,20 @@ public class BoardController {
 		// 3. 파일 업로드 시작 (MultipartFile 사용 시 )
 		int idx = 0;
 		for(MultipartFile f : upFiles) {
-			Attachment at = null;
+			BoardFile bf = null;
 			if(!f.isEmpty()) {
 				// 원본 파일 삭제
-				if(attachList.size() > idx) {
-					boolean delelteFile = new File(saveDir+"/"+attachList.get(idx).getRenamedFileName()).delete();
+				if(fileList.size() > idx) {
+					boolean delelteFile = new File(saveDir+"/"+fileList.get(idx).getRenamedFileName()).delete();
 				
 					System.out.println("원본파일 삭제 여부 : " + delelteFile);
 					
-					at = attachList.get(idx);
+					bf = fileList.get(idx);
 				} else {
-					at = new Attachment();
-					at.setBoardNo(boardNo);
+					bf = new BoardFile();
+					bf.setbNo(bNo);
 					
-					attachList.add(at);
+					fileList.add(bf);
 				}
 				// 원본 이름 가져오기
 				String originName = f.getOriginalFilename();
@@ -260,16 +218,16 @@ public class BoardController {
 					e.printStackTrace();
 				}
 				
-				at.setOriginalFileName(originName);
-				at.setRenamedFileName(renamedName);
+				bf.setOriginalFileName(originName);
+				bf.setRenamedFileName(renamedName);
 				
-				attachList.set(idx, at);
+				fileList.set(idx, bf);
 			}
 			
 			idx++;
 		}
 		
-		int result = boardService.updateBoard(board, attachList);
+		int result = boardService.updateBoard(board, fileList);
 		String loc = "/board/boardList.do";
 		String msg = "";
 		
@@ -287,15 +245,15 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/boardDelete.do")
-	public String boardDelete(@RequestParam int boardNo, HttpSession session, Model model) {
+	public String boardDelete(@RequestParam int bNo, HttpSession session, Model model) {
 		
-		List<Attachment> delList = boardService.selectAttachmentList(boardNo);
+		List<BoardFile> delList = boardService.selectBoardFileList(bNo);
 		String saveDir = session.getServletContext().getRealPath("/resources/upload/board");
 		
 		// 첨부 파일 삭제
-		for(Attachment at : delList) new File(saveDir + "/" + at.getRenamedFileName()).delete();
+		for(BoardFile at : delList) new File(saveDir + "/" + at.getRenamedFileName()).delete();
 		
-		int result = boardService.deleteBoard(boardNo);
+		int result = boardService.deleteBoard(bNo);
 		
 		String loc = "/board/boardList.do";
 		String msg = "";
@@ -316,12 +274,12 @@ public class BoardController {
 	
 	@RequestMapping("/board/fileDelete.do")
 	@ResponseBody
-	public boolean fileDelete(@RequestParam int attNo, @RequestParam String rName,
+	public boolean fileDelete(@RequestParam int bfNo, @RequestParam String rName,
 			                  HttpSession session) {
 		
 		String saveDir = session.getServletContext().getRealPath("/resources/upload/board");
 		
-		boolean check = boardService.deleteFile(attNo) != 0 ? true : false;
+		boolean check = boardService.deleteFile(bfNo) != 0 ? true : false;
 		
 		if(check == true) {
 			new File(saveDir + "/" + rName).delete();
@@ -373,7 +331,7 @@ public class BoardController {
 	            
 	         }
 	         response.addHeader("Content-Disposition",
-	               "attachment; filename=\"" + resFilename + "\"");
+	               "boardfile; filename=\"" + resFilename + "\"");
 
 	         //파일크기지정
 	         response.setContentLength((int)savedFile.length());
@@ -401,23 +359,5 @@ public class BoardController {
 
 	   }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
-
-
-
-
-
-
-
-
 
