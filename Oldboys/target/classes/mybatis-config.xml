@@ -14,7 +14,8 @@
 		 <typeAlias type="com.kh.erp.notice.model.vo.Attachment" alias="Attachment"/>
 		 <typeAlias type="com.kh.erp.board.model.vo.Board" alias="Board"/>
 		 <typeAlias type="com.kh.erp.board.model.vo.BoardFile" alias="BoardFile"/>
-		 
+   		 <typeAlias type="com.kh.erp.finance.purchase.model.vo.Purchase" alias="Purchase" />
+		 <typeAlias type="com.kh.erp.member.model.vo.Member" alias="Member"/>
 	</typeAliases>
 	
 

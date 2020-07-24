@@ -20,7 +20,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
  
- 	<c:import url="views/common/header.jsp" />
+ 	<c:import url="common/header.jsp" />
  
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -31,7 +31,7 @@
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
-           <!-- Content Row -->
+          <!-- Content Row -->
           <div class="row">
 
             <!-- Earnings (Monthly) Card Example -->
@@ -323,7 +323,7 @@
         <!-- /.container-fluid -->
   
 	  <!-- Footer -->
-	<c:import url="views/common/footer.jsp" />
+	<c:import url="common/footer.jsp" />
       
       
 
