@@ -25,7 +25,7 @@ public class EmployeeController {
 		model.addAttribute("list", list);
 
 		return "employee/employeeList";
-
+ 
 	}
 
 	@RequestMapping(value = "/employee/insertEmployee.do", method = RequestMethod.POST)
