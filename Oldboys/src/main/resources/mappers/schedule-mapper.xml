@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scheduleMapper">
+	
+	<insert id="insertSchedule" parameterType="Schedule">
+		INSERT INTO SCHEDULE
+		VALUES(DEFAULT, SEQ_SNO.NEXTVAL, #{allDay}, #{title}, #{startDate}, #{endDate}, #{category}, #{color}, #{content})
+	</insert>
+	
+	<select id="selectScheduleList" parameterType="Schedule" resultType="Schedule">
+		SELECT * FROM SCHEDULE
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
