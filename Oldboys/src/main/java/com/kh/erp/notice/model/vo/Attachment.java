@@ -14,6 +14,7 @@ public class Attachment implements Serializable{
 	private Date uploadDate;
 	private int downloadCount;
 	private String status;
+	
 	public Attachment() {
 		super();
 		// TODO Auto-generated constructor stub

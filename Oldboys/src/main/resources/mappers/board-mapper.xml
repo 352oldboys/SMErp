@@ -5,8 +5,8 @@
 <mapper namespace="boardMapper">
 	
 	<select id="selectBoardList" resultType="Board">
-		SELECT A.*, (SELECT COUNT(*) FROM ATTACHMENT WHERE BOARDNO = A.BOARDNO) FILECOUNT
-		FROM BOARD A ORDER BY BOARDDATE DESC, BOARDNO DESC
+		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
+		FROM BOARD B ORDER BY BDATE DESC, BNO DESC
 	</select>
 	
 	<select id="selectBoardTotalContent" resultType="_int">
@@ -14,60 +14,59 @@
 	</select>
 
 	<insert id="insertBoard">
-		INSERT INTO BOARD(BOARDNO, BOARDTITLE, BOARDWRITER, BOARDCONTENT) 
-		VALUES (SEQ_BOARDNO.NEXTVAL,#{boardTitle},#{boardWriter},#{boardContent})
-		<!--  전달한 board객체의 boardNo 프로퍼티에 결과값을 담는다.  -->
-		<selectKey keyProperty="boardNo" resultType="_int" order="AFTER"> 
-		      SELECT SEQ_BOARDNO.CURRVAL FROM DUAL 
+		INSERT INTO BOARD(BNO, BTITLE, BWRITER, BCONTENT) 
+		VALUES (SEQ_BNO.NEXTVAL,#{bTitle},#{bWriter},#{bContent})
+		<selectKey keyProperty="bNo" resultType="_int" order="AFTER"> 
+		      SELECT SEQ_BNO.CURRVAL FROM DUAL 
 		</selectKey>
 	</insert>
 	
-	<insert id="insertAttachment">
+	<insert id="insertBoardFile">
 		<!--  다른방식  -->
-		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE"> 
-		    SELECT SEQ_BOARDNO.CURRVAL FROM DUAL 
+		<selectKey keyProperty="bNo" resultType="_int" order="BEFORE"> 
+		    SELECT SEQ_BNO.CURRVAL FROM DUAL  
 		</selectKey>
-		INSERT INTO ATTACHMENT(ATTACHMENTNO, BOARDNO, ORIGINALFILENAME, RENAMEDFILENAME) 
-		VALUES (SEQ_ATTACHMENTNO.NEXTVAL, #{boardNo}, #{originalFileName}, #{renamedFileName})
+		INSERT INTO BOARDFILE(BOARDFILENO, BNO, ORIGINALFILENAME, RENAMEDFILENAME) 
+		VALUES (SEQ_BOARDFILENO.NEXTVAL, #{bNo}, #{originalFileName}, #{renamedFileName})
 	</insert>
 
 	<select id="selectOneBoard" parameterType="_int" resultType="Board">
 		SELECT * FROM BOARD
-		WHERE BOARDNO = #{boardNo}
+		WHERE BNO = #{bNo}
 	</select>
 	
-	<select id="selectAttachmentList" parameterType="_int" resultType="Attachment">
-		SELECT * FROM ATTACHMENT
-		WHERE BOARDNO = #{boardNo}
+	<select id="selectBoardFileList" parameterType="_int" resultType="BoardFile">
+		SELECT * FROM BOARDFILE
+		WHERE BNO = #{bNo}
 	</select>
 	
 	<update id="updateBoard" parameterType="Board">
 		UPDATE BOARD SET
-		BOARDTITLE = #{boardTitle},
-		BOARDCONTENT = #{boardContent}
-		WHERE BOARDNO = #{boardNo}
+		BTITLE = #{bTitle},
+		BCONTENT = #{bContent}
+		WHERE BNO = #{bNo}
 	</update>
 	
-	<insert id="updateAttachment" parameterType="Attachment">
-		INSERT INTO ATTACHMENT
-		VALUES (SEQ_ATTACHMENTNO.NEXTVAL, #{boardNo},
+	<insert id="updateBoardFile" parameterType="BoardFile">
+		INSERT INTO BOARDFILE
+		VALUES (SEQ_BOARDFILENO.NEXTVAL, #{bNo},
 		        #{originalFileName}, #{renamedFileName},
 		        DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 	
-	<delete id="deleteAttachment" parameterType="_int">
-		DELETE FROM ATTACHMENT
-		WHERE BOARDNO = #{boardNo}
+	<delete id="deleteBoardFile" parameterType="_int">
+		DELETE FROM BOARDFILE
+		WHERE BNO = #{bNo}
 	</delete>
 	
 	<delete id="deleteBoard" parameterType="_int">
 		DELETE FROM BOARD
-		WHERE BOARDNO = #{boardNo}
+		WHERE BNO = #{bNo}
 	</delete>
 	
-	<delete id="deleteAttachmentOne" parameterType="_int">
-		DELETE FROM ATTACHMENT
-		WHERE ATTACHMENTNO = #{attNo}
+	<delete id="deleteBoardFileOne" parameterType="_int">
+		DELETE FROM BAORDFILE
+		WHERE BOARDFILENO = #{bfNo}
 	</delete>
 	
 </mapper>

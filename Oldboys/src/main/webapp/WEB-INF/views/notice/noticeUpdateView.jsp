@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>게시글 수정</title>
 	<style>
-		div#board-container{width:400px; margin:0 auto; text-align:center;}
+		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
@@ -71,17 +71,17 @@
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
 			<form name="boardFrm" action="${pageContext.request.contextPath}/notice/noticeUpdate.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
-				<input type="hidden" name="boardNo" value="${ notice.nNo }" />
-				<input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" value="${notice.nTitle}" required>
-				<input type="text" class="form-control" name="boardWriter" value="${notice.nWriter}" readonly required>
+				<input type="hidden" name="nNo" value="${ notice.nNo }" />
+				<input type="text" class="form-control" placeholder="제목" name="nTitle" id="nTitle" value="${notice.nTitle}" required>
+				<input type="text" class="form-control" name="nWriter" value="${notice.nWriter}" readonly required>
 				<c:forEach items="${attachmentList}" var="a" varStatus="vs">
 				<div class="rows">
 					<button type="button" 
-							class="btn btn-outline-success col-8"
+							class="btn btn-outline-success col-7"
 							onclick="fileDownload('${a.originalFileName}','${a.renamedFileName }');">
 						첨부파일${vs.count} - ${a.originalFileName }
 					</button>
-					<button type="button" class="btn btn-outline-danger col-3"
+					<button type="button" class="btn btn-outline-danger col-4"
 							onclick="fileDelete(this, '${a.attachmentNo}', '${a.renamedFileName }');">파일 삭제</button>
 				</div>
 				</c:forEach>
@@ -104,10 +104,10 @@
 				    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
 				  </div>
 				</div>
-			    <textarea class="form-control" name="boardContent" placeholder="내용" required>${notice.nContent}</textarea>
+			    <textarea class="form-control" name="nContent" placeholder="내용" required>${notice.nContent}</textarea>
 				<br />
 				<input type="submit" class="btn btn-outline-success" value="수정 완료" /> &nbsp;
-				<input type="button" class="btn btn-outline-danger" value="삭제" onclick="location.href='${pageContext.request.contextPath}/notice/noticeDelete.do?noticeNo=${notice.nNo}'"/>
+				<input type="button" class="btn btn-outline-danger" value="삭제" onclick="location.href='${pageContext.request.contextPath}/notice/noticeDelete.do?nNo=${notice.nNo}'"/>
 			</form>
 		</div>
 		<c:import url="../common/footer.jsp"/>

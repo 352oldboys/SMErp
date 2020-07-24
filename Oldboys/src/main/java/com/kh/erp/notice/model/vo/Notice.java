@@ -17,11 +17,14 @@ private static final long serialVersionUID = 486L;
 	private String nContent;
 	private Date nDate;
 	private int readCount;
+	private int fileCount;
+	private List<Attachment> files = new ArrayList<Attachment>();
 	public Notice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Notice(int nNo, String nTitle, String nWriter, String nContent, Date nDate, int readCount) {
+	public Notice(int nNo, String nTitle, String nWriter, String nContent, Date nDate, int readCount, int fileCount,
+			List<Attachment> files) {
 		super();
 		this.nNo = nNo;
 		this.nTitle = nTitle;
@@ -29,11 +32,14 @@ private static final long serialVersionUID = 486L;
 		this.nContent = nContent;
 		this.nDate = nDate;
 		this.readCount = readCount;
+		this.fileCount = fileCount;
+		this.files = files;
 	}
 	@Override
 	public String toString() {
 		return "Notice [nNo=" + nNo + ", nTitle=" + nTitle + ", nWriter=" + nWriter + ", nContent=" + nContent
-				+ ", nDate=" + nDate + ", readCount=" + readCount + "]";
+				+ ", nDate=" + nDate + ", readCount=" + readCount + ", fileCount=" + fileCount + ", files=" + files
+				+ "]";
 	}
 	public int getnNo() {
 		return nNo;
@@ -71,14 +77,12 @@ private static final long serialVersionUID = 486L;
 	public void setReadCount(int readCount) {
 		this.readCount = readCount;
 	}
-	
 	public int getFileCount() {
 		return fileCount;
 	}
 	public void setFileCount(int fileCount) {
 		this.fileCount = fileCount;
 	}
-
 	public List<Attachment> getFiles() {
 		return files;
 	}
@@ -86,10 +90,5 @@ private static final long serialVersionUID = 486L;
 		this.files = files;
 	}
 
-	//첨부파일 갯수 확인용 가상 변수
-	private int fileCount;
 	
-	// 첨부파일을 담을 변수 추가
-	private List<Attachment> files = new ArrayList<Attachment>();
-
 }

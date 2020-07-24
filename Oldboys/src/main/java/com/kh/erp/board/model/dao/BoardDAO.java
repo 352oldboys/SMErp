@@ -3,7 +3,7 @@ package com.kh.erp.board.model.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.board.model.vo.BoardFile;
 import com.kh.erp.board.model.vo.Board;
 
 public interface BoardDAO {
@@ -14,19 +14,19 @@ public interface BoardDAO {
 
 	   int insertBoard(Board board);
 
-	   int insertAttachment(Attachment a);
+	   int insertBoardFile(BoardFile b);
 
-	   Board selectOneBoard(int boardNo);
+	   Board selectOneBoard(int bNo);
 
-	   List<Attachment> selectAttachmentList(int boardNo);
+	   List<BoardFile> selectBoardFileList(int bNo);
 
 	   int updateBoard(Board board);
 
-	   int updateAttachment(Attachment a);
+	   int updateBoardFile(BoardFile b);
 
-	   int deleteBoard(int boardNo);
+	   int deleteBoard(int bNo);
 
-	   int deleteAttachment(int boardNo);
+	   int deleteBoardFile(int bNo);
 
-	   int deleteFile(int attNo);
+	   int deleteFile(int bfNo);
 }

@@ -18,15 +18,29 @@
          location.href = "${pageContext.request.contextPath}/notice/noticeForm.do";
       }
       
+    /* 
       $(function(){
-         $("tr[id]").on("click",function(){
-            var nNo = $(this).attr("id");
-            console.log("nNo="+nNo);
-            location.href = "${pageContext.request.contextPath}/notice/noticeView.do?no="+nNo;
-         });
-      });
+          $("tr[id]").on("click", function(){
+             var nNo = $(this).attr("id");
+             console.log("nNo="+nNo);
+             location.href = "${pageContext.request.contextPath}/notice/noticeView.do?no="+nNo;
+          });
+       });
+        */
+        
+        function a() {
+        	$("tr[id]").on("click", function(){
+                var nNo = $(this).attr("id");
+                console.log("nNo="+nNo);
+                location.href = "${pageContext.request.contextPath}/notice/noticeView.do?no="+nNo;
+             });    	
+			
+		}
+      
    </script>
+   
 </head>
+
 <body>
    <div id="container">
      <div id="wrapper">
@@ -43,8 +57,8 @@
                   <th>첨부파일</th>
                   <th>조회수</th>
                </tr>
-               <c:forEach items="${list}" var="b"> 
-               <tr id="${n.nNo}">
+               <c:forEach items="${list}" var="n"> 
+                <tr id="${n.nNo}" onclick=a();>
                   <td>${n.nNo}</td>
                   <td>${n.nTitle}</td>
                   <td>${n.nWriter}</td>
@@ -66,6 +80,5 @@
         </div>
     <!-- End of Content Wrapper -->
       
-   </div>
 </body>
 </html>

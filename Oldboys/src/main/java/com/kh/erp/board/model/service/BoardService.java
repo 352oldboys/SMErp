@@ -3,7 +3,7 @@ package com.kh.erp.board.model.service;
 import java.util.List;
 import java.util.Map;
 
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.board.model.vo.BoardFile;
 import com.kh.erp.board.model.vo.Board;
 
 public interface BoardService {
@@ -18,15 +18,15 @@ public interface BoardService {
 
 	   int selectBoardTotalContents();
 
-	   int insertBoard(Board board, List<Attachment> attachList);
+	   int insertBoard(Board board, List<BoardFile> fileList);
 
-	   Board selectOneBoard(int boardNo);
+	   Board selectOneBoard(int bNo);
 
-	   List<Attachment> selectAttachmentList(int boardNo);
+	   List<BoardFile> selectBoardFileList(int bNo);
 
-	   int updateBoard(Board board, List<Attachment> attachList);
+	   int updateBoard(Board board, List<BoardFile> fileList);
 	   
-	   int deleteBoard(int boardNo);
+	   int deleteBoard(int bNo);
 
-	   int deleteFile(int attNo);
+	   int deleteFile(int bfNo);
 }

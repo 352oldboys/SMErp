@@ -8,7 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kh.erp.board.model.vo.Attachment;
+import com.kh.erp.board.model.vo.BoardFile;
 import com.kh.erp.board.model.vo.Board;
 
 @Repository("boardDAO")
@@ -35,18 +35,18 @@ public class BoardDAOImpl implements BoardDAO {
 	   }
 
 	   @Override
-	   public int insertAttachment(Attachment a) {
-	      return sqlSession.insert("boardMapper.insertAttachment", a);
+	   public int insertBoardFile(BoardFile b) {
+	      return sqlSession.insert("boardMapper.insertBoardFile", b);
 	   }
 
 	@Override
-	public Board selectOneBoard(int boardNo) {
-		return sqlSession.selectOne("boardMapper.selectOneBoard", boardNo);
+	public Board selectOneBoard(int bNo) {
+		return sqlSession.selectOne("boardMapper.selectOneBoard", bNo);
 	}
 
 	@Override
-	public List<Attachment> selectAttachmentList(int boardNo) {
-		return sqlSession.selectList("boardMapper.selectAttachmentList", boardNo);
+	public List<BoardFile> selectBoardFileList(int bNo) {
+		return sqlSession.selectList("boardMapper.selectBoardFileList", bNo);
 	}
 
 	@Override
@@ -55,24 +55,24 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int updateAttachment(Attachment a) {
-		return sqlSession.insert("boardMapper.updateAttachment", a);
+	public int updateBoardFile(BoardFile b) {
+		return sqlSession.insert("boardMapper.updateBoardFile", b);
 	}
 
 	@Override
-	public int deleteBoard(int boardNo) {
-		return sqlSession.delete("boardMapper.deleteBoard", boardNo);
+	public int deleteBoard(int bNo) {
+		return sqlSession.delete("boardMapper.deleteBoard", bNo);
 	}
 
 	@Override
-	public int deleteAttachment(int boardNo) {
-		return sqlSession.delete("boardMapper.deleteAttachment", boardNo);
+	public int deleteBoardFile(int bNo) {
+		return sqlSession.delete("boardMapper.deleteBoardFile", bNo);
 	}
 
 	@Override
-	public int deleteFile(int attNo) {
+	public int deleteFile(int bfNo) {
 		
-		return sqlSession.delete("boardMapper.deleteAttachmentOne", attNo);
+		return sqlSession.delete("boardMapper.deleteBoardFileOne", bfNo);
 	}
 
 }

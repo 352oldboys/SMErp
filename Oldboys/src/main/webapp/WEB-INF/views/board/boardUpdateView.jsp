@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>게시글 수정</title>
 	<style>
-		div#board-container{width:400px; margin:0 auto; text-align:center;}
+		div#board-container{width:1000px; margin:0 auto; text-align:center;}
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
@@ -17,7 +17,7 @@
 	<script>
 	/* textarea에도 required속성을 적용가능하지만, 공백이 입력된 경우 대비 유효성검사를 실시함. */
 	function validate(){
-		var content = $("[name=boardContent]").val();
+		var content = $("[name=bContent]").val();
 		if(content.trim().length==0){
 			alert("내용을 입력하세요");
 			return false;
@@ -44,10 +44,10 @@
 		location.href="${pageContext.request.contextPath}/board/fileDownload.do?oName="+oName+"&rName="+rName;
 	}
 	
-	function fileDelete(obj, attNo, rName){
+	function fileDelete(obj, bfNo, rName){
 		$.ajax({
 			url : '${pageContext.request.contextPath}/board/fileDelete.do',
-			data : { attNo : attNo, rName : rName }, 
+			data : { bfNo : bfNo, rName : rName }, 
 			dataType : 'json',
 			success : function(data){
 				if(data == true) {
@@ -71,10 +71,10 @@
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
 			<form name="boardFrm" action="${pageContext.request.contextPath}/board/boardUpdate.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
-				<input type="hidden" name="boardNo" value="${ board.boardNo }" />
-				<input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" value="${board.boardTitle}" required>
-				<input type="text" class="form-control" name="boardWriter" value="${board.boardWriter}" readonly required>
-				<c:forEach items="${attachmentList}" var="a" varStatus="vs">
+				<input type="hidden" name="bNo" value="${ board.bNo }" />
+				<input type="text" class="form-control" placeholder="제목" name="bTitle" id="bTitle" value="${board.bTitle}" required>
+				<input type="text" class="form-control" name="bWriter" value="${board.bWriter}" readonly required>
+				<c:forEach items="${boardfileList}" var="a" varStatus="vs">
 				<div class="rows">
 					<button type="button" 
 							class="btn btn-outline-success col-8"
@@ -104,10 +104,10 @@
 				    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
 				  </div>
 				</div>
-			    <textarea class="form-control" name="boardContent" placeholder="내용" required>${board.boardContent}</textarea>
+			    <textarea class="form-control" name="bContent" placeholder="내용" required>${board.bContent}</textarea>
 				<br />
 				<input type="submit" class="btn btn-outline-success" value="수정 완료" /> &nbsp;
-				<input type="button" class="btn btn-outline-danger" value="삭제" onclick="location.href='${pageContext.request.contextPath}/board/boardDelete.do?boardNo=${board.boardNo}'"/>
+				<input type="button" class="btn btn-outline-danger" value="삭제" onclick="location.href='${pageContext.request.contextPath}/board/boardDelete.do?bNo=${board.bNo}'"/>
 			</form>
 		</div>
 		<c:import url="../common/footer.jsp"/>
