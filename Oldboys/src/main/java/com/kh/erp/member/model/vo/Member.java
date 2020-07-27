@@ -12,13 +12,14 @@ public class Member {
 	private String name;
 	private int age;
 	private String email;
-	private String address;
+	private String address1;
+	private String address2;
 	private String status;
 	
 	public Member() { super(); }
 
-	public Member(String userId, String password, String regNo, String businessName, String phone, String gender,
-			String name, int age, String email, String address, String status, int userNo) {
+	public Member(int userNo, String userId, String password, String regNo, String businessName, String phone,
+			String gender, String name, int age, String email, String address1, String address2, String status) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -30,26 +31,21 @@ public class Member {
 		this.name = name;
 		this.age = age;
 		this.email = email;
-		this.address = address;
+		this.address1 = address1;
+		this.address2 = address2;
 		this.status = status;
 	}
-
-	
 
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", regNo=" + regNo
 				+ ", businessName=" + businessName + ", phone=" + phone + ", gender=" + gender + ", name=" + name
-				+ ", age=" + age + ", email=" + email + ", address=" + address + ", status=" + status + "]";
+				+ ", age=" + age + ", email=" + email + ", address1=" + address1 + ", address2=" + address2
+				+ ", status=" + status + "]";
 	}
 
-	
 	public int getUserNo() {
 		return userNo;
-	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
 	}
 
 	public String getUserId() {
@@ -88,12 +84,20 @@ public class Member {
 		return email;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getAddress1() {
+		return address1;
+	}
+
+	public String getAddress2() {
+		return address2;
 	}
 
 	public String getStatus() {
 		return status;
+	}
+
+	public void setUserNo(int userNo) {
+		this.userNo = userNo;
 	}
 
 	public void setUserId(String userId) {
@@ -132,12 +136,16 @@ public class Member {
 		this.email = email;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
 	}
 
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
 }

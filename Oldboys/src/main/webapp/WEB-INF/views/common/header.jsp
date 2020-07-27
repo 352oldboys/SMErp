@@ -123,13 +123,13 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="#">거래처 관리</a>
-            <a class="collapse-item" href="#">매출</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/finance/sales.do">매출</a>
           </div>
         </div>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-target="#collapseFinance" aria-expanded="true" aria-controls="collapseFinance">
+        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/finance/integerted.do" data-target="#collapseFinance" aria-expanded="true" aria-controls="collapseFinance">
           <i class="fas fa-fw fa-folder"></i>
           <span>회계 관리</span>
         </a>
@@ -225,9 +225,9 @@
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                  Alerts Center
+                  알림
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center" href="${pageContext.request.contextPath}/finance/integerted.do">
                   <div class="mr-3">
                     <div class="icon-circle bg-primary">
                       <i class="fas fa-file-alt text-white"></i>
@@ -235,7 +235,9 @@
                   </div>
                   <div>
                     <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    <span class="font-weight-bold">${member.name}님 <br />
+                    오늘의 통합 매입/매출을 확인해보세요!
+                    </span>
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -246,22 +248,23 @@
                   </div>
                   <div>
                     <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
+ 	                  <b>${member.name}님</b> <br />지출 금액은 ?원 입니다. <br />
+ 	                  지출을 줄이시기 원하시다면 <br /> 클릭하여 상담가와 이야기하세요!!
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                     <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
+                      <i class="fas fa-address-card text-white"></i>
                     </div>
                   </div>
                   <div>
                     <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
+                    <b>${member.name}님</b> <br />오늘도 좋은 하루되세요.
                   </div>
-                </a>
+                </a> 
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
+              </div> 
             </li>
 
             <!-- Nav Item - Messages -->
@@ -325,27 +328,27 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${member.name}</b></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/member/updateMember.do">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                 프로필 수정
                 </a>
-                <a class="dropdown-item" href="#">
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/member/memberLogout.do" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  로그아웃
                 </a>
               </div>
             </li>
@@ -354,6 +357,30 @@
 
         </nav>
         <!-- End of Topbar -->
+   <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시나요?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">"로그아웃"을 하시려면 로그아웃을 눌러주세요!</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+          <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/memberLogout.do">로그아웃</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
         
         
  

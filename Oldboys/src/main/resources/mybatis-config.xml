@@ -19,6 +19,7 @@
 		 <typeAlias type="com.kh.erp.member.model.vo.Member" alias="Member"/>
 		 <typeAlias type="com.kh.erp.employee.model.vo.Employee" alias="Employee"/>		 
 		 <typeAlias type="com.kh.erp.schedule.model.vo.Schedule" alias="Schedule"/>
+		 <typeAlias type="com.kh.erp.inventory.model.vo.Inventory" alias="Inventory" />
 	</typeAliases>
 	
 

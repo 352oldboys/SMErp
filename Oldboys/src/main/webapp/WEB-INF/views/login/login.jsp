@@ -9,7 +9,7 @@
 <html lang="ko">
 <head>
 
-<title>SMERP_member_page</title>
+<title>SMERP_login_page</title>
 
 <link
 	href="${pageContext.request.contextPath}/resources/css/member/color.css"
@@ -101,7 +101,7 @@
 			<div class="col-md-5 col-md-offset-1 signup-form">
 
 					<br />
-					<h2 class="text-center">member here</h2>
+					<h2 class="text-center">Login here</h2>
 					<br />
 					<hr>
 
@@ -109,19 +109,19 @@
 					<div class="form-group">
 
 						<input type="text" class="form-control" name="userId"
-							placeholder="your UserId enter!" required="required">
+							placeholder="당신의 아이디를 입력해주세요!" required="required">
 
 					</div>
 
 					<div class="form-group">
 
 						<input type="password" class="form-control" name="password"
-							placeholder="your Password enter!" required="required">
+							placeholder="당신의 비밀번호를 입력해주세요!" required="required">
 
 					</div>
 					<hr />
 					<div class="form-group text-center">
-						<br />
+					
 						<button type="button" class="btn btn-blue btn-block"
 							onclick="movemember();">로그인</button>
 					</div>

@@ -26,7 +26,7 @@
 <title>Insert title here</title>
 
 <!-- Custom styles for this page -->
-<link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/datatables/datatables.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -322,7 +322,8 @@
                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                   </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">
+ More Messages</a>
               </div>
             </li>
 
@@ -375,9 +376,13 @@
 								style="display: inline;">매입</h6>
 							<div class="text-center" style="display: inline; float: right;">
 								<input class="btn btn-primary btn-sm" type="button" value="추가하기"
+								
 									data-toggle="modal" data-target="#modalContactForm" />
+									<input class="btn btn-primary btn-sm" type="button" value="수정하기" onclick="javascript:fn_inventoryUpdate();"/>
+									<input class="btn btn-primary btn-sm" type="button" value="삭제하기" onclick="javascript:fn_inventoryDelete();"/>
+									
 							</div>
-
+						<form action="insertInventory.do" method="post">
 							<div class="modal fade" id="modalContactForm" tabindex="-1"
 								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
@@ -392,50 +397,56 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="form34" >제품 번호</label>
-												<input type="text" id="form34" class="form-control validate" value="${ productno }">
+												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productno }" >
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="form34">사용자 번호</label>
-												<input type="text" id="form34" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
+												<input type="text" id="userNo" name="userNo" class="form-control validate" >
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="form34">아이템 코드</label>
-												<input type="text" id="form34" class="form-control validate" value="${ businessCode }">
+												<label data-error="wrong" data-success="right" for="itemcode">아이템 코드</label>
+												<input type="text" id="itemcode" name="itemcode" class="form-control validate" value="${ businessCode }" >
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
-												<label data-error="wrong" data-success="right" for="form29">제품</label>
-												<input type="email" id="form29" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="product">제품</label>
+												<input type="text" id="product" name="product" class="form-control validate">
 											</div>
 
 											<div class="md-form">
 												<i class="fas fa-tag prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="form32">수량</label>
-												<input type="text" id="form32" class="form-control validate" value="${ day }">
+												<label data-error="wrong" data-success="right" for="quantity">수량</label>
+												<input type="text" id="quantity" name="quantity" class="form-control validate" value="${ day }">
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="form32">단가</label>
-												<input type="text" id="form32" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="unitprice">단가</label>
+												<input type="text" id="unitprice" name="unitprice" class="form-control validate">
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag  grey-text"></i>
-												<label data-error="wrong" data-success="right" for="form32">원산지</label>
-												<input type="text" id="form32" class="form-control validate"> 
+												<label data-error="wrong" data-success="right" for="origin">원산지</label>
+												<input type="text" id="origin" name="origin"class="form-control validate"> 
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>
-												<label data-error="wrong" data-success="right" for="form32">유통기한</label>
-												<input type="text" id="form32" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="expirationdate">유통기한</label>
+												<input type="date" id="expirationdate" name="expirationdate" class="form-control validate">
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i>
+												<label data-error="wrong" data-success="right" for="note">비고</label>
+												<input type="text" id="note" name="note" class="form-control validate">
 											</div>
 <!-- 
 											 <div class="md-form">
@@ -447,14 +458,101 @@
  -->
 										</div>
 										<div class="modal-footer d-flex justify-content-center">
-											<button class="btn btn-unique" style="text-align: center;"TableInsert.do">
-												Send <i class="fas fa-paper-plane-o ml-1"></i>
+											<button class="btn btn-unique" style="text-align: center;">
+												Send 
 											</button>
 										</div>
 									</div>
 								</div>
 							</div>
+</form>
 
+<%//수정하기 모달창 시작 %>
+<form action="updateInventory.do" method="post">
+							<div class="modal fade" id="modalUpdateForm" tabindex="-1"
+								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header text-center">
+											<h4 class="modal-title w-100 font-weight-bold">테이블을 수정하세요.</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body mx-3">
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="" >
+											</div>
+										
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
+												<input type="text" id="userNo" name="userNo" class="form-control validate" value="" >
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="itemcode">아이템 코드</label>
+												<input type="text" id="itemcode" name="itemcode" class="form-control validate" value="" >
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i>   
+												<label data-error="wrong" data-success="right" for="product">제품</label>
+												<input type="text" id="product" name="product" class="form-control validate" value="" >
+											</div>
+
+											<div class="md-form">
+												<i class="fas fa-tag prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="quantity">수량</label>
+												<input type="text" id="quantity" name="quantity" class="form-control validate" value="">
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="unitprice">단가</label>
+												<input type="text" id="unitprice" name="unitprice" class="form-control validate" value="">
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag  grey-text"></i>
+												<label data-error="wrong" data-success="right" for="origin">원산지</label>
+												<input type="text" id="origin" name="origin"class="form-control validate" value=""> 
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i>
+												<label data-error="wrong" data-success="right" for="expirationdate">유통기한</label>
+												<input type="date" id="expirationdate" name="expirationdate" class="form-control validate" value="">
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i>
+												<label data-error="wrong" data-success="right" for="note">비고</label>
+												<input type="text" id="note" name="note" class="form-control validate" value="">
+											</div>
+<!-- 
+											 <div class="md-form">
+												<i class="fas fa-pencil prefix grey-text"></i>
+												<textarea type="text" id="form8"
+													class="md-textarea form-control" rows="4"></textarea>
+												<label data-error="wrong" data-success="right" for="form8">원산지</label>
+											</div> —>
+ -->
+										</div>
+										<div class="modal-footer d-flex justify-content-center">
+											<button class="btn btn-unique" style="text-align: center;">
+												Update 
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+</form>
+<%//수정하기 모달창 끝 %>
 						</div>
 						
           <!-- DataTales Example -->
@@ -490,7 +588,20 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
+                   <c:forEach var="emp" items="${list}" varStatus="status">
+                     <tr id="inventory${status.count}">
+                          <td>${emp.productNo}</td>
+                          <td>${emp.userNo}</td>
+                          <td>${emp.itemcode}</td>
+                          <td>${emp.product}</td>
+                          <td>${emp.quantity}</td>
+                          <td>${emp.unitprice}</td>
+                          <td>${emp.origin}</td>
+                          <td>${emp.expirationdate}</td>
+                          <td>${emp.note}</td>
+                     </tr>
+              </c:forEach>
+                    <!-- <tr>
                       <td>Tiger Nixon</td>
                       <td>System Architect</td>
                       <td>Edinburgh</td>
@@ -852,12 +963,17 @@
                       <td>System Architect</td>
                       <td>Edinburgh</td>
                       <td>61</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+
+	<% //2번째 방법 %>
+	<form method="Post" action="deleteInventory.do" id="modalDeleteForm">
+      	<input type="hidden" name="productNo" value=""/>
+    </form>
 
         </div>
         <!-- /.container-fluid -->
@@ -866,7 +982,7 @@
  
 
   <!-- Page level custom scripts -->
-  <script src="<c:url value="/resources/js/demo/datatables-demo.js"/>"></script>
+  <%-- <script src="<c:url value="/resources/js/demo/datatables-demo.js"/>"></script> --%>
 
   <!-- Bootstrap core JavaScript -->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"/></script>
@@ -879,12 +995,119 @@
   <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"/></script>
 
   <!-- Page level plugins -->
-  <script src="${pageContext.request.contextPath}/resources/vendor/datatables/jquery.dataTables.js"/></script>
+  <%-- <script src="${pageContext.request.contextPath}/resources/vendor/datatables/jquery.dataTables.js"/></script> --%>
   <script src="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.js"/></script>
-  
+  <script type="text/javascript" src="${pageContext.request.contextPath}/resources/vendor/datatables/datatables.min.js"/></script>
   <!-- Page level custom scripts -->
-  <script src="${pageContext.request.contextPath}/resources/js/demo/datatables-demo.js"></script>
+  <%-- <script src="${pageContext.request.contextPath}/resources/js/demo/datatables-demo.js"></script> --%>
+  <script>
+  
+  $(document).ready(function() {
+	    var t = $('#dataTable').DataTable();
+	    var counter = 1;
+	 
+	    $('#addRow').on( 'click', function () {
+	        t.row.add( [
+	            counter +'.1',
+	            counter +'.2',
+	            counter +'.3',
+	            counter +'.4',
+	            counter +'.56265651'
+	        ] ).draw( false );
+	 
+	        counter++;
+	    } );
+	 
+	    // Automatically add a first row of data
+	    $('#addRow').click();
+	} );
+  
+  $(document).ready(function() {
+	    var table = $('#dataTable').DataTable();
+	    $('#dataTable tbody').on( 'click', 'tr', function () {
+// 	    	$('#dataTable *').removeClass('selected');
+// 	    	$(this).addClass('selected');
+	        $(this).toggleClass('selected');
+	    } );
+	 
+    
+	    /* $('#button').click( function () {
+	        alert( table.rows('.selected').data().length +' row(s) selected' );
+	    } ); */
+	} );
+  
+  //수정하기는 하나씩만
+  function fn_inventoryUpdate(){
+// 	  alert("fn_inventoryUpdate");
+	  
+	  var table = $('#dataTable').DataTable();
+	  var length = table.rows('.selected').data().length;
+	  
+	  /* console.log("선택한 행 수 == " + table.rows('.selected').data().length);
+	  console.log("전체행 수 == " + table.data().length); */
 
+	  
+	  if(length > 1){
+		alert("수정은 하나씩만 가능");
+	  	return;
+	  }else if(length == 0){
+		  alert("하나는 선택해야함");
+	  	return;
+	  }
+	  
+	  /* 값 가져오기 */
+	  $("#modalUpdateForm #productNo").val(table.rows('.selected').data()[0][0]);		  
+	  $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);		  
+	  $("#modalUpdateForm #itemcode").val(table.rows('.selected').data()[0][2]);		  
+	  $("#modalUpdateForm #product").val(table.rows('.selected').data()[0][3]);		  
+	  $("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][4]);		  
+	  $("#modalUpdateForm #unitprice").val(table.rows('.selected').data()[0][5]);		  
+	  $("#modalUpdateForm #origin").val(table.rows('.selected').data()[0][6]);		  
+	  $("#modalUpdateForm #expirationdate").val(table.rows('.selected').data()[0][7]);		  
+	  $("#modalUpdateForm #note").val(table.rows('.selected').data()[0][8]);		  
+	 
+	  /*창 띄우기  */
+	  $("#modalUpdateForm").modal();
+	  
+  }
+  
+  function fn_inventoryDelete(){
+	  var table = $('#dataTable').DataTable();
+	  var length = table.rows('.selected').data().length;
+	  	  	  
+  
+	  if(length >= 1){
+		alert(length + "개 선택하였음");
+	  }else if(length == 0){
+		  alert("하나는 선택해야함");
+	  	return;
+	  }
+	 	  
+	  /* //1.첫번째방식
+	  var frm = document.createElement("form"); // <form></form>
+	  frm.setAttribute("method", "Post");  //Post 방식  -- <form method="Post">
+      frm.setAttribute("action", "deleteInventory.do"); //요청 보낼 주소    -- <form method="Post" action="deleteInventory.do" >
+	  
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", "productNo");
+      hiddenField.setAttribute("value", table.rows('.selected').data()[0][0]);
+      form.appendChild(hiddenField);
+        
+      <form method="Post" action="deleteInventory.do" >
+      	<input type="hidden" name="productNo" value=""/>
+      </form>
+	   */
+	 
+	  //2번째 방식 
+	  $("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);		  
+	  $("#modalDeleteForm").submit();
+	  
+  }
+  
+  
+  </script>
+   
 </body>
 
 </html>

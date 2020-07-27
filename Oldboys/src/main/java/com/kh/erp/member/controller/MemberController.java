@@ -45,7 +45,7 @@ public class MemberController {
 	}
 	@RequestMapping("/member/updateMember.do")
 	public String memberUpdate(Member member) {
-		System.out.println(member);
+//		System.out.println(member);
 		return "login/loginUpdate";
 	}
 	
@@ -53,14 +53,14 @@ public class MemberController {
 	public String insetMember(
 			@RequestParam(value="status", required=false, defaultValue="Y")
 			String status, Member member, Model model) {
-//		System.out.println("insertMember-member : " + member);
-//		System.out.println("insertMember-model : " + model);
+//		System.out.println("insertMember-member(centroller) : " + member);
+//		System.out.println("insertMember-model(centroller) : " + model);
 		
 		String PlainPassword = member.getPassword();
-//		System.out.println("비밀번호 암호화 전 : " + PlainPassword);
+//		System.out.println("비밀번호 암호화 전(centroller) : " + PlainPassword);
 		
 		String encryptPassword = bcryptPasswordEncoder.encode(PlainPassword);
-//		System.out.println("비밀번호 암호화 후 : " + encryptPassword);
+//		System.out.println("비밀번호 암호화 후(centroller) : " + encryptPassword);
 		
 		member.setPassword(encryptPassword);
 		member.setStatus(status);
@@ -87,7 +87,7 @@ public class MemberController {
 	
 	try {
 		Member m = memberService.selectOne(userId);
-		System.out.println("selectOne userId : " + userId);
+//		System.out.println("아이디 유효성 체크(centroller) : " + userId);
 		
 		String msg="";
 		String loc = "/index.do";
@@ -99,7 +99,6 @@ public class MemberController {
 			if(bcryptPasswordEncoder.matches(password,m.getPassword())) {
 				msg = "로그인 성공";
 				mav.addObject("member", m);
-				System.out.println("m : " + m);
 			}else{
 				msg = "로그인 실패 [ 비밀번호가 틀렸습니다. ]";
 				loc = "/";
