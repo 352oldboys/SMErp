@@ -9,6 +9,10 @@ public interface EmployeeDAO {
 	List<Employee> selectEmpList(Employee emp);
 
 	int insertEmployee(Employee emp);
+
+	int deleteEmployee(Employee emp);
+
+	int updateEmployee(Employee emp);
 	
 	
 

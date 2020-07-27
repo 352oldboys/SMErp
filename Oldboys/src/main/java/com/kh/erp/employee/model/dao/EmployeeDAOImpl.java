@@ -26,4 +26,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return sqlSession.insert("employeeMapper.insertEmp", emp);
 	}
 
+	@Override
+	public int deleteEmployee(Employee emp) {
+		return sqlSession.delete("employeeMapper.deleteEmp", emp);
+	}
+
+	@Override
+	public int updateEmployee(Employee emp) {
+		return sqlSession.update("employeeMapper.updateEmp", emp);
+	}
+
 }
