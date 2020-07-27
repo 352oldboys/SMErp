@@ -23,12 +23,12 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.selectList("boardMapper.selectBoardList", null, rows);
 	}
-
+  
 	@Override
 	public int selectBoardTotalContents() {
 		return sqlSession.selectOne("boardMapper.selectBoardTotalContent");
 	}
-
+ 
 	@Override
 	   public int insertBoard(Board board) {
 	      return sqlSession.insert("boardMapper.insertBoard", board);
