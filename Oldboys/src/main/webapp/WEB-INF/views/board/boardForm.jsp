@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>게시글 작성</title>
 	<style>
-		div#board-container{width:1000px; margin:0 auto; text-align:center;}
+		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
@@ -41,7 +41,7 @@
 </head>
 <body>
 	<div id="container">
-	<div id="wrapper">
+	 <div id="wrapper">
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
 			<form name="boardFrm" action="${pageContext.request.contextPath}/board/boardFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
@@ -67,7 +67,7 @@
 				    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
 				  </div>
 				</div>
-			    <textarea class="form-control" name="bContent" placeholder="내용" required style="height:500px;"></textarea>
+			    <textarea class="form-control" name="bContent" placeholder="내용" required "></textarea>
 				<br />
 				<input type="submit" class="btn btn-outline-success" value="저장" >
 			</form>
