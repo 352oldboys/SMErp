@@ -10,4 +10,6 @@ public interface ScheduleDAO {
 
 	List<Schedule> scheduleList(Schedule schedule);
 
+	Schedule selectOneSchedule(int userNo);
+
 }
