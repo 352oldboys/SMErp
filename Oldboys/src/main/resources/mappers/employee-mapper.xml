@@ -13,6 +13,31 @@
 		VALUES (#{empNo}, #{userNo}, #{jobCode}, #{name}, #{phone}, #{age},
 				#{email}, #{gender}, #{salary}, #{status}, #{hireDate}, #{leaveDate}, #{accountNo})
 	</insert>
+	
+	<delete id="deleteEmp" parameterType="Employee">
+		DELETE FROM EMPLOYEE
+		WHERE EMPNO = #{empNo}
+	</delete>
+	
+	<update id="updateEmp" parameterType="Employee">
+		UPDATE EMPLOYEE
+		
+		<set>
+		EMPNO= #{empNo},
+		USERNO = #{userNo},
+		JOBCODE = #{jobCode},
+		NAME = #{name}, 
+		PHONE =  #{phone},
+		EMAIL = #{email},
+		SALARY = #{salary},
+		STATUS = #{status},
+		HIREDATE = #{hireDate},
+		LEAVEDATE = #{leaveDate},
+		ACCOUNTNO = #{accountNo}
+		</set>
+		
+		WHERE EMPNO = #{empNo}
+	</update>
 </mapper>
 
 

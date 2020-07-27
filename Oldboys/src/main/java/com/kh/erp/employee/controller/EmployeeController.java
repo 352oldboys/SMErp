@@ -28,23 +28,96 @@ public class EmployeeController {
  
 	}
 
-	@RequestMapping(value = "/employee/insertEmployee.do", method = RequestMethod.POST)
+	@RequestMapping("/employee/insertEmployee.do")
 	public String insertEmployee(Employee emp, Model model) {
 
 		System.out.println(emp);
 		
-		int result = empService.insertEmployee(emp);
+		int result; 
+		String msg="";
 		
-		System.out.println(emp);
-				
-		String msg=""; if( result > 0 ) { msg="등록 성공"; } else { msg="등록 실패!"; }
+		try {
+			
+			result = empService.insertEmployee(emp);
+			
+			System.out.println(emp);
+			
+			if( result > 0 ) { 
+				msg="등록 성공"; 
+			} else { 
+				msg="등록 실패!"; 
+			}
+			
+		} catch(Exception e) {
+			
+			throw e;
+			
+		}
 		
-		String loc="/employee/employeeList.do"; model.addAttribute("loc", loc);
+		String loc="/employee/employeeList.do"; 
+		model.addAttribute("loc", loc);
 		model.addAttribute("msg", msg);
 
 
-		return "employee/employeeList";
+		return "redirect:employeeList.do";
+
+	}
+	
+	@RequestMapping("/employee/deleteEmployee.do")
+	public String deleteEmployee(Employee emp, Model model) {
+		int result;
+		
+		try {
+
+			result = empService.deleteEmployee(emp);
+			
+			System.out.println(result);
+			
+			if(result>0) {
+				System.out.println("삭제성공");
+			} else {
+				System.out.println("삭제실패");
+			}
+			
+		} catch(Exception e) {
+			
+			throw e;
+			
+		}
+		
+			System.out.println(model);
+		
+		    return "redirect:employeeList.do";
 
 	}
 
+	@RequestMapping("/employee/updateEmployee.do")
+	public String updateEmployee(Employee emp, Model model) {
+		
+		int result;
+		
+		try {
+			
+			result = empService.updateEmployee(emp);
+			
+			System.out.println(result);
+			
+			if(result>0) {
+				System.out.println("수정성공");
+			}else {
+				System.out.println("수정실패");
+			}
+			
+		} catch(Exception e) {
+			
+			throw e;
+			
+		}
+		
+		System.out.println(model);
+		
+		return "redirect:employeeList.do";
+		
+	}
+	
 }
