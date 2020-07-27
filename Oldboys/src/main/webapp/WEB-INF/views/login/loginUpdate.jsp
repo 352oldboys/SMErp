@@ -50,7 +50,7 @@
                     <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="${member.name}" disabled>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="phone" name="phone" placeholder="핸드폰번호">
+                    <input type="text" class="form-control form-control-user" id="phone" name="phone" value="${member.phone}">
                   </div>
                 </div>
                 
@@ -72,7 +72,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="이메일">
+                  <input type="email" class="form-control form-control-user" id="email" name="email" value="${member.email}">
                 </div>
                 
                 <div class="form-group row">
@@ -96,15 +96,24 @@
                 </div>
                 
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-user" id="address" name="address" placeholder="주소">
+                	<input type="text" class="form-control form-control-user" id="address1" name="address1" placeholder="${member.address1}" style="display:inline-block; width:100%;" disabled required>
                 </div>
+                <div class="form-group row">
+                  <div class="col-sm-9 mb-3 mb-sm-0" >
+                	  <input type="text" class="form-control form-control-user" id="address2" name="address2" value="${member.address2}" style="display:inline-block; width:100%;" required>
+                  </div>
+                  <div class="col-sm-3 mb-3 mb-sm-0">
+                    <input type="button" class="btn btn-secondary btn-user" id="address_btn" onclick="daum_PostcodeOpen();" style="float:right; width:100%;" value="주소 검색" required>
+                  </div>
+                </div>
+                
                 <hr />
                 <div class="row">
                 <a onclick="updateForm();" class="btn btn-primary btn-user" style="display:inline; color:white;">회원정보 수정</a>
                 &nbsp; &nbsp;
                 <a href="${pageContext.request.contextPath}/member/memberDelete.do" class="btn btn-google btn-user" style="display:inline">탈퇴하기</a>
                 &nbsp; &nbsp;
-                <a href="${pageContext.request.contextPath}/member/backlogin.do" class="btn btn-user" style="display:inline; background-color:green; color:white;">돌아가기</a>
+                <a href="${pageContext.request.contextPath}/index.do" class="btn btn-user" style="display:inline; background-color:green; color:white;">돌아가기</a>
                </div>
               </form>
               <div class="text-center">
@@ -126,6 +135,9 @@
   <!-- Custom scripts for all pages-->
   <script src="${pageContext.request.contextPath}/resources/js/member/sb-admin-2.js"></script>
 
+  <!-- daum address API -->
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 	<script>
 		$("select option[value*='--']").prop('disabled',true);
 		
@@ -133,6 +145,40 @@
 			$("#updateForm").attr("action","${pageContext.request.contextPath}/member/memberUpdate.do");
 			$("#updateForm").attr("method","post");
 			$("#updateForm").submit();
+		}
+		
+		function daum_PostcodeOpen() {
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+		        	
+		        var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+		        var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+		        // 법정동명이 있을 경우 추가한다. (법정리는 제외 ?)
+		        // 법정동의 경우 마지막 문자가 "동/로/가" 종료
+		        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		            extraRoadAddr += data.bname;
+		        }
+		            
+		        // 건물명이 있고, 공동주택일 경우 추가
+		        if(data.buildingName !== '' && data.apartment === 'Y'){
+		            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		        }
+		            
+		        // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 생성
+		        if(extraRoadAddr !== ''){
+		            extraRoadAddr = ' (' + extraRoadAddr + ')';
+		        }
+		            
+		        if(fullRoadAddr !== ''){
+		            fullRoadAddr += extraRoadAddr;
+		        }
+		            
+		        document.getElementById('address1').value = fullRoadAddr;
+		        document.getElementById('address2').focus();
+		        }
+		    
+		    }).open();
 		}
 		
 	</script>

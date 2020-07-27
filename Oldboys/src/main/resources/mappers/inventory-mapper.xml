@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inventoryMapper">
+
+  
+ <!--  <insert id="insertInventory" parameterType="Inventory">
+  INSERT INTO inventory
+  VALUES(#{productNo}, #{userNo}, #{itemcode}, #{product}, 
+  #{unitprice}, #{origin}, 
+  #{expirationdate}, #{note}, #{inventorytypeHandler=Str2ArrayHandler})
+  
+  </insert> -->
+  
+  <select id="selectInventory" parameterType="Inventory" resultType="Inventory">
+  
+  SELECT*FROM INVENTORY
+  
+  </select>
+  
+ <insert id="insertInventory" parameterType="Inventory" >
+  INSERT INTO INVENTORY
+  VALUES(#{productNo}, #{userNo}, #{itemcode}, #{product}, 
+  #{quantity},#{unitprice}, #{origin}, 
+  #{expirationdate},#{note})
+
+  </insert>
+  
+  <delete id="deleteInventory" parameterType="Inventory">
+  
+  DELETE FROM INVENTORY
+  WHERE PRODUCTNO = #{productNo}
+  </delete>
+  
+  <update id="updateInventory" parameterType="Inventory">
+  
+   UPDATE INVENTORY 
+   <set>
+  PRODUCTNO= #{productNo},
+  USERNO = #{userNo},
+  ITEMCODE = #{itemcode},
+  PRODUCT = #{product}, 
+  QUANTITY =  #{quantity},
+  UNITPRICE = #{unitprice},
+  ORIGIN = #{origin},
+  EXPIRATIONDATE = #{expirationdate},
+  NOTE = #{note}
+   
+   </set>
+   WHERE PRODUCTNO = #{productNo}
+  </update>
+  
+ 
+</mapper>
+
+
+
+
+
+
+
+
+
+

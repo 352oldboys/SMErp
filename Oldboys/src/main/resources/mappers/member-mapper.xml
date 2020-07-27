@@ -12,7 +12,7 @@
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER VALUES
 		(MEMBER_USERNO.NEXTVAL, #{userId}, #{password}, #{regNo}, #{businessName},
-		#{phone}, #{name}, #{gender}, #{age}, #{email}, #{address}, #{status})
+		#{phone}, #{name}, #{gender}, #{age}, #{email}, #{address1}, #{address2}, #{status})
 	</insert>
 	
 	<update id="updateMember" parameterType="Member">
@@ -23,7 +23,8 @@
 			GENDER = #{gender},
 			AGE = #{age},
 			EMAIL = #{email},
-			ADDRESS = #{address}
+			ADDRESS1 = #{address1},
+			ADDRESS2 = #{address2}
 		</set>
 		WHERE USERID = #{userId}
 	</update>
