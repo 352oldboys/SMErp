@@ -8,11 +8,12 @@ import com.kh.erp.inventory.model.vo.Inventory;
 
 
 
+
 public interface InventoryDAO {
 
 	
 	
-	List<Inventory> selectInventoryList(Inventory inventory);
+	List<Inventory> selectInventoryList();
     
 	int insertInventoryList(Inventory inventory);
 

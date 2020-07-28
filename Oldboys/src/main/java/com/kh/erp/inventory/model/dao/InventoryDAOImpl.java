@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kh.erp.inventory.model.vo.Inventory;
 
 
+
 @Repository("inventoryDAO")
 public class InventoryDAOImpl implements InventoryDAO {
 
@@ -16,8 +17,8 @@ public class InventoryDAOImpl implements InventoryDAO {
  SqlSessionTemplate sqlSession;
  
  @Override
- public List<Inventory> selectInventoryList(Inventory inventory) {
-		return sqlSession.selectList("inventoryMapper.selectInventory" ,inventory);
+ public List<Inventory> selectInventoryList() {
+		return sqlSession.selectList("inventoryMapper.selectInventory");
 		
 	}
  
@@ -44,6 +45,8 @@ public class InventoryDAOImpl implements InventoryDAO {
 	 	 return sqlSession.update("inventoryMapper.updateInventory" ,inventory);
 
  }
+ 
+
  
 
 

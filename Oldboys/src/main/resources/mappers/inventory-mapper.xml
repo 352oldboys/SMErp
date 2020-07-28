@@ -13,9 +13,12 @@
   
   </insert> -->
   
+  
   <select id="selectInventory" parameterType="Inventory" resultType="Inventory">
   
-  SELECT*FROM INVENTORY
+ 	SELECT IV.PRODUCTNO, IV.USERNO, I.ITEMNAME ITEMNAME, IV.PRODUCT, IV.QUANTITY, IV.UNITPRICE, IV.ORIGIN, IV.EXPIRATIONDATE, IV.NOTE 
+	  FROM INVENTORY IV 
+	  JOIN ITEM I ON (IV.ITEMCODE = I.ITEMCODE)
   
   </select>
   

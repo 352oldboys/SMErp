@@ -84,7 +84,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/inventory/inventory.do"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/inventory/inventoryList.do"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>재고 관리</span>
         </a>

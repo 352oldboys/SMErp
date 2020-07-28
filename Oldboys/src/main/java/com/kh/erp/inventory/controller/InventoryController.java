@@ -24,13 +24,13 @@ public class InventoryController {
 	InventoryService inventoryService;
 	
 	@RequestMapping("/inventory/inventoryList.do")
-	 public String inventoryList(Inventory inventory, Model model) {
+	 public String inventoryList(Model model) {
 		   
-		   List<Inventory> list = inventoryService.selectInventoryList(inventory);
+		   List<Inventory> list = inventoryService.selectInventoryList();
 		   
 		   model.addAttribute("list", list);
 		   
-		   System.out.println("list: " +list); // 결과 확인용
+//		   System.out.println("list: " +list); // 결과 확인용
 		   
 		   return "inventory/inventory";
 	
@@ -38,8 +38,7 @@ public class InventoryController {
 	
 	@RequestMapping("/inventory/insertInventory.do")
 	public String insertInventory(Inventory inventory, Model model) {
-			System.out.println("Inventory : " +inventory);
-			System.out.println("model : "+model);
+					
 		int result;
 		
 		try {
@@ -68,7 +67,7 @@ public class InventoryController {
 	}
 	
 	@RequestMapping("/inventory/deleteInventory.do")
-	public String deleteInventory(Inventory inventory, Model model) {
+	public String deleteInventory(Inventory inventory, Model model) throws Exception {
 		int result;
 		
 		try {
