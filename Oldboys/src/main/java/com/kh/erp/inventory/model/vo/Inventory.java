@@ -17,13 +17,14 @@ public class Inventory implements Serializable{
 	private String origin;
 	private Date expirationdate;
 	private String note;
+	private String itemname;
 	
 	public Inventory() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Inventory(int productNo, int userNo, String itemcode, String product, int quantity, int unitprice,
-			String origin, Date expirationdate, String note) {
+			String origin, Date expirationdate, String note, String itemname) {
 		super();
 		this.productNo = productNo;
 		this.userNo = userNo;
@@ -34,6 +35,7 @@ public class Inventory implements Serializable{
 		this.origin = origin;
 		this.expirationdate = expirationdate;
 		this.note = note;
+		this.itemname = itemname;
 	}
 	public int getProductNo() {
 		return productNo;
@@ -92,11 +94,18 @@ public class Inventory implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public String getItemname() {
+		return itemname;
+	}
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
+	}
 	@Override
 	public String toString() {
 		return "Inventory [productNo=" + productNo + ", userNo=" + userNo + ", itemcode=" + itemcode + ", product="
 				+ product + ", quantity=" + quantity + ", unitprice=" + unitprice + ", origin=" + origin
-				+ ", expirationdate=" + expirationdate + ", note=" + note + "]";
+				+ ", expirationdate=" + expirationdate + ", note=" + note + ", itemname=" + itemname + "]";
 	}
 	
 	
