@@ -1,5 +1,7 @@
 package com.kh.erp.member.model.service;
 
+import java.util.List;
+
 import com.kh.erp.member.model.vo.Member;
 
 public interface MemberService {
@@ -38,5 +40,8 @@ public interface MemberService {
 	 * @return
 	 */
 	int checkIdDuplicate(String userId);
+
+	List<Member> selectListMember(String userId);
+
 	
 }

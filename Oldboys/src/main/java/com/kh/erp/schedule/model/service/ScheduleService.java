@@ -13,6 +13,12 @@ public interface ScheduleService {
 	
 	List<Schedule> scheduleList(Schedule schedule);
 
-	Schedule selectOneSchedule(int userNo);
+	List<Schedule> selectListSchedule(int userNo);
+
+	Schedule selectOneSchedule(int scheduleNo);
+
+	int updateSchedule(Schedule schedule);
+
+	int deleteSchedule(int scheduleNo);
 	
 }

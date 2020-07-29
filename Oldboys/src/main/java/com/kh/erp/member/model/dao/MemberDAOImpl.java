@@ -1,6 +1,7 @@
 package com.kh.erp.member.model.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.selectOne("MemberMapper.checkIdDuplicate", hmap);
 		
 		return (Integer)hmap.get("result");
+	}
+
+	@Override
+	public List<Member> selectListMember(String userId) {
+		
+		return sqlSession.selectList("MemberMapper.selectListMember", userId);
 	}
 
 }

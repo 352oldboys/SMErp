@@ -1,6 +1,7 @@
 package com.kh.erp.member.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import com.kh.erp.member.model.exception.MemberException;
 import com.kh.erp.member.model.service.MemberService;
 import com.kh.erp.member.model.vo.Member;
 
-@SessionAttributes(value={"member"})
+@SessionAttributes(value={"member", "mList"})
 @Controller
 public class MemberController {
 	
@@ -89,6 +90,8 @@ public class MemberController {
 		Member m = memberService.selectOne(userId);
 //		System.out.println("아이디 유효성 체크(centroller) : " + userId);
 		
+		List<Member> mList = memberService.selectListMember(userId);
+		
 		String msg="";
 		String loc = "/index.do";
 		
@@ -99,6 +102,8 @@ public class MemberController {
 			if(bcryptPasswordEncoder.matches(password,m.getPassword())) {
 				msg = "로그인 성공";
 				mav.addObject("member", m);
+				mav.addObject("mList", mList);
+				System.out.println("m : " + m);
 			}else{
 				msg = "로그인 실패 [ 비밀번호가 틀렸습니다. ]";
 				loc = "/";

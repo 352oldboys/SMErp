@@ -9,6 +9,11 @@
 		WHERE USERID = #{userId}
 	</select>
 	
+	<select id="selectListMember" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER
+		WHERE USERID = #{userId}
+	</select>
+	
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER VALUES
 		(MEMBER_USERNO.NEXTVAL, #{userId}, #{password}, #{regNo}, #{businessName},

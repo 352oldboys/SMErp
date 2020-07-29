@@ -28,7 +28,25 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 	}
 
 	@Override
-	public Schedule selectOneSchedule(int userNo) {
+	public List<Schedule> selectListSchedule(int userNo) {
+		
+		return sqlSession.selectList("scheduleMapper.selectListSchedule", userNo);
+	}
+
+	@Override
+	public Schedule selectOneSchedule(int scheduleNo) {
+		
+		return sqlSession.selectOne("scheduleMapper.selectOneSchedule", scheduleNo);
+	}
+
+	@Override
+	public int updateSchedule(Schedule schedule) {
+		
+		return sqlSession.update("scheduleMapper.updateSchedule", schedule);
+	}
+
+	@Override
+	public int deleteSchedule(int scheduleNo) {
 		
 		return sqlSession.selectOne("scheduleMapper.selectOneSchedule", userNo);
 	}

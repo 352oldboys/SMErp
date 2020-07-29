@@ -6,17 +6,41 @@
 	
 	<insert id="insertSchedule" parameterType="Schedule">
 		INSERT INTO SCHEDULE
-		VALUES(DEFAULT, SEQ_SNO.NEXTVAL, #{allDay}, #{title}, #{startDate}, #{endDate}, #{category}, #{color}, #{content})
+		VALUES(#{userNo}, SEQ_SNO.NEXTVAL, #{allDay}, #{title}, #{startDate}, #{endDate}, #{color}, #{content})
 	</insert>
 	
 	<select id="selectScheduleList" parameterType="Schedule" resultType="Schedule">
 		SELECT * FROM SCHEDULE
 	</select>
 	
+	<select id="selectListSchedule" parameterType="_int" resultType="Schedule">
+		SELECT * FROM SCHEDULE
+		WHERE USERNO = #{userNo}
+	</select>
+	
 	<select id="selectOneSchedule" parameterType="_int" resultType="Schedule">
 		SELECT * FROM SCHEDULE
-		WHERE USERNO = ${userNo}
+		WHERE SCHEDULENO= #{scheduleNo}
 	</select>
+	
+	<update id="updateSchedule" parameterType="Schedule">
+		UPDATE SCHEDULE 
+		<set>
+		ALLDAY = #{allDay},
+		TITLE = #{title},
+		STARTDATE = #{startDate},
+		ENDDATE = #{endDate},
+		COLOR = #{color},
+		CONTENT = #{content}
+		</set>
+		WHERE SCHEDULENO = #{scheduleNo}			
+	</update>
+	
+	<delete id="deleteSchedule">
+		DELETE FROM SCHEDULE
+		WHERE SCHEDULENO = #{scheduleNo}
+	</delete>
+	
 	
 </mapper>
 

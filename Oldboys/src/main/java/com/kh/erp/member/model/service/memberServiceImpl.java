@@ -1,6 +1,7 @@
 package com.kh.erp.member.model.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,14 @@ public class memberServiceImpl implements MemberService {
 		
 		return MemberDAO.checkIdDuplicate(hmap);
 	}
+
+	@Override
+	public List<Member> selectListMember(String userId) {
+		
+		return MemberDAO.selectListMember(userId);
+		
+	}
+
+
 
 }

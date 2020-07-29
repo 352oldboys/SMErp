@@ -8,7 +8,6 @@ public class Schedule {
 	private String title;
 	private String startDate;
 	private String endDate;
-	private String category;
 	private String color;
 	private String content;
 	
@@ -17,7 +16,7 @@ public class Schedule {
 	}
 
 	public Schedule(int userNo, int scheduleNo, String allDay, String title, String startDate, String endDate,
-			String category, String color, String content) {
+			String color, String content) {
 		super();
 		this.userNo = userNo;
 		this.scheduleNo = scheduleNo;
@@ -25,7 +24,6 @@ public class Schedule {
 		this.title = title;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.category = category;
 		this.color = color;
 		this.content = content;
 	}
@@ -33,8 +31,8 @@ public class Schedule {
 	@Override
 	public String toString() {
 		return "Schedule [userNo=" + userNo + ", scheduleNo=" + scheduleNo + ", allDay=" + allDay + ", title=" + title
-				+ ", startDate=" + startDate + ", endDate=" + endDate + ", category=" + category + ", color=" + color
-				+ ", content=" + content + "]";
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", color=" + color + ", content=" + content
+				+ "]";
 	}
 
 	public int getUserNo() {
@@ -85,14 +83,6 @@ public class Schedule {
 		this.endDate = endDate;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	public String getColor() {
 		return color;
 	}
@@ -110,4 +100,5 @@ public class Schedule {
 	}
 	
 	
-}
+
+	}
