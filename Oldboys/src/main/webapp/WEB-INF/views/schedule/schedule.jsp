@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }); */
 });
   calendar.render();
-}); 
+});   
 
 	/* $('#save-event').click(function() {
 		location.href = 'schedule/scheduleList.do?userNo='+${member.userNo}
