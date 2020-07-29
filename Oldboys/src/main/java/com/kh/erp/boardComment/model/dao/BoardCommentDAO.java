@@ -13,7 +13,7 @@ public interface BoardCommentDAO {
 			int selectBoardCommentTotalContents(BoardComment boardcomment);
 			
 			//게시물 리스트조회
-			List<BoardComment> selectBoardCommentList(BoardComment boardcomment);
+			List<BoardComment> selectBoardCommentList(int bNo);
 			
 			//게시물 삭제
 			int deleteBoardComment(int cno);

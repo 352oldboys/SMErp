@@ -53,9 +53,9 @@
                   <th>번호</th>
                   <th>제목</th>
                   <th>작성자</th>
-                  <th>작성일</th>
-                  <th>첨부파일</th>
-                  <th>조회수</th>
+                  <th style="padding-left: 30px;">작성일</th>
+                  <th style=" padding-left: 30px; width: 142px;">첨부파일</th>
+                  
                </tr>
                <c:forEach items="${list}" var="n"> 
                 <tr id="${n.nNo}" onclick=a();>
@@ -68,7 +68,6 @@
                         <img alt="첨부파일" src="${pageContext.request.contextPath}/resources/images/file.png" width=16px>
                      </c:if>
                   </td>
-                  <td>${n.readCount }</td>
                </tr>
                </c:forEach>
             </table>

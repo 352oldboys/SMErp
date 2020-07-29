@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시판 상세보기</title>
+	<title>자유게시판 상세보기</title>
 	<style>
 		div#board-container{width:400px; margin:0 auto; text-align:center;}
 		div#board-container input,div#board-container button{margin-bottom:15px;}
@@ -27,6 +27,7 @@
 	<div id="container">
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
+      
 		<div id="board-container">
 			<input type="text" class="form-control" placeholder="제목" name="bTitle" id="bTitle" value="${board.bTitle }" required>
 						<br />
@@ -48,79 +49,198 @@
 			<button class="btn btn-outline-info" type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardUpdateView.do?bNo=${board.bNo}'">수정 페이지</button>
 			</c:if>
 		</div>
-		<div id="commaintext"
-					style="margin: 0 auto; width: 248px; padding: 40px 0px;">
-					<!-- <button id="upbtn" type="button" class="btn btn-link">
-						<i id="upicon" class="fas fa-caret-up"></i> <span
-							style="color: darkgrey">21</span>
-					</button> -->
-					<!----좋아요 누를때 숫자 올라가야합니다.---->
+		
+       <%--         <c:forEach items="${bclist}" var="bc">
+               <tbody>
+  				<tr>
+               <td><b>${bc.userNo}</b></td>
+               			<td>${bc.bcdate}</td>
+               			<td>dd</td>
+               			</tr>
+               			</tbody>
+               		
+               		  </c:forEach>  --%>
+               		  
+		     <div class="replyArea">
+          <div class="row">
+            <div class="col-md-8 mx-auto" id="replySelectArea"> <!-- 게시글의 댓글 목록 구현부 -->
+              <div style="border-bottom:1px solid gray;">
+                <div style="height:5px;"></div>
+                <table id="replySelectTable" class="text-left"
+                style="margin-left : 0px; width : 100.0%;" class="replyList1">
+                <c:forEach items="${bclist}" var="bc">
+                  <tr>
+                    <td style="width:80px;"><b>&nbsp;&nbsp;${bc.userNo} </b></td>
+                    <td>${bc.bcdate}</td>
+                    <td align="center">
+                      <div class="text-right">
+                        <input type="hidden" name="cno" value="11"/>                
+                        <button type="button" class="updateBtn btn btn-md btn-info" 
+                          onclick="goUpdate();" style="border-radius: 10px;">수정하기</button>
+                        <button type="button" class="deleteBtn btn btn-md btn-info"
+                          onclick="location.href='${pageContext.request.contextPath}/boardComment/boardCommentDelete.do?bNo=${bc.bNo}&cno=${bc.cno}'" style="border-radius: 10px;">삭제하기</button> &nbsp;        
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="comment replyList1">
+                    <td colspan="3" style="background : transparent;">
+                    <textarea class="reply-content" cols="105" rows="2" style="border:none; width:100%; resize:none; outline: none;"
+                    readonly="readonly">&nbsp;&nbsp;${bc.ccontent}
+                    </textarea>
+                    </td>
+                  </tr>
+                  </c:forEach>
+                </table>
+              </div>
+            </div>   
+          </div>
+        </div>
+    
+        <br>
+    
 
-					<!-- <button id="downbtn" type="button" class="btn btn-link">
-						<i id="downicon" class="fas fa-caret-down"
-							style="margin-right: 10px;"></i>
-						비추/싫어요 숫자 올라가야합니다.
-						<span style="color: darkgrey">4</span>
-					</button> -->
-		<div id="comment">
-					<ul id="commentul">
-						<li
-							style="border-bottom: solid 1px #b8b8b8; padding-bottom: 20px;">
-							<form style="width: 100%; margin: 0 auto;">
-								<div class="input-group mb-3">
-									<input type="text"  id="userNo" name="userNo" value= ${member.userNo } >
-									<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" id="ccontent" name="ccontent">
-									<div class="input-group-append">
-										<button class="btn btn-outline-secondary" type="button" id="button-addon2">확인</button>
-									</div>
+    
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="replyWriteArea" style="border: 1px solid gray; border-radius: 10px;">
+              <form action="${pageContext.request.contextPath}/boardComment/insertBoardComment.do"method="post">
+                <div class="text-left" style="padding-left: 15px;">
+                  <div style="height : 10px"></div>
+                  <a style="font-weight: 900; color: black;">${ member.userId }</a>
+                </div>
+                <div class="comment_form mx-auto" style="text-align: center;">
+                  <input type="hidden" name="userNo" value="${ member.userNo }"/>
+                  <input type="hidden" name="bNo" value="${ board.bNo }"  />
+                  <input type="hidden" name="refcno" value="0" />
+                  <input type="hidden" name="clevel" value="1" />
+           
+                  <textArea rows="3" cols="80" id="replyContent" name="ccontent" style="border:none; width:97%; resize:none; outline: 0;" placeholder="댓글을 입력해보세요!">${ boardComment.ccontent }</textArea>
+                </div>
+                <div class="text-right">
+                  <button type="submit" class="btn btn-md btn-info" id="addReply" style="border-radius: 10px;" >댓글 등록</button>&nbsp;&nbsp;&nbsp;
+                <div style="height : 10px"></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+ 
 
-								</div>
-							</form>
-						</li>
 
-						<c:forEach items="${clist}" var="bc">
-							<li id="${bc.bNo}" class="commentli">
-								<div style="margin-bottom: 10px;">
-									<i class="fas fa-paw" style="font-size: 20px;"></i>&nbsp;&nbsp;${bc.userId}&nbsp;&nbsp;
-									<span id="commentli_time">&nbsp;&nbsp;${bc.bcdate}
-									</span>
-									<span>
-									<button style="padding: 5px; margin-top: 30px; margin:auto; float: right;" type="button" class="btn btn-light" 
-									onclick="location.href='${pageContext.request.contextPath}/boardComment/boardCommentDelete.do?bNo=${bNo}&cno=${bc.cno}'">삭제하기</button>
-									</span>
-								</div>
-								<p>${bc.ccontent}</p>
-								<div style="padding-top: 20px;">
-									<!-- <a href="#" id="commentp"
-										onclick="SirenFunction('SirenDiv'); return false;">답글달기</a> -->
-										
-								</div>
-							</li>
-						</c:forEach>
-					</ul>
-				<script>
-						function SirenFunction(idMyDiv) {
-							var objDiv = document.getElementById(idMyDiv);
-							if (objDiv.style.display == "block") {
+    <br>
+    <br>
+    <br>
+    <script>
+   function goDelete(){
 
-							} else {
-								objDiv.style.display = "block";
-							}
-						}
-					</script>
-				</div>
-		<c:import url="../common/footer.jsp"/>
+	    var cno = $(obj).siblings('input').val();
+	      
+	      
+	    var bNo = '${board.bNo}';
+
+	   
+        location.href="${pageContext.request.contextPath}/hotspotBoard/hotspotDelete.ho?hNo=${hotspotBoard.HNo}"
+    }; 
+    
+    function goUpdate(){
+       location.href="${pageContext.request.contextPath}/hotspotBoard/hotspotUpdateView.ho?no=${hotspotBoard.HNo}"
+    };
+
+  
+   function updateReply(obj) {
+      // 현재 위치와 가장 근접한 textarea 접근하기
+      $(obj).parent().parent().parent().next().find('textarea')
+      .removeAttr('readonly');
+      
+      // 수정 완료 버튼을 화면 보이게 하기
+      $(obj).siblings('.updateConfirm').css('display','inline');
+      
+      // 수정하기 버튼 숨기기
+      $(obj).css('display', 'none');
+   }
+   
+   function updateConfirm(obj) {
+      // 댓글의 내용 가져오기
+      var content
+        = $(obj).parent().parent().parent().next().find('textarea').val();
+      
+      // 댓글의 번호 가져오기
+      var cno = $(obj).siblings('input').val();
+      
+      // 게시글 번호 가져오기
+      var bNo = '${board.bNo}';
+      
+      location.href="/codingPanda/updateComment.bo?"
+             +"cno="+cno+"&bno="+bno+"&content="+content;
+   }
+   
+   function deleteReply(obj) {
+      // 댓글의 번호 가져오기
+      var cno = $(obj).siblings('input').val();
+      
+      // 게시글 번호 가져오기
+      var bNo = '${board.bNo}';
+      
+      location.href="/codingPanda/deleteComment.bo"
+      +"?cno="+cno+"&bno="+bno;
+   }
+   
+   function reComment(obj){
+      // 추가 완료 버튼을 화면 보이게 하기
+      $(obj).siblings('.insertConfirm').css('display','inline');
+      
+      // 클릭한 버튼 숨기기
+      $(obj).css('display', 'none');
+      
+      // 내용 입력 공간 만들기
+      var htmlForm = 
+         '<tr class="comment"><td></td>'
+            +'<td colspan="3" style="background : transparent;">'
+               + '<textarea class="reply-content" style="background : white; resize:none;" cols="105" rows="2"></textarea>'
+            + '</td>'
+         + '</tr>';
+      
+      $(obj).parents('table').append(htmlForm);
+      
+   }
+   
+   function reConfirm(obj) {
+      // 댓글의 내용 가져오기
+      
+      // 참조할 댓글의 번호 가져오기
+      var refcno = $(obj).siblings('input[name="refcno"]').val();
+      var level = Number($(obj).siblings('input[name="clevel"]').val()) + 1;
+      
+      // console.log(refcno + " : " + level);
+      
+      // 게시글 번호 가져오기
+      var bno = '${board.bNo}';
+      
+      var parent = $(obj).parent().parent();
+      var grandparent = parent.parent();
+      var siblingsTR = grandparent.siblings().last();
+      
+      var content = siblingsTR.find('textarea').val();
+      
+      
+      location.href='/codingPanda/insertComment.bo'
+                 + '?writer=${member.userId}'
+                 + '&replyContent=' + ccontent
+                 + '&bNo=' + bNo
+                 + '&refcno=' + refcno
+                 + '&clevel=' + level;
+   }
+   
+   
+   }
+   
+   </script>
+
+   <c:import url="../common/footer.jsp"/>
 		    <!-- End of Content Wrapper -->
         </div>
-	</div>
-	<script type="text/javascript">
-	 document.getElementById("button-addon2").addEventListener("click", function() {
-	    	if(ccontent.value==""||ccontent.value.length==0){
-				alert("댓글을 입력해 주세요");
-				return false;
-			}else{
-				location.href='${pageContext.request.contextPath}/boardComment/insertBoardComment.do?bNo=${bNo}&userNo=${member.userNo}&ccontent='+ccontent.value;
-			}}, false);
-	</script>
+       
 </body>
 </html>

@@ -28,9 +28,9 @@ public class BoardCommentServiceImpl implements BoardCommentService{
 	}
 
 	@Override
-	public List<BoardComment> selectBoardCommentList(BoardComment boardcomment) {
+	public List<BoardComment> selectBoardCommentList(int no) {
 		// TODO Auto-generated method stub
-		return boardcommentDAO.selectBoardCommentList(boardcomment);
+		return boardcommentDAO.selectBoardCommentList(no);
 	}
 
 	@Override

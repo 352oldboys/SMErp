@@ -26,13 +26,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.erp.board.model.exception.BoardException;
 import com.kh.erp.board.model.service.BoardService;
-import com.kh.erp.board.model.vo.BoardFile;
 import com.kh.erp.board.model.vo.Board;
+import com.kh.erp.board.model.vo.BoardFile;
+import com.kh.erp.boardComment.model.service.BoardCommentService;
+import com.kh.erp.boardComment.model.vo.BoardComment;
 import com.kh.erp.common.util.Utils;
 
 @Controller
 public class BoardController {
 
+	@Autowired
+	BoardCommentService boardCommentService;
 	@Autowired
 	BoardService boardService;
 	
@@ -138,12 +142,26 @@ public class BoardController {
 	
 	@RequestMapping("/board/boardView.do")
 	public String selectOne(@RequestParam int no, Model model) {
+		
 		Board b = boardService.selectOneBoard(no);
 		
 		List<BoardFile> list = boardService.selectBoardFileList(no);
-		
 		model.addAttribute("board", b)
 		     .addAttribute("boardfileList", list);
+		
+	// comment 
+	/*
+	 * BoardComment boardcomment = new BoardComment(no);
+	 * 
+	 * ArrayList<BoardComment> bclist = new
+	 * ArrayList<>(boardCommentService.selectBoardCommentList(no));
+	 * 
+	 * 
+	 * model.addAttribute("bclist",bclist);
+	 */
+	  List<BoardComment> bclist = boardCommentService.selectBoardCommentList(no);
+	 
+	  model.addAttribute("bclist",bclist);
 		
 		return "board/boardView";
 	}

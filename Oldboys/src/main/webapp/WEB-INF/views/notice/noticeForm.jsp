@@ -26,7 +26,7 @@
 	}
 	
 	/*부트스트랩 : file 변경시 파일명 보이기 */
-	$(function(){
+	/* $(function(){
 		$('[name=upFile]').on('change',function(){
 		    //var fileName = $(this).val();//C:\fakepath\파일명
 		    //var fileName = this.files[0].name;//파일명(javascript)
@@ -36,7 +36,9 @@
 		    console.log($(this).val()); 
 		    $(this).next('.custom-file-label').html(fileName);
 		})
-	});
+	}); */
+	
+	
 	</script>
 </head>
 <body>
@@ -76,5 +78,19 @@
 		        </div>
     <!-- End of Content Wrapper -->
 	</div>
+	
+	<script>
+	$(function(){
+		$('[name=upFile]').on('change',function(){
+		    //var fileName = $(this).val();//C:\fakepath\파일명
+		    //var fileName = this.files[0].name;//파일명(javascript)
+		    //var fileName = $(this)[0].files[0].name;//파일명(jquery)
+		    var fileName = $(this).prop('files')[0].name;//파일명(jquery)
+			//console.log($(this).prop('files'));//FileList {0: File(54955), length: 1}
+		    console.log($(this).val()); 
+		    $(this).next('.custom-file-label').html(fileName);
+		})
+	});
+	</script>
 </body>
 </html>
