@@ -48,7 +48,7 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 	@Override
 	public int deleteSchedule(int scheduleNo) {
 		
-		return sqlSession.selectOne("scheduleMapper.selectOneSchedule", userNo);
+		return sqlSession.delete("scheduleMapper.deleteSchedule", scheduleNo);
 	}
 
 }
