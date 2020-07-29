@@ -10,10 +10,12 @@ public class Purchase {
 	private String itemCode; 
 	private String product; 
 	private int quantity; 
-	private int price;
+	private int price; 
 	private String origin;
 	private Date day;
 	
+	public Purchase() { super(); }
+
 	public Purchase(int productNo, String businessCode, int userNo, String itemCode, String product, int quantity,
 			int price, String origin, Date day) {
 		super();
@@ -105,6 +107,7 @@ public class Purchase {
 
 	public void setDay(Date day) {
 		this.day = day;
-	}	
+	}
+
 	
 }

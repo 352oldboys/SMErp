@@ -10,12 +10,14 @@ import com.kh.erp.finance.purchase.model.vo.Purchase;
 @Service("PurchaseService")
 public interface PurchaseService {
 	
-	public int insertPur(Purchase purchase);
+	public int updatePurList(Purchase purchase);
 	
-	public int updatePur(Purchase purchase);
+	public int deletePurList(Purchase purchase);
 	
-	public int deletePur(int productNo);
-	
-	public List<Purchase> selectList();
+	public List<Purchase> selectList(int userNo);
+
+	public int insertPurList(Purchase purchase);
+
+	public int purchasePrice(String userId);
 		
 }

@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Insert title here</title>
+<title>SMERP</title>
 </head>
 
 <body id="page-top">
@@ -26,22 +26,147 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p class="mb-4">매출에 관련된 내용입니다.
-            <a target="_blank" href="https://datatables.net">블라블라</a>.</p>
+          <h1 class="h3 mb-2 text-gray-800">매출 테이블</h1>
+          <p class="mb-4">매출에 대한 모든 정보는 여기서 관리</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">매출</h6>
-            </div>
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary"
+								style="display: inline;">매출</h6>
+							<div class="text-center" style="display: inline; float: right;">
+								<input class="btn btn-primary btn-sm" type="button" value="추가하기"
+									data-toggle="modal" data-target="#modalInsertForm" />	
+                           		<input class="btn btn-secondary btn-sm" type="button" onclick="updateSal();" value="수정하기"/>
+                            	<input class="btn btn-danger btn-sm" type="button" onclick="deleteSal();" value="삭제하기"/>
+							</div>
+						</div>
+						
+					<div class="table-responsive">
+							<%-- // 추가하기 모달창 시작  --%>
+							<div class="modal fade" id="modalInsertForm" tabindex="-1"
+								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+								<form action=" insertSal.do" method="post">
+										<div class="modal-header text-center">
+									<input type="hidden" name="userNo" value="${member.userNo}" />
+											<h4 class="modal-title w-100 font-weight-bold">테이블을 작성하세요.</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body mx-3">
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }">
+											</div>
+										
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="itemCode">유저 번호</label>
+												<input type="text" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" readonly>
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="businessCode">가격</label>
+												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" value="${ unitPrice }">
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i>   
+												<label data-error="wrong" data-success="right" for="userNo">날짜</label>
+												<input type="date" id="day" name="day" class="form-control validate" value="${day}">
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="day">수량</label>
+												<input type="number" id="quantity" name="quantity" class="form-control validate" value="${ quantity }">
+											</div>
+											
+										</div>
+										<div class="modal-footer d-flex justify-content-center">
+											<button type="submit" class="btn btn-unique" style="text-align: center;">
+												Send <i class="fas fa-paper-plane-o ml-1"></i>
+											</button>
+										</div>
+											</form>
+									</div>
+								</div>
+							</div>
+							
+					<%-- // 삭제하기 2번째 방법 --%>
+					<form method="Post" action="deleteSal.do" id="modalDeleteForm">
+						<input type="hidden" name="productNo"/>
+					</form>
+						
+						<%-- // 수정 모달창 시작  --%>
+							<div class="modal fade" id="modalUpdateForm" tabindex="-1"
+								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+								<form action=" updateSal.do" method="post">
+									<div class="modal-content">
+										<div class="modal-header text-center">
+											<h4 class="modal-title w-100 font-weight-bold">테이블을 수정하세요.</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body mx-3">
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i>
+												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }">
+											</div>
+										
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="itemCode">유저 번호</label>
+												<input type="text" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" readonly>
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="businessCode">가격</label>
+												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" value="${ unitPrice }">
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i>   
+												<label data-error="wrong" data-success="right" for="userNo">날짜</label>
+												<input type="date" id="day" name="day" class="form-control validate" value="${day}">
+											</div>
+
+											<div class="md-form mb-3">
+												<i class="fas fa-tag prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="day">수량</label>
+												<input type="number" id="quantity" name="quantity" class="form-control validate" value="${ quantity }">
+											</div>
+											
+										</div>
+										<div class="modal-footer d-flex justify-content-center">
+											<button type="submit" class="btn btn-unique" style="text-align: center;">
+												Send <i class="fas fa-paper-plane-o ml-1"></i>
+											</button>
+										</div>
+											</form>
+									</div>
+								</div>
+							</div>
+
+						
+						</div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>상품 번호</th>
-                      <th>상품 내용</th>
                       <th>유저 번호</th>
                       <th>가격</th>
                       <th>날짜</th>
@@ -49,18 +174,26 @@
                     </tr>
                   </thead>
 
+ 				  <tfoot>
+                   <tr>
+                   	<th colspan="4" style="text-align:left;">총 매출 금액 ( 원 ) </th>
+                   	<th colspan="1" style="text-align:right;"><span id="total"></span> 원</th>
+                   </tr>
+                  </tfoot>
+
                   <tbody>
-                    <tr>
-                      <th> ${productNo} </th>
-                      <th> ${product} </th>
-                      <th> ${userno} </th>
-                      <th> ${unitPrice} </th>
-                      <th> ${day} </th>
-                      <th> ${quantity} </th>
+                  	<c:forEach var="sal" items="${list}">
+                    <tr id="${sal.productNo}">
+                      <th> ${sal.productNo} </th>
+                      <th> ${sal.userNo} </th>
+                      <th class="unitPrice"> ${sal.unitPrice} </th>
+                      <th> ${sal.day} </th>
+                      <th class="quantity"> ${sal.quantity} </th>
 					</tr>
+					</c:forEach>
                   </tbody>
                 </table>
-              </div>
+              
             </div>
           </div>
 
@@ -69,27 +202,96 @@
 		<c:import url="../common/footer.jsp" />
       </div>
 
- <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+    	<script>
+	// 선택하기
+	$(document).ready(function() {
+	    var table = $('#dataTable').DataTable();
+	    
+	    $('#dataTable tbody').on( 'click', 'tr', function () {
+	        $(this).toggleClass('selected');
+	    } );
+	} );
+	
+	//
+	$(document).ready(function() {
+    	var t = $('#dataTable').DataTable();
+	    var counter = 1;
+	 
+	    $('#addRow').on( 'click', function () {
+	        t.row.add( [
+	            counter +'.1',
+	            counter +'.2',
+	            counter +'.3',
+	            counter +'.4',
+	            counter +'.56265651'
+	        ] ).draw( false );
+	 
+	        counter++;
+	    } );
+	 
+	    // Automatically add a first row of data
+	    $('#addRow').click();
+	} );
+	
+	// 삭제하기 기능 구현
+	function deleteSal(){
+		var table = $('#dataTable').DataTable();
+		var length = table.rows('.selected').data().length;
+ 	  	  
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시나요?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">"로그아웃"을 하시려면 로그아웃을 눌러주세요!</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="${pageContext.request.contextPath}/member/memberLogout.do">로그아웃</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
+		if(length >= 1){
+			alert(length + "개 선택하셨습니다.");
+		} else if(length == 0){
+			alert("삭제할 목록을 선택해주세요.");
+			return;
+		}
+		
+		// 2번째 방식 
+		$("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalDeleteForm").submit();
+				  
+		}
+
+	// 수정하기 기능 구현
+	function updateSal(){
+			 
+		var table = $('#dataTable').DataTable();
+		var length = table.rows('.selected').data().length;
+		
+		/* console.log("선택한 행 수 == " + table.rows('.selected').data().length);
+		console.log("전체행 수 == " + table.data().length); */
+
+ 
+		if(length > 1){
+			alert("수정은 하나씩만 가능합니다.");
+			return;
+		} else if(length == 0) {
+			alert("수정할 목록을 선택해주세요.");
+			return;
+		}
+ 
+		/* 값 가져오기 */
+		$("#modalUpdateForm #productNo").val(table.rows('.selected').data()[0][0]);			  
+		$("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);		  
+		$("#modalUpdateForm #unitPrice").val(table.rows('.selected').data()[0][2]);		  
+		$("#modalUpdateForm #day").val(table.rows('.selected').data()[0][3]);		  
+		$("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][4]);		
+
+		/* 창 띄우기 */
+		$("#modalUpdateForm").modal();
+	 
+	}	
+    	
+    	var tableSum = document.getElementsByClassName("unitPrice"), totalVal = 0;
+		var tableTimes = document.getElementsByClassName("quantity")
+    
+    	for(var i = 0; i < tableSum.length; i++) {
+    		totalVal += parseInt(tableSum[i].innerHTML) * parseInt(tableTimes[i].innerHTML);
+   	 	}
+    	
+    	document.getElementById("total").innerHTML = totalVal.toLocaleString("en");
+    	
+    	console.log(totalVal);
+    
+	
+	</script>

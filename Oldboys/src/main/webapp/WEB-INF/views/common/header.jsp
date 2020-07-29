@@ -16,7 +16,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/index.do">
         <div class="sidebar-brand-icon rotate-n-15" >
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -28,7 +28,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="${pageContext.request.contextPath}">
+        <a class="nav-link" href="${pageContext.request.contextPath}/index.do">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>ERP</span></a>
       </li>
@@ -38,7 +38,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        SMERP의 서브
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -58,7 +58,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/schedule/scheduleList.do?userNo=${member.userNo}" 
+        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/schedule/scheduleList.do"  
         data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>일정</span>
@@ -79,12 +79,12 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        ㅇㅅㅇ
+        SEMRP의 메인
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/inventory/inventoryList.do"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/inventory/inventory.do"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>재고 관리</span>
         </a>
@@ -109,7 +109,7 @@
         </a>
          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="${pageContext.request.contextPath}/finance/purchase.do">매입</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/finance/purchase.do?userNo=${member.userNo}">매입</a>
             <a class="collapse-item" href="#">매입 세금계산서 관리</a>
           </div>
         </div> 
@@ -122,8 +122,8 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="${pageContext.request.contextPath}/finance/sales.do?userNo=${member.userNo}">매출</a>
             <a class="collapse-item" href="#">거래처 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/finance/sales.do">매출</a>
           </div>
         </div>
       </li>
@@ -234,7 +234,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
+                    <div class="small text-gray-800" id="to1Ymd"></div>
                     <span class="font-weight-bold">${member.name}님 <br />
                     오늘의 통합 매입/매출을 확인해보세요!
                     </span>
@@ -247,9 +247,9 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
- 	                  <b>${member.name}님</b> <br />지출 금액은 ?원 입니다. <br />
- 	                  지출을 줄이시기 원하시다면 <br /> 클릭하여 상담가와 이야기하세요!!
+                    <div class="small text-gray-800" id="to2Ymd"></div>
+ 	                  <b>${member.name}님</b> <br />현재 매출 금액은 <p id="priceTotal" style="display: inline;"></p>원 입니다. <br />
+ 	                  매출을 올리시기 원하시다면 <br /> 상담가와 이야기하세요!!
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -259,7 +259,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
+                    <div class="small text-gray-800" id="to3Ymd"></div>
                     <b>${member.name}님</b> <br />오늘도 좋은 하루되세요.
                   </div>
                 </a> 

@@ -64,6 +64,84 @@
 	$(function(){
 		$("#dataTable_filter").css("float","right");	
 	});
+	
+	$(document).ready(function(){
+	
+		$.ajax({
+			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
+			type: 'POST',
+			data: {
+				userId : '${member.userId}'
+			}, success : function(data){
+				console.log(data);
+				$('#priceTotal').text(data.salesPrice.toLocaleString("en"));
+			}, error : function(error, code, msg){
+				console.log(error);
+			}			
+		});	
+	}); 
+	
+	$(document).ready(function(){
+		
+		$.ajax({
+			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
+			type: 'POST',
+			data: {
+				userId : '${member.userId}'
+			}, success : function(data){
+				console.log(data);
+				$('#priceTotal_').text(data.salesPrice.toLocaleString("en"));
+			}, error : function(error, code, msg){
+				console.log(error);
+			}			
+		});	
+	}); 
+	
+	$(document).ready(function(){
+		
+		$.ajax({
+			url : '${pageContext.request.contextPath}/finance/purchasePrice.do',
+			type: 'POST',
+			data: {
+				userId : '${member.userId}'
+			}, success : function(data){
+				console.log(data);
+				$('#priceTotal_P').text(data.purchasePrice.toLocaleString("en"));
+			}, error : function(error, code, msg){
+				console.log(error);
+			}			
+		});	
+	}); 
+	
+	/* $(document).ready(function(){
+		var purVal = 
+		var salVal = 
+		
+		sumVal = purVal - salVal;
+		
+		document.getElementById("sumVal").text = (sumVal.toLocaleString("en"));
+		
+		consloe.log(sumVal);
+		
+	}); */
+	
+	
+	
+	document.addEventListener("DOMContentLoaded", function() {
+	  var toDay = new Date();
+	    document.getElementById("to1Ymd").innerHTML = toDay.yyyymmdd();
+	    document.getElementById("to2Ymd").innerHTML = toDay.yyyymmdd();
+	    document.getElementById("to3Ymd").innerHTML = toDay.yyyymmdd();
+	  });
+
+	  // 현재 날짜값을 yyyy-mm-dd 형식으로 변환해주는 함수s
+	  Date.prototype.yyyymmdd = function() {
+	      var yyyy = this.getFullYear().toString();
+	      var mm = (this.getMonth() + 1).toString();
+	      var dd = this.getDate().toString();
+	      return  yyyy + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + (dd[1] ? dd : "0" + dd[0]);
+	  }
+	  
 </script>
 
 </html>

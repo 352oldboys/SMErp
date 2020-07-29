@@ -15,23 +15,29 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	SqlSessionTemplate session;
 	
 	@Override
-	public int insertPur(Purchase purchase) {
-		return session.insert("PurchaseMapper.insertPur", purchase);
+	public int insertPurList(Purchase purchase) {
+		return session.insert("PurchaseMapper.insertPurList", purchase);
 	}
 	
 	@Override
-	public List<Purchase> selectPur() {
-		return session.selectList("PurchaseMapper.selectPurList");
+	public List<Purchase> selectPurList(int userNo) {
+		return session.selectList("PurchaseMapper.selectPurList", userNo);
 	}
 	
 	@Override
-	public int updatePur(Purchase purchase) {
-		return session.update("PurchaseMapper.updatePur", purchase);
+	public int updatePurList(Purchase purchase) {
+		return session.update("PurchaseMapper.updatePurList", purchase);
 	}
 
 	@Override
-	public int deletePur(int productNo) {
-		return session.delete("PurchaseMapper.deletePur", productNo);
+	public int deletePurList(Purchase purchase) {
+		return session.delete("PurchaseMapper.deletePurList", purchase);
+	}
+	
+	@Override
+	public int purchasePrice(String userId) {
+		System.out.println("DAO : " + userId);
+		return session.selectOne("PurchaseMapper.purchasePrice", userId);
 	}
 
 }

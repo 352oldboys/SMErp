@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SalesMapper">
+	
+	<select id="selectSalList" resultType="Sales">
+		SELECT * FROM SALES
+		WHERE USERNO = #{userNo}
+	</select>
+	
+	<insert id="insertSal" parameterType="Sales">
+		INSERT INTO SALES
+		VALUES(#{productNo}, #{userNo}, #{quantity}, #{unitPrice}, #{day})
+	</insert>
+	
+	<update id="updateSal" parameterType="Sales">
+		UPDATE SALES
+		<set>
+		PRODUCTNO = #{productNo},
+		USERNO = #{userNo},
+		QUANTITY = #{quantity},
+		UNITPRICE = #{unitPrice},
+		DAY = #{day}
+		</set>
+		WHERE PRODUCTNO = #{productNo}
+	</update>
+	
+	<delete id="deleteSal" parameterType="Sales">
+		DELETE FROM SALES
+		WHERE PRODUCTNO = #{productNo}
+	</delete>
+	
+	<select id="salesPrice" parameterType="string" resultType="_int">
+		SELECT SUM(UNITPRICE * QUANTITY)
+		FROM SALES
+		WHERE USERNO = (SELECT USERNO FROM MEMBER WHERE USERID = #{userId})
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+

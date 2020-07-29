@@ -10,11 +10,14 @@ import com.kh.erp.finance.purchase.model.vo.Purchase;
 @Repository("PurchaseDAO")
 public interface PurchaseDAO {
 
-	public int insertPur(Purchase purchase);
+	public int updatePurList(Purchase purchase);
 	
-	public int updatePur(Purchase purchase);
-	
-	public int deletePur(int productNo);
+	public int deletePurList(Purchase purchase);
 
-	public List<Purchase> selectPur();
+	public List<Purchase> selectPurList(int userNo);
+
+	public int insertPurList(Purchase purchase);
+
+	public int purchasePrice(String userId);
+
 }
