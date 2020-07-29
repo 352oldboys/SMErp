@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시판 상세보기</title>
+	<title>공지사항 상세보기</title>
 	<style>
 		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
 		div#board-container input,div#board-container button{margin-bottom:15px;}

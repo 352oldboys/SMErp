@@ -48,22 +48,21 @@
                   <th>번호</th>
                   <th>제목</th>
                   <th>작성자</th>
-                  <th>작성일</th>
-                  <th>첨부파일</th>
-                  <th>조회수</th>
+                  <th style="padding-left: 30px;">작성일</th>
+                  <th style=" padding-left: 30px; width: 142px;">첨부파일</th>
+             
                </tr>
                <c:forEach items="${list}" var="b"> 
-               <tr id="${b.bNo}" onclick=a();>
-                  <td>${b.bNo}</td>
+                <tr id="${b.bNo}" onclick=a();>
+      			  <td>${b.bNo}</td>
                   <td>${b.bTitle}</td>
                   <td>${b.bWriter}</td>
-                  <td>${b.bDate}</td>
+                  <td >${b.bDate}</td>
                   <td align="center">
                      <c:if test="${b.fileCount>0}">
                         <img alt="첨부파일" src="${pageContext.request.contextPath}/resources/images/file.png" width=16px>
                      </c:if>
-                  </td>
-                  <td>${b.readCount }</td>
+                  </td>           
                </tr>
                </c:forEach>
             </table>

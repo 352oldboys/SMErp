@@ -30,9 +30,9 @@ public class BoardCommentDAOImpl implements BoardCommentDAO{
 	}
 
 	@Override
-	public List<BoardComment> selectBoardCommentList(BoardComment boardcomment) {
+	public List<BoardComment> selectBoardCommentList(int no) {  
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("boardcomment.selectBoardCommentList", boardcomment);
+		return sqlSession.selectList("boardcomment.selectBoardCommentList2", no);
 	}
 
 	@Override
