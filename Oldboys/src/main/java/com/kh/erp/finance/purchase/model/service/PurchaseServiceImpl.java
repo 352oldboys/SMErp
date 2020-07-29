@@ -16,24 +16,29 @@ public class PurchaseServiceImpl implements PurchaseService {
 	PurchaseDAO purchaseDAO;
 	
 	@Override
-	public int insertPur(Purchase purchase) {
-		return purchaseDAO.insertPur(purchase);
+	public int insertPurList(Purchase purchase) {
+		return purchaseDAO.insertPurList(purchase);
 	}
 
 	@Override
-	public int updatePur(Purchase purchase) {
-		return purchaseDAO.updatePur(purchase);
+	public int updatePurList(Purchase purchase) {
+		return purchaseDAO.updatePurList(purchase);
 	}
 
 	@Override
-	public int deletePur(int productNo) {
-		return purchaseDAO.deletePur(productNo);
+	public int deletePurList(Purchase purchase) {
+		return purchaseDAO.deletePurList(purchase);
 	}
 
 	@Override
-	public List<Purchase> selectList() {
-		return purchaseDAO.selectPur();
+	public List<Purchase> selectList(int userNo) {
+		return purchaseDAO.selectPurList(userNo);
 	}
 
+	@Override
+	public int purchasePrice(String userId) {
+		System.out.println("service : "+  userId);
+		return purchaseDAO.purchasePrice(userId);
+	}
 
 }

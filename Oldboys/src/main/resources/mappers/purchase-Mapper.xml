@@ -6,31 +6,38 @@
 	
 	<select id="selectPurList" resultType="Purchase">
 		SELECT * FROM PURCHASE
+		WHERE USERNO = #{userNo}
 	</select>
 	
-	<insert id="insertPur">
+	<insert id="insertPurList" parameterType="Purchase">
 		INSERT INTO PURCHASE
 		VALUES(PURCHASE_PRODUCTNO.NEXTVAL, #{businessCode}, #{userNo}, 
 		#{itemCode}, #{product}, #{quantity}, #{price}, #{origin}, #{day})
 	</insert>
 	
-	<update id="updatePur">
+	<update id="updatePurList" parameterType="Purchase">
 		UPDATE PURCHASE
 		<set>
 		ITEMCODE = #{itemCode},
-		BUSINESSCODE = #{BUSINESSCODE},
+		BUSINESSCODE = #{businessCode},
 		ORIGIN = #{origin},
 		PRODUCT = #{product},
 		PRICE = #{price},
-		QYANTITY = #{quantity}
+		QUANTITY = #{quantity} 
 		</set>
-		WHERE PURDUCTNO = #{productNo}
+		WHERE PRODUCTNO = #{productNo}
 	</update>
 	
-	<delete id="deletePur">
+	<delete id="deletePurList" parameterType="Purchase">
 		DELETE FROM PURCHASE
-		WHERE PURDUCTNO = #{productNo}
+		WHERE PRODUCTNO = #{productNo}
 	</delete>
+	
+	<select id="purchasePrice" parameterType="string" resultType="_int">
+		SELECT SUM(PRICE * QUANTITY)
+		FROM PURCHASE
+		WHERE USERNO = (SELECT USERNO FROM MEMBER WHERE USERID = #{userId})
+	</select>
 </mapper>
 
 
