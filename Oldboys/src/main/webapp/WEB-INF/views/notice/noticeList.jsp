@@ -9,11 +9,9 @@
    <meta charset="UTF-8">
    <title>게시판</title>
 
-   <style>
-      /*글쓰기버튼*/
-      input#btn-add{float:right; margin: 0 0 15px;}
-   </style>
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
    <script>
+   
       function fn_goNoticeForm(){
          location.href = "${pageContext.request.contextPath}/notice/noticeForm.do";
       }
@@ -37,6 +35,13 @@
 			
 		}
       
+        
+        
+
+        document.querySelectorAll('.button').forEach(button => button.innerHTML = '<div><span>' + button.textContent.trim().split('').join('</span><span>') + '</span></div>');
+
+
+       
    </script>
    
 </head>
@@ -46,10 +51,15 @@
      <div id="wrapper">
       <c:import url="../common/header.jsp"/>
          <section id="board-container" class="container">
-            <p>총 ${totalContents }건의 게시물이 있습니다.</p>
-            <input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="fn_goNoticeForm();"/>
-            <table id="tbl-board" class="table table-striped table-hover">
-               <tr>
+            <h3 style="text-align: center ; color:#4e73df" > <b>총 ${totalContents }건의 게시물이 있습니다.</b></h3>
+            <hr />
+            
+           <!--  <input type="button" value="글쓰기" id="btn-add" class="btn btn-outline-success" onclick="fn_goNoticeForm();"/> -->
+            <button class="button"  style="border:0; float:right;  margin-bottom:10px;" onclick="fn_goNoticeForm();"><b>글쓰기</b></button>
+            
+            
+            <table style="border:2px solid ; border-color:#4e73df; color:#2E2E2E" class="table table-striped table-hover" >
+               <tr style="border:2px solid ; border-color:#4e73df">
                   <th>번호</th>
                   <th>제목</th>
                   <th>작성자</th>

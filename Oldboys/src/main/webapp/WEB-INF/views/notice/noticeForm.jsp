@@ -14,6 +14,7 @@
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
 	</style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 	<script>
 	/* textarea에도 required속성을 적용가능하지만, 공백이 입력된 경우 대비 유효성검사를 실시함. */
 	function validate(){
@@ -71,7 +72,7 @@
 				</div>
 			    <textarea class="form-control" name="nContent" placeholder="내용" required "></textarea>
 				<br />
-				<input type="submit" class="btn btn-outline-success" value="저장" >
+				<input style="margin-left: 450px; border:0;"  type="submit" class="button" value="작성완료"  >
 			</form>
 		</div>
 		<c:import url="../common/footer.jsp"/>
