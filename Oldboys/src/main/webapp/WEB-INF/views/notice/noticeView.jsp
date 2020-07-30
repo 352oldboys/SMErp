@@ -13,7 +13,13 @@
 		div#board-container input,div#board-container button{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
+		hr.two{
+		width:1000px;
+		border:2px solid;
+		color:#4e73df;
+		}
 	</style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 	<script>
 		function fileDownload(oName, rName){
 			//한글파일명이 있을 수 있으므로, 명시적으로 encoding
@@ -27,23 +33,25 @@
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
-			<input type="text" class="Titleform-control" placeholder="제목" name="nTitle" id="nTitle" value="${notice.nTitle }"readonly required>
+			<input type="text" class="Titleform-control" placeholder="제목" name="nTitle" id="nTitle" value="${notice.nTitle }"readonly required style="width: 1004px; font-weight:bolder; ">
 			<br />
-			<input type="text" class="Dateform-control" placeholder="날짜" name="nDate" id="nDate" value="작성일 : ${notice.nDate }"readonly required>
-			<input type="text" class="Writerform-control" name="nWriter" value="작성자 : ${notice.nWriter}" readonly required>
-			<hr />
-			<c:forEach items="${attachmentList}" var="a" varStatus="vs">
-				<button type="button" 
-						class="btn btn-outline-success btn-block"
-						onclick="fileDownload('${a.originalFileName}','${a.renamedFileName }');">
-					첨부파일${vs.count} - ${a.originalFileName }
-				</button>
 			
+			<%-- <input type="text" class="Dateform-control" placeholder="날짜" name="nDate" id="nDate" value="작성일 : ${notice.nDate }" style="font-size: large;";>
+			<input type="text" class="Writerform-control" name="nWriter" value="작성자 : ${notice.nWriter}" readonly required> --%>
+			
+			<c:forEach items="${attachmentList}" var="a" varStatus="vs">
+				<button  style="display: inline-block; width:300px; border:0; hight:80px" type="button" 
+						class="button" 
+						onclick="fileDownload('${a.originalFileName}','${a.renamedFileName }');">첨부파일${vs.count} - ${a.originalFileName }		
+				</button>
+			<!-- 	<button class="button"  style="border:0; float:right;  margin-bottom:10px;" onclick="fn_goNoticeForm();"><b>글쓰기</b></button> -->
 			</c:forEach>
-		    <div class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div>
+			<hr class="two">
+			<br />
+		    <div  style="color: #2E2E2E;' " class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div>
+		    <hr class="two">
 		    <br>
-		    <hr />
-		    <button class="btn btn-outline-info" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeList.do'">리스트로</button>
+		    <button style="margin-left: 450px; border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeList.do'">리스트로</button>
 		    <c:if test="${member.userId eq notice.nWriter}">
 		    &nbsp;
 			<button class="btn btn-outline-info" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeUpdateView.do?nNo=${notice.nNo}'">수정 페이지</button>

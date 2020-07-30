@@ -13,6 +13,8 @@
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
+	
+		
 	</style>
 	<script>
 	/* textarea에도 required속성을 적용가능하지만, 공백이 입력된 경우 대비 유효성검사를 실시함. */

@@ -1500,6 +1500,7 @@ pre code {
 	margin-bottom: 1rem;
 	color: #858796;
 	cursor:pointer;
+	
 }
 
 .table td, .table th {
@@ -11875,7 +11876,7 @@ body.sidebar-toggled footer.sticky-footer {
 	background:none;
 	font-size:1em;
 	width:1000px;
-	height:500px;
+	height:auto;
 	white-space:pre-line;
 	text-align:left;
 }
