@@ -79,9 +79,8 @@
 				console.log(error);
 			}			
 		});	
-	}); 
 	
-	$(document).ready(function(){
+// 	$(document).ready(function(){
 		
 		$.ajax({
 			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
@@ -95,9 +94,8 @@
 				console.log(error);
 			}			
 		});	
-	}); 
 	
-	$(document).ready(function(){
+	// $(document).ready(function(){
 		
 		$.ajax({
 			url : '${pageContext.request.contextPath}/finance/purchasePrice.do',
@@ -110,8 +108,31 @@
 			}, error : function(error, code, msg){
 				console.log(error);
 			}			
-		});	
-	}); 
+		});
+		
+		$.ajax({
+			
+			url : '${pageContext.request.contextPath}/finance/integrated.do',
+			type : 'POST',
+			data : {
+				userId : '${member.userId}' 
+			}, success : function(data){
+				var a = parseInt($('#priceTotal_').text()) - parseInt($('#priceTotal_P').text())
+				console.log(a);
+				
+				$('#sumVal').text(a);			
+					
+			}, error : function(error, code, msg){
+				console.log(error);
+			}
+			
+		
+			});
+		
+		
+	});
+	
+	
 	
 	/* $(document).ready(function(){
 		var purVal = 

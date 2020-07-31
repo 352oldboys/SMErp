@@ -129,7 +129,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/finance/integerted.do" data-target="#collapseFinance" aria-expanded="true" aria-controls="collapseFinance">
+        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/finance/integrated.do" data-target="#collapseFinance" aria-expanded="true" aria-controls="collapseFinance">
           <i class="fas fa-fw fa-folder"></i>
           <span>회계 관리</span>
         </a>
