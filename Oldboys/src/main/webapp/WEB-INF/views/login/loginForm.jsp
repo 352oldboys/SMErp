@@ -294,7 +294,7 @@
 					data: {
 						email : $("#email").val()
 					}, success : function(data){
-						if(data == "ok") {	
+						if(data == "mv") {	
 							alert("해당 이메일로 인증코드가 발송되었습니다.");
 							$('#emailModal').show();
 						}

@@ -240,7 +240,7 @@ public class MemberController {
         
         String setfrom = "towijin2100@gamil.com";
         String tomail = email; // 받는 사람 이메일
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>> :" + tomail);
+        // System.out.println(">>>>>>>>>>>>>>>>>>>>>>> :" + tomail);
         String title = "회원가입 인증 이메일 입니다."; // 제목
         String content =
         		
@@ -277,7 +277,13 @@ public class MemberController {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return "ok";
+        
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("dice" + dice);
+        
+        System.out.println("mv" + mv);
+        
+        return "mv";
     }
     
   //이메일 인증 페이지 맵핑 메소드
@@ -289,18 +295,18 @@ public class MemberController {
     //이메일로 받은 인증번호를 입력하고 전송 버튼을 누르면 맵핑되는 메소드.
     //내가 입력한 인증번호와 메일로 입력한 인증번호가 맞는지 확인해서 맞으면 회원가입 페이지로 넘어가고,
     //틀리면 다시 원래 페이지로 돌아오는 메소드
-    @RequestMapping(value = "/member/join_injeung.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/member/join_injeung.do{dice}", method = RequestMethod.POST)
     public ModelAndView join_injeung(@RequestParam String email_injeung, @PathVariable String dice, HttpServletResponse response_equals) throws IOException {
  
         System.out.println("마지막 : email_injeung : " + email_injeung);
         
-        System.out.println("마지막 : dice : "+dice);
+        System.out.println("마지막 : dice : " + dice);
         
         //페이지이동과 자료를 동시에 하기위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
          
         ModelAndView mv = new ModelAndView();
         
-        mv.setViewName("$(pageConext.request.contextPath)/member/join.do");
+        mv.setViewName("/member/join.do");
         
         mv.addObject("email",email_injeung);
             
@@ -325,7 +331,7 @@ public class MemberController {
         	
         	ModelAndView mv2 = new ModelAndView(); 
             
-            mv2.setViewName("member/email_injeung");
+            mv2.setViewName("/member/email_injeung");
             
             response_equals.setContentType("text/html; charset=UTF-8");
             PrintWriter out_equals = response_equals.getWriter();
