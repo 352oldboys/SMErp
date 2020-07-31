@@ -83,7 +83,10 @@
                     <span id="emailText" style="color:red; font-size:16px; display:none;"><b>이메일 방식이 맞지 않습니다.</b></span>
                  </div>
                  <div class="col-sm-3 mb-3 mb-sm-0">
-                 	<input type="button" class="btn btn-secondary btn-user" style="width:100%" value="이메일 인증" required/>
+                 	<input type="button" class="btn btn-secondary btn-user" style="width:100%" value="이메일 인증" onclick="showEmail();" required/>
+	
+
+
                  </div>
                 </div>
                 
@@ -127,6 +130,27 @@
                 <a href="${pageContext.request.contextPath}/member/backlogin.do" class="btn btn-google btn-user" style="display:inline">돌아가기</a>
                </div>
               </form>
+              
+	<div id="emailModal" class="modal">
+      		<div class="modal-content" style="width:400px; text-align: center;">
+                <b><span style="font-size: 24pt;">인증번호 확인창</span></b>
+                <br /><p>(아래에 해당 인증 번호를 입력하세요)</p>
+                
+                <form action="/member/join_injeung.do" method="POST">
+	                <input type="text" class="col-sm-7 mb-sm-3" name="email_injeung" style="display: inline-block;"/> 
+	                <input type="submit" class="col-sm-4 mb-sm-3" style="display: inline-block;" value="확인"/>
+                </form>
+                
+       
+            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+                <span class="pop_bt" style="font-size: 13pt;" >
+                     닫기
+                </span>
+            </div>
+            
+      </div>
+ 
+    </div>
               <div class="text-center">
                 <br />
                 <span style="float:center; font-size:14px;"><b>아이디는 있는데 아이디를 모르신다구요?</b></sapn>&nbsp; &nbsp;<a class="small" href="forgot-password.html">여기를 클릭하세요.</a>
@@ -154,38 +178,33 @@
 
 	<script>
 		$("select option[value*='--']").prop('disabled',true);
-
+	
 		function daum_PostcodeOpen() {
 		    new daum.Postcode({
 		        oncomplete: function(data) {
 		        	
 		        var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
 		        var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
+		        
 		        // 법정동명이 있을 경우 추가한다. (법정리는 제외?)
 		        // 법정동의 경우 마지막 문자가 "동/로/가" 종료
 		        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
 		            extraRoadAddr += data.bname;
-		        }
-		            
+		        } 
 		        // 건물명이 있고, 공동주택일 경우 추가
 		        if(data.buildingName !== '' && data.apartment === 'Y'){
 		            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-		        }
-		            
+		        }   
 		        // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열 생성
 		        if(extraRoadAddr !== ''){
 		            extraRoadAddr = ' (' + extraRoadAddr + ')';
 		        }
-		            
 		        if(fullRoadAddr !== ''){
 		            fullRoadAddr += extraRoadAddr;
-		        }
-		            
+		        }   
 		        document.getElementById('address1').value = fullRoadAddr;
 		        document.getElementById('address2').focus();
 		        }
-		    
 		    }).open();
 		}
 		
@@ -207,6 +226,8 @@
 			return true;
 		}
 		
+		var emailchk = false; // email false과 ture확인할 것
+		
 		function emailCheck(obj) {
 			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 			var email = obj.value;
@@ -216,6 +237,8 @@
 				$("#emailText").hide(3000);
 				return false;
 			}
+			
+			emailchk = true;
 			return true;
 		}
 		
@@ -256,18 +279,40 @@
 				}
 			}
 		};
-		
 		$('input:password[name=password]').on('change',function(){
 			passwordValidate();
 		});
-		
 		$('input:password[name=repassword]').on('change',function(){
 			passwordValidate();
 		});
 		
+	  function showEmail() {
+		  if(emailchk == true){	
+				$.ajax({
+					url : '${pageContext.request.contextPath}/member/auth.do',
+					type: 'POST',
+					data: {
+						email : $("#email").val()
+					}, success : function(data){
+						if(data == "ok") {	
+							alert("해당 이메일로 인증코드가 발송되었습니다.");
+							$('#emailModal').show();
+						}
+					}, error : function(error, code, msg){
+						console.log(error);
+					}			
+				});			
+		  } else {
+			alert("회원님의 이메일을 적어주세요");	  			  
+		  }
+	  }
+	  
+      function close_pop(flag) {
+           $('#emailModal').hide();
+      };
+
 	</script>
 	
 </body>
 
 </html>
-    

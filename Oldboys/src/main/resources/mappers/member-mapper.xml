@@ -45,6 +45,26 @@
 		}
 	</select>
 	
+	<!--  ================================================================  -->
+	
+	<select id="find_id_check" parameterType="Member" resultType="String">
+        SELECT USERID FROM MEMBER
+        WHERE EMAIL = #{email}
+    </select>
+    
+    <select id = "find_pass_check" parameterType="Member"
+    resultType="String">
+        SELECT PASSWORD FROM MEMBER
+        WHERE USERID = #{userId} AND EMAIL = #{email}
+    </select>
+    
+        <!-- 이메일 중복확인 관련 mapper-->
+    <select id = "email_check" resultType="String">
+        SELECT EMAIL FROM MEMBER
+        WHERE EMAIL = #{email}
+    </select>
+    
+    
 </mapper>
 
 

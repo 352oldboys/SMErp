@@ -51,7 +51,7 @@
 								<form action=" insertPur.do" method="post">
 										<div class="modal-header text-center">
 									<input type="hidden" name="userNo" value="${member.userNo}" />
-											<h4 class="modal-title w-100 font-weight-bold">테이블을 작성하세요.</h4>
+											<h4 class="modal-title w-100 font-weight-bold"> 매입 추가등록 <h4>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
@@ -66,25 +66,25 @@
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="product">상품 명</label>
+												<label data-error="wrong" data-success="right" for="product">상품</label>
 												<input type="text" id="product" name="product" class="form-control validate" value="${ product }">
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="itemCode">품목 번호</label>
+												<label data-error="wrong" data-success="right" for="itemCode">품목 코드</label>
 												<input type="text" id="itemCode" name="itemCode" class="form-control validate">
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="businessCode">거래 코드</label>
+												<label data-error="wrong" data-success="right" for="businessCode">거래처 코드</label>
 												<input type="text" id="businessCode" name="businessCode" class="form-control validate" value="${ businessCode }">
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
-												<label data-error="wrong" data-success="right" for="userNo">사용자번호</label>
+												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 												<input type="email" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" readonly>
 											</div>
 
@@ -142,7 +142,7 @@
 								<form action=" updatePur.do" method="post">
 									<div class="modal-content">
 										<div class="modal-header text-center">
-											<h4 class="modal-title w-100 font-weight-bold">테이블을 수정하세요.</h4>
+											<h4 class="modal-title w-100 font-weight-bold">매입 수정</h4>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
@@ -157,13 +157,13 @@
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="product">상품 명</label>
+												<label data-error="wrong" data-success="right" for="product">상품</label>
 												<input type="text" id="product" name="product" class="form-control validate" value="${ product }">
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="itemCode">품목 번호</label>
+												<label data-error="wrong" data-success="right" for="itemCode">품목 코드</label>
 												<input type="text" id="itemCode" name="itemCode" class="form-control validate">
 											</div>
 											
@@ -175,7 +175,7 @@
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
-												<label data-error="wrong" data-success="right" for="userNo">사용자번호</label>
+												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 												<input type="email" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" readonly>
 											</div>
 
@@ -227,9 +227,9 @@
                   <thead>
                     <tr>
                       <th>제품 번호</th>
-                      <th>상품 명</th>
-                      <th>품목 번호</th>
-                      <th>거래 코드</th>
+                      <th>상품</th>
+                      <th>품목 코드</th>
+                      <th>거래처 코드</th>
                       <th>사용자 번호</th>
                       <th>날짜</th>
                       <th>가격</th>

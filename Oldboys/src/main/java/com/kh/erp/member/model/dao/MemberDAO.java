@@ -17,6 +17,15 @@ public interface MemberDAO {
 	
 	public int checkIdDuplicate(HashMap<String, Object> hmap);
 
-	public List<Member> selectListMember(String userId);
+	List<Member> selectListMember(String userId);
+
+/* ========================== email ========================== */
+	
+	public String find_idCheck(Member dto);
+
+	public String find_passCheck(Member dto);
+
+	public boolean email_check(String email) throws Exception;
+
 	
 }
