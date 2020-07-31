@@ -12,6 +12,7 @@
 		<param-value>
 			classpath:root-context.xml
 			classpath:security-context.xml
+			classpath:email-config.xml
 		</param-value>
 		
 	</context-param>

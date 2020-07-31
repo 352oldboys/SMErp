@@ -148,4 +148,14 @@ public class Member {
 		this.status = status;
 	}
 
+	public Object getUser_name() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setAuthkey(String key) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -40,8 +40,37 @@ public interface MemberService {
 	 * @return
 	 */
 	int checkIdDuplicate(String userId);
-
+	
+	/**
+	 * 아이디 유효성 체크
+	 * @param userId
+	 * @return
+	 */
 	List<Member> selectListMember(String userId);
 
+	/*====================== Email ====================== */
 	
+	 /**
+	  * 아이디 찾기 관련
+	  * @param dto
+	  * @return
+	  */
+	 public String find_idCheck(Member dto);   
+	    
+	 /**
+	  * 비밀번호 찾기 관련
+	  * @param dto
+	  * @return
+	  */
+	 public String find_passCheck(Member dto);            
+	    
+	 /**
+	  * 이메일 중복확인을 하는 메소드
+	  * @param e_mail
+	  * @return
+	  * @throws Exception
+	  */
+	 public boolean email_check(String email) throws Exception;    
+	    
+	    
 }

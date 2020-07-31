@@ -51,7 +51,7 @@
 								<form action=" insertSal.do" method="post">
 										<div class="modal-header text-center">
 									<input type="hidden" name="userNo" value="${member.userNo}" />
-											<h4 class="modal-title w-100 font-weight-bold">테이블을 작성하세요.</h4>
+											<h4 class="modal-title w-100 font-weight-bold">매출 추가등록</h4>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
@@ -72,7 +72,7 @@
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="businessCode">가격</label>
+												<label data-error="wrong" data-success="right" for="businessCode">단가</label>
 												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" value="${ unitPrice }">
 											</div>
 
@@ -111,7 +111,7 @@
 								<form action=" updateSal.do" method="post">
 									<div class="modal-content">
 										<div class="modal-header text-center">
-											<h4 class="modal-title w-100 font-weight-bold">테이블을 수정하세요.</h4>
+											<h4 class="modal-title w-100 font-weight-bold">매출 수정</h4>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
@@ -132,7 +132,7 @@
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="businessCode">가격</label>
+												<label data-error="wrong" data-success="right" for="businessCode">단가</label>
 												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" value="${ unitPrice }">
 											</div>
 
@@ -168,7 +168,7 @@
                     <tr>
                       <th>상품 번호</th>
                       <th>유저 번호</th>
-                      <th>가격</th>
+                      <th>단가</th>
                       <th>날짜</th>
                       <th>수량</th>
                     </tr>
