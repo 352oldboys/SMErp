@@ -24,7 +24,7 @@
 	</select>
 	
 	<update id="updateSchedule" parameterType="Schedule">
-		UPDATE SCHEDULE 
+		UPDATE SCHEDULE
 		<set>
 		ALLDAY = #{allDay},
 		TITLE = #{title},
@@ -36,7 +36,7 @@
 		WHERE SCHEDULENO = #{scheduleNo}			
 	</update>
 	
-	<delete id="deleteSchedule">
+	<delete id="deleteSchedule" parameterType="_int">
 		DELETE FROM SCHEDULE
 		WHERE SCHEDULENO = #{scheduleNo}
 	</delete>
