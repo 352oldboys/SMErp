@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qboardcomment">
+	<resultMap id="resultQBoardComment" type="qboardcomment">
+		<result property="userId" column="userId"/>
+	</resultMap>
+	
+	<select id="selectQBoardCommentList" parameterType="qboardcomment"  resultMap="resultQBoardComment"> 
+		SELECT QCNO, USERNO, QNO, QCONTENT, QLEVEL, TO_CHAR(QDATE, 'YYYY-MM-DD HH:MI:SS') QDATE, QDELETE,
+				(SELECT USERID FROM MEMBER WHERE USERNO = Q.USERNO AND Q.QDELETE = 'N') QUSERID 
+		FROM QCOMMENT Q
+		WHERE QNO=#{qno} AND QDELETE='N'
+		ORDER BY QDATE DESC
+	</select>
+	
+	<select id="selectQBoardCommentTotalContents"  parameterType="qboardcomment" resultType="_int">
+		SELECT COUNT(*) 
+		FROM QCOMMENT
+		WHERE QNO=#{qNo} AND QDELETE='N'
+	</select>
+	
+	<insert id="insertQBoardComment"  parameterType="qboardcomment" >
+		INSERT INTO QCOMMENT
+		VALUES (SEQ_QCOMMENT.NEXTVAL, #{userNo}, #{qNo}, #{qcontent}, DEFAULT,  DEFAULT, DEFAULT, #{refcno})
+	</insert>
+	
+<!-- 		<selectKey keyProperty="cno" resultType="_int" order="AFTER"> 
+			SELECT SEQ_CNO.CURRVAL FROM DUAL
+		</selectKey> -->
+
+	
+	<update id="deleteQBoardComment" parameterType="qboardcomment">
+		UPDATE QCOMMENT SET QDELETE = 'Y' 
+		WHERE QCNO = #{qcno}
+	</update>
+	
+	<select id="selectQBoardCommentList2" parameterType="qboardcomment"  resultMap="resultQBoardComment">
+		SELECT * FROM QCOMMENT
+		WHERE QNO = #{qNo} AND QDELETE = 'N'
+	</select>
+	
+</mapper>

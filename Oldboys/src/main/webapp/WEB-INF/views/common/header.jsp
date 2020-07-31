@@ -150,7 +150,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="${pageContext.request.contextPath}/notice/noticeList.do"">공지사항</a>
             <a class="collapse-item" href="${pageContext.request.contextPath}/board/boardList.do"">자유게시판</a>
-            <a class="collapse-item" href="#">Q & A 게시판</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/qboard/qboardList.do"">Q & A 게시판</a>
           </div>
         </div>
       </li>

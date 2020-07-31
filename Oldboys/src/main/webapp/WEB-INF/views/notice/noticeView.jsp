@@ -15,7 +15,7 @@
 		div#board-container label.custom-file-label{text-align:left;}
 		hr.two{
 		width:1000px;
-		border:2px solid;
+		border:1px solid ;
 		color:#4e73df;
 		}
 	</style>
@@ -32,7 +32,7 @@
 	<div id="container">
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
-		<div id="board-container">
+		<div id="board-container" style="">
 			<input type="text" class="Titleform-control" placeholder="제목" name="nTitle" id="nTitle" value="${notice.nTitle }"readonly required style="width: 1004px; font-weight:bolder; ">
 			<br />
 			
@@ -51,10 +51,9 @@
 		    <div  style="color: #2E2E2E;' " class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div>
 		    <hr class="two">
 		    <br>
-		    <button style="margin-left: 450px; border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeList.do'">리스트로</button>
+		    <button style=" border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeList.do'">리스트로</button>
 		    <c:if test="${member.userId eq notice.nWriter}">
-		    &nbsp;
-			<button class="btn btn-outline-info" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeUpdateView.do?nNo=${notice.nNo}'">수정 페이지</button>
+			<button style="border:0;" class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeUpdateView.do?nNo=${notice.nNo}'">수정 페이지</button>
 			</c:if>
 		</div>
 		<c:import url="../common/footer.jsp"/>

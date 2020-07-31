@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qboardMapper">
+	
+	<select id="selectQBoardList" resultType="QBoard">
+		SELECT Q.*, (SELECT COUNT(*) FROM QBOARDFILE WHERE QNO = Q.QNO) FILECOUNT
+		FROM QBOARD Q ORDER BY QDATE DESC, QNO DESC
+	</select>
+	
+	<select id="selectQBoardTotalContent" resultType="_int">
+		SELECT COUNT(*) FROM QBOARD
+	</select>
+
+	<insert id="insertQBoard">
+		INSERT INTO QBOARD(QNO, QTITLE, QWRITER, QCONTENT) 
+		VALUES (SEQ_QNO.NEXTVAL,#{qTitle},#{qWriter},#{qContent})
+		<selectKey keyProperty="qNo" resultType="_int" order="AFTER"> 
+		      SELECT SEQ_QNO.CURRVAL FROM DUAL 
+		</selectKey>
+	</insert>
+	
+	<insert id="insertQBoardFile">
+		<!--  다른방식  -->
+		<selectKey keyProperty="qNo" resultType="_int" order="BEFORE"> 
+		    SELECT SEQ_QNO.CURRVAL FROM DUAL  
+		</selectKey>
+		INSERT INTO QBOARDFILE(QBOARDFILENO, QNO, ORIGINALFILENAME, RENAMEDFILENAME) 
+		VALUES (SEQ_QBOARDFILENO.NEXTVAL, #{qNo}, #{originalFileName}, #{renamedFileName})
+	</insert>
+
+	<select id="selectOneQBoard" parameterType="_int" resultType="QBoard">
+		SELECT * FROM QBOARD
+		WHERE QNO = #{qNo}
+	</select>
+	
+	<select id="selectQBoardFileList" parameterType="_int" resultType="QBoardFile">
+		SELECT * FROM QBOARDFILE
+		WHERE QNO = #{qNo}
+	</select>
+	
+	<update id="updateQBoard" parameterType="QBoard">
+		UPDATE QBOARD SET
+		QTITLE = #{qTitle},
+		QCONTENT = #{qContent}
+		WHERE QNO = #{qNo}
+	</update>
+	
+	<insert id="updateQBoardFile" parameterType="QBoardFile">
+		INSERT INTO QBOARDFILE
+		VALUES (SEQ_QBOARDFILENO.NEXTVAL, #{qNo},
+		        #{originalFileName}, #{renamedFileName},
+		        DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<delete id="deleteQBoardFile" parameterType="_int">
+		DELETE FROM QBOARDFILE
+		WHERE QNO = #{qNo}
+	</delete>
+	
+	<delete id="deleteQBoard" parameterType="_int">
+		DELETE FROM QBOARD
+		WHERE QNO = #{qNo}
+	</delete>
+	
+	<delete id="deleteQBoardFileOne" parameterType="_int">
+		DELETE FROM QBAORDFILE
+		WHERE QBOARDFILENO = #{qfNo}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
