@@ -16,8 +16,8 @@ public class InventoryServiceImpl implements InventoryService {
 	InventoryDAO inventoryDAO;
 
 	@Override
-	public List<Inventory> selectInventoryList() {
-		return inventoryDAO.selectInventoryList();
+	public List<Inventory> selectInventoryList(Inventory inventory) {
+		return inventoryDAO.selectInventoryList(inventory);
 
 	}
 

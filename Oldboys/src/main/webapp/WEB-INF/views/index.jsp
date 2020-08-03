@@ -5,17 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
-<head>
+ <head> 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 <title>Insert title here</title>
-</head>
+ </head> 
 
-<body id="page-top">
+<!-- <body id="page-top"> -->
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -378,6 +379,6 @@
   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
  --%>
-</body>
+<!-- </body> -->
 
 </html>

@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 <!-- <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -25,7 +25,7 @@
 	<c:import url="../common/header.jsp"/>	
 	<!-- End of header -->
 
-- Begin Page Content -->
+<!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
@@ -43,7 +43,7 @@
 									<input class="btn btn-primary btn-sm" type="button" value="삭제하기" onclick="javascript:fn_inventoryDelete();"/>
 									
 							</div>
-						<form action="insertInventory.do" method="post">
+						<form action="${pageContext.request.contextPath}/inventory/insertInventory.do?userNo=${member.userNo}" method="post">
 							<div class="modal fade" id="modalContactForm" tabindex="-1"
 								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
@@ -59,14 +59,14 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productno }">
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ pruchase.productno }">
 											</div>
-										
-											<div class="md-form mb-3">
-												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-												<input type="text" id="userNo" name="userNo" class="form-control validate" >
-											</div>
+										<!--  사용자 번호 (화면에는 출력 x) -->
+											<%-- <div class="md-form mb-3">
+												<!-- <i class="fas fa-user prefix grey-text"></i>  -->
+												<label data-error="wrong" data-success="right" for="userNo"></label>
+												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" inputtype="hidden">
+											</div> --%>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
@@ -90,7 +90,7 @@
 											<div class="md-form">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="quantity">수량</label>
-												<input type="text" id="quantity" name="quantity" class="form-control validate" value="${ day }">
+												<input type="text" id="quantity" name="quantity" class="form-control validate" value="">
 											</div>
 											
 											<div class="md-form mb-3">
@@ -136,7 +136,7 @@
 </form>
 
 <%//수정하기 모달창 시작 %>
-<form action="updateInventory.do" method="post">
+<form action="${pageContext.request.contextPath}/inventory/updateInventory.do?userNo=${member.userNo}" method="post">
 							<div class="modal fade" id="modalUpdateForm" tabindex="-1"
 								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
@@ -152,18 +152,18 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="" >
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ pruchase.productno }" >
 											</div>
 										
-											<div class="md-form mb-3">
-												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-												<input type="text" id="userNo" name="userNo" class="form-control validate" value="" >
-											</div>
+											
+											 	<!-- <i class="fas fa-user prefix grey-text"></i>  -->
+												<!-- <label data-error="wrong" data-success="right" for="userNo" id="userNo" ></label>  -->
+												
+										        
 											
 										        <div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="itemname">품목</label>
+												<label data-error="wrong" data-success="right" for="itemname" value=>품목</label>
 												<%-- <input type="text" id="itemcode" name="itemcode" class="form-control validate" value="${ businessCode }" > --%>
 												<select class="form-control" name="itemcode"   required>
 													<option value="C02045">생선</option>
@@ -209,14 +209,14 @@
 												<label data-error="wrong" data-success="right" for="note">비고</label>
 												<input type="text" id="note" name="note" class="form-control validate" value="">
 											</div>
-<!-- 
-											 <div class="md-form">
+
+										<!-- 	 <div class="md-form">
 												<i class="fas fa-pencil prefix grey-text"></i>
 												<textarea type="text" id="form8"
 													class="md-textarea form-control" rows="4"></textarea>
 												<label data-error="wrong" data-success="right" for="form8">원산지</label>
-											</div> —>
- -->
+											</div> -->
+
 										</div>
 										<div class="modal-footer d-flex justify-content-center">
 											<button class="btn btn-unique" style="text-align: center;">
@@ -239,8 +239,8 @@
                   <thead>
                     <tr>
                       <th>제품 번호</th>
-                      <th>사용자 번호</th>
-                      <th>아이템 코드</th>
+                      <!-- <th>사용자 번호</th> -->
+                      <th>품목</th>
                       <th>제품</th>
                       <th>수량</th>
                       <th>단가</th>
@@ -249,24 +249,14 @@
                       <th>비고</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>제품 번호</th>
-                      <th>사용자 번호</th>
-                      <th>아이템 코드</th>
-                      <th>제품</th>
-                      <th>수량</th>
-                      <th>단가</th>
-                      <th>원산지</th>
-                      <th>유통기한</th>
-                      <th>비고</th>
-                    </tr>
-                  </tfoot>
+                  
+                   
+                  
                   <tbody>
                    <c:forEach var="emp" items="${list}" varStatus="status">
                      <tr id="inventory${status.count}">
                           <td>${emp.productNo}</td>
-                          <td>${emp.userNo}</td>
+                          <%-- <td>${emp.userNo}</td> --%>
                           <td>${emp.itemname}</td>
                           <td>${emp.product}</td>
                           <td>${emp.quantity}</td>
@@ -284,7 +274,7 @@
           </div>
 
 	<% //2번째 방법 %>
-	<form method="Post" action="deleteInventory.do" id="modalDeleteForm">
+	<form method="Post" action="${pageContext.request.contextPath}/inventory/deleteInventory.do?userNo=${member.userNo}" id="modalDeleteForm">
       	<input type="hidden" name="productNo" value=""/>
     </form>
 
@@ -358,14 +348,14 @@
 	  
 	  /* 값 가져오기 */
 	  $("#modalUpdateForm #productNo").val(table.rows('.selected').data()[0][0]);		  
-	  $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);		  
-	  $("#modalUpdateForm #itemcode").val(table.rows('.selected').data()[0][2]);		  
-	  $("#modalUpdateForm #product").val(table.rows('.selected').data()[0][3]);		  
-	  $("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][4]);		  
-	  $("#modalUpdateForm #unitprice").val(table.rows('.selected').data()[0][5]);		  
-	  $("#modalUpdateForm #origin").val(table.rows('.selected').data()[0][6]);		  
-	  $("#modalUpdateForm #expirationdate").val(table.rows('.selected').data()[0][7]);		  
-	  $("#modalUpdateForm #note").val(table.rows('.selected').data()[0][8]);		  
+	 /*  $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);	 */	  
+	  $("#modalUpdateForm #itemcode").val(table.rows('.selected').data()[0][1]);		  
+	  $("#modalUpdateForm #product").val(table.rows('.selected').data()[0][2]);		  
+	  $("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][3]);		  
+	  $("#modalUpdateForm #unitprice").val(table.rows('.selected').data()[0][4]);		  
+	  $("#modalUpdateForm #origin").val(table.rows('.selected').data()[0][5]);		  
+	  $("#modalUpdateForm #expirationdate").val(table.rows('.selected').data()[0][6]);		  
+	  $("#modalUpdateForm #note").val(table.rows('.selected').data()[0][7]);		  
 	 
 	  /*창 띄우기  */
 	  $("#modalUpdateForm").modal();

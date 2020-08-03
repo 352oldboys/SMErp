@@ -8,6 +8,7 @@
 
 <html lang="ko">
 <head>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 <title>SMERP_login_page</title>
 

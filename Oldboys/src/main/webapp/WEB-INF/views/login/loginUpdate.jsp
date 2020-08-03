@@ -8,6 +8,7 @@
 <html lang="ko">
 
 <head>
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
