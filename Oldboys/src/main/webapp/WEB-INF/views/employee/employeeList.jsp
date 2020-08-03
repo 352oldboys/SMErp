@@ -18,7 +18,7 @@
 	crossorigin="anonymous"> -->
 
 <title>Insert title here</title>
-
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
 <body id="page-top">

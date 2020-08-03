@@ -12,7 +12,7 @@ public interface InventoryService {
 	
 
 	
-	List<Inventory> selectInventoryList();
+	List<Inventory> selectInventoryList(Inventory inventory);
      
 	int insertInventoryList(Inventory inventory);
 	

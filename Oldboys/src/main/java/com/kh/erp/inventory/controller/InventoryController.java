@@ -24,20 +24,23 @@ public class InventoryController {
 	InventoryService inventoryService;
 	
 	@RequestMapping("/inventory/inventoryList.do")
-	 public String inventoryList(Model model) {
+	 public String inventoryList(Inventory inventory,Model model, @RequestParam(value="userNo") int userNo ) {
 		   
-		   List<Inventory> list = inventoryService.selectInventoryList();
+		   List<Inventory> list = inventoryService.selectInventoryList(inventory);
 		   
+		   System.out.println(list);
 		   model.addAttribute("list", list);
 		   
 //		   System.out.println("list: " +list); // 결과 확인용
 		   
 		   return "inventory/inventory";
+		   
+		   
 	
 	}
 	
 	@RequestMapping("/inventory/insertInventory.do")
-	public String insertInventory(Inventory inventory, Model model) {
+	public String insertInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) {
 					
 		int result;
 		
@@ -61,13 +64,13 @@ public class InventoryController {
 		
 			System.out.println(model);
 		
-		    return "redirect:inventoryList.do";
+		    return "redirect:inventoryList.do?userNo="+userNo;
 			                      
 	
 	}
 	
 	@RequestMapping("/inventory/deleteInventory.do")
-	public String deleteInventory(Inventory inventory, Model model) throws Exception {
+	public String deleteInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) throws Exception {
 		int result;
 		
 		try {
@@ -92,14 +95,14 @@ public class InventoryController {
 		
 			System.out.println(model);
 		
-		    return "redirect:inventoryList.do";
+		    return "redirect:inventoryList.do?userNo="+userNo;
 			                      
 	
 			
 		
 	}
 	@RequestMapping("/inventory/updateInventory.do")
-	public String updateInventory(Inventory inventory, Model model) {
+	public String updateInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) {
 					
 		int result;
 		
@@ -123,7 +126,7 @@ public class InventoryController {
 		
 			System.out.println(model);
 		
-		    return "redirect:inventoryList.do";
+		    return "redirect:inventoryList.do?userNo="+userNo;
 			                      
 		
 	

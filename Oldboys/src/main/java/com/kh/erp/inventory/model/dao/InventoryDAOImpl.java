@@ -17,8 +17,8 @@ public class InventoryDAOImpl implements InventoryDAO {
  SqlSessionTemplate sqlSession;
  
  @Override
- public List<Inventory> selectInventoryList() {
-		return sqlSession.selectList("inventoryMapper.selectInventory");
+ public List<Inventory> selectInventoryList(Inventory inventory) {
+		return sqlSession.selectList("inventoryMapper.selectInventory",inventory);
 		
 	}
  

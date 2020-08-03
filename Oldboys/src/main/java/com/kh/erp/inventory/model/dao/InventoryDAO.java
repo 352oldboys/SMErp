@@ -13,7 +13,7 @@ public interface InventoryDAO {
 
 	
 	
-	List<Inventory> selectInventoryList();
+	List<Inventory> selectInventoryList(Inventory inventory);
     
 	int insertInventoryList(Inventory inventory);
 
