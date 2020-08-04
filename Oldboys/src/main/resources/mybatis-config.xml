@@ -10,19 +10,23 @@
 	
 	<typeAliases>
 		<typeAlias type="com.kh.erp.finance.sales.model.vo.Sales" alias="Sales" />
-		 <typeAlias type="com.kh.erp.notice.model.vo.Notice" alias="Notice"/>
-		 <typeAlias type="com.kh.erp.notice.model.vo.Attachment" alias="Attachment"/>
-		 <typeAlias type="com.kh.erp.board.model.vo.Board" alias="Board"/>
-		 <typeAlias type="com.kh.erp.board.model.vo.BoardFile" alias="BoardFile"/>
-		 <typeAlias type="com.kh.erp.boardComment.model.vo.BoardComment" alias="boardcomment"/>
-   		 <typeAlias type="com.kh.erp.finance.purchase.model.vo.Purchase" alias="Purchase" />
-		 <typeAlias type="com.kh.erp.member.model.vo.Member" alias="Member"/>
-		 <typeAlias type="com.kh.erp.employee.model.vo.Employee" alias="Employee"/>		 
-		 <typeAlias type="com.kh.erp.schedule.model.vo.Schedule" alias="Schedule"/>
-		 <typeAlias type="com.kh.erp.inventory.model.vo.Inventory" alias="Inventory" />
-		 <typeAlias type="com.kh.erp.qboard.model.vo.QBoard" alias="QBoard"/>
-		 <typeAlias type="com.kh.erp.qboardComment.model.vo.QBoardComment" alias="qboardcomment"/>
-		 <typeAlias type="com.kh.erp.qboard.model.vo.QBoardFile" alias="QBoardFile"/>
+		<typeAlias type="com.kh.erp.notice.model.vo.Notice" alias="Notice"/>
+		<typeAlias type="com.kh.erp.notice.model.vo.Attachment" alias="Attachment"/>
+		<typeAlias type="com.kh.erp.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.kh.erp.board.model.vo.BoardFile" alias="BoardFile"/>
+		<typeAlias type="com.kh.erp.boardComment.model.vo.BoardComment" alias="boardcomment"/>
+		<typeAlias type="com.kh.erp.finance.purchase.model.vo.Purchase" alias="Purchase" />
+		<typeAlias type="com.kh.erp.member.model.vo.Member" alias="Member"/>
+		<typeAlias type="com.kh.erp.employee.model.vo.Employee" alias="Employee"/>
+		<typeAlias type="com.kh.erp.schedule.model.vo.Schedule" alias="Schedule"/>
+		<typeAlias type="com.kh.erp.customer.model.vo.Customer" alias="Customer"/>
+		<typeAlias type="com.kh.erp.tax.model.vo.Tax" alias="Tax"/>
+		<typeAlias type="com.kh.erp.attendance.model.vo.Attendance" alias="Attendance"/>
+		<typeAlias type="com.kh.erp.job.model.vo.Job" alias="Job"/>
+		<typeAlias type="com.kh.erp.inventory.model.vo.Inventory" alias="Inventory" />
+		<typeAlias type="com.kh.erp.qboard.model.vo.QBoard" alias="QBoard"/>
+		<typeAlias type="com.kh.erp.qboardComment.model.vo.QBoardComment" alias="qboardcomment"/>
+		<typeAlias type="com.kh.erp.qboard.model.vo.QBoardFile" alias="QBoardFile"/>
 		 
 	</typeAliases>
 	

@@ -10,7 +10,7 @@
 	
 	<insert id="insertEmp" parameterType="Employee">
 		INSERT INTO EMPLOYEE
-		VALUES (#{empNo}, #{userNo}, #{jobCode}, #{name}, #{phone}, #{age},
+		VALUES (SEQ_EMPNO.NEXTVAL, #{userNo}, #{jobCode}, #{name}, #{phone}, #{age},
 				#{email}, #{gender}, #{salary}, #{status}, #{hireDate}, #{leaveDate}, #{accountNo})
 	</insert>
 	

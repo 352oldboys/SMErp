@@ -55,9 +55,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          	<a class="collapse-item" href="${pageContext.request.contextPath}/employee/employeeList.do">인사정보</a>
-            <a class="collapse-item" href="#">출결</a>
-            <a class="collapse-item" href="#">휴가</a>
+          	<a class="collapse-item" href="${pageContext.request.contextPath}/employee/employeeList.do?userNo=${member.userNo}">인사정보</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/attendance/attendanceList.do?userNo=${member.userNo}">출결</a>
           </div>
         </div>
       </li>
@@ -116,7 +115,7 @@
          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="${pageContext.request.contextPath}/finance/purchase.do?userNo=${member.userNo}">매입</a>
-            <a class="collapse-item" href="#">매입 세금계산서 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/tax/taxList.do?userNo=${member.userNo}">매입 세금계산서 관리</a>
           </div>
         </div> 
       </li>
@@ -129,7 +128,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="${pageContext.request.contextPath}/finance/sales.do?userNo=${member.userNo}">매출</a>
-            <a class="collapse-item" href="#">거래처 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/customer/customerList.do?userNo=${member.userNo}">거래처 관리</a>
           </div>
         </div>
       </li>

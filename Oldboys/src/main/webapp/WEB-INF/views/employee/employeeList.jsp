@@ -18,7 +18,7 @@
 	crossorigin="anonymous"> -->
 
 <title>Insert title here</title>
-<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+
 </head>
 
 <body id="page-top">
@@ -46,18 +46,19 @@
 	          <!-- DataTales Example -->
 	          <div class="card shadow mb-4">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-primary">인사관리</h6>
+	              <h6 class="m-0 font-weight-bold text-primary" style="display: inline;">인사관리</h6>
+                  <div class="text-center" style="display: inline; float: right;">
+                  		<input class="btn btn-info btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/job/jobList.do?userNo=${member.userNo}'" value="직책추가"/>
+						<input class="btn btn-primary btn-sm" type="button" value="추가하기"
+						   	   data-toggle="modal" data-target="#modalInsertForm" />
+						<input class="btn btn-secondary btn-sm" type="button" onclick="updateEmployee();" value="수정하기"/>
+						<input class="btn btn-danger btn-sm" type="button" onclick="deleteEmployee();" value="삭제하기"/>
+						
+                  </div>
 	            </div>
-	            <div class="card-body">
-	                     <div class="text-center" style="display: inline; float: right;">
-                       		<input class="btn btn-primary btn-sm" type="button" value="추가하기"
-	                           	   data-toggle="modal" data-target="#modalInsertForm" />
-                            <input class="btn btn-secondary btn-sm" type="button" onclick="updateEmployee();" value="수정하기"/>
-                            <input class="btn btn-danger btn-sm" type="button" onclick="deleteEmployee();" value="삭제하기"/>
-	                     </div>
-	                     
+	            
 					<% // 추가하기 모달창 시작  %>
-                	<form action="insertEmployee.do" id="empFrm" method="post">
+                	<form action="${pageContext.request.contextPath}/employee/insertEmployee.do?userNo=${member.userNo}" id="empFrm" method="post">
 	                     <div class="modal fade" id="modalInsertForm" tabindex="-1"
 	                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	                        <div class="modal-dialog" role="document">
@@ -73,79 +74,79 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-user prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="empNo">사원 번호</label>
-	                                    <input type="text" name="empNo" id="empNo" class="form-control validate" value="${ empNo }">
+	                                    <input type="text" name="empNo" id="empNo" class="form-control validate">
 	                                 </div>
 	                              
-	                                 <div class="md-form mb-3">
+	                                 <%-- <div class="md-form mb-3">
 	                                    <i class="fas fa-user prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
-	                                 </div>
+	                                 </div> --%>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-user prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="jobCode">직급 코드</label>
-	                                    <input type="text" name="jobCode" id="jobCode" class="form-control validate" value="${ jobCode }">
+	                                    <input type="text" name="jobCode" id="jobCode" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>   
 	                                    <label data-error="wrong" data-success="right" for="name">이름</label>
-	                                    <input type="text" name="name" id="name" class="form-control validate" value="${ name }">
+	                                    <input type="text" name="name" id="name" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form">
 	                                    <i class="fas fa-tag prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="phone">연락처</label>
-	                                    <input type="text" name="phone" id="phone" class="form-control validate" value="${ phone }">
+	                                    <input type="text" name="phone" id="phone" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="age">나이</label>
-	                                    <input type="text" name="age" id="age" class="form-control validate" value="${ age }">
+	                                    <input type="text" name="age" id="age" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag  grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="email">이메일</label>
-	                                    <input type="email" name="email" id="email" class="form-control validate" value="${ email }"> 
+	                                    <input type="email" name="email" id="email" class="form-control validate"> 
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="gender">성별</label>
-	                                    <input type="text" name="gender" id="gender" class="form-control validate" value="${ gender }">
+	                                    <input type="text" name="gender" id="gender" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="salary">월급</label>
-	                                    <input type="text" name="salary" id="salary" class="form-control validate" value="${ salary }">
+	                                    <input type="text" name="salary" id="salary" class="form-control validate">
 	                                 </div>  
 	                                   
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="status">재직여부</label>
-	                                    <input type="text" name="status" id="status" class="form-control validate" value="${ status }">
+	                                    <input type="text" name="status" id="status" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="hireDate">입사일</label>
-	                                    <input type="date" name="hireDate" id="hireDate" class="form-control validate" value="${ hireDate }">
+	                                    <input type="date" name="hireDate" id="hireDate" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="leaveDate">퇴사일</label>
-	                                    <input type="date" name="leaveDate" id="leaveDate" class="form-control validate" value="${ leaveDate }">
+	                                    <input type="date" name="leaveDate" id="leaveDate" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form">
 	                                    <i class="fas fa-pencil prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="accountNo">계좌번호</label>
-	                                    <textarea type="text" name="accountNo" id="accountNo" class="md-textarea form-control" value="${ accountNo }" rows="4"></textarea>
+	                                    <textarea type="text" name="accountNo" id="accountNo" class="md-textarea form-control" rows="4"></textarea>
 	                                 </div>
 	 								
 	                              </div>
@@ -160,12 +161,12 @@
                 	<% // 추가하기 모달창 끝  %>
                 	
                 	<% // 삭제하기 2번째 방법 %>
-					<form method="Post" action="deleteEmployee.do" id="modalDeleteForm">
+					<form method="Post" action="${pageContext.request.contextPath}/employee/deleteEmployee.do?userNo=${member.userNo}" id="modalDeleteForm">
 						<input type="hidden" name="empNo"/>
 					</form>
                 	
 					<% // 수정하기 모달창 시작  %>
-					<form action="updateEmployee.do" method="post">
+					<form action="${pageContext.request.contextPath}/employee/updateEmployee.do?userNo=${member.userNo}" method="post">
 	                     <div class="modal fade" id="modalUpdateForm" tabindex="-1"
 	                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	                        <div class="modal-dialog" role="document">
@@ -181,79 +182,79 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-user prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="empNo">사원 번호</label>
-	                                    <input type="text" name="empNo" id="empNo" class="form-control validate" value="${ empNo }">
+	                                    <input type="text" name="empNo" id="uEmpNo" class="form-control validate">
 	                                 </div>
 	                              
-	                                 <div class="md-form mb-3">
+	                                 <%-- <div class="md-form mb-3">
 	                                    <i class="fas fa-user prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
-	                                 </div>
+	                                 </div> --%>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-user prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="jobCode">직급 코드</label>
-	                                    <input type="text" name="jobCode" id="jobCode" class="form-control validate" value="${ jobCode }">
+	                                    <input type="text" name="jobCode" id="uJobCode" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>   
 	                                    <label data-error="wrong" data-success="right" for="name">이름</label>
-	                                    <input type="text" name="name" id="name" class="form-control validate" value="${ name }">
+	                                    <input type="text" name="name" id="uName" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form">
 	                                    <i class="fas fa-tag prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="phone">연락처</label>
-	                                    <input type="text" name="phone" id="phone" class="form-control validate" value="${ age }">
+	                                    <input type="text" name="phone" id="uPhone" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i> 
 	                                    <label data-error="wrong" data-success="right" for="age">나이</label>
-	                                    <input type="text" name="age" id="age" class="form-control validate" value="${ age }">
+	                                    <input type="text" name="age" id="uAge" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag  grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="email">이메일</label>
-	                                    <input type="email" name="email" id="email" class="form-control validate" value="${ email }"> 
+	                                    <input type="email" name="email" id="uEmail" class="form-control validate"> 
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="gender">성별</label>
-	                                    <input type="text" name="gender" id="gender" class="form-control validate" value="${ gender }">
+	                                    <input type="text" name="gender" id="uGender" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="salary">월급</label>
-	                                    <input type="text" name="salary" id="salary" class="form-control validate" value="${ salary }">
+	                                    <input type="text" name="salary" id="uSalary" class="form-control validate">
 	                                 </div>  
 	                                   
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="status">재직여부</label>
-	                                    <input type="text" name="status" id="status" class="form-control validate" value="${ status }">
+	                                    <input type="text" name="status" id="uStatus" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="hireDate">입사일</label>
-	                                    <input type="date" name="hireDate" id="hireDate" class="form-control validate" value="${ hireDate }">
+	                                    <input type="date" name="hireDate" id="uHireDate" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="leaveDate">퇴사일</label>
-	                                    <input type="date" name="leaveDate" id="leaveDate" class="form-control validate" value="${ leaveDate }">
+	                                    <input type="date" name="leaveDate" id="uLeaveDate" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form">
 	                                    <i class="fas fa-pencil prefix grey-text"></i>
 	                                    <label data-error="wrong" data-success="right" for="accountNo">계좌번호</label>
-	                                    <textarea type="text" name="accountNo" id="accountNo" class="md-textarea form-control" value="${ accountNo }" rows="4"></textarea>
+	                                    <textarea type="text" name="accountNo" id="uAccountNo" class="md-textarea form-control" rows="4"></textarea>
 	                                 </div>
 	 								
 	                              </div>
@@ -270,17 +271,14 @@
                 	</form>
 					<% // 수정하기 모달창 끝 %>	
 		
-		
-                </div>
-	            
-	            
+			  <div class="card-body">	            
 	            <div class="table-responsive">
 	              <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
 	                <thead>
 	                  <tr>
 						<!-- <td><input type="checkbox"></td> -->
 	                    <th>사원번호</th>
-	                    <th>사용자 번호</th>
+	                    <!-- <th>사용자 번호</th> -->
 	                    <th>직급코드</th>
 	                    <th>이름</th>
 	                    <th>연락처</th>
@@ -294,28 +292,11 @@
 	                    <th>계좌번호</th>   
 	                  </tr>
 	                </thead>
-	                <tfoot>
-	                  <tr>
-	                    <th>사원번호</th>
-	                    <th>사용자 번호</th>
-	                    <th>직급코드</th>
-	                    <th>이름</th>
-	                    <th>연락처</th>
-	                    <th>나이</th>
-	                    <th>이메일</th>
-	                    <th>성별</th>
-	                    <th>월급</th>
-	                    <th>재직여부</th>
-	                    <th>입사일</th>
-	                    <th>퇴사일</th>
-	                    <th>계좌번호</th>
-	                  </tr>
-	                </tfoot>
 					<tbody>
 					  <c:forEach var="emp" items="${list}">
 			  	  	  	<tr id="${emp.empNo}">
 							<td>${emp.empNo}</td>
-							<td>${emp.userNo}</td>
+							<%-- <td>${emp.userNo}</td> --%>
 							<td>${emp.jobCode}</td>
 							<td>${emp.name}</td>
 							<td>${emp.phone}</td>
@@ -332,6 +313,8 @@
 	                </tbody>
 	              </table>
 	            </div>
+			  </div>
+			  
 	          </div>
 	          
 
@@ -362,7 +345,7 @@
 	    } );
 	} );
 	
-	//
+	/* // 행 추가
 	$(document).ready(function() {
     	var t = $('#dataTable').DataTable();
 	    var counter = 1;
@@ -381,7 +364,8 @@
 	 
 	    // Automatically add a first row of data
 	    $('#addRow').click();
-	} );
+	} ); 
+	*/
 	
 	// 삭제하기 기능 구현
 	function deleteEmployee(){
@@ -437,19 +421,19 @@
 		}
  
 		/* 값 가져오기 */
-		$("#modalUpdateForm #empNo").val(table.rows('.selected').data()[0][0]);		  
-		$("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);		  
-		$("#modalUpdateForm #jobCode").val(table.rows('.selected').data()[0][2]);		  
-		$("#modalUpdateForm #name").val(table.rows('.selected').data()[0][3]);		  
-		$("#modalUpdateForm #phone").val(table.rows('.selected').data()[0][4]);		  
-		$("#modalUpdateForm #age").val(table.rows('.selected').data()[0][5]);		  
-		$("#modalUpdateForm #email").val(table.rows('.selected').data()[0][6]);		  
-		$("#modalUpdateForm #gender").val(table.rows('.selected').data()[0][7]);		  
-		$("#modalUpdateForm #salary").val(table.rows('.selected').data()[0][8]);
-		$("#modalUpdateForm #status").val(table.rows('.selected').data()[0][9]);		  
-		$("#modalUpdateForm #hireDate").val(table.rows('.selected').data()[0][10]);
-		$("#modalUpdateForm #leaveDate").val(table.rows('.selected').data()[0][11]);		  
-		$("#modalUpdateForm #accountNo").val(table.rows('.selected').data()[0][12]);
+		$("#modalUpdateForm #uEmpNo").val(table.rows('.selected').data()[0][0]);		  
+		/* $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]); */		  
+		$("#modalUpdateForm #uJobCode").val(table.rows('.selected').data()[0][1]);		  
+		$("#modalUpdateForm #uName").val(table.rows('.selected').data()[0][2]);		  
+		$("#modalUpdateForm #uPhone").val(table.rows('.selected').data()[0][3]);		  
+		$("#modalUpdateForm #uAge").val(table.rows('.selected').data()[0][4]);		  
+		$("#modalUpdateForm #uEmail").val(table.rows('.selected').data()[0][5]);		  
+		$("#modalUpdateForm #uGender").val(table.rows('.selected').data()[0][6]);		  
+		$("#modalUpdateForm #uSalary").val(table.rows('.selected').data()[0][7]);
+		$("#modalUpdateForm #uStatus").val(table.rows('.selected').data()[0][8]);		  
+		$("#modalUpdateForm #uHireDate").val(table.rows('.selected').data()[0][9]);
+		$("#modalUpdateForm #uLeaveDate").val(table.rows('.selected').data()[0][10]);		  
+		$("#modalUpdateForm #uAccountNo").val(table.rows('.selected').data()[0][11]);
 
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();
@@ -458,24 +442,6 @@
 
 	</script>
 		
-	<!-- Logout Modal-->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-	        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">×</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-	      <div class="modal-footer">
-	        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-	        <a class="btn btn-primary" href="login.html">Logout</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 	
 </body>
 
