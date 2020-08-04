@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="attendMapper">
+
+	<select id="selectAttendList" parameterType="_int" resultType="Attendance">
+		SELECT * FROM ATTENDANCE
+		WHERE USERNO = #{userNo}
+		ORDER BY ATTENDANCENO DESC
+	</select>
+
+	<insert id="insertAttend" parameterType="Attendance">
+
+		INSERT INTO ATTENDANCE
+		VALUES (SEQ_ATTENDANCENO.NEXTVAL, #{userNo}, #{day}, #{empNo}, #{name},
+					#{attendanceTime}, #{leaveTime}, #{absence}, #{vacationPeriod1}, #{vacationPeriod2}) 
+					
+<!-- 		<choose>	
+			<when test='vacationPeriod1 eq ""'>	
+				NULL, NULL)
+			</when>
+			<otherwise>
+				#{vacationPeriod1}, #{vacationPeriod2})
+			</otherwise>					
+		</choose>	 -->				
+				
+	</insert>
+	
+	<delete id="deleteAttend" parameterType="Attendance">
+		DELETE FROM ATTENDANCE
+		WHERE ATTENDANCENO = #{attendanceNo}
+	</delete>
+	
+	<update id="updateAttend" parameterType="Attendance">
+		UPDATE ATTENDANCE
+		
+		<set>
+		ATTENDANCENO = #{attendanceNo},
+		USERNO = #{userNo},
+		DAY = #{day},
+		EMPNO= #{empNo},
+		NAME = #{name},
+		ATTENDANCETIME = #{attendanceTime}, 
+		LEAVETIME = #{leaveTime},
+		ABSENCE = #{absence},
+		VACATIONPERIOD1 = #{vacationPeriod1}
+		VACATIONPERIOD2 = #{vacationPeriod2}
+		</set>
+		
+		WHERE ATTENDANCENO = #{attendanceNo}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="taxMapper">
+
+	<select id="selectTaxList" parameterType="_int" resultType="Tax">
+		SELECT * FROM TAX
+		WHERE USERNO = #{userNo}
+		ORDER BY TAXNO DESC
+	</select>
+	
+	<insert id="insertTax" parameterType="Tax">
+		INSERT INTO TAX
+		VALUES (SEQ_TAXNO.NEXTVAL, #{userNo}, #{publishDay}, #{businessCode}, #{businessName}, #{regNo}, #{item},
+				#{unit}, #{quantity}, #{unitCost}, #{supplyPrice}, #{taxPrice})
+	</insert>
+	
+	<delete id="deleteTax" parameterType="Tax">
+		DELETE FROM TAX
+		WHERE TAXNO = #{taxNo}
+	</delete>
+	
+	<update id="updateTax" parameterType="Tax">
+		UPDATE TAX
+		
+		<set>
+		TAXNO = #{taxNo},
+		USERNO = #{userNo},
+		PUBLISHDAY = #{publishDay},
+		BUSINESSCODE= #{businessCode},
+		BUSINESSNAME = #{businessName},
+		REGNO = #{regNo}, 
+		ITEM = #{item},
+		UNIT = #{unit},
+		QUANTITY = #{quantity},
+		UNITCOST = #{unitCost},
+		SUPPLYPRICE = #{supplyPrice},
+		TAXPRICE = #{taxPrice}
+		</set>
+		
+		WHERE TAXNO = #{taxNo}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+

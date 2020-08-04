@@ -1,4 +1,4 @@
-package com.kh.erp.employee.controller;
+package com.kh.erp.customer.controller;
 
 import java.util.List;
 
@@ -6,42 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kh.erp.employee.model.service.EmployeeService;
-import com.kh.erp.employee.model.vo.Employee;
+import com.kh.erp.customer.model.service.CustomerService;
+import com.kh.erp.customer.model.vo.Customer;
 
-@SessionAttributes(value="employee")
 @Controller
-public class EmployeeController {
+public class CustomerController {
 
 	@Autowired
-	EmployeeService empService;
+	CustomerService custService;
 
-	@RequestMapping("/employee/employeeList.do")
-	public String employeeList(Employee emp, Model model) {
+	@RequestMapping("/customer/customerList.do")
+	public String customerList(Customer cust, Model model) {
 
-		List<Employee> list = empService.selectEmpList(emp);
+		List<Customer> list = custService.selectCustList(cust);
 
 		model.addAttribute("list", list);
 
-		return "employee/employeeList";
+		return "customer/customerList";
  
 	}
 
-	@RequestMapping("/employee/insertEmployee.do")
-	public String insertEmployee(Employee emp, Model model) {
+	@RequestMapping("/customer/insertCustomer.do")
+	public String insertCustomer(Customer cust, Model model) {
 
-		System.out.println(emp);
+		System.out.println(cust);
 		
 		int result; 
 		String msg="";
 		
 		try {
 			
-			result = empService.insertEmployee(emp);
+			result = custService.insertCustomer(cust);
 			
-			System.out.println(emp);
+			System.out.println(cust);
 			
 			if( result > 0 ) { 
 				msg="등록 성공"; 
@@ -55,22 +54,22 @@ public class EmployeeController {
 			
 		}
 		
-		String loc="/employee/employeeList.do"; 
+		String loc="/customer/customerList.do"; 
 		model.addAttribute("loc", loc);
 		model.addAttribute("msg", msg);
 
 
-		return "redirect:employeeList.do";
+		return "redirect:customerList.do";
 
 	}
 	
-	@RequestMapping("/employee/deleteEmployee.do")
-	public String deleteEmployee(Employee emp, Model model) {
+	@RequestMapping("/customer/deleteCustomer.do")
+	public String deleteCustomer(Customer cust, Model model) {
 		int result;
 		
 		try {
 
-			result = empService.deleteEmployee(emp);
+			result = custService.deleteCustomer(cust);
 			
 			System.out.println(result);
 			
@@ -88,18 +87,18 @@ public class EmployeeController {
 		
 			System.out.println(model);
 		
-		    return "redirect:employeeList.do";
+		    return "redirect:customerList.do";
 
 	}
 
-	@RequestMapping("/employee/updateEmployee.do")
-	public String updateEmployee(Employee emp, Model model) {
+	@RequestMapping("/customer/updateCustomer.do")
+	public String updateCustomer(Customer cust, Model model) {
 		
 		int result;
 		
 		try {
 			
-			result = empService.updateEmployee(emp);
+			result = custService.updateCustomer(cust);
 			
 			System.out.println(result);
 			
@@ -117,7 +116,7 @@ public class EmployeeController {
 		
 		System.out.println(model);
 		
-		return "redirect:employeeList.do";
+		return "redirect:customerList.do";
 		
 	}
 	
