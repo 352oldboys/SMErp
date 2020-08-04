@@ -19,5 +19,8 @@ public interface PurchaseService {
 	public int insertPurList(Purchase purchase);
 
 	public int purchasePrice(String userId);
+
+	public int purchaseMonthPrice(int userNo);
+
 		
 }

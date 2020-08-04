@@ -226,6 +226,103 @@
 			</div>
 
 		</div>
+		
+		
+		
 		<c:import url="../common/footer.jsp" />
+		
+		
 
 	</div>
+	
+	<script>
+	$(document).ready(function(){
+		
+		var date = new Date();
+		var year = date.getFullYear(); 
+		var month = new String(date.getMonth()+1);
+		
+		if(month.length == 1){ 
+			  month = "0" + month; 
+			};
+		
+		<c:forEach items="${pList}" var="p">
+			console.log('${p.day}'.substring(5,7));
+			console.log('month : ' + month);
+	if(year == '${p.day}'.substring(0,4) && month == '${p.day}'.substring(5,7)){			
+	
+		$.ajax({
+			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
+			type: 'POST',
+			data: {
+				userId : '${member.userId}'
+			}, success : function(data){
+				console.log(data);
+				$('#priceTotal').text(data.salesPrice.toLocaleString("en"));
+			}, error : function(error, code, msg){
+				console.log(error);
+			}			
+		});	
+	
+// 	$(document).ready(function(){
+		
+		$.ajax({
+			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
+			type: 'POST',
+			data: {
+				userId : '${member.userId}'
+			}, success : function(data){
+				console.log(data);
+				var sPrice = data;
+				$('#priceTotal_').text(data.salesPrice.toLocaleString("en"));
+			}, error : function(error, code, msg){
+				console.log(error);
+			}			
+		});	
+	
+	// $(document).ready(function(){
+		
+		$.ajax({
+			url : '${pageContext.request.contextPath}/finance/purchasePrice.do',
+			type: 'POST',
+			data: {
+				userId : '${member.userId}'
+			}, success : function(data){
+				console.log(data);
+				var pPrice = data;
+				
+				$('#priceTotal_P').text(data.purchasePrice.toLocaleString("en"));
+			}, error : function(error, code, msg){
+				console.log(error);
+			}			
+		});
+		
+		$.ajax({
+			
+			url : '${pageContext.request.contextPath}/finance/integrated.do',
+			type : 'POST',
+			data : {
+				userId : '${member.userId}' 
+			}, success : function(data){
+				
+				console.log($('#priceTotal_').text());
+				console.log($('#priceTotal_P').text());
+			
+				var a = parseInt($('#priceTotal_').text().replace(/,/g,"")) - parseInt($('#priceTotal_P').text().replace(/,/g,""));
+				console.log(a);
+				
+				$('#sumVal').text(a.toLocaleString("en"));			
+					
+			}, error : function(error, code, msg){
+				console.log(error);
+			}
+			
+		
+			});
+	}
+		</c:forEach>
+		
+	});
+	
+	</script>
+	

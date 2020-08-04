@@ -41,4 +41,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return purchaseDAO.purchasePrice(userId);
 	}
 
+	@Override
+	public int purchaseMonthPrice(int userNo) {
+		
+		return purchaseDAO.purchaseMonthPrice(userNo);
+	}
+
 }

@@ -24,7 +24,7 @@ public class PurchaseController {
 	
 	@RequestMapping("/finance/purchasePrice.do")
 	@ResponseBody
-	public Map<String, Object> salesPrice(@RequestParam String userId) {
+	public Map<String, Object> purchasePrice(@RequestParam String userId) {
 		
 		int purchasePrice = purchaseService.purchasePrice(userId);
 		System.out.println("controller :" +userId);
@@ -38,11 +38,22 @@ public class PurchaseController {
 	
 	@RequestMapping("/finance/purchase.do")
 	public String purchaseList(Model model, @RequestParam(value="userNo") int userNo) {
+		
 		List<Purchase> list = purchaseService.selectList(userNo);
 		
-		//System.out.println("userNo :" + userNo);
+		System.out.println("userNo1 :" + userNo);
+		int pMonth = purchaseService.purchaseMonthPrice(userNo);
+		System.out.println("userNo2 :" + userNo);
 		
-		model.addAttribute("list", list);		
+		model.addAttribute("list", list).addAttribute("pMonth", pMonth);
+		
+		/*
+		 * Map<String, Object> map = new HashMap<>();
+		 * 
+		 * map.put("pMonth", pMonth);
+		 */
+		System.out.println("pMonth : " + pMonth);
+		
 		//System.out.println("list : " + list); // 결과 확인용
 		
 		return "finance/purchase";
