@@ -61,77 +61,10 @@
   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
   <script>
+  
 	$(function(){
 		$("#dataTable_filter").css("float","right");	
 	});
-	
-	$(document).ready(function(){
-	
-		$.ajax({
-			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
-			type: 'POST',
-			data: {
-				userId : '${member.userId}'
-			}, success : function(data){
-				console.log(data);
-				$('#priceTotal').text(data.salesPrice.toLocaleString("en"));
-			}, error : function(error, code, msg){
-				console.log(error);
-			}			
-		});	
-	
-// 	$(document).ready(function(){
-		
-		$.ajax({
-			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
-			type: 'POST',
-			data: {
-				userId : '${member.userId}'
-			}, success : function(data){
-				console.log(data);
-				$('#priceTotal_').text(data.salesPrice.toLocaleString("en"));
-			}, error : function(error, code, msg){
-				console.log(error);
-			}			
-		});	
-	
-	// $(document).ready(function(){
-		
-		$.ajax({
-			url : '${pageContext.request.contextPath}/finance/purchasePrice.do',
-			type: 'POST',
-			data: {
-				userId : '${member.userId}'
-			}, success : function(data){
-				console.log(data);
-				$('#priceTotal_P').text(data.purchasePrice.toLocaleString("en"));
-			}, error : function(error, code, msg){
-				console.log(error);
-			}			
-		});
-		
-		$.ajax({
-			
-			url : '${pageContext.request.contextPath}/finance/integrated.do',
-			type : 'POST',
-			data : {
-				userId : '${member.userId}' 
-			}, success : function(data){
-				var a = parseInt($('#priceTotal_').text()) - parseInt($('#priceTotal_P').text())
-				console.log(a);
-				
-				$('#sumVal').text(a);			
-					
-			}, error : function(error, code, msg){
-				console.log(error);
-			}
-			
-		
-			});
-		
-		
-	});
-	
 	
 	
 	/* $(document).ready(function(){
@@ -144,9 +77,7 @@
 		
 		consloe.log(sumVal);
 		
-	}); */
-	
-	
+	}); */		
 	
 	document.addEventListener("DOMContentLoaded", function() {
 	  var toDay = new Date();

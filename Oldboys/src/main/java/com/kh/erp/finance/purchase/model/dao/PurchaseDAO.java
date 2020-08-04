@@ -20,4 +20,6 @@ public interface PurchaseDAO {
 
 	public int purchasePrice(String userId);
 
+	public int purchaseMonthPrice(int userNo);
+
 }
