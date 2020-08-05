@@ -27,6 +27,7 @@ public class PurchaseController {
 	public Map<String, Object> purchasePrice(@RequestParam String userId) {
 		
 		int purchasePrice = purchaseService.purchasePrice(userId);
+		
 		System.out.println("controller :" +userId);
 		Map<String, Object> map = new HashMap<>();
 		
@@ -42,7 +43,7 @@ public class PurchaseController {
 		List<Purchase> list = purchaseService.selectList(userNo);
 		
 		System.out.println("userNo1 :" + userNo);
-		int pMonth = purchaseService.purchaseMonthPrice(userNo);
+		String pMonth = purchaseService.purchaseMonthPrice(userNo);
 		System.out.println("userNo2 :" + userNo);
 		
 		model.addAttribute("list", list).addAttribute("pMonth", pMonth);

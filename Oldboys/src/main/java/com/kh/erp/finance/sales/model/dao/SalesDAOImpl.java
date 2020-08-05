@@ -41,6 +41,12 @@ public class SalesDAOImpl implements SalesDAO {
 		System.out.println("DAO : " + userId);
 		return sqlSession.selectOne("SalesMapper.salesPrice", userId);
 	}
+
+	@Override
+	public String salesMonthPrice(int userNo) {
+		
+		return sqlSession.selectOne("SalesMapper.salesMonthPrice", userNo);
+	}
 	
 
 }

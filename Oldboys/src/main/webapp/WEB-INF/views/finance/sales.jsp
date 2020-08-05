@@ -175,6 +175,11 @@
                   </thead>
 
  				  <tfoot>
+ 				  
+ 				  <tr>
+                   	<th colspan="4" style="text-align:left;">이달의 매출 금액 ( 원 ) </th>
+                   	<th colspan="1" style="text-align:right;"><span id="monthTotal"></span>${sMonth} 원</th>
+                   </tr>
                    <tr>
                    	<th colspan="4" style="text-align:left;">총 매출 금액 ( 원 ) </th>
                    	<th colspan="1" style="text-align:right;"><span id="total"></span> 원</th>
@@ -251,6 +256,8 @@
 		$("#modalDeleteForm").submit();
 				  
 		}
+	
+
 
 	// 수정하기 기능 구현
 	function updateSal(){
@@ -292,6 +299,15 @@
     	document.getElementById("total").innerHTML = totalVal.toLocaleString("en");
     	
     	console.log(totalVal);
+    	
+		// document.getElementById("monthTotal").innerHTML = ${sMonth}.toLocaleString("en");
+    	
+    	
+    	
+    	/* 
+    	var salesMonth = $('#monthTotal').text(${sMonth});
+    	
+    	salesMonth.toLocaleString("en"); */
     
 	
 	</script>

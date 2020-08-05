@@ -42,6 +42,8 @@ public interface SalesService {
 	 */
 	int salesPrice(String userId);
 
+	String salesMonthPrice(int userNo);
+
 
 	
 }

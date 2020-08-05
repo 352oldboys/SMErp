@@ -42,7 +42,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	@Override
-	public int purchaseMonthPrice(int userNo) {
+	public String purchaseMonthPrice(int userNo) {
 		
 		return purchaseDAO.purchaseMonthPrice(userNo);
 	}

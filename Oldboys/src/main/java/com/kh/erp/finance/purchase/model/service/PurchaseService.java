@@ -20,7 +20,7 @@ public interface PurchaseService {
 
 	public int purchasePrice(String userId);
 
-	public int purchaseMonthPrice(int userNo);
+	public String purchaseMonthPrice(int userNo);
 
 		
 }

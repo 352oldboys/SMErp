@@ -39,8 +39,9 @@
 		WHERE USERNO = (SELECT USERNO FROM MEMBER WHERE USERID = #{userId})
 	</select>
 	
-	<select id="purchaseMonthPrice"  resultType="_int">
-		SELECT SUM(PRICE) FROM PURCHASE
+	<select id="purchaseMonthPrice"  resultType="string">
+		SELECT TO_CHAR(SUM(PRICE * QUANTITY), '999,999,999,999,999') 
+		FROM PURCHASE
 		JOIN MEMBER USING(USERNO)
 		WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '%'
           AND DAY LIKE '%' || (SELECT TO_CHAR(SYSDATE, 'MM') FROM DUAL) || '%'

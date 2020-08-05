@@ -41,7 +41,7 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	}
 
 	@Override
-	public int purchaseMonthPrice(int userNo) {
+	public String purchaseMonthPrice(int userNo) {
 		
 		return session.selectOne("PurchaseMapper.purchaseMonthPrice", userNo);
 	}

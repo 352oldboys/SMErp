@@ -18,4 +18,6 @@ public interface SalesDAO {
 
 	int salesPrice(String userId);
 
+	String salesMonthPrice(int userNo);
+
 }

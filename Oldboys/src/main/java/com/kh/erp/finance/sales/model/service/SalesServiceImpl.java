@@ -42,4 +42,10 @@ public class SalesServiceImpl implements SalesService {
 		return salesDAO.salesPrice(userId);
 	}
 
+	@Override
+	public String salesMonthPrice(int userNo) {
+		
+		return salesDAO.salesMonthPrice(userNo);
+	}
+
 }
