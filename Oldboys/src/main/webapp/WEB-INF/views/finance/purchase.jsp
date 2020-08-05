@@ -258,7 +258,7 @@
                       <th> ${pur.businessCode} </th>
                       <th> ${pur.userNo} </th>
                       <th id="pDay"> ${pur.day} </th>
-                      <th class="purchasePrice"> ${pur.price} </th>
+                      <th class="purchasePrice"> ${pur.price}</th>
                       <th> ${pur.origin} </th>
                       <th class="purchaseQuantity"> ${pur.quantity} </th>
                     </tr>

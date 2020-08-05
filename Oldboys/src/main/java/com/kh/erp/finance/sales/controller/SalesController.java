@@ -17,16 +17,17 @@ import com.kh.erp.finance.sales.model.vo.Sales;
 @Controller("SalesController")
 public class SalesController {
 	
-	
-	
 	@Autowired
 	SalesService salesService;
 	
 	@RequestMapping("/finance/sales.do")
 	public String SalesList(Model model, @RequestParam(value="userNo") int userNo) {
+		
 		List<Sales> list = salesService.selectSalList(userNo);
 		
-		model.addAttribute("list", list);
+		String sMonth = salesService.salesMonthPrice(userNo);
+		
+		model.addAttribute("list", list).addAttribute("sMonth", sMonth);
 		
 		return "finance/sales";
 	}

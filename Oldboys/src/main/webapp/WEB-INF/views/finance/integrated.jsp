@@ -45,13 +45,13 @@
 								<div class="col mr-2">
 									<div
 										class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-										<h5>매입</h5>
+										<h5>이달의 매입</h5>
 										<a
 											href="${pageContext.request.contextPath}/finance/purchase.do?userNo=${member.userNo}">(자세히
 											보러가기)</a>
 									</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">
-										<p id="priceTotal_P" style="display: inline;"></p>
+										<p id="purchaseMonth" style="display: inline;"></p>
 										원
 									</div>
 								</div>
@@ -71,12 +71,12 @@
 								<div class="col mr-2">
 									<div
 										class="text-xs font-weight-bold text-success text-uppercase mb-1">
-										<h5>매출</h5>
+										<h5>이달의 매출</h5>
 										<a href="${pageContext.request.contextPath}/finance/sales.do?userNo=${member.userNo}"
 											style="color: #1cc88a !important;">(자세히 보러가기)</a>
 									</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">
-										<p id="priceTotal_" style="display: inline;"></p>
+										<p id="salesMonth" style="display: inline;"></p>
 										원
 									</div>
 								</div>
@@ -104,7 +104,8 @@
 									</p>
 									<div class="row no-gutters align-items-center">
 										<div class="col-auto">
-											<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+											<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+											id="ratio">50%</div>
 										</div>
 										<div class="col">
 											<div class="progress progress-sm mr-2">
@@ -135,7 +136,7 @@
 										<p style="font-size: 7px;">(이달의 이익)</p>
 									</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">
-										<p id="sumVal" style="display: inline;"></p>
+										<p id="profitMonth" style="display: inline;"></p>
 										원
 									</div>
 								</div>
@@ -246,10 +247,7 @@
 			  month = "0" + month; 
 			};
 		
-		<c:forEach items="${pList}" var="p">
-			console.log('${p.day}'.substring(5,7));
-			console.log('month : ' + month);
-	if(year == '${p.day}'.substring(0,4) && month == '${p.day}'.substring(5,7)){			
+		
 	
 		$.ajax({
 			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
@@ -274,14 +272,14 @@
 			}, success : function(data){
 				console.log(data);
 				var sPrice = data;
-				$('#priceTotal_').text(data.salesPrice.toLocaleString("en"));
+				$('#salesMonth').text(data.salesPrice.toLocaleString("en"));
 			}, error : function(error, code, msg){
 				console.log(error);
-			}			
+			}
 		});	
 	
 	// $(document).ready(function(){
-		
+/* 		
 		$.ajax({
 			url : '${pageContext.request.contextPath}/finance/purchasePrice.do',
 			type: 'POST',
@@ -295,32 +293,67 @@
 			}, error : function(error, code, msg){
 				console.log(error);
 			}			
-		});
+		}); */
 		
+		
+		$.ajax({
+			
+			url : '${pageContext.request.contextPath}/finance/pMonthPrice.do',
+			type : 'POST',
+			data : {
+				userNo : '${member.userNo}' 
+			}, success : function(data){
+				console.log(data);
+				console.log(data.pMonth);
+				
+				$('#purchaseMonth').text(data.pMonth);			
+					
+			}, error : function(error, code, msg){
+				console.log(error);
+				console.log(code);
+				console.log(msg);
+				console.log(${pMonth});
+			}
+		});
+	
 		$.ajax({
 			
 			url : '${pageContext.request.contextPath}/finance/integrated.do',
 			type : 'POST',
 			data : {
-				userId : '${member.userId}' 
+				userNo : '${member.userNo}'
 			}, success : function(data){
+							
+				var a = parseInt($('#salesMonth').text().replace(/,/g,"")) - parseInt($('#purchaseMonth').text().replace(/,/g,""));
 				
-				console.log($('#priceTotal_').text());
-				console.log($('#priceTotal_P').text());
-			
-				var a = parseInt($('#priceTotal_').text().replace(/,/g,"")) - parseInt($('#priceTotal_P').text().replace(/,/g,""));
 				console.log(a);
 				
-				$('#sumVal').text(a.toLocaleString("en"));			
+				$('#profitMonth').text(a.toLocaleString("en"));			
+					
+			}, error : function(error, code, msg, a){
+				console.log(error);
+				console.log(a);
+			}
+		});
+		
+$.ajax({
+			
+			url : '${pageContext.request.contextPath}/finance/integrated.do',
+			type : 'POST',
+			data : {
+				userNo : '${member.userNo}'
+			}, success : function(data){
+							
+				var b = parseInt($('#salesMonth').text().replace(/,/g,"")) / parseInt($('#purchaseMonth').text().replace(/,/g,""));
+				
+				console.log(b);
+				
+				$('#ratio').text(Math.round(b)+'%');			
 					
 			}, error : function(error, code, msg){
 				console.log(error);
 			}
-			
-		
-			});
-	}
-		</c:forEach>
+		});
 		
 	});
 	
