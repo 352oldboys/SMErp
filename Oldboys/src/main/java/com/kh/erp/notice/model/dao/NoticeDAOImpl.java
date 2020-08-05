@@ -74,6 +74,44 @@ public class NoticeDAOImpl implements NoticeDAO{
 		
 		return sqlSession.delete("noticeMapper.deleteAttachmentOne", attNo);
 	}
+	
+	@Override
+	public int searchSelectListCount(String searchType, String keyword) {
+		
+		int result = 0;
+		
+		System.out.println("dao keyword : " + keyword);
+		
+		switch(searchType) {
+		case "nTitle" :
+			result = sqlSession.selectOne("noticeMapper.searchNtitleCount", keyword);
+		case "nContent" :
+			result = sqlSession.selectOne("noticeMapper.searchNcontentCount", keyword);
+		}
+		
+		return result;
+		
+	}
+	
+	@Override
+	public List<Map<String, String>> searchSelectList(String searchType, String keyword, int cPage, int numPerPage) {
+
+		List<Map<String, String>> sql = null;
+		
+		RowBounds rows = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		
+		switch(searchType) {
+		case "nTitle" :
+		    sql = sqlSession.selectList("noticeMapper.searchNtitle", keyword, rows);
+		case "nContent" :
+		    sql = sqlSession.selectList("noticeMapper.searchNcontent", keyword, rows);
+		}
+		
+		System.out.println("sql : " + sql);
+		
+		return sql;
+		
+	}
 
 }
 

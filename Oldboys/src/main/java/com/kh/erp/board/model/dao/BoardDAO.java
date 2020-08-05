@@ -29,4 +29,9 @@ public interface BoardDAO {
 	   int deleteBoardFile(int bNo);
 
 	   int deleteFile(int bfNo);
+
+	   int searchSelectListCount(String searchType, String keyword);
+
+	   List<Map<String, String>> searchSelectList(String searchType, String keyword, int cPage, int numPerPage);
+
 }

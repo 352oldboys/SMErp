@@ -31,10 +31,10 @@ public class QBoardCommentController {
 		String msg = "";
 		
 		if( result > 0) {
-			msg = "댓글이 등록되었습니다!!";
+			msg = "답변이 등록되었습니다!!";
 			
 		} else {
-			msg = "댓글이 등록되지 않았습니다 관리자에게 문의하세요!!";
+			msg = "답변이 등록되지 않았습니다 관리자에게 문의하세요!!";
 		}
 		
 		model.addAttribute("loc", loc).addAttribute("msg", msg);
@@ -47,13 +47,13 @@ public class QBoardCommentController {
 			
 			int result = qboardCommentService.deleteQBoardComment(qcno);
 			
-			String loc = "/board/boardView.do?no="+qNo;
+			String loc = "/qboard/qboardView.do?no="+qNo;
 			String msg = "";
 			
 			if(result >0) {
-				msg = "댓글 삭제 성공!!";
+				msg = "답변 삭제 성공!!";
 			}else {
-				msg = "댓글 삭제 실패ㅠㅠ";
+				msg = "답변 삭제 실패ㅠㅠ";
 			}
 			
 			model.addAttribute("loc", loc).addAttribute("msg", msg);

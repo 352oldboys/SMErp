@@ -12,10 +12,9 @@
 		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
 		div#board-container input{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
-		div#board-container label.custom-file-label{text-align:left;}
-	
-		
+		div#board-container label.custom-file-label{text-align:left;}	
 	</style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 	<script>
 	/* textarea에도 required속성을 적용가능하지만, 공백이 입력된 경우 대비 유효성검사를 실시함. */
 	function validate(){
@@ -28,7 +27,7 @@
 	}
 	
 	/*부트스트랩 : file 변경시 파일명 보이기 */
-	$(function(){
+	/* $(function(){
 		$('[name=upFile]').on('change',function(){
 		    //var fileName = $(this).val();//C:\fakepath\파일명
 		    //var fileName = this.files[0].name;//파일명(javascript)
@@ -38,7 +37,7 @@
 		    console.log($(this).val()); 
 		    $(this).next('.custom-file-label').html(fileName);
 		})
-	});
+	}); */
 	</script>
 </head>
 <body>
@@ -46,6 +45,7 @@
 	 <div id="wrapper">
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
+		<img src="${pageContext.request.contextPath}/resources/img/smerp2.png" />
 			<form name="boardFrm" action="${pageContext.request.contextPath}/board/boardFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
 				<input type="text" class="form-control" placeholder="제목" name="bTitle" id="bTitle" required>
 				<input type="text" class="form-control" name="bWriter" value="${member.userId}" readonly required>
@@ -71,12 +71,27 @@
 				</div>
 			    <textarea class="form-control" name="bContent" placeholder="내용" required "></textarea>
 				<br />
-				<input type="submit" class="btn btn-outline-success" value="저장" >
+				<input style= "border:0;"  type="submit" class="button" value="작성완료"  >
 			</form>
 		</div>
+		<br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br />
 		<c:import url="../common/footer.jsp"/>
 		        </div>
     <!-- End of Content Wrapper -->
 	</div>
+		<script>
+	$(function(){
+		$('[name=upFile]').on('change',function(){
+		    //var fileName = $(this).val();//C:\fakepath\파일명
+		    //var fileName = this.files[0].name;//파일명(javascript)
+		    //var fileName = $(this)[0].files[0].name;//파일명(jquery)
+		    var fileName = $(this).prop('files')[0].name;//파일명(jquery)
+			//console.log($(this).prop('files'));//FileList {0: File(54955), length: 1}
+		    console.log($(this).val()); 
+		    $(this).next('.custom-file-label').html(fileName);
+		})
+	});
+	</script>
 </body>
 </html>

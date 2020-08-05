@@ -11,9 +11,9 @@ public interface NoticeService {
 	static int NOTICE_SERVICE_ERROR = 0;
 	   static int NOTICE_SERVICE_COMPLETE = 1;
 	   
-	   List<Map<String, String>> selectNoticeList(int cPage, int numPerPage);
+	   List<Map<String, String>> selectNoticeList(String searchType, String keyword, int cPage, int numPerPage);
 
-	   int selectNoticeTotalContents();
+	   int selectNoticeTotalContents(String searchType, String keyword);
 
 	   int insertNotice(Notice notice, List<Attachment> attachList);
 

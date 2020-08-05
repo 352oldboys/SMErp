@@ -20,15 +20,31 @@ public class QBoardServiceImpl implements QBoardService{
 	
 
 	@Override
-	public List<Map<String, String>> selectQBoardList(int cPage, int numPerPage) {
+	public List<Map<String, String>> selectQBoardList(String searchType, String keyword, int cPage, int numPerPage) {
 		
-		return qboardDAO.selectQBoardList(cPage, numPerPage);
+		if(searchType != null && (searchType.length()>0 && !searchType.equals("null"))) {
+	         
+	         return qboardDAO.searchSelectList(searchType, keyword, cPage, numPerPage);
+	         
+	      } else {
+	         
+	         return qboardDAO.selectQBoardList(cPage, numPerPage);
+	         
+	      }
 	}
 	@Override
-	public int selectQBoardTotalContents() {
+	public int selectQBoardTotalContents(String searchType, String keyword) {
 		
-		return qboardDAO.selectQBoardTotalContents();
-	
+		if(searchType != null && (searchType.length()>0 && !searchType.equals("null"))) {
+	         
+	         return qboardDAO.searchSelectListCount(searchType, keyword);
+	         
+	      } else {
+	         
+	         return qboardDAO.selectQBoardTotalContents();
+	         
+	      }
+		
 }
 	@Override
 	public int insertQBoard(QBoard qboard, List<QBoardFile> fileList) {

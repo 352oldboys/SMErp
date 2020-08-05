@@ -18,15 +18,31 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeDAO noticeDAO;
 	
 	@Override
-	public List<Map<String, String>> selectNoticeList(int cPage, int numPerPage) {
+	public List<Map<String, String>> selectNoticeList(String searchType, String keyword, int cPage, int numPerPage) {
 		
-		return noticeDAO.selectNoticeList(cPage, numPerPage);
+		if(searchType != null && (searchType.length()>0 && !searchType.equals("null"))) {
+	         
+	         return noticeDAO.searchSelectList(searchType, keyword, cPage, numPerPage);
+	         
+	      } else {
+	         
+	         return noticeDAO.selectNoticeList(cPage, numPerPage);
+	         
+	      }
 	}
 
 	@Override
-	public int selectNoticeTotalContents() {
+	public int selectNoticeTotalContents(String searchType, String keyword) {
 		
-		return noticeDAO.selectNoticeTotalContents();
+		if(searchType != null && (searchType.length()>0 && !searchType.equals("null"))) {
+	         
+	         return noticeDAO.searchSelectListCount(searchType, keyword);
+	         
+	      } else {
+	         
+	         return noticeDAO.selectNoticeTotalContents();
+	         
+	      }
 	}
 
 	@Override

@@ -29,5 +29,9 @@ public interface NoticeDAO {
 	   int deleteAttachment(int nNo);
 
 	   int deleteFile(int attNo);
+	   
+	   int searchSelectListCount(String searchType, String keyword);
+
+	   List<Map<String, String>> searchSelectList(String searchType, String keyword, int cPage, int numPerPage);
 }
 

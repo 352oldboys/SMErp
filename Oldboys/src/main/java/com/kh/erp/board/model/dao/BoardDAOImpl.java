@@ -75,4 +75,44 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.delete("boardMapper.deleteBoardFileOne", bfNo);
 	}
 
+	@Override
+	public int searchSelectListCount(String searchType, String keyword) {
+		
+		int result = 0;
+		
+		System.out.println("dao keyword : " + keyword);
+		
+		switch(searchType) {
+		case "bTitle" :
+			result = sqlSession.selectOne("boardMapper.searchBtitleCount", keyword);
+		case "bContent" :
+			result = sqlSession.selectOne("boardMapper.searchBcontentCount", keyword);
+		}
+		
+		return result;
+		
+		
+		
+	}
+
+	@Override
+	public List<Map<String, String>> searchSelectList(String searchType, String keyword, int cPage, int numPerPage) {
+
+		List<Map<String, String>> sql = null;
+		
+		RowBounds rows = new RowBounds((cPage-1)*numPerPage, numPerPage);
+		
+		switch(searchType) {
+		case "bTitle" :
+		    sql = sqlSession.selectList("boardMapper.searchBtitle", keyword, rows);
+		case "bContent" :
+		    sql = sqlSession.selectList("boardMapper.searchBcontent", keyword, rows);
+		}
+		
+		System.out.println("sql : " + sql);
+		
+		return sql;
+		
+	}
+
 }

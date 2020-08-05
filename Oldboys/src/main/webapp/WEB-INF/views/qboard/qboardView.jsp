@@ -1,19 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.*, com.kh.erp.qboardComment.model.vo.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-		div#board-container{width:400px; margin:0 auto; text-align:center;}
+	<title>자유게시판 상세보기</title>
+	<style>
+		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
 		div#board-container input,div#board-container button{margin-bottom:15px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
+	hr.two{
+		width:600px;
+		background:#255ff4;
+		border:2.5px solid ;
+		color:#255ff4;
+		}
 	</style>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board.css">
 	<script>
 		function fileDownload(oName, rName){
 			//한글파일명이 있을 수 있으므로, 명시적으로 encoding
@@ -23,32 +30,45 @@
 	</script>
 </head>
 <body>
-<div id="container">
+	<div id="container">
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
-      
+       <br /><br />
 		<div id="board-container">
-			<input type="text" class="form-control" placeholder="제목" name="qTitle" id="qTitle" value="${qboard.qTitle }" required>
-						<br />
-			<input type="text" class="Dateform-control" placeholder="날짜" name="qDate" id="qDate" value="작성일 : ${qboard.qDate }"readonly required>
-			<input type="text" class="form-control" name="qWriter" value="${qboard.qWriter}" readonly required>
+			<input type="text" class="Titleform-control" placeholder="제목" name="qTitle" id="qTitle" value="제목 : ${qboard.qTitle }"readonly required style="width: 1000px;font-weight:bolder;">
+						<hr class="two">	
+			<%-- <input type="text" class="Dateform-control" placeholder="날짜" name="bDate" id="bDate" value="작성일 : ${board.bDate }"readonly required>
+			<input type="text" class="form-control" name="bWriter" value="${board.bWriter}" readonly required> --%>
 		
 			<c:forEach items="${qboardfileList}" var="q" varStatus="vs">
-				<button type="button" 
-						class="btn btn-outline-success btn-block"
-						onclick="fileDownload('${q.originalFileName}','${q.renamedFileName }');">
-					첨부파일${vs.count} - ${q.originalFileName }
+				<%-- <button  style="display: inline-block; width:300px; border:0; hight:80px" type="button" 
+						class="button" 
+						onclick="fileDownload('${q.originalFileName}','${q.renamedFileName }');">첨부파일${vs.count} - ${q.originalFileName }		
+				</button> --%>
+			<!-- 	<button class="button"  style="border:0; float:right;  margin-bottom:10px;" onclick="fn_goNoticeForm();"><b>글쓰기</b></button> -->
+			<button type="button" id="downbtn" data-dl style="display: inline-block; width:300px;" onclick="fileDownload('${q.originalFileName}','${q.renamedFileName }');">첨부파일${vs.count} - ${q.originalFileName }>
+					<span class="dl-icon"></span>
+					<span>&#x44;&#x6F;&#x77;&#x6E;&#x6C;&#x6F;&#x61;&#x64;</span>
 				</button>
 			</c:forEach>
-		    <textarea class="form-control" name="qContent" placeholder="내용" required>${qboard.qContent }</textarea>
-		    <br>
-		    <button class="btn btn-outline-info" type="button" onclick="location.href='${pageContext.request.contextPath}/qboard/qboardList.do'">리스트로</button>
+			<br />
+			<br />
+			<div  class="card">
+			<div style="  font-size:25px; "class="card-block">
+		   <textarea style ="background: #fcfeff; color: #2E2E2E; margin-top:8px;  width:980px;" name="bContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${qboard.qContent }
+		    <%-- <div  style="color: #2E2E2E;' " class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div> --%>
+		    </textarea>
+			</div>
+			</div>
+			<br />
+		    <button style=" border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/qboard/qboardList.do'">리스트로</button>
 		    <c:if test="${member.userId eq qboard.qWriter}">
 		    &nbsp;
-			<button class="btn btn-outline-info" type="button" onclick="location.href='${pageContext.request.contextPath}/qboard/qboardUpdateView.do?qNo=${qboard.qNo}'">수정 페이지</button>
+			<button style="border:0;" class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/qboard/qboardUpdateView.do?qNo=${qboard.qNo}'">수정 페이지</button>
 			</c:if>
 		</div>
-		
+		<br /><br /><br /><br /><br /> 
+		<br /><br /><br /><br /><br />
        <%--         <c:forEach items="${bclist}" var="bc">
                <tbody>
   				<tr>
@@ -59,7 +79,9 @@
                			</tbody>
                		
                		  </c:forEach>  --%>
-               		  
+               		<br /><br /><br /><br /><br /> 
+		<br /><br /><br /><br /><br />		 
+		 
 		     <div class="replyArea">
           <div class="row">
             <div class="col-md-8 mx-auto" id="replySelectArea"> <!-- 게시글의 댓글 목록 구현부 -->
@@ -69,21 +91,21 @@
                 style="margin-left : 0px; width : 100.0%;" class="replyList1">
                 <c:forEach items="${qclist}" var="qc">
                   <tr>
-                    <td style="width:80px;"><b>&nbsp;&nbsp;${qc.userNo} </b></td>
+                    <td style="width:80px;"><b>&nbsp;&nbsp;admin </b></td>
                     <td>${qc.qdate}</td>
                     <td align="center">
+                    <c:if test="${member.userNo == qc.userNo }">
                       <div class="text-right">
                         <input type="hidden" name="qcno" value="11"/>                
-                        <button type="button" class="updateBtn btn btn-md btn-info" 
-                          onclick="goUpdate();" style="border-radius: 10px;">수정하기</button>
                         <button type="button" class="deleteBtn btn btn-md btn-info"
                           onclick="location.href='${pageContext.request.contextPath}/qboardComment/qboardCommentDelete.do?qNo=${qc.qNo}&qcno=${qc.qcno}'" style="border-radius: 10px;">삭제하기</button> &nbsp;        
                       </div>
+                      </c:if>
                     </td>
                   </tr>
-                  <tr class="comment replyList1"> 
+                  <tr class="comment replyList1">
                     <td colspan="3" style="background : transparent;">
-                    <textarea class="reply-content" cols="105" rows="2" style="border:none; width:100%; resize:none; outline: none;"
+                    <textarea class="reply-content" cols="105" rows="2" style="background:none;border:none; width:100%; resize:none; outline: none;"
                     readonly="readonly">&nbsp;&nbsp;${qc.qcontent}
                     </textarea>
                     </td>
@@ -101,6 +123,7 @@
     
         <div class="row">
           <div class="col-lg-8 mx-auto">
+           <c:if test="${member.userId == 'admin' }">
             <div class="replyWriteArea" style="border: 1px solid gray; border-radius: 10px;">
               <form action="${pageContext.request.contextPath}/qboardComment/insertQBoardComment.do"method="post">
                 <div class="text-left" style="padding-left: 15px;">
@@ -111,16 +134,17 @@
                   <input type="hidden" name="userNo" value="${ member.userNo }"/>
                   <input type="hidden" name="qNo" value="${ qboard.qNo }"  />
                   <input type="hidden" name="refcno" value="0" />
-                  <input type="hidden" name="clevel" value="1" />
+                  <input type="hidden" name="qlevel" value="1" />
            
-                  <textArea rows="3" cols="80" id="replyContent" name="qcontent" style="border:none; width:97%; resize:none; outline: 0;" placeholder="댓글을 입력해보세요!">${ qboardComment.qcontent }</textArea>
+                  <textArea rows="3" cols="80" id="replyContent" name="qcontent" style="background:none ;border:none; width:97%; resize:none; outline: 0;" placeholder="답변을 입력해주세요!">${ qboardComment.qcontent }</textArea>
                 </div>
                 <div class="text-right">
-                  <button type="submit" class="btn btn-md btn-info" id="addReply" style="border-radius: 10px;" >댓글 등록</button>&nbsp;&nbsp;&nbsp;
+                  <button type="submit" class="btn btn-md btn-info" id="addReply" style="border-radius: 10px;" >답변 등록</button>&nbsp;&nbsp;&nbsp;
                 <div style="height : 10px"></div>
                 </div>
               </form>
             </div>
+            </c:if>
           </div>
         </div>
         
@@ -132,20 +156,6 @@
     <br>
     <br>
     <script>
-   function goDelete(){
-
-	    var qcno = $(obj).siblings('input').val();
-	      
-	      
-	    var qNo = '${qboard.qNo}';
-
-	   
-        location.href="${pageContext.request.contextPath}/hotspotBoard/hotspotDelete.ho?hNo=${hotspotBoard.HNo}"
-    }; 
-    
-    function goUpdate(){
-       location.href="${pageContext.request.contextPath}/hotspotBoard/hotspotUpdateView.ho?no=${hotspotBoard.HNo}"
-    };
 
   
    function updateReply(obj) {
@@ -175,17 +185,6 @@
              +"cno="+cno+"&bno="+bno+"&content="+content;
    }
    
-   function deleteReply(obj) {
-      // 댓글의 번호 가져오기
-      var cno = $(obj).siblings('input').val();
-      
-      // 게시글 번호 가져오기
-      var bNo = '${board.bNo}';
-      
-      location.href="/codingPanda/deleteComment.bo"
-      +"?cno="+cno+"&bno="+bno;
-   }
-   
    function reComment(obj){
       // 추가 완료 버튼을 화면 보이게 하기
       $(obj).siblings('.insertConfirm').css('display','inline');
@@ -202,39 +201,48 @@
          + '</tr>';
       
       $(obj).parents('table').append(htmlForm);
-      
+ 
    }
    
-   function reConfirm(obj) {
-      // 댓글의 내용 가져오기
-      
-      // 참조할 댓글의 번호 가져오기
-      var refcno = $(obj).siblings('input[name="refcno"]').val();
-      var level = Number($(obj).siblings('input[name="clevel"]').val()) + 1;
-      
-      // console.log(refcno + " : " + level);
-      
-      // 게시글 번호 가져오기
-      var bno = '${board.bNo}';
-      
-      var parent = $(obj).parent().parent();
-      var grandparent = parent.parent();
-      var siblingsTR = grandparent.siblings().last();
-      
-      var content = siblingsTR.find('textarea').val();
-      
-      
-      location.href='/codingPanda/insertComment.bo'
-                 + '?writer=${member.userId}'
-                 + '&replyContent=' + ccontent
-                 + '&bNo=' + bNo
-                 + '&refcno=' + refcno
-                 + '&clevel=' + level;
-   }
-   
-   
-   }
-   
+	document.addEventListener("DOMContentLoaded",function(){
+		this.addEventListener("click",e => {
+			let tar = e.target;
+			if (tar.hasAttribute("data-dl")) {
+				let dlClass = "dl-working";
+				if (!tar.classList.contains(dlClass)) {
+					let lastSpan = tar.querySelector("span:last-child"),
+						lastSpanText = lastSpan.textContent,
+						timeout = getMSFromProperty("--dur",":root");
+	
+					tar.classList.add(dlClass);
+					lastSpan.textContent = "Downloading…";
+					tar.disabled = true;
+	
+					setTimeout(() => {
+						lastSpan.textContent = "Completed!";
+					},timeout * 0.9);
+	
+					setTimeout(() => {
+						tar.classList.remove(dlClass);
+						lastSpan.textContent = lastSpanText;
+						tar.disabled = false;
+					},timeout + 1e3);
+				}
+			}
+		});
+	});
+	
+	function getMSFromProperty(property,selector) {
+		let cs = window.getComputedStyle(document.querySelector(selector)),
+			transDur = cs.getPropertyValue(property),
+			msLabelPos = transDur.indexOf("ms"),
+			sLabelPos = transDur.indexOf("s");
+	
+		if (msLabelPos > -1)
+			return transDur.substr(0,msLabelPos);
+		else if (sLabelPos > -1)
+			return transDur.substr(0,sLabelPos) * 1e3;
+	}
    </script>
 
    <c:import url="../common/footer.jsp"/>
