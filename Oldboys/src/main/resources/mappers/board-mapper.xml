@@ -6,7 +6,9 @@
 	
 	<select id="selectBoardList" resultType="Board">
 		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
-		FROM BOARD B ORDER BY BDATE DESC, BNO DESC
+		FROM BOARD B 
+		ORDER BY BDATE DESC, BNO DESC
+	
 	</select>
 	
 	<select id="selectBoardTotalContent" resultType="_int">
@@ -68,6 +70,39 @@
 		DELETE FROM BAORDFILE
 		WHERE BOARDFILENO = #{bfNo}
 	</delete>
+	
+	<select id="searchBtitleCount" resultType="_int">
+		
+		SELECT COUNT(*) 
+		FROM BOARD
+		WHERE BTITLE LIKE '%' || #{keyword} || '%'
+		
+	</select>
+	
+	<select id="searchBcontentCount"  resultType="_int">
+		
+		SELECT COUNT(*) 
+		FROM BOARD
+		WHERE BCONTENT LIKE '%' || #{keyword} || '%'
+		
+	</select>
+	
+	<select id="searchBtitle"   resultType="Board">
+		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
+		FROM BOARD B 
+		WHERE B.BTITLE LIKE '%' || #{keyword} || '%'
+		ORDER BY BDATE DESC, BNO DESC
+	</select>
+	
+	<select id="searchBcontent"  resultType="Board">
+		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
+		FROM BOARD B 
+		WHERE B.BCONTENT LIKE '%' || #{keyword} || '%'
+		ORDER BY BDATE DESC, BNO DESC
+	</select>
+	
+	
+	
 	
 </mapper>
 

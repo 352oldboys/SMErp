@@ -25,7 +25,7 @@
 		}
 		return true;
 	}
-	
+
 	/*부트스트랩 : file 변경시 파일명 보이기 */
 	/* $(function(){
 		$('[name=upFile]').on('change',function(){
@@ -47,6 +47,7 @@
 	 <div id="wrapper">
       <c:import url="../common/header.jsp"/>
 		<div id="board-container">
+		<img src="${pageContext.request.contextPath}/resources/img/smerp2.png" />
 			<form name="boardFrm" action="${pageContext.request.contextPath}/notice/noticeFormEnd.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
 				<input type="text" class="form-control" placeholder="제목" name="nTitle" id="nTitle" required>
 				<input type="text" class="form-control" name="nWriter" value="${member.userId}" readonly required>
@@ -72,9 +73,11 @@
 				</div>
 			    <textarea class="form-control" name="nContent" placeholder="내용" required "></textarea>
 				<br />
-				<input style="margin-left: 450px; border:0;"  type="submit" class="button" value="작성완료"  >
+				<input style= "border:0;"  type="submit" class="button" value="작성완료"  >
 			</form>
 		</div>
+		<br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br />
 		<c:import url="../common/footer.jsp"/>
 		        </div>
     <!-- End of Content Wrapper -->

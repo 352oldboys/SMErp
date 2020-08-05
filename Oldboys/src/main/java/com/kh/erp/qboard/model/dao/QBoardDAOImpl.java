@@ -75,5 +75,43 @@ import com.kh.erp.qboard.model.vo.QBoardFile;
 			return sqlSession.delete("qboardMapper.deleteQBoardFileOne", qfNo);
 		}
 		
+		@Override
+		public int searchSelectListCount(String searchType, String keyword) {
+			
+			int result = 0;
+			
+			System.out.println("dao keyword : " + keyword);
+			
+			switch(searchType) {
+			case "qTitle" :
+				result = sqlSession.selectOne("qboardMapper.searchQtitleCount", keyword);
+			case "qContent" :
+				result = sqlSession.selectOne("qboardMapper.searchQcontentCount", keyword);
+			}
+			
+			return result;
+			
+			
+			
+		}
+		@Override
+		public List<Map<String, String>> searchSelectList(String searchType, String keyword, int cPage, int numPerPage) {
+
+			List<Map<String, String>> sql = null;
+			
+			RowBounds rows = new RowBounds((cPage-1)*numPerPage, numPerPage);
+			
+			switch(searchType) {
+			case "qTitle" :
+			    sql = sqlSession.selectList("qboardMapper.searchQtitle", keyword, rows);
+			case "qContent" :
+			    sql = sqlSession.selectList("qboardMapper.searchQcontent", keyword, rows);
+			}
+			
+			System.out.println("sql : " + sql);
+			
+			return sql;
+			
+		}
 }
 

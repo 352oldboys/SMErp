@@ -19,12 +19,22 @@ private static final long serialVersionUID = 486L;
 	private int readCount;
 	private int fileCount;
 	private List<Attachment> files = new ArrayList<Attachment>();
+	private String searchType;
+	private String keyword;	
+	
 	public Notice() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Notice(String searchType, String keyword) {
+		super();
+		this.searchType = searchType;
+		this.keyword = keyword;
+	}
+
 	public Notice(int nNo, String nTitle, String nWriter, String nContent, Date nDate, int readCount, int fileCount,
-			List<Attachment> files) {
+			List<Attachment> files, String searchType, String keyword) {
 		super();
 		this.nNo = nNo;
 		this.nTitle = nTitle;
@@ -34,12 +44,14 @@ private static final long serialVersionUID = 486L;
 		this.readCount = readCount;
 		this.fileCount = fileCount;
 		this.files = files;
+		this.searchType = searchType;
+		this.keyword = keyword;
 	}
 	@Override
 	public String toString() {
 		return "Notice [nNo=" + nNo + ", nTitle=" + nTitle + ", nWriter=" + nWriter + ", nContent=" + nContent
 				+ ", nDate=" + nDate + ", readCount=" + readCount + ", fileCount=" + fileCount + ", files=" + files
-				+ "]";
+				+ ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 	public int getnNo() {
 		return nNo;
@@ -89,6 +101,17 @@ private static final long serialVersionUID = 486L;
 	public void setFiles(List<Attachment> files) {
 		this.files = files;
 	}
-
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	
 }

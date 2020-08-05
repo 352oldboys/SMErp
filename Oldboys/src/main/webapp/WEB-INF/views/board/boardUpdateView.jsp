@@ -82,7 +82,7 @@
 						첨부파일${vs.count} - ${a.originalFileName }
 					</button>
 					<button type="button" class="btn btn-outline-danger col-3"
-							onclick="fileDelete(this, '${a.attachmentNo}', '${a.renamedFileName }');">파일 삭제</button>
+							onclick="fileDelete(this, '${a.boardfileNo}', '${a.renamedFileName }');">파일 삭제</button>
 				</div>
 				</c:forEach>
 				<br>

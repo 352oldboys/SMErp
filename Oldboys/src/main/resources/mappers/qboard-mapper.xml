@@ -69,6 +69,38 @@
 		WHERE QBOARDFILENO = #{qfNo}
 	</delete>
 	
+	<select id="searchQtitleCount" resultType="_int">
+		
+		SELECT COUNT(*) 
+		FROM QBOARD
+		WHERE QTITLE LIKE '%' || #{keyword} || '%'
+		
+	</select>
+	
+	<select id="searchQcontentCount"  resultType="_int">
+		
+		SELECT COUNT(*) 
+		FROM QBOARD
+		WHERE QCONTENT LIKE '%' || #{keyword} || '%'
+		
+	</select>
+	
+	<select id="searchQtitle"  resultType="QBoard">
+		SELECT Q.*, (SELECT COUNT(*) FROM QBOARDFILE WHERE QNO = Q.QNO) FILECOUNT
+		FROM QBOARD Q 
+		WHERE Q.QTITLE LIKE '%' || #{keyword} || '%'
+		ORDER BY QDATE DESC, QNO DESC
+	</select>
+	
+	<select id="searchQcontent"  resultType="QBoard">
+		SELECT Q.*, (SELECT COUNT(*) FROM QBOARDFILE WHERE QNO = Q.QNO) FILECOUNT
+		FROM QBOARD Q 
+		WHERE Q.QCONTENT LIKE '%' || #{keyword} || '%'
+		ORDER BY QDATE DESC, QNO DESC
+		
+	</select>
+	
+	
 </mapper>
 
 

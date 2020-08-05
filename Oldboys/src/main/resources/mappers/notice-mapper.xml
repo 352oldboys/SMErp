@@ -70,6 +70,36 @@
 		WHERE ATTACHMENTNO = #{attNo}
 	</delete>
 	
+	<select id="searchNtitleCount" resultType="_int">
+		
+		SELECT COUNT(*) 
+		FROM NOTICE
+		WHERE NTITLE LIKE '%' || #{keyword} || '%'
+		
+	</select>
+	
+	<select id="searchNcontentCount"  resultType="_int">
+		
+		SELECT COUNT(*) 
+		FROM NOTICE
+		WHERE NCONTENT LIKE '%' || #{keyword} || '%'
+		
+	</select>
+	
+	<select id="searchNtitle"  resultType="Notice">
+		SELECT A.*, (SELECT COUNT(*) FROM ATTACHMENT WHERE NNO = A.NNO) FILECOUNT
+		FROM NOTICE A 
+		WHERE A.NTITLE LIKE '%' || #{keyword} || '%'
+		ORDER BY NDATE DESC, NNO DESC
+	</select>
+	
+	<select id="searchNcontent"  resultType="Notice">
+		SELECT A.*, (SELECT COUNT(*) FROM ATTACHMENT WHERE NNO = A.NNO) FILECOUNT
+		FROM NOTICE A 
+		WHERE A.NCONTENT LIKE '%' || #{keyword} || '%'
+		ORDER BY NDATE DESC, NNO DESC
+	</select>
+	
 </mapper>
 
 

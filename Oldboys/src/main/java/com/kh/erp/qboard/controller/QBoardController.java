@@ -43,27 +43,31 @@ public class QBoardController {
 	
 	@RequestMapping("/qboard/qboardList.do")
 	public String selectQBoardList(
-				@RequestParam(value="cPage", required=false, defaultValue="1")
-				int cPage, Model model) {
+			@RequestParam(value="cPage", required=false, defaultValue="1")
+			int cPage, Model model, @RequestParam(required = false, value = "searchType") String searchType, 
+			HttpServletRequest request, @RequestParam(required = false) String keyword) throws Exception {
 		
 		// 한 페이지 당 게시글 수
 				int numPerPage = 10; // limit 역할
 				
+				// 2. 페이지 계산을 위한 총 패이지 갯수
+				int totalContents = qboardService.selectQBoardTotalContents(searchType, keyword);
+				
 				// 1. 현재 페이지 게시글 목록 가져오기
 				List<Map<String, String>> list
-						= qboardService.selectQBoardList(cPage, numPerPage);
+						= qboardService.selectQBoardList(searchType, keyword, cPage, numPerPage);
 				
-				// 2. 페이지 계산을 위한 총 패이지 갯수
-				int totalContents = qboardService.selectQBoardTotalContents();
 				
 				// 3. 페이지 HTML 생성
-				String pageBar = Utils.getPageBar(totalContents, cPage, numPerPage, "qboardList.do");
+				String pageBar = Utils.getPageBar(totalContents, cPage, numPerPage, "qboardList.do", searchType, keyword);
 				
 				model.addAttribute("list", list)
 					 .addAttribute("totalContents", totalContents)
 					 .addAttribute("numPerPage", numPerPage)
 					 .addAttribute("pageBar", pageBar);
 				
+				model.addAttribute("searchType",searchType);
+				model.addAttribute("keyword",keyword);
 				return "qboard/qboardList";		
 	}
 	

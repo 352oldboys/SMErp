@@ -18,15 +18,33 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO boardDAO;
 	
 	@Override
-	public List<Map<String, String>> selectBoardList(int cPage, int numPerPage) {
+	public List<Map<String, String>> selectBoardList(String searchType, String keyword, int cPage, int numPerPage) {
 		
-		return boardDAO.selectBoardList(cPage, numPerPage);
+		if(searchType != null && (searchType.length()>0 && !searchType.equals("null"))) {
+	         
+	         return boardDAO.searchSelectList(searchType, keyword, cPage, numPerPage);
+	         
+	      } else {
+	         
+	         return boardDAO.selectBoardList(cPage, numPerPage);
+	         
+	      }
+		
 	}
 
 	@Override
-	public int selectBoardTotalContents() {
+	public int selectBoardTotalContents(String searchType, String keyword) {
 		
-		return boardDAO.selectBoardTotalContents();
+		if(searchType != null && (searchType.length()>0 && !searchType.equals("null"))) {
+	         
+	         return boardDAO.searchSelectListCount(searchType, keyword);
+	         
+	      } else {
+	         
+	         return boardDAO.selectBoardTotalContents();
+	         
+	      }
+	      
 	}
 
 	@Override

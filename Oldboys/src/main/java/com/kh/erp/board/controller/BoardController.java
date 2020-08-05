@@ -1,6 +1,7 @@
 package com.kh.erp.board.controller;
 
 import java.io.BufferedInputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -43,25 +44,37 @@ public class BoardController {
 	@RequestMapping("/board/boardList.do")
 	public String selectBoardList(
 				@RequestParam(value="cPage", required=false, defaultValue="1")
-				int cPage, Model model) {
+				int cPage, Model model, @RequestParam(required = false, value = "searchType") String searchType, 
+				HttpServletRequest request, @RequestParam(required = false) String keyword) throws Exception {
+
+		System.out.println("keyword1 : " + keyword);
+		System.out.println("searchType : " + searchType);
+		
 		
 		// 한 페이지 당 게시글 수
 		int numPerPage = 10; // limit 역할
 		
+		
+		// 2. 페이지 계산을 위한 총 페이지 갯수
+		int totalContents = boardService.selectBoardTotalContents(searchType, keyword);
+		
 		// 1. 현재 페이지 게시글 목록 가져오기
 		List<Map<String, String>> list
-				= boardService.selectBoardList(cPage, numPerPage);
-		
-		// 2. 페이지 계산을 위한 총 패이지 갯수
-		int totalContents = boardService.selectBoardTotalContents();
+		= boardService.selectBoardList(searchType, keyword, cPage, numPerPage);
+		System.out.println("keyword2 : " + keyword);
 		
 		// 3. 페이지 HTML 생성
-		String pageBar = Utils.getPageBar(totalContents, cPage, numPerPage, "boardList.do");
+		String pageBar = Utils.getPageBar(totalContents, cPage, numPerPage, "boardList.do", searchType, keyword);
 		
 		model.addAttribute("list", list)
 			 .addAttribute("totalContents", totalContents)
 			 .addAttribute("numPerPage", numPerPage)
 			 .addAttribute("pageBar", pageBar);
+			
+		System.out.println("list : " + list);
+		
+		model.addAttribute("searchType",searchType);
+		model.addAttribute("keyword",keyword);
 		
 		return "board/boardList";		
 	}

@@ -11,9 +11,9 @@ public interface QBoardService {
 		static int BOARD_SERVICE_ERROR = 0;
 	   static int BOARD_SERVICE_COMPLETE = 1;
 	
-	   List<Map<String, String>> selectQBoardList(int cPage, int numPerPage);
+	   List<Map<String, String>> selectQBoardList(String searchType, String keyword, int cPage, int numPerPage);
 
-	   int selectQBoardTotalContents();
+	   int selectQBoardTotalContents(String searchType, String keyword);
 
 	   int insertQBoard(QBoard qboard, List<QBoardFile> fileList);
 

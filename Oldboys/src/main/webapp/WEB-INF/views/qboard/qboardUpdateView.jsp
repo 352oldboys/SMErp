@@ -82,7 +82,7 @@
 						첨부파일${vs.count} - ${q.originalFileName }
 					</button>
 					<button type="button" class="btn btn-outline-danger col-3"
-							onclick="fileDelete(this, '${q.qboardfiletNo}', '${q.renamedFileName }');">파일 삭제</button>
+							onclick="fileDelete(this, '${q.qboardfileNo}', '${q.renamedFileName }');">파일 삭제</button>
 				</div>
 				</c:forEach>
 				<br>

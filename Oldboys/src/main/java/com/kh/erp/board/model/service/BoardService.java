@@ -14,9 +14,9 @@ public interface BoardService {
 		static int BOARD_SERVICE_ERROR = 0;
 	   static int BOARD_SERVICE_COMPLETE = 1;
 	   
-	   List<Map<String, String>> selectBoardList(int cPage, int numPerPage);
+	   List<Map<String, String>> selectBoardList(String searchType, String keyword, int cPage, int numPerPage);
 
-	   int selectBoardTotalContents();
+	   int selectBoardTotalContents(String searchType, String keyword);
 
 	   int insertBoard(Board board, List<BoardFile> fileList);
 

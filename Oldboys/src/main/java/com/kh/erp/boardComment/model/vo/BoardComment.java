@@ -10,6 +10,7 @@ public class BoardComment implements Serializable{
 	private static final long serialVersionUID = 486L;
 
 	private int cno;
+	private String userId;
 	private int userNo;
 	private int bNo;
 	private String ccontent;
