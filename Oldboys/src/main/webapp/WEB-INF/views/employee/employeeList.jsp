@@ -40,7 +40,7 @@
 			<div class="container-fluid">
 	
 	          <!-- Page Heading -->
-	          <h1 class="h3 mb-2 text-gray-800">인사관리</h1>
+	          <h1 class="h3 mb-2 text-gray-800">인사정보</h1>
 	          <p class="mb-4">인사 업무를 전산화하면, 언제든 원하는 조건으로 조회할 수 있어 효율적인 인사 업무를 수행할 수 있습니다.</p>
 	
 	          <!-- DataTales Example -->
@@ -71,89 +71,136 @@
 	                              </div>
 	                              <div class="modal-body mx-3">
 	                              	
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="empNo">사원 번호</label>
-	                                    <input type="text" name="empNo" id="empNo" class="form-control validate">
-	                                 </div>
-	                              
-	                                 <%-- <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
-	                                 </div> --%>
+									<!-- <div class="md-form mb-3">
+									   <i class="fas fa-user prefix grey-text"></i> 
+									   <label data-error="wrong" data-success="right" for="empNo">사원 번호</label>
+									   <input type="text" name="empNo" id="empNo" class="form-control validate">
+									</div> -->
+									
+									<%-- <div class="md-form mb-3">
+									   <i class="fas fa-user prefix grey-text"></i> 
+									   <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
+									   <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
+									</div> --%>
+									
+									<div class="md-form mb-3">
+									   <i class="fa fa-users"></i> 
+									   <label data-error="wrong" data-success="right" for="jobCode">직책</label>
+									   <input type="text" name="jobCode" id="jobCode" class="form-control validate">
+									</div>
+									
+									<div class="md-form mb-3">
+									   <i class="fa fa-user-circle-o"></i>   
+									   <label data-error="wrong" data-success="right" for="name">이름</label>
+									   <input type="text" name="name" id="name" class="form-control validate">
+									</div>
+									
+									<div class="md-form mb-3">
+									   <i class="fa fa-phone"></i> 
+									   <label data-error="wrong" data-success="right" for="phone">연락처</label>
+									   <input type="text" name="phone" id="phone" class="form-control validate">
+									</div>
+									
+									<div class="md-form mb-3">
+									   <i class="fa fa-sort"></i> 
+									   <label data-error="wrong" data-success="right" for="age">나이</label>
+									   <input type="number" name="age" id="age" class="form-control validate">
+									</div>
+									
+									<div class="md-form mb-3">
+									   <i class="fa fa-envelope"></i>
+									   <label data-error="wrong" data-success="right" for="email">이메일</label>
+									   <input type="email" name="email" id="email" class="form-control validate" placeholder="email@example.com"> 
+									</div>
+									
+									<!-- <div class="md-form mb-3">
+									   <i class="fas fa-tag prefix grey-text"></i>
+									   <label data-error="wrong" data-success="right" for="gender">성별</label>
+									   <input type="text" name="gender" id="gender" class="form-control validate">
+									</div> -->
+									
+			                        <div class="md-form mb-3">
+										<i class="fa fa-venus-mars"></i>
+										<label data-error="wrong" data-success="right" for="gender">성별</label>
+										<select class="form-control validate" name="gender" id="gender">
+											<option selected>-</option>
+											<option>F</option>
+											<option>M</option>
+										</select>
+									</div>
+									                        
+			                        <div class="md-form mb-3">
+			                           <i class="fa fa-thumbs-o-up"></i>
+			                           <label data-error="wrong" data-success="right" for="salary">월급</label>
+			                           <input type="text" name="salary" id="salary" class="form-control validate">
+			                        </div>  
+									                          
+			                        <!-- <div class="md-form mb-3">
+									   <i class="fas fa-tag prefix grey-text"></i>
+									   <label data-error="wrong" data-success="right" for="status">재직여부</label>
+									   <input type="text" name="status" id="status" class="form-control validate">
+									</div> -->
+									
+			                        <div class="md-form mb-3">
+		           		             	<i class="fa fa-check-square-o"></i>
+										<label data-error="wrong" data-success="right" for="status">재직여부</label>
+										<select class="form-control validate" name="status" id="status">
+											<option selected>-</option>
+											<option>Y</option>
+											<option>N</option>
+										</select>
+									</div>	                  
+									               
+									<div class="form-row">                        
+				                        <div class="form-group col-md-6">
+				                           <i class="fa fa-sign-in"></i>
+				                           <label data-error="wrong" data-success="right" for="hireDate">입사일</label>
+				                           <input type="date" name="hireDate" id="hireDate" class="form-control validate">
+				                        </div>
+		                                 
+										<div class="form-group col-md-6">
+										   <i class="fa fa-sign-out"></i>
+										   <label data-error="wrong" data-success="right" for="leaveDate">퇴사일</label>
+										   <input type="date" name="leaveDate" id="leaveDate" class="form-control validate">
+										</div>
+	                                </div>
 	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="jobCode">직급 코드</label>
-	                                    <input type="text" name="jobCode" id="jobCode" class="form-control validate">
-	                                 </div>
-	
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="name">이름</label>
-	                                    <input type="text" name="name" id="name" class="form-control validate">
-	                                 </div>
-	
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="phone">연락처</label>
-	                                    <input type="text" name="phone" id="phone" class="form-control validate">
-	                                 </div>
+									<div class="form-row">
+									  <div class="form-group col-md-4">					      
+										<i class="fa fa-university"></i>
+										<label data-error="wrong" data-success="right" for="bank">은행</label>
+										<input type="text" name="bank" id="bank" list="bankList" class="form-control validate" placeholder="직접입력">
+										<datalist id="bankList">
+								            <option value="농협"></option>
+								            <option value="신한"></option>
+								            <option value="IBK기업"></option>
+								            <option value="하나은행"></option>
+								            <option value="우리"></option>
+								            <option value="국민"></option>
+								            <option value="카카오뱅크"></option>
+								            <option value="SC제일"></option>
+								            <option value="대구"></option>
+								            <option value="부산"></option>
+								            <option value="광주"></option>
+								            <option value="새마을"></option>
+								            <option value="우체국"></option>
+										</datalist>
+									  </div>
+									  
+									  <div class="form-group col-md-8">
+										<i class="fa fa-krw"></i>
+										<label data-error="wrong" data-success="right" for="accountNo">계좌번호</label>
+										<input type="text" name="accountNo" id="accountNo" class="form-control validate">
+									  </div>
+									  
+									</div>
 	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="age">나이</label>
-	                                    <input type="text" name="age" id="age" class="form-control validate">
-	                                 </div>
-	
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag  grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="email">이메일</label>
-	                                    <input type="email" name="email" id="email" class="form-control validate"> 
-	                                 </div>
-	
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="gender">성별</label>
-	                                    <input type="text" name="gender" id="gender" class="form-control validate">
-	                                 </div>
-	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="salary">월급</label>
-	                                    <input type="text" name="salary" id="salary" class="form-control validate">
-	                                 </div>  
-	                                   
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="status">재직여부</label>
-	                                    <input type="text" name="status" id="status" class="form-control validate">
-	                                 </div>
-	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="hireDate">입사일</label>
-	                                    <input type="date" name="hireDate" id="hireDate" class="form-control validate">
-	                                 </div>
-	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="leaveDate">퇴사일</label>
-	                                    <input type="date" name="leaveDate" id="leaveDate" class="form-control validate">
-	                                 </div>
-	                                 
-	                                 <div class="md-form">
-	                                    <i class="fas fa-pencil prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="accountNo">계좌번호</label>
-	                                    <textarea type="text" name="accountNo" id="accountNo" class="md-textarea form-control" rows="4"></textarea>
-	                                 </div>
-	 								
 	                              </div>
 	                              
 	                              <div class="modal-footer d-flex justify-content-center">
 	                                <button class="btn btn-unique">추가하기</button>	                                 
-	                              </div>	                              
+	                              </div>
+	                              	                              
 	                           </div>
 	                        </div>
 	                     </div>
@@ -180,8 +227,8 @@
 	                              <div class="modal-body mx-3">
 	                              	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="empNo">사원 번호</label>
+	                                    <i class="fas fa-user"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uEmpNo">사원 번호</label>
 	                                    <input type="text" name="empNo" id="uEmpNo" class="form-control validate">
 	                                 </div>
 	                              
@@ -192,70 +239,99 @@
 	                                 </div> --%>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="jobCode">직급 코드</label>
+	                                    <i class="fas fa-user"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uJobCode">직책</label>
 	                                    <input type="text" name="jobCode" id="uJobCode" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="name">이름</label>
+	                                    <i class="fas fa-tag"></i>   
+	                                    <label data-error="wrong" data-success="right" for="uName">이름</label>
 	                                    <input type="text" name="name" id="uName" class="form-control validate">
 	                                 </div>
 	
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="phone">연락처</label>
+	                                 <div class="md-form mb-3">
+	                                    <i class="fas fa-tag"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uPhone">연락처</label>
 	                                    <input type="text" name="phone" id="uPhone" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="age">나이</label>
-	                                    <input type="text" name="age" id="uAge" class="form-control validate">
+	                                    <i class="fas fa-tag"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uAge">나이</label>
+	                                    <input type="number" name="age" id="uAge" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag  grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="email">이메일</label>
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uEmail">이메일</label>
 	                                    <input type="email" name="email" id="uEmail" class="form-control validate"> 
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="gender">성별</label>
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uGender">성별</label>
 	                                    <input type="text" name="gender" id="uGender" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="salary">월급</label>
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uSalary">월급</label>
 	                                    <input type="text" name="salary" id="uSalary" class="form-control validate">
 	                                 </div>  
 	                                   
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="status">재직여부</label>
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uStatus">재직여부</label>
 	                                    <input type="text" name="status" id="uStatus" class="form-control validate">
 	                                 </div>
 	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="hireDate">입사일</label>
-	                                    <input type="date" name="hireDate" id="uHireDate" class="form-control validate">
-	                                 </div>
+									<div class="form-row">                        
+				                        <div class="form-group col-md-6">
+				                           <i class="fa fa-sign-in"></i>
+				                           <label data-error="wrong" data-success="right" for="uHireDate">입사일</label>
+				                           <input type="date" name="hireDate" id="uHireDate" class="form-control validate">
+				                        </div>
+		                                 
+										<div class="form-group col-md-6">
+										   <i class="fa fa-sign-out"></i>
+										   <label data-error="wrong" data-success="right" for="uLeaveDate">퇴사일</label>
+										   <input type="date" name="leaveDate" id="uLeaveDate" class="form-control validate">
+										</div>
+	                                </div>
 	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="leaveDate">퇴사일</label>
-	                                    <input type="date" name="leaveDate" id="uLeaveDate" class="form-control validate">
-	                                 </div>
-	                                 
-	                                 <div class="md-form">
-	                                    <i class="fas fa-pencil prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="accountNo">계좌번호</label>
-	                                    <textarea type="text" name="accountNo" id="uAccountNo" class="md-textarea form-control" rows="4"></textarea>
-	                                 </div>
+									<div class="form-row">
+									  <div class="form-group col-md-4">					      
+										<i class="fa fa-university"></i>
+										<label data-error="wrong" data-success="right" for="bank">은행</label>
+										<select class="form-control validate" name="bank" id="uBank">
+											<option value="direct">직접입력</option>
+											<option selected>-</option>
+											<option>농협</option>
+											<option>농협</option>
+											<option>신한</option>
+											<option>IBK기업</option>
+											<option>하나은행</option>
+											<option>우리</option>
+											<option>국민</option>
+											<option>카카오뱅크</option>	
+											<option>SC제일</option>
+											<option>대구</option>
+											<option>부산</option>
+											<option>광주</option>
+											<option>새마을</option>
+											<option>우체국</option>										      
+										</select>
+										<input type="text" id="selboxDirect" name="selboxDirect"/>
+									  </div>
+									  
+									  <div class="form-group col-md-8">
+										<i class="fa fa-krw"></i>
+										<label data-error="wrong" data-success="right" for="accountNo">계좌번호</label>
+										<input type="text" name="accountNo" id="uAccountNo" class="form-control validate">
+									  </div>
+									  
+									</div>
 	 								
 	                              </div>
 	                              
@@ -279,7 +355,7 @@
 						<!-- <td><input type="checkbox"></td> -->
 	                    <th>사원번호</th>
 	                    <!-- <th>사용자 번호</th> -->
-	                    <th>직급코드</th>
+	                    <th>직책</th>
 	                    <th>이름</th>
 	                    <th>연락처</th>
 	                    <th>나이</th>
@@ -289,6 +365,7 @@
 	                    <th>재직여부</th>
 	                    <th>입사일</th>
 	                    <th>퇴사일</th>
+	                    <th>은행</th>
 	                    <th>계좌번호</th>   
 	                  </tr>
 	                </thead>
@@ -305,8 +382,9 @@
 							<td>${emp.gender}</td>
 							<td>${emp.salary}</td>
 							<td>${emp.status}</td>
-							<td>${emp.hireDate}</td>
-							<td>${emp.leaveDate}</td>
+							<td>${emp.hireDate.substring(0,10)}</td>
+							<td>${emp.leaveDate.substring(0,10)}</td>
+							<td>${emp.bank}</td>
 							<td>${emp.accountNo}</td>
 			  	  	  	</tr>
 					  </c:forEach>
@@ -432,8 +510,9 @@
 		$("#modalUpdateForm #uSalary").val(table.rows('.selected').data()[0][7]);
 		$("#modalUpdateForm #uStatus").val(table.rows('.selected').data()[0][8]);		  
 		$("#modalUpdateForm #uHireDate").val(table.rows('.selected').data()[0][9]);
-		$("#modalUpdateForm #uLeaveDate").val(table.rows('.selected').data()[0][10]);		  
-		$("#modalUpdateForm #uAccountNo").val(table.rows('.selected').data()[0][11]);
+		$("#modalUpdateForm #uLeaveDate").val(table.rows('.selected').data()[0][10]);
+		$("#modalUpdateForm #uBank").val(table.rows('.selected').data()[0][11]);
+		$("#modalUpdateForm #uAccountNo").val(table.rows('.selected').data()[0][12]);
 
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();

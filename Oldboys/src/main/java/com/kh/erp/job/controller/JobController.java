@@ -12,8 +12,6 @@ import com.kh.erp.job.model.service.JobService;
 import com.kh.erp.job.model.vo.Job;
 
 
-
-
 @Controller
 public class JobController {
 
@@ -59,7 +57,7 @@ public class JobController {
 		
 			System.out.println(model);
 		
-		    return "redirect:attendanceList.do?userNo="+userNo;
+		    return "redirect:jobList.do?userNo="+userNo;
 
 	}
 	

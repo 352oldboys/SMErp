@@ -52,7 +52,7 @@
 
 	                     
 					<% // 추가하기 모달창 시작  %>
-                	<form action="insertCustomer.do" id="customerFrm" method="post">
+                	<form action="${pageContext.request.contextPath}/customer/insertCustomer.do?userNo=${member.userNo}" id="customerFrm" method="post">
 	                     <div class="modal fade" id="modalInsertForm" tabindex="-1"
 	                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	                        <div class="modal-dialog" role="document">
@@ -66,51 +66,51 @@
 	                              <div class="modal-body mx-3">
 	                              	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessCode">거래처 코드</label>
-	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate" value="${ businessCode }">
+	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate">
 	                                 </div>
 	                              
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                 <!-- <div class="md-form mb-3">
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
-	                                 </div>
+	                                    <input type="text" name="userNo" id="userNo" class="form-control validate">
+	                                 </div> -->
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessName">기업명</label>
-	                                    <input type="text" name="businessName" id="businessName" class="form-control validate" value="${ businessName }">
+	                                    <input type="text" name="businessName" id="businessName" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="name">핸드폰</label>
-	                                    <input type="text" name="phone" id="phone" class="form-control validate" value="${ phone }">
+	                                    <i class="fas fa-tag"></i>   
+	                                    <label data-error="wrong" data-success="right" for="name">연락처</label>
+	                                    <input type="text" name="phone" id="phone" class="form-control validate">
 	                                 </div>
 	
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                 <div class="md-form mb-3">
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="email">이메일</label>
-	                                    <input type="email" name="email" id="email" class="form-control validate" value="${ email }">
+	                                    <input type="email" name="email" id="email" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="representative">대표자명</label>
-	                                    <input type="text" name="representative" id="representative" class="form-control validate" value="${ representative }">
+	                                    <input type="text" name="representative" id="representative" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag  grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="regNo">사업자 번호</label>
-	                                    <input type="text" name="regNo" id="regNo" class="form-control validate" value="${ regNo }"> 
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="custRegNo">사업자 번호</label>
+	                                    <input type="text" name="custRegNo" id="custRegNo" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
+	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="address">주소</label>
-	                                    <input type="text" name="address" id="address" class="form-control validate" value="${ address }">
+	                                    <input type="text" name="address" id="address" class="form-control validate">
 	                                 </div>
 
 	                              </div>
@@ -125,12 +125,12 @@
                 	<% // 추가하기 모달창 끝  %>
                 	
                 	<% // 삭제하기 2번째 방법 %>
-					<form method="Post" action="deleteCustomer.do" id="modalDeleteForm">
+					<form method="Post" action="${pageContext.request.contextPath}/customer/deleteCustomer.do?userNo=${member.userNo}" id="modalDeleteForm">
 						<input type="hidden" name="businessCode"/>
 					</form>
                 	
 					<% // 수정하기 모달창 시작  %>
-					<form action="updateCustomer.do" method="post">
+					<form action="${pageContext.request.contextPath}/customer/updateCustomer.do?userNo=${member.userNo}" method="post">
 	                     <div class="modal fade" id="modalUpdateForm" tabindex="-1"
 	                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	                        <div class="modal-dialog" role="document">
@@ -144,51 +144,51 @@
 	                              <div class="modal-body mx-3">
 	                              	
 									 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessCode">거래처 코드</label>
-	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate" value="${ businessCode }">
+	                                    <input type="text" name="businessCode" id="uBusinessCode" class="form-control validate">
 	                                 </div>
 	                              
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                 <!-- <div class="md-form mb-3">
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
-	                                 </div>
+	                                    <input type="text" name="userNo" id="uUserNo" class="form-control validate">
+	                                 </div> -->
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessName">기업명</label>
-	                                    <input type="text" name="businessName" id="businessName" class="form-control validate" value="${ businessName }">
+	                                    <input type="text" name="businessName" id="uBusinessName" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="name">핸드폰</label>
-	                                    <input type="text" name="phone" id="phone" class="form-control validate" value="${ phone }">
+	                                    <i class="fas fa-tag"></i>   
+	                                    <label data-error="wrong" data-success="right" for="name">연락처</label>
+	                                    <input type="text" name="phone" id="uPhone" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3"> <!-- mb : 높이 간격 / md : 너비 간격  -->
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="email">이메일</label>
-	                                    <input type="email" name="email" id="email" class="form-control validate" value="${ email }">
+	                                    <input type="email" name="email" id="uEmail" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="representative">대표자명</label>
-	                                    <input type="text" name="representative" id="representative" class="form-control validate" value="${ representative }">
+	                                    <input type="text" name="representative" id="uRepresentative" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag  grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="regNo">사업자 번호</label>
-	                                    <input type="text" name="regNo" id="regNo" class="form-control validate" value="${ regNo }"> 
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="custRegNo">사업자 번호</label>
+	                                    <input type="text" name="custRegNo" id="uCustRegNo" class="form-control validate"> 
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
+	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="address">주소</label>
-	                                    <input type="text" name="address" id="address" class="form-control validate" value="${ address }">
+	                                    <input type="text" name="address" id="uAddress" class="form-control validate">
 	                                 </div>
 	 								
 	                              </div>
@@ -213,9 +213,9 @@
 	                  <tr>
 	                  	<!-- <td><input type="checkbox"></td> -->
 						<th>거래처 코드</th>
-						<th>사용자 번호</th>
+						<!-- <th>사용자 번호</th> -->
 						<th>기업명</th>
-						<th>핸드폰</th>
+						<th>연락처</th>
 						<th>이메일</th>
 						<th>대표자명</th>
 						<th>사업자 번호</th>
@@ -226,12 +226,12 @@
 					  <c:forEach var="cust" items="${list}">
 			  	  	  	<tr id="${cust.businessCode}">
   	  	  		  	  		<td>${cust.businessCode}</td>
-							<td>${cust.userNo}</td>
+							<%-- <td>${cust.userNo}</td> --%>
 							<td>${cust.businessName}</td>
 							<td>${cust.phone}</td>
 							<td>${cust.email}</td>
 							<td>${cust.representative}</td>
-							<td>${cust.regNo}</td>
+							<td>${cust.custRegNo}</td>
 							<td>${cust.address}</td>
 			  	  	  	</tr>
 					  </c:forEach>
@@ -270,26 +270,6 @@
 	    } );
 	} );
 	
-	//
-	$(document).ready(function() {
-    	var t = $('#dataTable').DataTable();
-	    var counter = 1;
-	 
-	    $('#addRow').on( 'click', function () {
-	        t.row.add( [
-	            counter +'.1',
-	            counter +'.2',
-	            counter +'.3',
-	            counter +'.4',
-	            counter +'.56265651'
-	        ] ).draw( false );
-	 
-	        counter++;
-	    } );
-	 
-	    // Automatically add a first row of data
-	    $('#addRow').click();
-	} );
 	
 	// 삭제하기 기능 구현
 	function deleteCustomer(){
@@ -345,14 +325,14 @@
 		}
  
 		/* 값 가져오기 */
-		$("#modalUpdateForm #businessCode").val(table.rows('.selected').data()[0][0]);		  
-		$("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);		  
-		$("#modalUpdateForm #businessName").val(table.rows('.selected').data()[0][2]);		  
-		$("#modalUpdateForm #phone").val(table.rows('.selected').data()[0][3]);		  
-		$("#modalUpdateForm #email").val(table.rows('.selected').data()[0][4]);		  
-		$("#modalUpdateForm #representative").val(table.rows('.selected').data()[0][5]);		  
-		$("#modalUpdateForm #regNo").val(table.rows('.selected').data()[0][6]);		  
-		$("#modalUpdateForm #address").val(table.rows('.selected').data()[0][7]);		  
+		$("#modalUpdateForm #uBusinessCode").val(table.rows('.selected').data()[0][0]);		  
+		/* $("#modalUpdateForm #uUserNo").val(table.rows('.selected').data()[0][1]); */
+		$("#modalUpdateForm #uBusinessName").val(table.rows('.selected').data()[0][1]);		  
+		$("#modalUpdateForm #uPhone").val(table.rows('.selected').data()[0][2]);		  
+		$("#modalUpdateForm #uEmail").val(table.rows('.selected').data()[0][3]);		  
+		$("#modalUpdateForm #uRepresentative").val(table.rows('.selected').data()[0][4]);		  
+		$("#modalUpdateForm #uCustRegNo").val(table.rows('.selected').data()[0][5]);		  
+		$("#modalUpdateForm #uAddress").val(table.rows('.selected').data()[0][6]);		  
 
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();

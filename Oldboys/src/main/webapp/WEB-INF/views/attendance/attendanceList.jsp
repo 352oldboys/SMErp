@@ -68,77 +68,76 @@
 	                              <div class="modal-body mx-3">
 		                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fa fa-calendar"></i> 
 	                                    <label data-error="wrong" data-success="right" for="day">날짜</label>
 	                                    <input type="date" name="day" id="day" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fa fa-id-card-o"></i> 
 	                                    <label data-error="wrong" data-success="right" for="empNo">사원번호</label>
 	                                    <input type="text" name="empNo" id="empNo" class="form-control validate">
-	                                    
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fa fa-user-circle-o"></i> 
 	                                    <label data-error="wrong" data-success="right" for="name">이름</label>
 	                                    <input type="text" name="name" id="name" class="form-control validate">
 	                                 </div>
 	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="attendanceTime">출근시간</label>
-	                                    <input type="time" name="attendanceTime" id="attendanceTime" class="form-control validate">
-	                                 </div>
 	                                 
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<i class="fa fa-sign-in"></i>
+											<label data-error="wrong" data-success="right" for="attendanceTime">출근시간</label>
+											<input type="time" name="attendanceTime" id="attendanceTime" class="form-control validate">
+										</div>
+									
+										<div class="form-group col-md-6">
+											<i class="fa fa-sign-out"></i>
+											<label data-error="wrong" data-success="right" for="leaveTime">퇴근시간</label>
+											<input type="time" name="leaveTime" id="leaveTime" class="form-control validate">
+										</div>
+									</div>
+									
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="leaveTime">퇴근시간</label>
-	                                    <input type="time" name="leaveTime" id="leaveTime" class="form-control validate">
-	                                 </div>
-	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fa fa-user-circle"></i> 
 	                                    <label data-error="wrong" data-success="right" for="absence">결근</label>
-	                                    <input type="text" name="absence" id="absence" class="form-control validate">
+										<select class="form-control validate" name="absence" id="absence">
+											<option selected>-</option>
+											<option>Y</option>
+											<option>N</option>
+										</select>	                                    
 	                                 </div>
 	                                 
-<%-- 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="day">휴가기간</label>
-	                                    <input type="text" name="vacationPeriod" id="vacationPeriod" class="form-control validate" value="${ vacationPeriod }">
-	                                 </div> --%>
+									<div class="form-row">
+										<div class='form-group col-md-6'>
+											<i class="fa fa-plane" aria-hidden="true"></i>
+											<label data-error="wrong" data-success="right" for="vacationPeriod1">휴가 시작</label> 
+											
+											<div class="input-group date" id="datetimepicker11" data-target-input="nearest">
+												<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker11"
+										 				name="vacationPeriod1" id="vacationPeriod1"/>
+												<div class="input-group-append" data-target="#datetimepicker11" data-toggle="datetimepicker">
+													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</div>
+											</div>
+										</div>
+									
+										<div class='form-group col-md-6'>
+											<i class="fa fa-plane" aria-hidden="true"></i>
+											<label data-error="wrong" data-success="right" for="vacationPeriod2" style="float: auto;">휴가 끝</label>
+											
+											<div class="input-group date" id="datetimepicker12" data-target-input="nearest">
+												<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker12"
+									     			  	name="vacationPeriod2" id="vacationPeriod2"/>
+												<div class="input-group-append" data-target="#datetimepicker12" data-toggle="datetimepicker">
+													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</div>
+											</div>
+										</div>
+									</div>
 
-									 <div class='md-form mb-3'>
-							           <i class="fas fa-user" aria-hidden="true"></i>
-							           <label data-error="wrong" data-success="right" for="vacationPeriod1">시작</label> 
-
-								           <div class="input-group date" id="datetimepicker11" data-target-input="nearest">
-								               <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker11"
-								                			name="vacationPeriod1" id="vacationPeriod1"/>
-								                <div class="input-group-append" data-target="#datetimepicker11" data-toggle="datetimepicker">
-								                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-								                </div>
-								            </div>
-								     </div>
-								     
-
-									 <div class='md-form mb-3'>
-							           <i class="fas fa-user prefix grey-text" aria-hidden="true"></i>
-							           <label data-error="wrong" data-success="right" for="vacationPeriod2" style="float: auto;">끝</label>
-							           
-								           <div class="input-group date" id="datetimepicker12" data-target-input="nearest">
-								                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker12"
-								                			  name="vacationPeriod2" id="vacationPeriod2"/>
-								                <div class="input-group-append" data-target="#datetimepicker12" data-toggle="datetimepicker">
-								                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-								                </div>
-								            </div>
-									 </div>
-						            
-
-								                                              
 	                              </div>
 
 	                              <div class="modal-footer d-flex justify-content-center">
@@ -152,7 +151,7 @@
                 	
                 	<% // 삭제하기 2번째 방법 %>
 					<form action="${pageContext.request.contextPath}/attendance/deleteAttend.do?userNo=${member.userNo}" method="Post" id="modalDeleteForm">
-						<input type="hidden" name="empNo"/>
+						<input type="hidden" name="attendanceNo"/>
 					</form>
                 	
 					<% // 수정하기 모달창 시작  %>
@@ -168,49 +167,83 @@
 	                                 </button>
 	                              </div>
 	                              <div class="modal-body mx-3">
-	                                 <input type="hidden" name="attendanceNo" id="uAttendanceNo" value="${ attendanceNo }"/>	  
-	                                                             
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fa fa-calendar"></i> 
+	                                    <label data-error="wrong" data-success="right" for="attendanceNo">순번</label>
+	                                    <input type="text" name="attendanceNo" id="uAttendanceNo" class="form-control validate" readonly>
+	                                 </div>		                             
+		                                 
+	                                 <div class="md-form mb-3">
+	                                    <i class="fa fa-calendar"></i> 
 	                                    <label data-error="wrong" data-success="right" for="day">날짜</label>
-	                                    <input type="date" name="day" id="uDay" class="form-control validate" value="${ day }">
+	                                    <input type="date" name="day" id="uDay" class="form-control validate">
 	                                 </div>
-	                              
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                 
+	                                 <div class="md-form mb-3">
+	                                    <i class="fa fa-id-card-o"></i> 
 	                                    <label data-error="wrong" data-success="right" for="empNo">사원번호</label>
-	                                    <input type="text" name="empNo" id="uEmpNo" class="form-control validate" value="${ empNo }">
+	                                    <input type="text" name="empNo" id="uEmpNo" class="form-control validate">
 	                                 </div>
 	                                 
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                 <div class="md-form mb-3">
+	                                    <i class="fa fa-user-circle-o"></i> 
 	                                    <label data-error="wrong" data-success="right" for="name">이름</label>
-	                                    <input type="text" name="name" id="uName" class="form-control validate" value="${ name }">
+	                                    <input type="text" name="name" id="uName" class="form-control validate">
 	                                 </div>
 	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="attendanceTime">출근시간</label>
-	                                    <input type="time" name="attendanceTime" id="uAttendanceTime" class="form-control validate" value="${ attendanceTime }">
-	                                 </div>
 	                                 
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<i class="fa fa-sign-in"></i>
+											<label data-error="wrong" data-success="right" for="attendanceTime">출근시간</label>
+											<input type="time" name="attendanceTime" id="uAttendanceTime" class="form-control validate">
+										</div>
+									
+										<div class="form-group col-md-6">
+											<i class="fa fa-sign-out"></i>
+											<label data-error="wrong" data-success="right" for="leaveTime">퇴근시간</label>
+											<input type="time" name="leaveTime" id="uLeaveTime" class="form-control validate">
+										</div>
+									</div>
+									
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="leaveTime">퇴근시간</label>
-	                                    <input type="time" name="leaveTime" id="uLeaveTime" class="form-control validate" value="${ leaveTime }">
-	                                 </div>
-	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fa fa-user-circle"></i> 
 	                                    <label data-error="wrong" data-success="right" for="absence">결근</label>
-	                                    <input type="text" name="absence" id="uAbsence" class="form-control validate" value="${ absence }">
+										<select class="form-control validate" name="absence" id="uAbsence">
+											<option selected>-</option>
+											<option>Y</option>
+											<option>N</option>
+										</select>	                                    
 	                                 </div>
-	                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="day">휴가기간</label>
-	                                    <input type="text" name="vacationPeriod" id="uVacationPeriod" class="form-control validate" value="${ vacationPeriod }">
-	                                 </div>  	                                                    
+
+									<div class="form-row">
+										<div class='form-group col-md-6'>
+											<i class="fa fa-plane" aria-hidden="true"></i>
+											<label data-error="wrong" data-success="right" for="vacationPeriod1">휴가 시작</label> 
+											
+											<div class="input-group date" id="datetimepicker11" data-target-input="nearest">
+												<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker11"
+										 				name="vacationPeriod1" id="uVacationPeriod1"/>
+												<div class="input-group-append" data-target="#datetimepicker11" data-toggle="datetimepicker">
+													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</div>
+											</div>
+										</div>
+									
+										<div class='form-group col-md-6'>
+											<i class="fa fa-plane" aria-hidden="true"></i>
+											<label data-error="wrong" data-success="right" for="vacationPeriod2" style="float: auto;">휴가 끝</label>
+											
+											<div class="input-group date" id="datetimepicker12" data-target-input="nearest">
+												<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker12"
+									     			  	name="vacationPeriod2" id="uVacationPeriod2"/>
+												<div class="input-group-append" data-target="#datetimepicker12" data-toggle="datetimepicker">
+													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</div>
+											</div>
+										</div>
+									</div>
+
 	                              </div>
 	                              
 	                              <div class="modal-footer d-flex justify-content-center">
@@ -368,7 +401,7 @@
 		 */
 		
 		// 2번째 방식 
-		$("#modalDeleteForm input[name=empNo]").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalDeleteForm input[name=attendanceNo]").val(table.rows('.selected').data()[0][0]);		  
 		$("#modalDeleteForm").submit();
 				  
 		}
@@ -393,13 +426,15 @@
  
 		/* DB값 가져와서 수정하기 창에 띄우기 */
 		/* $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]); */
-		$("#uEmpNo").val(table.rows('.selected').data()[0][0]);
-		$("#uAttendanceTime").val(table.rows('.selected').data()[0][1]);		  
-		$("#uLeaveTime").val(table.rows('.selected').data()[0][2]);		  
-		$("#uAbsence").val(table.rows('.selected').data()[0][3]);		  
-		$("#uDay").val(table.rows('.selected').data()[0][4]);
-		$("#uVacationPeriod1").val(table.rows('.selected').data()[0][5]);
-		$("#uVacationPeriod2").val(table.rows('.selected').data()[0][6]);
+		$("#uAttendanceNo").val(table.rows('.selected').data()[0][0]);
+		$("#uDay").val(table.rows('.selected').data()[0][1]);
+		$("#uEmpNo").val(table.rows('.selected').data()[0][2]);
+		$("#uName").val(table.rows('.selected').data()[0][3]);
+		$("#uAttendanceTime").val(table.rows('.selected').data()[0][4]);
+		$("#uLeaveTime").val(table.rows('.selected').data()[0][5]);
+		$("#uAbsence").val(table.rows('.selected').data()[0][6]);
+		$("#uVacationPeriod1").val(table.rows('.selected').data()[0][7]);
+		$("#uVacationPeriod2").val(table.rows('.selected').data()[0][8]);
 		
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();

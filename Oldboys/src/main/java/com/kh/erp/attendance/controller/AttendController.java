@@ -44,9 +44,9 @@ public class AttendController {
 			System.out.println(result);
 			
 			if(result > 0) {
-				System.out.println("등록성공");
+				System.out.println("등록 성공");
 			} else {
-				System.out.println("등록실패");
+				System.out.println("등록 실패");
 			}
 			
 		} catch(Exception e) {
@@ -64,7 +64,7 @@ public class AttendController {
 	@RequestMapping("/attendance/deleteAttend.do")
 	public String deleteAttend(Attendance att, Model model,
 							@RequestParam(value="userNo") int userNo,
-							@RequestParam(value="attendNo") int attendNo) {
+							@RequestParam(value="attendanceNo") int attendanceNo) {
 		int result;
 		
 		try {
@@ -74,9 +74,9 @@ public class AttendController {
 			System.out.println(result);
 			
 			if(result > 0) {
-				System.out.println("삭제성공");
+				System.out.println("삭제 성공");
 			} else {
-				System.out.println("삭제실패");
+				System.out.println("삭제 실패");
 			}
 			
 		} catch(Exception e) {
@@ -94,10 +94,10 @@ public class AttendController {
 	@RequestMapping("/attendance/updateAttend.do")
 	public String updateAttend(Attendance att, Model model,
 							@RequestParam(value="userNo") int userNo,
-							@RequestParam(value="attendNo") int attendNo) {
+							@RequestParam(value="attendanceNo") int attendanceNo) {
 		
+		System.out.println(att);
 		int result;
-		
 		try {
 			
 			result = attendService.updateAttend(att);
@@ -105,9 +105,9 @@ public class AttendController {
 			System.out.println(result);
 			
 			if(result > 0) {
-				System.out.println("수정성공");
+				System.out.println("수정 성공");
 			}else {
-				System.out.println("수정실패");
+				System.out.println("수정 실패");
 			}
 			
 		} catch(Exception e) {

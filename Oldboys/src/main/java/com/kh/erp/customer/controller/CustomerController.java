@@ -2,11 +2,12 @@ package com.kh.erp.customer.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.erp.customer.model.service.CustomerService;
 import com.kh.erp.customer.model.vo.Customer;
@@ -18,7 +19,8 @@ public class CustomerController {
 	CustomerService custService;
 
 	@RequestMapping("/customer/customerList.do")
-	public String customerList(Customer cust, Model model) {
+	public String customerList(Customer cust, Model model,
+								@RequestParam(value="userNo") int userNo) {
 
 		List<Customer> list = custService.selectCustList(cust);
 
@@ -29,13 +31,13 @@ public class CustomerController {
 	}
 
 	@RequestMapping("/customer/insertCustomer.do")
-	public String insertCustomer(Customer cust, Model model) {
-
-		System.out.println(cust);
+	public String insertCustomer(Customer cust, Model model,
+								@RequestParam(value="userNo") int userNo) {
 		
 		int result; 
 		String msg="";
 		
+	
 		try {
 			
 			result = custService.insertCustomer(cust);
@@ -43,7 +45,7 @@ public class CustomerController {
 			System.out.println(cust);
 			
 			if( result > 0 ) { 
-				msg="등록 성공"; 
+				msg="등록 성공!"; 
 			} else { 
 				msg="등록 실패!"; 
 			}
@@ -59,12 +61,13 @@ public class CustomerController {
 		model.addAttribute("msg", msg);
 
 
-		return "redirect:customerList.do";
+		return "redirect:customerList.do?userNo="+userNo;
 
 	}
 	
 	@RequestMapping("/customer/deleteCustomer.do")
-	public String deleteCustomer(Customer cust, Model model) {
+	public String deleteCustomer(Customer cust, Model model,
+								@RequestParam(value="userNo") int userNo) {
 		int result;
 		
 		try {
@@ -74,9 +77,9 @@ public class CustomerController {
 			System.out.println(result);
 			
 			if(result>0) {
-				System.out.println("삭제성공");
+				System.out.println("삭제 성공");
 			} else {
-				System.out.println("삭제실패");
+				System.out.println("삭제 실패");
 			}
 			
 		} catch(Exception e) {
@@ -87,12 +90,13 @@ public class CustomerController {
 		
 			System.out.println(model);
 		
-		    return "redirect:customerList.do";
+		    return "redirect:customerList.do?userNo="+userNo;
 
 	}
 
 	@RequestMapping("/customer/updateCustomer.do")
-	public String updateCustomer(Customer cust, Model model) {
+	public String updateCustomer(Customer cust, Model model,
+								@RequestParam(value="userNo") int userNo) {
 		
 		int result;
 		
@@ -103,9 +107,9 @@ public class CustomerController {
 			System.out.println(result);
 			
 			if(result>0) {
-				System.out.println("수정성공");
+				System.out.println("수정 성공");
 			}else {
-				System.out.println("수정실패");
+				System.out.println("수정 실패");
 			}
 			
 		} catch(Exception e) {
@@ -116,7 +120,7 @@ public class CustomerController {
 		
 		System.out.println(model);
 		
-		return "redirect:customerList.do";
+		return "redirect:customerList.do?userNo="+userNo;
 		
 	}
 	

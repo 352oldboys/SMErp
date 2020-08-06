@@ -4,19 +4,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="employeeMapper">
 	
-	<select id="selectEmpList" parameterType="Employee" resultType="Employee">
+	<select id="selectEmpList" parameterType="_int" resultType="Employee">
 		SELECT * FROM EMPLOYEE
+		WHERE USERNO = #{userNo}
 	</select>
 	
 	<insert id="insertEmp" parameterType="Employee">
 		INSERT INTO EMPLOYEE
 		VALUES (SEQ_EMPNO.NEXTVAL, #{userNo}, #{jobCode}, #{name}, #{phone}, #{age},
-				#{email}, #{gender}, #{salary}, #{status}, #{hireDate}, #{leaveDate}, #{accountNo})
+				#{email}, #{gender}, #{salary}, #{status}, #{hireDate}, #{leaveDate}, #{bank}, #{accountNo})
 	</insert>
 	
 	<delete id="deleteEmp" parameterType="Employee">
 		DELETE FROM EMPLOYEE
-		WHERE EMPNO = #{empNo}
+		WHERE EMPNO = #{empNo} AND USERNO = #{userNo}
 	</delete>
 	
 	<update id="updateEmp" parameterType="Employee">
@@ -33,10 +34,11 @@
 		STATUS = #{status},
 		HIREDATE = #{hireDate},
 		LEAVEDATE = #{leaveDate},
+		BANK = #{bank},
 		ACCOUNTNO = #{accountNo}
 		</set>
 		
-		WHERE EMPNO = #{empNo}
+		WHERE EMPNO = #{empNo} AND USERNO = #{userNo}
 	</update>
 </mapper>
 
