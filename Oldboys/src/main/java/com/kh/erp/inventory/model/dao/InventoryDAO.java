@@ -17,7 +17,7 @@ public interface InventoryDAO {
     
 	int insertInventoryList(Inventory inventory);
 
-	int deleteInventoryList(Inventory inventory);
+	int deleteInventoryList(int inventoryNo);
 
 	int updateInventoryList(Inventory inventory);
 	

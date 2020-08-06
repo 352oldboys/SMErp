@@ -2,6 +2,7 @@ package com.kh.erp.inventory.model.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,8 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public int deleteInventoryList(Inventory inventory) {
-		return inventoryDAO.deleteInventoryList(inventory);
+	public int deleteInventoryList(int inventoryNo) {
+		return inventoryDAO.deleteInventoryList(inventoryNo);
 	}
 
 	@Override

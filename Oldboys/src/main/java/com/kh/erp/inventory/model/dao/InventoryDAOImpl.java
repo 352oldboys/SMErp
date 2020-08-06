@@ -31,10 +31,10 @@ public class InventoryDAOImpl implements InventoryDAO {
 
  }
  @Override
- public int deleteInventoryList(Inventory inventory) {
+ public int deleteInventoryList(int inventoryNo) {
 	 	
 	 		
-	 	 return sqlSession.delete("inventoryMapper.deleteInventory" ,inventory);
+	 	 return sqlSession.delete("inventoryMapper.deleteInventory" ,inventoryNo);
 
  }
  

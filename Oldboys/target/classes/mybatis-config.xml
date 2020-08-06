@@ -30,6 +30,7 @@
 		<typeAlias type="com.kh.erp.finance.integrated.model.vo.Integrate" alias="Integrate"/>
 		<typeAlias type="com.kh.erp.finance.integrated.model.vo.Total" alias="Total"/>
 		
+		 <typeAlias type="com.kh.erp.Insertinventory.model.vo.InsertInventory" alias="InsertInventory"/>
 		 
 	</typeAliases>
 	
