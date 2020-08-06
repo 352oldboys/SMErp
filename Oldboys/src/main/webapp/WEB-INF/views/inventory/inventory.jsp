@@ -56,11 +56,11 @@
 											</button>
 										</div>
 										<div class="modal-body mx-3">
-											<div class="md-form mb-3">
+											<%-- <div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ pruchase.productno }">
-											</div>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ purchase.productNo }">
+											</div> --%>
 										<!--  사용자 번호 (화면에는 출력 x) -->
 											<%-- <div class="md-form mb-3">
 												<!-- <i class="fas fa-user prefix grey-text"></i>  -->
@@ -84,7 +84,7 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="product">제품</label>
-												<input type="text" id="product" name="product" class="form-control validate">
+												<input type="text" id="product" name="product" class="form-control validate" >
 											</div>
 
 											<div class="md-form">
@@ -149,10 +149,11 @@
 											</button>
 										</div>
 										<div class="modal-body mx-3">
+										<input type="hidden" id="inventoryNo2" name="inventoryNo" />
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ pruchase.productno }" >
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="">
 											</div>
 										
 											
@@ -255,6 +256,7 @@
                   <tbody>
                    <c:forEach var="emp" items="${list}" varStatus="status">
                      <tr id="inventory${status.count}">
+                     <input type="hidden" name="_inventoryNo" id="_inventoryNo" value="${emp.inventoryNo}" />
                           <td>${emp.productNo}</td>
                           <%-- <td>${emp.userNo}</td> --%>
                           <td>${emp.itemname}</td>
@@ -276,6 +278,7 @@
 	<% //2번째 방법 %>
 	<form method="Post" action="${pageContext.request.contextPath}/inventory/deleteInventory.do?userNo=${member.userNo}" id="modalDeleteForm">
       	<input type="hidden" name="productNo" value=""/>
+      	<input type="hidden" name="inventoryNo" id="inventoryNo" />
     </form>
 
         </div>
@@ -355,7 +358,8 @@
 	  $("#modalUpdateForm #unitprice").val(table.rows('.selected').data()[0][4]);		  
 	  $("#modalUpdateForm #origin").val(table.rows('.selected').data()[0][5]);		  
 	  $("#modalUpdateForm #expirationdate").val(table.rows('.selected').data()[0][6]);		  
-	  $("#modalUpdateForm #note").val(table.rows('.selected').data()[0][7]);		  
+	  $("#modalUpdateForm #note").val(table.rows('.selected').data()[0][7]);
+	  $('#inventoryNo2').val($('#_inventoryNo').val())
 	 
 	  /*창 띄우기  */
 	  $("#modalUpdateForm").modal();
@@ -391,7 +395,8 @@
 	   */
 	 
 	  //2번째 방식 
-	  $("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);		  
+	  $("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);
+	  $('#modalDeleteForm #inventoryNo').val($('#_inventoryNo').val());
 	  $("#modalDeleteForm").submit();
 	  
   }

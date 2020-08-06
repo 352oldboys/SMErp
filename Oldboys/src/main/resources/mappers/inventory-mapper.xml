@@ -16,32 +16,43 @@
   
   <select id="selectInventory" parameterType="Inventory" resultType="Inventory">
   
- 	SELECT IV.PRODUCTNO, IV.USERNO, I.ITEMNAME ITEMNAME, IV.PRODUCT, IV.QUANTITY, IV.UNITPRICE, IV.ORIGIN, IV.EXPIRATIONDATE, IV.NOTE 
+ 	SELECT II.PRODUCTNO, IV.USERNO, II.PRODUCT, I.ITEMNAME ITEMNAME, II.PRODUCT, IV.QUANTITY, IV.UNITPRICE, IV.ORIGIN, IV.EXPIRATIONDATE, IV.NOTE, 
+ 			IV.INVENTORYNO 
 	  FROM INVENTORY IV 
 	  JOIN ITEM I ON (IV.ITEMCODE = I.ITEMCODE)
-	  WHERE USERNO = #{userNo}
+	  JOIN ITEM2 II ON (IV.PRODUCT = II.PRODUCT)
+	  WHERE IV.USERNO = #{userNo} AND IV.PRODUCT = II.PRODUCT
+	  
   
   </select>
   
+  
+  <!-- <select id="selectInventory" parameterType="Inventory" resultType="Inventory">
+  
+ 	SELECT * FROM INVENTORY
+ 	WHERE USERNO = #{userNo}
+  
+  </select> -->
+  
  <insert id="insertInventory" parameterType="Inventory" >
   INSERT INTO INVENTORY
-  VALUES(#{productNo}, #{userNo}, #{itemcode}, #{product}, 
+  VALUES(#{userNo}, #{itemcode},
   #{quantity},#{unitprice}, #{origin}, 
-  #{expirationdate},#{note})
+  #{expirationdate},#{note}, #{product}, SEQ_INVENTORY.NEXTVAL)
+  
 
   </insert>
   
-  <delete id="deleteInventory" parameterType="Inventory">
+  <delete id="deleteInventory" parameterType="_int">
   
   DELETE FROM INVENTORY
-  WHERE PRODUCTNO = #{productNo}
+  WHERE INVENTORYNO = #{inventoryNo}
   </delete>
   
   <update id="updateInventory" parameterType="Inventory">
   
    UPDATE INVENTORY 
    <set>
-  PRODUCTNO= #{productNo},
   USERNO = #{userNo},
   ITEMCODE = #{itemcode},
   PRODUCT = #{product}, 
@@ -52,7 +63,7 @@
   NOTE = #{note}
    
    </set>
-   WHERE PRODUCTNO = #{productNo}
+   WHERE INVENTORYNO = #{inventoryNo}
   </update>
   
  

@@ -1,10 +1,11 @@
 package com.kh.erp.inventory.controller;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
+
+
+
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,19 +25,18 @@ public class InventoryController {
 	InventoryService inventoryService;
 	
 	@RequestMapping("/inventory/inventoryList.do")
-	 public String inventoryList(Inventory inventory,Model model, @RequestParam(value="userNo") int userNo ) {
+	 public String inventoryList(Inventory inventory,Model model, 
+			 			@RequestParam(value="userNo") int userNo) {
 		   
 		   List<Inventory> list = inventoryService.selectInventoryList(inventory);
 		   
 		   System.out.println(list);
 		   model.addAttribute("list", list);
 		   
+		   
 //		   System.out.println("list: " +list); // 결과 확인용
 		   
-		   return "inventory/inventory";
-		   
-		   
-	
+		   return "inventory/inventory";	
 	}
 	
 	@RequestMapping("/inventory/insertInventory.do")
@@ -70,14 +70,17 @@ public class InventoryController {
 	}
 	
 	@RequestMapping("/inventory/deleteInventory.do")
-	public String deleteInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) throws Exception {
+	public String deleteInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo,
+								 @RequestParam(value="inventoryNo") int inventoryNo) throws Exception {
 		int result;
+		
+		System.out.println("inventoryNo : " + inventoryNo);
 		
 		try {
 			
 			
 			
-			result = inventoryService.deleteInventoryList(inventory);
+			result = inventoryService.deleteInventoryList(inventoryNo);
 			
 			System.out.println(result);
 			
