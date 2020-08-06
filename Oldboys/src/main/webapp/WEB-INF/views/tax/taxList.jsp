@@ -222,15 +222,15 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uSupplyPriceComma">공급가액</label>
-	                                    <input type="hidden" name="supplyPrice" id="uSupplyPrice"/>
-	                                    <input type=text id="uSupplyPriceComma" class="form-control validate" onkeyup="calcSupUpdate()">
+	                                    <input type="text" name="supplyPrice" id="uSupplyPrice" class="form-control validate"/>
+	                                    <input type="hidden" id="uSupplyPriceComma" class="form-control validate" onkeyup="calcSupUpdate()">
 	                                 </div>	
 	                                       
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uTaxPriceComma">세액</label>
-	                                    <input type="hidden" name="taxPrice" id="uTaxPrice"/>
-	                                    <input type="text" id="uTaxPriceComma" class="form-control validate">
+	                                    <input type="text" name="taxPrice" id="uTaxPrice" class="form-control validate"/>
+	                                    <input type="hidden" id="uTaxPriceComma" class="form-control validate">
 	                                 </div>	 
 	                                                    
 	                              </div>
@@ -430,15 +430,15 @@
 		$("#uUnit").val(table.rows('.selected').data()[0][5]);		  
 		$("#uQuantity").val(table.rows('.selected').data()[0][6]);		  
 		$("#uUnitCost").val(table.rows('.selected').data()[0][7]);		  
-		$("#uSupplyPriceComma").val(table.rows('.selected').data()[0][8]);	
-		$("#uTaxPriceComma").val(table.rows('.selected').data()[0][9]);
+		$("#uSupplyPrice").val(table.rows('.selected').data()[0][8]);	
+		$("#uTaxPrice").val(table.rows('.selected').data()[0][9]);
 		$('#uTaxNo').val($('#_taxNo').val());
 		
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();
 	}
 	
-	// 추가하기  창 공급가액 & 세액 자동 계산하기
+	/* // 추가하기  창 공급가액 & 세액 자동 계산하기
     function calcSup(){
     	var quantity = $("#quantity").val();
     	var unitCost = $("#unitCost").val();
@@ -475,7 +475,7 @@
             document.getElementById('uTaxPrice').value = resultTax;
         }
 
-    }
+    } */
 	
     </script>
     
