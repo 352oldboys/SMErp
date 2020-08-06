@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>공지사항 상세보기</title>
 	<style>
-		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
+		div#board-container{width:850px; margin:0 auto; text-align:center; height:500px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
 		hr.two{
@@ -32,10 +32,13 @@
 	<div id="container">
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
-		<div id="board-container" style="">	
-		<br /><br />
+		<div id="board-container" >	
+		<img src="${pageContext.request.contextPath}/resources/img/smerp1.png"  style=" width:180px; height: 180px; "/>
 		<%-- <img src="${pageContext.request.contextPath}/resources/img/smerp1.png" /> --%>
-			<input type="text" class="Titleform-control" placeholder="제목" name="nTitle" id="nTitle" value="제목 : ${notice.nTitle }"readonly required style="width: 1000px;font-weight:bolder; ">
+			<div style="float:right;">
+			<input type="text" class="Titleform-control" placeholder="제목" name="nTitle" id="nTitle" value="제목 : ${notice.nTitle }"
+			readonly required style="width: 650px; font-weight:bolder; float:right; text-align:left; padding-left:22px;">
+			<br /><br />
 			<hr class="two">
 			<%-- <div style="text-align:right;">
 			작성자 : ${notice.nWriter } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -60,19 +63,19 @@
 			
 			<!-- 	<button class="button"  style="border:0; float:right;  margin-bottom:10px;" onclick="fn_goNoticeForm();"><b>글쓰기</b></button> -->
 			</c:forEach>
-			<br />
+				</div>	
 			<c:if test="${ !empty attachmentList }" >
 			<!-- <hr class="two"> -->
 			</c:if>
 			<br />
 			
-			<div  class="card">
-			<div style="  font-size:25px; "class="card-block">
-			<textarea style ="background: #fcfeff;color: #2E2E2E;margin-top:8px;width:980px;padding-top: 5px;padding-left: 10px;padding-bottom: 5px;padding-right: 10px; " name="nContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${notice.nContent }
+		
+			<!-- <div style="  font-size:25px; "class="card-block"> -->
+			<textarea style ="padding: 10px; font-size:25px; border:1px solid black; background: #fcfeff; color: #2E2E2E; margin-top:8px;  width:900px;" name="nContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${notice.nContent }
 		    <%-- <div  style="color: #2E2E2E;' " class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div> --%>
 		    </textarea>
-		    </div>
-		    </div>
+		    
+		    <!-- </div> -->
 		    <br>
 		    <button style=" border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/notice/noticeList.do'">리스트로</button>
 		    <c:if test="${member.userId eq notice.nWriter}">

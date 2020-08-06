@@ -39,10 +39,10 @@
 	
 	<select id="salesMonthPrice"  resultType="string">
 		SELECT TO_CHAR(SUM(UNITPRICE * QUANTITY), '999,999,999,999,999') 
-		FROM SALES
-		JOIN MEMBER USING(USERNO)
-		WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '%'
-          AND DAY LIKE '%' || (SELECT TO_CHAR(SYSDATE, 'MM') FROM DUAL) || '%'
+      FROM SALES
+      JOIN MEMBER USING(USERNO)
+      WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '/' 
+                              || (SELECT TO_CHAR(SYSDATE, 'MM') FROM DUAL) || '%'
           AND USERNO = #{userNo}
 	</select>
 	
