@@ -10,7 +10,7 @@
 	<meta charset="UTF-8">
 	<title>자유게시판 상세보기</title>
 	<style>
-		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
+		div#board-container{width:850px; margin:0 auto; text-align:center; height:500px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
 		hr.two{
@@ -34,12 +34,16 @@
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
       <br /><br />
-		<div id="board-container">
-			<input type="text" class="Titleform-control" placeholder="제목" name="bTitle" id="bTitle" value="제목 : ${board.bTitle }"readonly required style="width: 1000px;font-weight:bolder; ">
-					<hr class="two">	
-			<%-- <input type="text" class="Dateform-control" placeholder="날짜" name="bDate" id="bDate" value="작성일 : ${board.bDate }"readonly required>
-			<input type="text" class="form-control" name="bWriter" value="${board.bWriter}" readonly required> --%>
+ 
+
 		
+		<div id="board-container">
+		<img src="${pageContext.request.contextPath}/resources/img/smerp1.png"  style=" width:180px; height: 180px; "/>
+		<div style="float:right;">
+			<input type="text" class="Titleform-control" placeholder="제목" name="bTitle" id="bTitle" value="제목 : ${board.bTitle }"
+						 readonly required style="width: 650px; font-weight:bolder; float:right; text-align:left; padding-left:22px;">
+			<br><br>
+					<hr class="two">	
 			<c:forEach items="${boardfileList}" var="a" varStatus="vs">
 				<%-- <button  style="display: inline-block; width:300px; border:0; hight:80px" type="button" 
 						class="button" 
@@ -51,22 +55,26 @@
 					<span>&#x44;&#x6F;&#x77;&#x6E;&#x6C;&#x6F;&#x61;&#x64;</span>
 				</button>	
 			</c:forEach>
+		</div>			
+			<%-- <input type="text" class="Dateform-control" placeholder="날짜" name="bDate" id="bDate" value="작성일 : ${board.bDate }"readonly required>
+			<input type="text" class="form-control" name="bWriter" value="${board.bWriter}" readonly required> --%>
+		
 			<br />
 			<c:if test="${ !empty boardfileList }" >
 <!-- 			<hr class="two">-->			
 			</c:if>
-			<br />
+			<br>
 		<%-- 	<div style="text-align:right;">
 			작성자 : ${board.bWriter } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			작성일 : ${board.bDate }
 			</div> --%>
-			<div  class="card">
-			<div style="  font-size:25px; "class="card-block">
-		   <textarea style ="background: #fcfeff; color: #2E2E2E; margin-top:8px;  width:980px;" name="bContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${board.bContent }
+
+			<!-- <div style="  font-size:25px; border:1px solid black; "class="card-block"> -->
+		   <textarea style ="padding: 10px; font-size:25px; border:1px solid black; background: #fcfeff; color: #2E2E2E; margin-top:8px;  width:900px;" name="bContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${board.bContent }
 		    <%-- <div  style="color: #2E2E2E;' " class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div> --%>
 		    </textarea>
-			</div>
-			</div>
+			<!-- </div> -->
+	
 			<br />
 		    <button style=" border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/board/boardList.do'">리스트로</button>
 		    <c:if test="${member.userId eq board.bWriter}">
@@ -88,7 +96,7 @@
                		  </c:forEach>  --%>
                		<br /><br /><br /><br /><br /> 
 		<br /><br /><br /><br /><br />		  
-		     <div class="replyArea">
+		     <div class="replyArea" style="margin-top:50px;">
           <div class="row">
             <div class="col-md-8 mx-auto" id="replySelectArea"> <!-- 게시글의 댓글 목록 구현부 -->
               <div style="border-bottom:1px solid gray;">

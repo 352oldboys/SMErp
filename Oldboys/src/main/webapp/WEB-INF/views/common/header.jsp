@@ -34,8 +34,8 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="${pageContext.request.contextPath}/index.do">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link" href="${pageContext.request.contextPath}/finance/integrated.do?userNo=${member.userNo}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>    <%-- ${pageContext.request.contextPath}/index.do --%>
           <span>ERP</span></a>
       </li>
 
@@ -334,7 +334,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><b>${member.name}</b></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" img src="${pageContext.request.contextPath}/resources/img/smerp1.png"  style=" width:60px; height: 60px; "/>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

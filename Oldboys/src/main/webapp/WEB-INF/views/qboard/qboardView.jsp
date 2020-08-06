@@ -7,10 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>자유게시판 상세보기</title>
+	<title>Q&A게시판 상세보기</title>
 	<style>
-		div#board-container{width:1000px; margin:0 auto; text-align:center; height:500px;}
-		div#board-container input,div#board-container button{margin-bottom:15px;}
+		div#board-container{width:850px; margin:0 auto; text-align:center; height:500px;}
 		/* 부트스트랩 : 파일라벨명 정렬*/
 		div#board-container label.custom-file-label{text-align:left;}
 	hr.two{
@@ -34,8 +33,14 @@
 	<div id="wrapper">
       <c:import url="../common/header.jsp"/>
        <br /><br />
+       
+       
 		<div id="board-container">
-			<input type="text" class="Titleform-control" placeholder="제목" name="qTitle" id="qTitle" value="제목 : ${qboard.qTitle }"readonly required style="width: 1000px;font-weight:bolder;">
+		<img src="${pageContext.request.contextPath}/resources/img/smerp1.png"  style=" width:180px; height: 180px; "/>
+			<div style="float:right;">
+			<input type="text" class="Titleform-control" placeholder="제목" name="qTitle" id="qTitle" value="제목 : ${qboard.qTitle }"
+						readonly required style="width: 650px; font-weight:bolder; float:right; text-align:left; padding-left:22px;">
+						<br /><br />
 						<hr class="two">	
 			<%-- <input type="text" class="Dateform-control" placeholder="날짜" name="bDate" id="bDate" value="작성일 : ${board.bDate }"readonly required>
 			<input type="text" class="form-control" name="bWriter" value="${board.bWriter}" readonly required> --%>
@@ -51,15 +56,14 @@
 					<span>&#x44;&#x6F;&#x77;&#x6E;&#x6C;&#x6F;&#x61;&#x64;</span>
 				</button>
 			</c:forEach>
+			</div>	
 			<br />
-			<br />
-			<div  class="card">
-			<div style="  font-size:25px; "class="card-block">
-		   <textarea style ="background: #fcfeff; color: #2E2E2E; margin-top:8px;  width:980px;" name="bContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${qboard.qContent }
+			<br />		
+			<!-- <div style="  font-size:25px; "class="card-block"> -->
+		   <textarea style ="padding: 10px; font-size:25px; border:1px solid black; background: #fcfeff; color: #2E2E2E; margin-top:8px;  width:900px;" name="qContent"  class="Contentform-control" cols="10" rows="25" placeholder="내용" readonly required >${qboard.qContent }
 		    <%-- <div  style="color: #2E2E2E;' " class="Contentform-control" name="nContent" placeholder="내용" readonly required >${notice.nContent }</div> --%>
 		    </textarea>
-			</div>
-			</div>
+		
 			<br />
 		    <button style=" border:0;"class="button" type="button" onclick="location.href='${pageContext.request.contextPath}/qboard/qboardList.do'">리스트로</button>
 		    <c:if test="${member.userId eq qboard.qWriter}">
