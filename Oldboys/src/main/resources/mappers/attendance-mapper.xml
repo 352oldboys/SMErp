@@ -29,7 +29,7 @@
 	
 	<delete id="deleteAttend" parameterType="Attendance">
 		DELETE FROM ATTENDANCE
-		WHERE ATTENDANCENO = #{attendanceNo}
+		WHERE ATTENDANCENO = #{attendanceNo} AND USERNO = #{userNo}
 	</delete>
 	
 	<update id="updateAttend" parameterType="Attendance">
@@ -44,11 +44,11 @@
 		ATTENDANCETIME = #{attendanceTime}, 
 		LEAVETIME = #{leaveTime},
 		ABSENCE = #{absence},
-		VACATIONPERIOD1 = #{vacationPeriod1}
+		VACATIONPERIOD1 = #{vacationPeriod1},
 		VACATIONPERIOD2 = #{vacationPeriod2}
 		</set>
 		
-		WHERE ATTENDANCENO = #{attendanceNo}
+		WHERE ATTENDANCENO = #{attendanceNo} AND USERNO = #{userNo}
 	</update>
 	
 </mapper>

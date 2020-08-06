@@ -7,17 +7,16 @@
 	<select id="selectJobList" parameterType="_int" resultType="Job">
 		SELECT * FROM JOB
 		WHERE USERNO = #{userNo}
-		ORDER BY JOBCODE DESC
 	</select>
 
 	<insert id="insertJob" parameterType="Job">
 		INSERT INTO JOB
-		VALUES (#{jobCode}, #{jobName}) 	
+		VALUES (#{jobCode}, #{jobName}, #{userNo}) 	
 	</insert>
 	
 	<delete id="deleteJob" parameterType="Job">
 		DELETE FROM JOB
-		WHERE JOBCODE = #{jobCode}
+		WHERE JOBCODE = #{jobCode} AND USERNO = #{userNo}
 	</delete>
 	
 	<update id="updateJob" parameterType="Job">
@@ -25,10 +24,11 @@
 		
 		<set>
 		JOBCODE = #{jobCode},
-		JOBNAME = #{jobName}
+		JOBNAME = #{jobName},
+		USERNO = #{userNo}
 		</set>
 		
-		WHERE JOBCODE = #{jobCode}
+		WHERE JOBCODE = #{jobCode} AND USERNO = #{userNo}
 	</update>
 	
 </mapper>

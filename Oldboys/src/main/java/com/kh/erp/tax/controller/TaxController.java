@@ -66,6 +66,8 @@ public class TaxController {
 							@RequestParam(value="taxNo") int taxNo) {
 		int result;
 		
+		System.out.println("taxNo : " + taxNo);
+		
 		try {
 
 			result = taxService.deleteTax(tax);
@@ -92,16 +94,17 @@ public class TaxController {
 
 	@RequestMapping("/tax/updateTax.do")
 	public String updateTax(Tax tax, Model model,
-							@RequestParam(value="userNo") int userNo,
-							@RequestParam(value="taxNo") int taxNo) {
+							@RequestParam(value="userNo") int userNo) {
 		
 		int result;
 		
+		System.out.println("tax : " + tax);
+			
 		try {
 			
 			result = taxService.updateTax(tax);
 			
-			System.out.println(result);
+			System.out.println("result : " + result);
 			
 			if(result > 0) {
 				System.out.println("수정성공");

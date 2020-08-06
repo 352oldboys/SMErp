@@ -13,7 +13,7 @@ public class Tax implements Serializable {
 	private Date publishDay;
 	private String businessCode;
 	private String businessName;
-	private int regNo;
+	private String custRegNo;
 	private String item;
 	private String unit;
 	private int quantity;
@@ -23,15 +23,33 @@ public class Tax implements Serializable {
 	
 	public Tax() {	}
 
-	public Tax(int taxNo, int userNo, Date publishDay, String businessCode, String businessName, int regNo, String item,
-			String unit, int quantity, int unitCost, int supplyPrice, int taxPrice) {
+	public Tax(int taxNo, int userNo, Date publishDay, String businessCode, String businessName, String custRegNo,
+			String item, String unit, int quantity, int unitCost, int supplyPrice, int taxPrice) {
 		super();
 		this.taxNo = taxNo;
 		this.userNo = userNo;
 		this.publishDay = publishDay;
 		this.businessCode = businessCode;
 		this.businessName = businessName;
-		this.regNo = regNo;
+		this.custRegNo = custRegNo;
+		this.item = item;
+		this.unit = unit;
+		this.quantity = quantity;
+		this.unitCost = unitCost;
+		this.supplyPrice = supplyPrice;
+		this.taxPrice = taxPrice;
+	}
+	
+	
+
+	public Tax(int taxNo, Date publishDay, String businessCode, String businessName, String custRegNo, String item,
+			String unit, int quantity, int unitCost, int supplyPrice, int taxPrice) {
+		super();
+		this.taxNo = taxNo;
+		this.publishDay = publishDay;
+		this.businessCode = businessCode;
+		this.businessName = businessName;
+		this.custRegNo = custRegNo;
 		this.item = item;
 		this.unit = unit;
 		this.quantity = quantity;
@@ -43,9 +61,9 @@ public class Tax implements Serializable {
 	@Override
 	public String toString() {
 		return "Tax [taxNo=" + taxNo + ", userNo=" + userNo + ", publishDay=" + publishDay + ", businessCode="
-				+ businessCode + ", businessName=" + businessName + ", regNo=" + regNo + ", item=" + item + ", unit="
-				+ unit + ", quantity=" + quantity + ", unitCost=" + unitCost + ", supplyPrice=" + supplyPrice
-				+ ", taxPrice=" + taxPrice + "]";
+				+ businessCode + ", businessName=" + businessName + ", custRegNo=" + custRegNo + ", item=" + item
+				+ ", unit=" + unit + ", quantity=" + quantity + ", unitCost=" + unitCost + ", supplyPrice="
+				+ supplyPrice + ", taxPrice=" + taxPrice + "]";
 	}
 
 	public static long getSerialversionuid() {
@@ -72,8 +90,8 @@ public class Tax implements Serializable {
 		return businessName;
 	}
 
-	public int getRegNo() {
-		return regNo;
+	public String getCustRegNo() {
+		return custRegNo;
 	}
 
 	public String getItem() {
@@ -120,8 +138,8 @@ public class Tax implements Serializable {
 		this.businessName = businessName;
 	}
 
-	public void setRegNo(int regNo) {
-		this.regNo = regNo;
+	public void setCustRegNo(String custRegNo) {
+		this.custRegNo = custRegNo;
 	}
 
 	public void setItem(String item) {
@@ -147,7 +165,7 @@ public class Tax implements Serializable {
 	public void setTaxPrice(int taxPrice) {
 		this.taxPrice = taxPrice;
 	}
-	
+
 	
 	
 }

@@ -37,8 +37,8 @@
 			<div class="container-fluid">
 	
 	          <!-- Page Heading -->
-	          <h1 class="h3 mb-2 text-gray-800">직급관리</h1>
-	          <p class="mb-4">직급 관리를 할 수 있습니다.</p>
+	          <h1 class="h3 mb-2 text-gray-800">직급 관리</h1>
+	          <p class="mb-4">직책을 등록하세요.</p>
 	
 	          <!-- DataTales Example -->
 	          <div class="card shadow mb-4">
@@ -67,18 +67,18 @@
 	                              </div>
 	                              <div class="modal-body mx-3">
 		                                 
-	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+									<div class="md-form mb-3">
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="jobCode">직급코드</label>
 	                                    <input type="text" name="jobCode" id="jobCode" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="jobName">직책</label>
 	                                    <input type="text" name="jobName" id="jobName" class="form-control validate">
 	                                 </div>
-				                                              
+
 	                              </div>
 
 	                              <div class="modal-footer d-flex justify-content-center">
@@ -91,12 +91,12 @@
                 	<% // 추가하기 모달창 끝  %>
                 	
                 	<% // 삭제하기 2번째 방법 %>
-					<form action="${pageContext.request.contextPath}/attendance/deleteAttend.do?userNo=${member.userNo}" method="Post" id="modalDeleteForm">
+					<form action="${pageContext.request.contextPath}/job/deleteJob.do?userNo=${member.userNo}" method="Post" id="modalDeleteForm">
 						<input type="hidden" name="jobCode"/>
 					</form>
                 	
 					<% // 수정하기 모달창 시작  %>
-					<form action="${pageContext.request.contextPath}/attendance/updateAttend.do?userNo=${member.userNo}" method="post">
+					<form action="${pageContext.request.contextPath}/job/updateJob.do?userNo=${member.userNo}" method="post">
 	                     <div class="modal fade" id="modalUpdateForm" tabindex="-1"
 	                          role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	                        <div class="modal-dialog" role="document">
@@ -108,19 +108,29 @@
 	                                 </button>
 	                              </div>
 	                              <div class="modal-body mx-3">
+	                              
 									 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="jobCode">직급코드</label>
+	                                    <label data-error="wrong" data-success="right" for="uJobCode">직급코드</label>
 	                                    <input type="text" name="jobCode" id="uJobCode" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="jobName">직책</label>
+	                                    <label data-error="wrong" data-success="right" for="uJobName">직책</label>
 	                                    <input type="text" name="jobName" id="uJobName" class="form-control validate" >
 	                                 </div>
+	                                 
+	                              </div>
+	                              
+	                              <div class="modal-footer d-flex justify-content-center">
+	                                 <%-- <button class="btn btn-unique" style="text-align: center;" onclick="location.href=${pageContext.request.contextPath}/customer/insertCustomer.do">
+	                                 Send<i class="fas fa-paper-plane-o ml-1 <-- 이모티콘 클래스"></i>
+	                                 </button> --%>
+	                                <button class="btn btn-unique">수정하기</button>	                                 
+	                              </div>
 	                              	                              
-	                           	  </div>
+	                           </div>
 	                        </div>
 	                     </div>
                 	</form>
@@ -225,7 +235,7 @@
 	*/
 	
 	// 삭제하기 기능 구현부
-	function deleteJob(){
+	function deleteAttend(){
 		var table = $('#dataTable').DataTable();
 		var length = table.rows('.selected').data().length;
  	  	  
@@ -254,13 +264,13 @@
 		 */
 		
 		// 2번째 방식 
-		$("#modalDeleteForm input[name=empNo]").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalDeleteForm input[name=jobCode]").val(table.rows('.selected').data()[0][0]);		  
 		$("#modalDeleteForm").submit();
 				  
 		}
 
 	// 수정하기 기능 구현부
-	function updateJob(){
+	function updateAttend(){
 			 
 		var table = $('#dataTable').DataTable();
 		var length = table.rows('.selected').data().length;
@@ -286,7 +296,8 @@
 		$("#modalUpdateForm").modal();
 	}
     </script>
-
+    
+	
 </body>
 
 </html>

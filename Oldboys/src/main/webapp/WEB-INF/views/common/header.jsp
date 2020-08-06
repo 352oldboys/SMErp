@@ -15,8 +15,10 @@
      
    <!--    <link rel="shortcuticon" href="/resources/img/smerp.ico"> -->
     
-     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico"> 
-    
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+	
+	<!-- 모달 창 아이콘 Font-Awesome 사용 CDN 선언 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -56,6 +58,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           	<a class="collapse-item" href="${pageContext.request.contextPath}/employee/employeeList.do?userNo=${member.userNo}">인사정보</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/job/jobList.do?userNo=${member.userNo}">직급관리</a>
             <a class="collapse-item" href="${pageContext.request.contextPath}/attendance/attendanceList.do?userNo=${member.userNo}">출결</a>
           </div>
         </div>

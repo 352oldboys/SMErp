@@ -12,7 +12,7 @@
 	
 	<insert id="insertTax" parameterType="Tax">
 		INSERT INTO TAX
-		VALUES (SEQ_TAXNO.NEXTVAL, #{userNo}, #{publishDay}, #{businessCode}, #{businessName}, #{regNo}, #{item},
+		VALUES (SEQ_TAXNO.NEXTVAL, #{userNo}, #{publishDay}, #{businessCode}, #{businessName}, #{custRegNo}, #{item},
 				#{unit}, #{quantity}, #{unitCost}, #{supplyPrice}, #{taxPrice})
 	</insert>
 	
@@ -24,13 +24,11 @@
 	<update id="updateTax" parameterType="Tax">
 		UPDATE TAX
 		
-		<set>
-		TAXNO = #{taxNo},
-		USERNO = #{userNo},
+		<set>		
 		PUBLISHDAY = #{publishDay},
 		BUSINESSCODE= #{businessCode},
 		BUSINESSNAME = #{businessName},
-		REGNO = #{regNo}, 
+		CUSTREGNO = #{custRegNo}, 
 		ITEM = #{item},
 		UNIT = #{unit},
 		QUANTITY = #{quantity},

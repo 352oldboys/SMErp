@@ -30,13 +30,13 @@ public class AttendServiceImpl implements AttendService {
 	@Override
 	public int deleteAttend(Attendance att) {
 		
-		return attendDAO.insertAttend(att);
+		return attendDAO.deleteAttend(att);
 	}
 
 	@Override
 	public int updateAttend(Attendance att) {
 		
-		return attendDAO.insertAttend(att);
+		return attendDAO.updateAttend(att);
 	}
 
 }

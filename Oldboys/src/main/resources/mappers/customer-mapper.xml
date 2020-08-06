@@ -4,19 +4,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="customerMapper">
 
-	<select id="selectCustList" parameterType="Customer" resultType="Customer">
+	<select id="selectCustList" parameterType="_int" resultType="Customer">
 		SELECT * FROM CUSTOMER
+		WHERE USERNO = #{userNo}
 	</select>
 	
 	<insert id="insertCust" parameterType="Customer">
 		INSERT INTO CUSTOMER
 		VALUES (#{businessCode}, #{userNo}, #{businessName}, #{phone}, 
-				#{email}, #{representative}, #{regNo}, #{address})
+				#{email}, #{representative}, #{custRegNo}, #{address})
 	</insert>
 	
 	<delete id="deleteCust" parameterType="Customer">
 		DELETE FROM CUSTOMER
-		WHERE BUSINESSCODE = #{businessCode}
+		WHERE BUSINESSCODE = #{businessCode} AND USERNO = #{userNo}
 	</delete>
 	
 	<update id="updateCust" parameterType="Customer">
@@ -29,11 +30,11 @@
 		PHONE = #{phone}, 
 		EMAIL =  #{email},
 		REPRESENTATIVE = #{representative},
-		REGNO = #{regNo},
+		CUSTREGNO = #{custRegNo},
 		ADDRESS = #{address}
 		</set>
 		
-		WHERE BUSINESSCODE = #{businessCode}
+		WHERE BUSINESSCODE = #{businessCode} AND USERNO = #{userNo}
 	</update>
 </mapper>
 

@@ -66,71 +66,72 @@
 	                              <div class="modal-body mx-3">
                               		 <%-- <input type="hidden" name="taxNo" id="taxNo" value="${ tax.taxNo }"/> --%>
                               		 
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                 <div class="md-form mb-3">
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="publishDay">발행일</label>
-	                                    <input type="date" name="publishDay" id="publishDay" class="form-control validate" value="${ publishDay }">
+	                                    <input type="date" name="publishDay" id="publishDay" class="form-control validate">
 	                                 </div>
 	                              
 									 <%-- <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ member.userNo }" readonly>
 	                                 </div> --%>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessCode">거래처 코드</label>
-	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate" value="${ businessCode }">
+	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="regNo">사업자 번호</label>
-	                                    <input type="text" name="regNo" id="regNo" class="form-control validate" value="${ regNo }">
+	                                    <i class="fas fa-tag"></i>   
+	                                    <label data-error="wrong" data-success="right" for="custRegNo">사업자 번호</label>
+	                                    <input type="text" name="custRegNo" id="custRegNo" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessName">기업명</label>
-	                                    <input type="text" name="businessName" id="businessName" class="form-control validate" value="${ businessName }">
+	                                    <input type="text" name="businessName" id="businessName" class="form-control validate">
 	                                 </div>
 			                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
+	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="item">품목</label>
-	                                    <input type="text" name="item" id="item" class="form-control validate" value="${ item }">
+	                                    <input type="text" name="item" id="item" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag  grey-text"></i>
+	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="unit">규격</label>
-	                                    <input type="text" name="unit" id="unit" class="form-control validate" value="${ unit }"> 
+	                                    <input type="text" name="unit" id="unit" class="form-control validate"> 
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
+	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="quantity">수량</label>
-	                                    <input type="text" name="quantity" id="quantity" class="form-control validate" onkeyup="calcSup()" value="${ quantity }">
+	                                    <input type="text" name="quantity" id="quantity" class="form-control validate" onkeyup="calcSup()">
 	                                 </div>
 	                                 
                                 	 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
+	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="unitCost">단가</label>
-	                                    <input type="text" name="unitCost" id="unitCost" class="form-control validate" onkeyup="calcSup()" value="${ unitCost }">
+	                                    <input type="text" name="unitCost" id="unitCost" class="form-control validate" onkeyup="calcSup()">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
+	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="supplyPriceComma">공급가액</label>
-	                                    <input type="hidden" name="supplyPrice" id="supplyPrice" value="${ supplyPrice }"/>
-	                                    <input type=text name="supplyPriceComma" id="supplyPriceComma" class="form-control validate" onkeyup="calcSup()" value="${ supplyPriceComma }">
+	                                    <input type="hidden" name="supplyPrice" id="supplyPrice"/>
+	                                    <input type=text id="supplyPriceComma" class="form-control validate" onkeyup="calcSup()">
 	                                 </div>	
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="taxPrice">세액</label>
-	                                    <input type="text" name="taxPrice" id="taxPrice" class="form-control validate" value="${ taxPrice }">
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="taxPriceComma">세액</label>
+	                                    <input type="hidden" name="taxPrice" id="taxPrice"/>
+	                                    <input type="text" id="taxPriceComma" class="form-control validate">
 	                                 </div>	   
 	                                 	                                                     
 	                              </div>
@@ -162,73 +163,74 @@
 	                                 </button>
 	                              </div>
 	                              <div class="modal-body mx-3">	                              
-                              		 <input type="hidden" name="taxNo" id="utaxNo" value="${ taxNo }"/>
+                              		 <input type="hidden" name="taxNo" id="uTaxNo"/>
 	                              
-	                                 <div class="md-form">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="upublishDay">발행일</label>
-	                                    <input type="date" name="publishDay" id="upublishDay" class="form-control validate" value="${ publishDay }">
+	                                 <div class="md-form mb-3">
+	                                    <i class="fas fa-tag"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uPublishDay">발행일</label>
+	                                    <input type="date" name="publishDay" id="uPublishDay" class="form-control validate">
 	                                 </div>
 	                                 
 									 <%-- <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
+	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 	                                    <input type="text" name="userNo" id="userNo" class="form-control validate" value="${ userNo }">
 	                                 </div> --%>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="ubusinessCode">거래처 코드</label>
-	                                    <input type="text" name="businessCode" id="ubusinessCode" class="form-control validate" value="${ businessCode }">
+	                                    <i class="fas fa-user"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uBusinessCode">거래처 코드</label>
+	                                    <input type="text" name="businessCode" id="uBusinessCode" class="form-control validate">
 	                                 </div>
 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>   
-	                                    <label data-error="wrong" data-success="right" for="uregNo">사업자 번호</label>
-	                                    <input type="text" name="regNo" id="uregNo" class="form-control validate" value="${ regNo }">
+	                                    <i class="fas fa-tag"></i>   
+	                                    <label data-error="wrong" data-success="right" for="uCustRegNo">사업자 번호</label>
+	                                    <input type="text" name="custRegNo" id="uCustRegNo" class="form-control validate">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-user prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="ubusinessName">기업명</label>
-	                                    <input type="text" name="businessName" id="ubusinessName" class="form-control validate" value="${ businessName }">
+	                                    <i class="fas fa-user"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uBusinessName">기업명</label>
+	                                    <input type="text" name="businessName" id="uBusinessName" class="form-control validate">
 	                                 </div>
 			                                 
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i> 
-	                                    <label data-error="wrong" data-success="right" for="uitem">품목</label>
-	                                    <input type="text" name="item" id="uitem" class="form-control validate" value="${ item }">
+	                                    <i class="fas fa-tag"></i> 
+	                                    <label data-error="wrong" data-success="right" for="uItem">품목</label>
+	                                    <input type="text" name="item" id="uItem" class="form-control validate">
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag  grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="uunit">규격</label>
-	                                    <input type="text" name="unit" id="uunit" class="form-control validate" value="${ unit }"> 
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uUnit">규격</label>
+	                                    <input type="text" name="unit" id="uUnit" class="form-control validate"> 
 	                                 </div>
 	
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="uquantity">수량</label>
-	                                    <input type="text" name="quantity" id="uquantity" class="form-control validate" onkeyup="calcSupUpdate()" value="${ quantity }">
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uQuantity">수량</label>
+	                                    <input type="text" name="quantity" id="uQuantity" class="form-control validate" onkeyup="calcSupUpdate()">
 	                                 </div>
 	                                 
                                 	 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="uunitCost">단가</label>
-	                                    <input type="text" name="unitCost" id="uunitCost" class="form-control validate" onkeyup="calcSupUpdate()" value="${ unitCost }">
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uUnitCost">단가</label>
+	                                    <input type="text" name="unitCost" id="uUnitCost" class="form-control validate" onkeyup="calcSupUpdate()">
 	                                 </div>
 	                                
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="usupplyPriceComma">공급가액</label>
-	                                    <input type="hidden" name="supplyPrice" id="usupplyPrice" value="${ supplyPrice }"/>
-	                                    <input type=text id="usupplyPriceComma" class="form-control validate" onkeyup="calcSupUpdate()" value="${ supplyPriceComma }">
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uSupplyPriceComma">공급가액</label>
+	                                    <input type="text" name="supplyPrice" id="uSupplyPrice" class="form-control validate"/>
+	                                    <input type="hidden" id="uSupplyPriceComma" class="form-control validate" onkeyup="calcSupUpdate()">
 	                                 </div>	
 	                                       
 	                                 <div class="md-form mb-3">
-	                                    <i class="fas fa-tag prefix grey-text"></i>
-	                                    <label data-error="wrong" data-success="right" for="utaxPrice">세액</label>
-	                                    <input type="text" name="taxPrice" id="utaxPrice" class="form-control validate" value="${ taxPrice }">
+	                                    <i class="fas fa-tag"></i>
+	                                    <label data-error="wrong" data-success="right" for="uTaxPriceComma">세액</label>
+	                                    <input type="text" name="taxPrice" id="uTaxPrice" class="form-control validate"/>
+	                                    <input type="hidden" id="uTaxPriceComma" class="form-control validate">
 	                                 </div>	 
 	                                                    
 	                              </div>
@@ -254,7 +256,7 @@
 	                  <tr>
 	                  	<!-- <td><input type="checkbox"></td> -->
 						<!-- <th>사용자 번호</th> -->
-						<th>순번</th>
+						<!-- <th>순번</th> -->
 						<th>발행일</th>
 						<th>거래처 코드</th>
 						<th>사업자 번호</th>
@@ -271,11 +273,12 @@
 					  <c:forEach var="tax" items="${list}">
 			  	  	  	<tr id="${tax.taxNo}">
 							<%-- <td>${tax.userNo}</td> --%>
-							<td>${tax.taxNo}</td>					
+							<%-- <td>${tax.taxNo}</td> --%>	
+							<input type="hidden" name="_taxNo" id="_taxNo" value="${tax.taxNo}" />			
 							<td>${tax.publishDay}</td>
   	  	  		  	  		<td>${tax.businessCode}</td>
 							<td>${tax.businessName}</td>
-							<td>${tax.regNo}</td>
+							<td>${tax.custRegNo}</td>
 							<td>${tax.item}</td>
 							<td>${tax.unit}</td>
 							<td>${tax.quantity}</td>
@@ -317,11 +320,12 @@
 	    $('#dataTable tbody').on( 'click', 'tr', function () {
 	        $(this).toggleClass('selected');
 	    } );
-
+	    
 	} );
 	
+	
 	// taxNo 컬럼 숨기기
-	/*  $(document).ready(function() {
+	/* $(document).ready(function() {
 	    $('#dataTable').DataTable( {
 	        "columnDefs": [
 	            {
@@ -392,7 +396,7 @@
 		 */
 		
 		// 2번째 방식 
-		$("#modalDeleteForm input[name=taxNo]").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalDeleteForm input[name=taxNo]").val($('#_taxNo').val());		  
 		$("#modalDeleteForm").submit();
 				  
 		}
@@ -417,23 +421,24 @@
  
 		/* DB값 가져와서 수정하기 창에 띄우기 */
 		/* $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]); */
-		$("#modalUpdateForm #utaxNo").val(table.rows('.selected').data()[0][0]);
-		$("#upublishDay").val(table.rows('.selected').data()[0][1]);		  
-		$("#ubusinessCode").val(table.rows('.selected').data()[0][2]);		  
-		$("#ubusinessName").val(table.rows('.selected').data()[0][3]);		  
-		$("#uregNo").val(table.rows('.selected').data()[0][4]);		  
-		$("#uitem").val(table.rows('.selected').data()[0][5]);		  
-		$("#uunit").val(table.rows('.selected').data()[0][6]);		  
-		$("#uquantity").val(table.rows('.selected').data()[0][7]);		  
-		$("#uunitCost").val(table.rows('.selected').data()[0][8]);		  
-		$("#usupplyPriceComma").val(table.rows('.selected').data()[0][9]);	
-		$("#utaxPrice").val(table.rows('.selected').data()[0][10]);
+		/* $("#modalUpdateForm #uTaxNo").val(table.rows('.selected').data()[0][0]); */
+		$("#uPublishDay").val(table.rows('.selected').data()[0][0]);		  
+		$("#uBusinessCode").val(table.rows('.selected').data()[0][1]);		  
+		$("#uBusinessName").val(table.rows('.selected').data()[0][2]);		  
+		$("#uCustRegNo").val(table.rows('.selected').data()[0][3]);		  
+		$("#uItem").val(table.rows('.selected').data()[0][4]);		  
+		$("#uUnit").val(table.rows('.selected').data()[0][5]);		  
+		$("#uQuantity").val(table.rows('.selected').data()[0][6]);		  
+		$("#uUnitCost").val(table.rows('.selected').data()[0][7]);		  
+		$("#uSupplyPrice").val(table.rows('.selected').data()[0][8]);	
+		$("#uTaxPrice").val(table.rows('.selected').data()[0][9]);
+		$('#uTaxNo').val($('#_taxNo').val());
 		
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();
 	}
 	
-	// 추가하기  창 공급가액 & 세액 자동 계산하기
+	/* // 추가하기  창 공급가액 & 세액 자동 계산하기
     function calcSup(){
     	var quantity = $("#quantity").val();
     	var unitCost = $("#unitCost").val();
@@ -444,30 +449,33 @@
             document.getElementById('supplyPrice').value = "0";
             document.getElementById('supplyPriceComma').value = "0";
         }else{
-            document.getElementById('supplyPriceComma').value = resultSup.toLocaleString();            
+            document.getElementById('supplyPriceComma').value = resultSup.toLocaleString();
             document.getElementById('supplyPrice').value = resultSup;
+            document.getElementById('taxPriceComma').value = resultTax.toLocaleString();
             document.getElementById('taxPrice').value = resultTax;
+            
         }
 
     }
     
 	// 수정하기 창 공급가액 & 세액 자동 계산하기
     function calcSupUpdate(){
-    	var quantity = $("#uquantity").val();
-    	var unitCost = $("#uunitCost").val();
+    	var quantity = $("#uQuantity").val();
+    	var unitCost = $("#uUnitCost").val();
         var resultSup = quantity * unitCost;
         var resultTax = 0.1 * resultSup;
         
         if(unitCost == ""){
-            document.getElementById('usupplyPrice').value = "0";
-            document.getElementById('usupplyPriceComma').value = "0";
+            document.getElementById('uSupplyPrice').value = "0";
+            document.getElementById('uSupplyPriceComma').value = "0";
         }else{
-            document.getElementById('usupplyPriceComma').value = resultSup.toLocaleString();
-            document.getElementById('usupplyPrice').value = resultSup;
-            document.getElementById('utaxPrice').value = Math.floor(resultTax);
+            document.getElementById('uSupplyPriceComma').value = resultSup.toLocaleString();
+            document.getElementById('uSupplyPrice').value = resultSup;
+            document.getElementById('uTaxPriceComma').value = resultTax.toLocaleString();
+            document.getElementById('uTaxPrice').value = resultTax;
         }
 
-    }
+    } */
 	
     </script>
     

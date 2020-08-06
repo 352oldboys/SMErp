@@ -16,7 +16,7 @@ public class JobDAOImpl implements JobDAO {
 	
 	@Override
 	public List<Job> selectJobList(Job job) {
-		return sqlSession.selectList("jobMapper.selectjobList", job);
+		return sqlSession.selectList("jobMapper.selectJobList", job);
 	}
 
 	@Override

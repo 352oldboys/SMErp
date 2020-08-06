@@ -6,13 +6,13 @@ import com.kh.erp.customer.model.vo.Customer;
 
 public interface CustomerDAO {
 
-	List<Customer> selectCustList(Customer emp);
+	List<Customer> selectCustList(Customer cust);
 
-	int insertCustomer(Customer emp);
+	int insertCustomer(Customer cust);
 
-	int deleteCustomer(Customer emp);
+	int deleteCustomer(Customer cust);
 
-	int updateCustomer(Customer emp);
+	int updateCustomer(Customer cust);
 	
 	
 
