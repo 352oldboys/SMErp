@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Sales {
 	
 	private int productNo;
+	private String productName;
 	private int userNo;
 	private int quantity;
 	private int unitPrice;
@@ -12,9 +13,10 @@ public class Sales {
 	
 	public Sales() { super(); }
 
-	public Sales(int productNo, int userNo, int quantity, int unitPrice, Date day) {
+	public Sales(int productNo, String productName, int userNo, int quantity, int unitPrice, Date day) {
 		super();
 		this.productNo = productNo;
+		this.productName = productName;
 		this.userNo = userNo;
 		this.quantity = quantity;
 		this.unitPrice = unitPrice;
@@ -23,12 +25,16 @@ public class Sales {
 
 	@Override
 	public String toString() {
-		return "Sales [productNo=" + productNo + ", userNo=" + userNo + ", quantity=" + quantity + ", unitPrice="
-				+ unitPrice + ", day=" + day + "]";
+		return "Sales [productNo=" + productNo + ", productName=" + productName + ", userNo=" + userNo + ", quantity="
+				+ quantity + ", unitPrice=" + unitPrice + ", day=" + day + "]";
 	}
 
 	public int getProductNo() {
 		return productNo;
+	}
+
+	public String getProductName() {
+		return productName;
 	}
 
 	public int getUserNo() {
@@ -51,6 +57,10 @@ public class Sales {
 		this.productNo = productNo;
 	}
 
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
@@ -67,6 +77,5 @@ public class Sales {
 		this.day = day;
 	}
 
-	
 	
 }
