@@ -48,11 +48,20 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberdao.checkIdDuplicate(hmap);
 	}
+	
 	@Override
 	public List<Member> selectListMember(String userId) {
 		return  memberdao.selectListMember(userId);
 	}
-
+	
+	public int idCheck(String userId) {
+		HashMap<String, Object> idMap = new HashMap<String, Object>(); 
+	
+		idMap.put("userId", userId);
+		
+		return memberdao.idCheck(idMap);
+	}
+	
 	/* ========================== email ========================== */
 	
     //아이디 찾기
@@ -78,6 +87,23 @@ public class MemberServiceImpl implements MemberService {
         
         return result;
         
-    }    
+    }
+
+	@Override
+	public Member selectPasswordFind(String userId) {
+		return memberdao.selectPasswordFind(userId);
+	}
+
+	@Override
+	public int updatePassword(Member m) {
+		return memberdao.updatePassword(m);
+	}
+
+	@Override
+	public Member selectIdFind(String name) {
+		return memberdao.selectIdFind(name);
+	}
+
+
     
 }

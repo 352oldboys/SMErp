@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMapper">
 	
-	<select id="selectOne" parameterType="String" resultType="Member">
+	<select id="selectOne" parameterType="string" resultType="Member">
 		SELECT * FROM MEMBER
 		WHERE USERID = #{userId}
 	</select>
@@ -45,11 +45,17 @@
 		}
 	</select>
 	
-	<!--  ================================================================  -->
+	<select id="idCheck" parameterType="hashmap" statementType="CALLABLE">
+		{ CALL ID_DUP_CHK(#{userId, mode=IN, jdbcType=VARCHAR},
+						  #{result, mode=OUT, jdbcType=NUMERIC, javaType=integer})
+		}	
+    </select>
 	
-	<select id="find_id_check" parameterType="Member" resultType="String">
+	<!--  =============================== Email ===============================  -->
+	
+	<select id="id_check" parameterType="Member" resultType="Member">
         SELECT USERID FROM MEMBER
-        WHERE EMAIL = #{email}
+        WHERE EMAIL = #{userId}
     </select>
     
     <select id = "find_pass_check" parameterType="Member"
@@ -59,11 +65,28 @@
     </select>
     
         <!-- 이메일 중복확인 관련 mapper-->
-    <select id = "email_check" resultType="String">
+    <select id = "email_check" resultType="string">
         SELECT EMAIL FROM MEMBER
         WHERE EMAIL = #{email}
     </select>
     
+    <select id="selectOnePassword" parameterType="string" resultType="Member">
+    	SELECT * FROM MEMBER
+    	WHERE USERID = #{userId}
+    </select>
+    
+    <update id="updatePassword" parameterType="Member">
+    UPDATE MEMBER 
+		<set>
+			PASSWORD = #{password}
+		</set>
+		WHERE USERID = #{userId}
+    </update>
+    
+    <select id="selectIdFind" parameterType="Member">
+    SELECT NAME FROM MEMBER
+    WHERE NAME = #{name}
+    </select>
     
 </mapper>
 
