@@ -43,7 +43,7 @@
               <form id="insertForm" method="post">
               <div class="form-group row">
                   <div class="col-sm-8 mb-3 mb-sm-0">
-                  	<input type="text" class="form-control form-control-user" id="userId" name="userId" style="display: inline-block;" placeholder="아이디 : SMERP" required> 
+                  	<input type="text" class="form-control form-control-user" id="userId" name="userId" style="display: inline-block;" required/> 
                   </div>
                   <div class="col-sm-4 mb-3 mb-sm-0">
                   	<input type="button" class="btn btn-secondary btn-user" id="idCheckBtn" style="width:100%" value="아이디 중복확인" required/>
@@ -55,7 +55,7 @@
                     <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="이름 : 홍길동">
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="phone" name="phone" placeholder="핸드폰번호 : 010-1234-5678" onchange="phoneCheck(this)" required>
+                    <input type="text" class="form-control form-control-user" id="phone" name="phone" placeholder="핸드폰번호 : 01012345678" onchange="phoneCheck(this)" required />
                   	<span id="phoneText" style="color:red; font-size:16px; text-align:center; display:none;">핸드폰방식이 일치하지 않습니다.</span>
                   </div>
                 </div>
@@ -73,7 +73,7 @@
                 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="regNo" name="regNo" placeholder="사업자 번호 : 123-45-67890" onchange="regNoCheck(this)" required>
+                    <input type="text" class="form-control form-control-user" id="regNo" name="regNo" placeholder="사업자 번호 10자리를 입력해주세요." onchange="regNoCheck(this)" required />
                     <span id="regNoText" style="color:red; font-size:16px; display:none;">사업자번호가 일치하지 않습니다.</span>
                   </div>
                   <div class="col-sm-6">
@@ -83,7 +83,7 @@
                 
                 <div class="form-group row">
                  <div class="col-sm-9 mb-3 mb-sm-0">
-                    <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="이메일 : SMERP@해당주소.com" onchange="emailCheck(this)" style="display:inline-block;" required> 
+                    <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="이메일 : SMERP@해당주소.com" onchange="emailCheck(this)" style="display:inline-block;" required /> 
                     <span id="emailText" style="color:red; font-size:16px; display:none;"><b>이메일 방식이 맞지 않습니다.</b></span>
                  </div>
                  <div class="col-sm-3 mb-3 mb-sm-0">
@@ -116,14 +116,14 @@
                 
               	  
               	<div class="form-group">
-                	<input type="text" class="form-control form-control-user" id="address1" name="address1" value="주소" style="display:inline-block; width:100%;" readonly>
+                	<input type="text" class="form-control form-control-user" id="address1" name="address1" value="주소" style="display:inline-block; width:100%;" readonly />
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-9 mb-3 mb-sm-0" >
-                	  <input type="text" class="form-control form-control-user" id="address2" name="address2" placeholder="상세주소" style="display:inline-block; width:100%;" required>
+                	  <input type="text" class="form-control form-control-user" id="address2" name="address2" placeholder="상세주소" style="display:inline-block; width:100%;" required />
                   </div>
                   <div class="col-sm-3 mb-3 mb-sm-0">
-                    <input type="button" class="btn btn-secondary btn-user" id="address_btn" onclick="daum_PostcodeOpen();" style="float:right; width:100%;" value="주소 검색" required>
+                    <input type="button" class="btn btn-secondary btn-user" id="address_btn" onclick="daum_PostcodeOpen();" style="float:right; width:100%;" value="주소 검색" required />
                   </div>
                 </div>
                 
@@ -215,11 +215,22 @@
 			$("#insertForm").submit();
 		}
 		
+		// 이메일을 인증하지 않으면 보내지 못하는 기능
+		$('#insertForm').submit(function(event){
+			if(!emailAuth) {
+				event.preventDefault();
+				alert("이메일 인증을 해주셔야합니다.");
+			} else {
+				return;
+			}
+		});
+		
 		console.log($("#userId").val());
 		
 		$("#idCheckBtn").on("click", function (){
-			var regExp = /^[a-z0-9_]{4,20}$/;
-			
+			if($('#userId').val().length != 0) {
+				var regExp = /^[a-z0-9_]{4,20}$/;
+				
 				$.ajax({
 					url : '${pageContext.request.contextPath}/member/idCheck.do',
 					type : 'post',
@@ -233,16 +244,17 @@
 				console.log("if에서받는 값 : "+ data);
 				$('#userIdCheck').text("사용중인 아이디 입니다");
 				$('#userIdCheck').css("color", "red");
-				
-			}else if(data.result == ""){
-				console.log("else에서 받는 값 : " + data);
-				$('#userIdCheck').text("아이디 내용이 없습니다 아이디를 입력하세요");
-				$('#userIdCheck').css("color","green");
 				 
-			}else{
+			}else if(data.result == 0){
 				console.log("else if에서 받는 값 : " + data);
 				$('#userIdCheck').text("사용이 가능한 아이디입니다.");
 				$('#userIdCheck').css("color", "blue");
+
+			}else if(data.result != 1 && 0){
+				console.log("else에서 받는 값 : " + data);
+				$('#userIdCheck').text("아이디 내용 값이 없습니다 아이디를 입력하세요");
+				$('#userIdCheck').css("color","green");
+				
 			}
 				
 				}, error : function (){	// 계속된 error 확인 문구만 실행됨
@@ -255,11 +267,15 @@
 				}
 			
 			});
+			} else {
+				alert("Plz input userId first!");
+			}
+			
 		});
 				
 		
 		var emailchk = false; // email false과 ture확인할 것
-		
+		var emailAuth = false;
 		function emailCheck(obj) {
 			var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 			var email = obj.value;
@@ -286,7 +302,7 @@
 		}
 		
 		function regNoCheck(obj){
-			var regExp = /^([0-9]{3})-?([0-9]{2})-?([0-9]{5})$/;
+			var regExp = /^([0-9]{10})$/;
 			var regNo = obj.value;
 			
 			if(regExp.test(regNo) != true){
@@ -351,7 +367,7 @@
 				 if(data.succ == true){
 					 alert("인증번호가 일치하였습니다. 회원가입창으로 이동합니다.");
 					 $('#emailModal').hide();
-					
+					 emailAuth = true;
 				 }else{
 					 alert("인증번호가 일치하지 않습니다. 결과를 다시 확인해 보세요.");
 					 $('[name=email_injeung]').val('');
