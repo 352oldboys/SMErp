@@ -8,7 +8,6 @@
 <html lang="ko">
 
 <head>
-<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,7 +72,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="email" name="email" value="${member.email}">
+                  <input type="email" class="form-control form-control-user" id="email" name="email" value="${member.email}" disabled>
                 </div>
                 
                 <div class="form-group row">

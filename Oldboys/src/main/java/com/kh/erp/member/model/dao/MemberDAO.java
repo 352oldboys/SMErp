@@ -18,6 +18,8 @@ public interface MemberDAO {
 	public int checkIdDuplicate(HashMap<String, Object> hmap);
 
 	List<Member> selectListMember(String userId);
+	
+	public int idCheck(HashMap<String, Object> idMap);
 
 /* ========================== email ========================== */
 	
@@ -26,6 +28,15 @@ public interface MemberDAO {
 	public String find_passCheck(Member dto);
 
 	public boolean email_check(String email) throws Exception;
+
+	public Member selectPasswordFind(String userId);
+
+	public int updatePassword(Member m);
+
+	public Member selectIdFind(String name);
+
+
+	
 
 	
 }

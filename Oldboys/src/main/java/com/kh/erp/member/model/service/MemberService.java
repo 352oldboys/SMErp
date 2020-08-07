@@ -1,6 +1,7 @@
 package com.kh.erp.member.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.erp.member.model.vo.Member;
 
@@ -47,6 +48,8 @@ public interface MemberService {
 	 * @return
 	 */
 	List<Member> selectListMember(String userId);
+	
+	int idCheck(String userId);  
 
 	/*====================== Email ====================== */
 	
@@ -70,7 +73,17 @@ public interface MemberService {
 	  * @return
 	  * @throws Exception
 	  */
-	 public boolean email_check(String email) throws Exception;    
+	 public boolean email_check(String email) throws Exception;
+
+	Member selectPasswordFind(String userId);
+
+	int updatePassword(Member m);
+
+	Member selectIdFind(String name);
+
+
+	
+
 	    
-	    
+	 
 }

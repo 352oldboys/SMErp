@@ -36,6 +36,8 @@ public class Member {
 		this.status = status;
 	}
 
+	public Member(String name2, String email2) {}
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", regNo=" + regNo

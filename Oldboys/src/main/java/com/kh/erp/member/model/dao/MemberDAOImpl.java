@@ -48,12 +48,19 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectList("MemberMapper.selectListMember", userId);
 	}
 	
+	public int idCheck(HashMap<String, Object> idMap) {
+		
+		sqlSession.selectOne("MemberMapper.idCheck", idMap);
+		System.out.println("dao idMap : " + idMap);
+		return (Integer)idMap.get("result");
+	}
+	
 	/* ========================== email ========================== */
     
     //아이디 찾기 관련 메소드
     @Override
     public String find_idCheck(Member dto) {
-        String id = sqlSession.selectOne("MemberMapper.find_id_check", dto);
+        String id = sqlSession.selectOne("MemberMapper.id_check", dto);
         return id;
         
     }
@@ -74,5 +81,21 @@ public class MemberDAOImpl implements MemberDAO {
         return (emailck==null) ? true : false;
         
     }
+
+	@Override
+	public Member selectPasswordFind(String userId) {
+		return sqlSession.selectOne("MemberMapper.selectOnePassword", userId);
+	}
+
+	@Override
+	public int updatePassword(Member m) {
+		return sqlSession.update("MemberMapper.updatePassword", m);
+	}
+
+	@Override
+	public Member selectIdFind(String name) {
+		return sqlSession.selectOne("MemeberMapper.selectIdFind", name);
+	}
+
 
 }

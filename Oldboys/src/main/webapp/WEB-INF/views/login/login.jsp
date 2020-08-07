@@ -8,7 +8,6 @@
 
 <html lang="ko">
 <head>
-<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 <title>SMERP_login_page</title>
 
@@ -132,7 +131,7 @@
 					<button type="button" class="btn btn-blue btn-block"
 						onclick="location.href='${pageContext.request.contextPath}/member/login.do'">회원가입</button>
 					<br /> <span>비밀번호를 잊어버리셨나요?</span>&nbsp;&nbsp;&nbsp;<a
-						onclick="location.href='findMyPassword.do'">여기를 클릭해주세요.</a>
+						onclick="popup_open();">여기를 클릭해주세요.</a>
 				</div>
 			</div>
 		</div>
@@ -908,6 +907,11 @@
 		$(".select").attr("method","post");
 		$(".select").submit();
 	}
+  	
+  	 function popup_open(){
+   	  var popup = window.open("${pageContext.request.contextPath}/member/find.do", "SMERP", "top=10, left=10, width=600, height=300, status=no, number=no, toobar=no, resizable=no");
+     	
+  	 };
       
 </script>
 

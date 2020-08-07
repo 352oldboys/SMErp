@@ -3,12 +3,10 @@
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" 	 uri="http://java.sun.com/jsp/jstl/functions" %>
     
-
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,10 +41,15 @@
                 <hr />
               </div>
               <form id="insertForm" method="post">
-                  <div class="form-group">
-                  	<input type="text" class="form-control form-control-user" id="userId" name="userId" placeholder="아이디 : SMERP" onchange="userIdCheck(this)" required>
-                  	<span id="userIdCheck"></span>
+              <div class="form-group row">
+                  <div class="col-sm-8 mb-3 mb-sm-0">
+                  	<input type="text" class="form-control form-control-user" id="userId" name="userId" style="display: inline-block;" placeholder="아이디 : SMERP" required> 
                   </div>
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                  	<input type="button" class="btn btn-secondary btn-user" id="idCheckBtn" style="width:100%" value="아이디 중복확인" required/>
+				  </div>
+                  	<span id="userIdCheck" class="col-12"></span>
+                </div>
                   <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="이름 : 홍길동">
@@ -126,7 +129,7 @@
                 
                 <hr />
                 <div class="row" style="float:right;">
-                <a type="submit" onclick="insertForm();" class="btn btn-primary btn-user" style="display:inline; color:white;">회원가입</a>
+                <a type="submit" id="button" onclick="insertForm();" class="btn btn-primary btn-user" style="display:inline; color:white; " >회원가입</a>
                 &nbsp; &nbsp;
                 <a href="${pageContext.request.contextPath}/member/backlogin.do" class="btn btn-google btn-user" style="display:inline">돌아가기</a>
                </div>
@@ -135,14 +138,12 @@
 	<div id="emailModal" class="modal">
       		<div class="modal-content" style="width:400px; text-align: center;">
                 <b><span style="font-size: 24pt;">인증번호 확인창</span></b>
-                <br /><p>(아래에 해당 인증 번호를 입력하세요)</p>
-                
-                <form action="/member/join_injeung.do" method="POST">
-	                <input type="text" class="col-sm-7 mb-sm-3" name="email_injeung" style="display: inline-block;"/> 
-	                <input type="submit" class="col-sm-4 mb-sm-3" style="display: inline-block;" value="확인"/>
-                </form>
-                
-       
+                <br /><p style="margin-top:0px;">(아래에 해당 인증 번호를 입력하세요)</p>
+                <div class="row" style="margin:auto;">
+	                <input type="text" class="col-7 mb-sm-3" name="email_injeung" style="display: inline-block; width:100%;"/> 
+	                &nbsp; &nbsp; 
+	                <input type="button" class="col-4 mb-sm-3" style="display: inline-block; width:100%;" onclick="sendDice()" value="확인"/>
+                </div>
             <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
                 <span class="pop_bt" style="font-size: 13pt;" >
                      닫기
@@ -152,11 +153,10 @@
       </div>
  
     </div>
-              <div class="text-center">
-                <br />
-                <span style="float:center; font-size:14px;"><b>아이디는 있는데 아이디를 모르신다구요?</b></sapn>&nbsp; &nbsp;<a class="small" href="forgot-password.html">여기를 클릭하세요.</a>
               
-              </div>
+          <br />
+          <span style="float:center; font-size:14px;"><b>아이디는 있는데 아이디를 모르신다구요?</b></sapn>&nbsp; &nbsp;<a class="small" href="forgot-password.html">여기를 클릭하세요.</a>
+             
             </div>
           </div>
         </div>
@@ -215,17 +215,48 @@
 			$("#insertForm").submit();
 		}
 		
-		function userIdCheck(obj){
+		console.log($("#userId").val());
+		
+		$("#idCheckBtn").on("click", function (){
 			var regExp = /^[a-z0-9_]{4,20}$/;
-			var userId = obj.value;
 			
-			if(regExp.test(userId) == false){
-				$("#userIdText").show(3000);
-				$("#userIdText").hide(3000);
-				return false;
+				$.ajax({
+					url : '${pageContext.request.contextPath}/member/idCheck.do',
+					type : 'post',
+					data : {
+						userId : $("#userId").val()
+					},
+					success :function(data){
+					console.log("값이 들어오는가? : " + data);
+					
+			if(data.result == 1){
+				console.log("if에서받는 값 : "+ data);
+				$('#userIdCheck').text("사용중인 아이디 입니다");
+				$('#userIdCheck').css("color", "red");
+				
+			}else if(data.result == ""){
+				console.log("else에서 받는 값 : " + data);
+				$('#userIdCheck').text("아이디 내용이 없습니다 아이디를 입력하세요");
+				$('#userIdCheck').css("color","green");
+				 
+			}else{
+				console.log("else if에서 받는 값 : " + data);
+				$('#userIdCheck').text("사용이 가능한 아이디입니다.");
+				$('#userIdCheck').css("color", "blue");
 			}
-			return true;
-		}
+				
+				}, error : function (){	// 계속된 error 확인 문구만 실행됨
+					console.log("실패");
+					alert("error 관리자에게 문의하세요.");
+					$("#userIdCheck").css("color", "green");
+					console.log($("#userId").val());
+					//$('#userIdCheck').
+					
+				}
+			
+			});
+		});
+				
 		
 		var emailchk = false; // email false과 ture확인할 것
 		
@@ -244,7 +275,7 @@
 		}
 		
 		function phoneCheck(obj){
-			var regExp = /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+			var regExp = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
 			var phone = obj.value;
 
 			if(regExp.test(phone) != true){
@@ -306,6 +337,30 @@
 		  } else {
 			alert("회원님의 이메일을 적어주세요");	  			  
 		  }
+	  }
+	  
+	  function sendDice(){
+		  $.ajax({
+			 url : "${pageContext.request.contextPath}/member/join_injeung.do",
+			 type : "post",
+			 data : {
+				 email_injeung : $('[name=email_injeung]').val(),
+				 email : $("#email").val()
+			 }, success : function(data) {
+				 console.log(data);
+				 if(data.succ == true){
+					 alert("인증번호가 일치하였습니다. 회원가입창으로 이동합니다.");
+					 $('#emailModal').hide();
+					
+				 }else{
+					 alert("인증번호가 일치하지 않습니다. 결과를 다시 확인해 보세요.");
+					 $('[name=email_injeung]').val('');
+				 }
+				 
+			 }, error : function(error, code , msg){
+				 console.log(error);
+			 }
+		  });
 	  }
 	  
       function close_pop(flag) {
