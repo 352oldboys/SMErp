@@ -3,109 +3,108 @@
 "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
-	
-	<select id="selectBoardList" resultType="Board">
-		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
-		FROM BOARD B 
-		ORDER BY BDATE DESC, BNO DESC
-	
-	</select>
-	
-	<select id="selectBoardTotalContent" resultType="_int">
-		SELECT COUNT(*) FROM BOARD
-	</select>
+   
+   <select id="selectBoardList" resultType="Board">
+      SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
+      FROM BOARD B 
+      ORDER BY BDATE DESC, BNO DESC
+   
+   </select>
+   
+   <select id="selectBoardTotalContent" resultType="_int">
+      SELECT COUNT(*) FROM BOARD
+   </select>
 
-	<insert id="insertBoard">
-		INSERT INTO BOARD(BNO, BTITLE, BWRITER, BCONTENT) 
-		VALUES (SEQ_BNO.NEXTVAL,#{bTitle},#{bWriter},#{bContent})
-		<selectKey keyProperty="bNo" resultType="_int" order="AFTER"> 
-		      SELECT SEQ_BNO.CURRVAL FROM DUAL 
-		</selectKey>
-	</insert>
-	
-	<insert id="insertBoardFile">
-		<!--  다른방식  -->
-		<selectKey keyProperty="bNo" resultType="_int" order="BEFORE"> 
-		    SELECT SEQ_BNO.CURRVAL FROM DUAL  
-		</selectKey>
-		INSERT INTO BOARDFILE(BOARDFILENO, BNO, ORIGINALFILENAME, RENAMEDFILENAME) 
-		VALUES (SEQ_BOARDFILENO.NEXTVAL, #{bNo}, #{originalFileName}, #{renamedFileName})
-	</insert>
+   <insert id="insertBoard">
+      INSERT INTO BOARD(BNO, BTITLE, BWRITER, BCONTENT) 
+      VALUES (SEQ_BNO.NEXTVAL,#{bTitle},#{bWriter},#{bContent})
+      <selectKey keyProperty="bNo" resultType="_int" order="AFTER"> 
+            SELECT SEQ_BNO.CURRVAL FROM DUAL 
+      </selectKey>
+   </insert>
+   
+   <insert id="insertBoardFile">
+      <!--  다른방식  -->
+      <selectKey keyProperty="bNo" resultType="_int" order="BEFORE"> 
+          SELECT SEQ_BNO.CURRVAL FROM DUAL  
+      </selectKey>
+      INSERT INTO BOARDFILE(BOARDFILENO, BNO, ORIGINALFILENAME, RENAMEDFILENAME) 
+      VALUES (SEQ_BOARDFILENO.NEXTVAL, #{bNo}, #{originalFileName}, #{renamedFileName})
+   </insert>
 
-	<select id="selectOneBoard" parameterType="_int" resultType="Board">
-		SELECT * FROM BOARD
-		WHERE BNO = #{bNo}
-	</select>
-	
-	<select id="selectBoardFileList" parameterType="_int" resultType="BoardFile">
-		SELECT * FROM BOARDFILE
-		WHERE BNO = #{bNo}
-	</select>
-	
-	<update id="updateBoard" parameterType="Board">
-		UPDATE BOARD SET
-		BTITLE = #{bTitle},
-		BCONTENT = #{bContent}
-		WHERE BNO = #{bNo}
-	</update>
-	
-	<insert id="updateBoardFile" parameterType="BoardFile">
-		INSERT INTO BOARDFILE
-		VALUES (SEQ_BOARDFILENO.NEXTVAL, #{bNo},
-		        #{originalFileName}, #{renamedFileName},
-		        DEFAULT, DEFAULT, DEFAULT)
-	</insert>
-	
-	<delete id="deleteBoardFile" parameterType="_int">
-		DELETE FROM BOARDFILE
-		WHERE BNO = #{bNo}
-	</delete>
-	
-	<delete id="deleteBoard" parameterType="_int">
-		DELETE FROM BOARD
-		WHERE BNO = #{bNo}
-	</delete>
-	
-	<delete id="deleteBoardFileOne" parameterType="_int">
-		DELETE FROM BAORDFILE
-		WHERE BOARDFILENO = #{bfNo}
-	</delete>
-	
-	<select id="searchBtitleCount" resultType="_int">
-		
-		SELECT COUNT(*) 
-		FROM BOARD
-		WHERE BTITLE LIKE '%' || #{keyword} || '%'
-		
-	</select>
-	
-	<select id="searchBcontentCount"  resultType="_int">
-		
-		SELECT COUNT(*) 
-		FROM BOARD
-		WHERE BCONTENT LIKE '%' || #{keyword} || '%'
-		
-	</select>
-	
-	<select id="searchBtitle"   resultType="Board">
-		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
-		FROM BOARD B 
-		WHERE B.BTITLE LIKE '%' || #{keyword} || '%'
-		ORDER BY BDATE DESC, BNO DESC
-	</select>
-	
-	<select id="searchBcontent"  resultType="Board">
-		SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
-		FROM BOARD B 
-		WHERE B.BCONTENT LIKE '%' || #{keyword} || '%'
-		ORDER BY BDATE DESC, BNO DESC
-	</select>
-	
-	
-	
-	
+   <select id="selectOneBoard" parameterType="_int" resultType="Board">
+      SELECT * FROM BOARD
+      WHERE BNO = #{bNo}
+   </select>
+   
+   <select id="selectBoardFileList" parameterType="_int" resultType="BoardFile">
+      SELECT * FROM BOARDFILE
+      WHERE BNO = #{bNo}
+   </select>
+   
+   <update id="updateBoard" parameterType="Board">
+      UPDATE BOARD SET
+      BTITLE = #{bTitle},
+      BCONTENT = #{bContent}
+      WHERE BNO = #{bNo}
+   </update>
+   
+   <insert id="updateBoardFile" parameterType="BoardFile">
+      INSERT INTO BOARDFILE
+      VALUES (SEQ_BOARDFILENO.NEXTVAL, #{bNo},
+              #{originalFileName}, #{renamedFileName},
+              DEFAULT, DEFAULT, DEFAULT)
+   </insert>
+   
+   <delete id="deleteBoardFile" parameterType="_int">
+      DELETE FROM BOARDFILE
+      WHERE BNO = #{bNo}
+   </delete>
+   
+   <delete id="deleteBoard" parameterType="_int">
+      DELETE FROM BOARD
+      WHERE BNO = #{bNo}
+   </delete>
+   
+   <delete id="deleteBoardFileOne" parameterType="_int">
+      DELETE FROM BAORDFILE
+      WHERE BOARDFILENO = #{bfNo}
+   </delete>
+   
+   <select id="searchBtitleCount" resultType="_int">
+      
+      SELECT COUNT(*) 
+      FROM BOARD
+      WHERE BTITLE LIKE '%' || #{keyword} || '%'
+      
+   </select>
+   
+   <select id="searchBcontentCount"  resultType="_int">
+      
+      SELECT COUNT(*) 
+      FROM BOARD
+      WHERE BCONTENT LIKE '%' || #{keyword} || '%'
+      
+   </select>
+   
+   <select id="searchBtitle"   resultType="Board">
+      SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
+      FROM BOARD B 
+      WHERE B.BTITLE LIKE '%' || #{keyword} || '%'
+      ORDER BY BDATE DESC, BNO DESC
+   </select>
+   
+   <select id="searchBcontent"  resultType="Board">
+      SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
+      FROM BOARD B 
+      WHERE B.BCONTENT LIKE '%' || #{keyword} || '%'
+      ORDER BY BDATE DESC, BNO DESC
+   </select>
+   
+   
+   
+   
 </mapper>
-
 
 
 

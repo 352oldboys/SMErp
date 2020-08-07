@@ -31,10 +31,9 @@ public class IntegratedController {
 	@Autowired
 	IntegrateService integrateService;
 	
-
 	
 	@RequestMapping("finance/integrated.do")
-	public String integerted(Model model, 
+	public String integrated(Model model, 
 												@RequestParam(value="userNo") int userNo) {
 		
 		List<Purchase> pList = purchaseService.selectList(userNo);
@@ -54,7 +53,6 @@ public class IntegratedController {
 		
 	}
 	
-	
 	@RequestMapping("/finance/pMonthPrice.do")
 	@ResponseBody
 	public Map<String, Object> pMonthPrice(@RequestParam int userNo) {
@@ -67,5 +65,22 @@ public class IntegratedController {
 		
 		return map;
 	}
+	
+	@RequestMapping("/finance/sMonthPrice.do")
+	@ResponseBody
+	public Map<String, Object> sMonthPrice(@RequestParam int userNo) {
+		
+		String sMonth = salesService.salesMonthPrice(userNo);
+				
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("sMonth", sMonth);
+		
+		return map;
+	}
+	
+
+
+
 	
 }

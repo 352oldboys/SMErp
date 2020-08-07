@@ -103,7 +103,7 @@ public class PurchaseController {
 			throw e;
 		}
 				
-		return "redirect:/finance/purchase.do?userNo="+purchase.getUserNo();
+		return "redirect:/finance/purchase.do?userNo=" + purchase.getUserNo();
 	}
 	
 	@RequestMapping("/finance/deletePur.do")

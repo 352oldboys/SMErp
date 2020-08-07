@@ -92,10 +92,17 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/inventory/inventoryList.do?userNo=${member.userNo}"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#"  data-toggle="collapse"data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages1">         
           <i class="fas fa-fw fa-folder"></i>
           <span>재고 관리</span>
         </a>
+       <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="${pageContext.request.contextPath}/inventory/inventoryList.do?userNo=${member.userNo}">재고 관리</a>
+           <a class="collapse-item" href="${pageContext.request.contextPath}/insertinventory/InsertinventoryList.do?userNo=${member.userNo}">품목 등록</a>
+              </div>
+        </div> 
+      </li>
        <!--  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>

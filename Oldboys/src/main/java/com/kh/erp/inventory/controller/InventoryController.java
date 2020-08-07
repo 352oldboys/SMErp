@@ -30,7 +30,7 @@ public class InventoryController {
 		   
 		   List<Inventory> list = inventoryService.selectInventoryList(inventory);
 		   
-		   System.out.println(list);
+		   System.out.println("inventoryList : " + list);
 		   model.addAttribute("list", list);
 		   
 		   

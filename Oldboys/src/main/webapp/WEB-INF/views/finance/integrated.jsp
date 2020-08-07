@@ -248,7 +248,7 @@
 		
 		
 	
-		$.ajax({
+	/* 	$.ajax({
 			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
 			type: 'POST',
 			data: {
@@ -259,19 +259,21 @@
 			}, error : function(error, code, msg){
 				console.log(error);
 			}			
-		});	
+		});	 */
 	
 // 	$(document).ready(function(){
 		
 		$.ajax({
-			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
+			url : '${pageContext.request.contextPath}/finance/sMonthPrice.do',
 			type: 'POST',
 			data: {
-				userId : '${member.userId}'
+				userNo : '${member.userNo}'
 			}, success : function(data){
+				
 				console.log(data);
-				var sPrice = data;
-				$('#salesMonth').text(data.salesPrice.toLocaleString("en"));
+				
+				$('#salesMonth').text(data.sMonth);
+				
 			}, error : function(error, code, msg){
 				console.log(error);
 			}
