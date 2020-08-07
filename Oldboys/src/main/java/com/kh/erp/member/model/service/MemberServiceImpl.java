@@ -104,6 +104,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberdao.selectIdFind(name);
 	}
 
+	@Override
+	public int insertSales(int userNo) {
+		
+		return memberdao.insertSales(userNo);
+	}
+
 
     
 }

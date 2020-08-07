@@ -74,6 +74,8 @@ public class MemberController {
    @RequestMapping("/member/insertMember.do")
    public String insetMember(@RequestParam(value = "status", required = false, defaultValue = "Y") String status,
          Member member, Model model) {
+	   
+	   System.out.println("member : " + member);
 //      System.out.println("insertMember-member(centroller) : " + member);
 //      System.out.println("insertMember-model(centroller) : " + model);
 
@@ -87,6 +89,18 @@ public class MemberController {
       member.setStatus(status);
 
       int result = memberService.insertMember(member);
+      
+      Member m = memberService.selectOne(member.getUserId());
+      
+      System.out.println("userNo =" +m.getUserNo());
+      
+      int resultOne =  memberService.insertSales(m.getUserNo());
+      
+      
+      
+      System.out.println("userNo :" + member.getUserNo());
+      
+      
 
       String loc = "/";
       String msg = "";
@@ -114,7 +128,7 @@ public class MemberController {
          List<Member> mList = memberService.selectListMember(userId);
 
          String msg = "";
-         String loc = "/index.do";
+         String loc = "/finance/integrated.do?userNo=" + m.getUserNo() ;
 
          if (m == null) {
             msg = "로그인 실패 [ 존재하지 않은 아이디입니다. ]";
