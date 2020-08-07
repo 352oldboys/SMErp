@@ -47,22 +47,25 @@
 
 <body>
 
-   <div class="row box_org" id="passwordMove_1" style="vertical-align: middle; margin: auto;">
+   <div class="row box_org" id="idMove_1" style="vertical-align: middle; margin: auto;">
         <div class="col" style="text-align: center;">
-            <H3>비밀번호 찾기</H3>
+            <H3>아이디 찾기</H3>
         </div>
     <form>
         <div class="col mb-sm-3" style="text-align: center;">
             <p class="text"> 사용자님의 이메일로 인증번호를 보냈습니다. <br /> 확인 후에 하단에 입력하세요. </p> <br />
+            <input type="hidden" name="dice" id="dice" value="${dice}" />
 			<input type="text"  name="email_injeung" id="email_injeung">
 			<input type="hidden" id="email" value="${member.email}" />  <!-- 값이 들어가면 ajax에서 무한 루프 -->
 			<input type="hidden" id="userId" value="${member.userId}" />
         </div>
 
         <div class="col">
-            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
+            <input type="button" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
         </div>
+        
     </form>
+    </div>
 
 <input type="hidden" name="member" value="${member}" />
 	<div class="row box_org" id="body1" style="display: none">
@@ -71,8 +74,8 @@
 		</div>
     <form action="${pageContext.request.contextPath}/member/popup_idCheck.do">
         <div class="col mb-sm-3" style="text-align: center;">
-            <p class="text"> 사용자님의 아이디는 <b>${userId}</b> 입니다.</p>
-			<input type="text" name="email">
+            <p class="text"> 사용자님의 아이디는 <b>${member.userId}</b> 입니다.</p>
+			<input type="hidden" name="email">
         </div>
         
         <div class="col mb-sm-3">
@@ -80,7 +83,16 @@
         </div>
     </form>
     </div>
-</div>
+
+<script>
+function sendDice(){
+	if($('#email_injeung').val() == $('#dice').val()){
+		alert('인증번호가 일치합니다.');
+	$('#body1').css('display', 'block');
+	$('#idMove_1').css('display', 'none');
+	}
+}
+</script>
         
 </body>
 </html>

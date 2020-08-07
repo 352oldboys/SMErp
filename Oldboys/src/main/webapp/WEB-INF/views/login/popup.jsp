@@ -65,14 +65,14 @@
             <H3>아이디 찾기</H3>
         </div>
 
-    <form>
+    <form action="${pageContext.request.contextPath}/member/popup_id.do" method="post">
         <div class="col mb-sm-3" style="text-align: center;">
             <p class="text"> 해당 이메일 : </p> &nbsp; <input type="text" id="email" name="email" > <br />
             <p class="text"> 사용자 이름 : </p> &nbsp; <input type="text" id="name" name="name">
         </div>
         
         <div class="col mb-sm-3">
-            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="checkIdFind();" value="전송하기">
+            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;" value="전송하기">
         </div>
     </form>
     </div>

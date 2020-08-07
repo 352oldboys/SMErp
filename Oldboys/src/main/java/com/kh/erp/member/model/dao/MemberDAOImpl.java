@@ -94,7 +94,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public Member selectIdFind(String name) {
-		return sqlSession.selectOne("MemeberMapper.selectIdFind", name);
+		return sqlSession.selectOne("MemberMapper.selectIdFind", name);
 	}
 
 

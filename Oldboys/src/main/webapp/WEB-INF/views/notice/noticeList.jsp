@@ -26,14 +26,7 @@
        });
         */
         
-        function a() {
-        	$("tr[id]").on("click", function(){
-                var nNo = $(this).attr("id");
-                console.log("nNo="+nNo);
-                location.href = "${pageContext.request.contextPath}/notice/noticeView.do?no="+nNo;
-             });    	
-			
-		}
+        
       
         
         
@@ -117,6 +110,17 @@
 </body>
 
 <script>
+
+$(function(){
+	$("tr[id]").on("click", function(){
+        var nNo = $(this).attr("id");
+        console.log("nNo="+nNo);
+        location.href = "${pageContext.request.contextPath}/notice/noticeView.do?no="+nNo;
+     });    	
+	
+});
+
+
 $(document).on('click', '#btnSearch', function(e){
 
 	e.preventDefault();

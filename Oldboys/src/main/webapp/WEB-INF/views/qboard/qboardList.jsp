@@ -18,14 +18,7 @@
          location.href = "${pageContext.request.contextPath}/qboard/qboardForm.do";
       }
       
-      function a() {
-      	$("tr[id]").on("click", function(){
-              var qNo = $(this).attr("id");
-              console.log("qNo="+qNo);
-              location.href = "${pageContext.request.contextPath}/qboard/qboardView.do?no="+qNo;
-           });    	
-			
-		}
+     
       
    </script>
 </head>
@@ -48,7 +41,7 @@
              
                </tr>
                <c:forEach items="${list}" var="q"> 
-                <tr id="${q.qNo}" onclick=a();>
+                <tr id="${q.qNo}" >
       			  <td>${q.qNo}</td>
                   <td>${q.qTitle}</td>
                   <td>${q.qWriter}</td>
@@ -95,6 +88,16 @@
 
 </body>
 <script>
+
+$(function(){
+  	$("tr[id]").on("click", function(){
+          var qNo = $(this).attr("id");
+          console.log("qNo="+qNo);
+          location.href = "${pageContext.request.contextPath}/qboard/qboardView.do?no="+qNo;
+       });    	
+		
+	});
+
 $(document).on('click', '#btnSearch', function(e){
 
 	e.preventDefault();
