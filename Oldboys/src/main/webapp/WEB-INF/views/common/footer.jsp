@@ -58,9 +58,9 @@
   <script src="${pageContext.request.contextPath}/resources/js/demo/datatables-demo.js"></script>
 
 	  <!-- Page level custom scripts -->
-<%--   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
- --%><%--   <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script>
- --%>  <script>
+ <%--  <script src="${pageContext.request.contextPath}/resources/js/demo/chart-area-demo.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/demo/chart-pie-demo.js"></script> --%>
+  <script>
   
 	$(function(){
 		$("#dataTable_filter").css("float","right");	

@@ -6,19 +6,18 @@
 	
 	<select id="selectSalList" resultType="Sales">
 		SELECT * FROM SALES
-		WHERE USERNO = #{userNo}
+		WHERE USERNO = #{userNo} AND STATUS = 'Y'
 	</select>
 	
 	<insert id="insertSal" parameterType="Sales">
 		INSERT INTO SALES
-		VALUES(SEQ_SALES.NEXTVAL, #{productName}, #{userNo}, #{quantity}, #{unitPrice}, #{day})
+		VALUES(#{productNo}, #{userNo}, #{quantity}, #{unitPrice}, #{day}, DEFAULT)
 	</insert>
 	
 	<update id="updateSal" parameterType="Sales">
 		UPDATE SALES
 		<set>
 		PRODUCTNO = #{productNo},
-		PRODUCTNAME = #{productName},
 		USERNO = #{userNo},
 		QUANTITY = #{quantity},
 		UNITPRICE = #{unitPrice},
@@ -39,13 +38,13 @@
 	</select>
 	
 	<select id="salesMonthPrice"  resultType="string">
-      	SELECT TO_CHAR(SUM(UNITPRICE * QUANTITY), '999,999,999,999,999') 
-      	FROM SALES
-      	JOIN MEMBER USING(USERNO)
-      	WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '/' 
+		SELECT TO_CHAR(SUM(UNITPRICE * QUANTITY), '999,999,999,999,999') 
+      FROM SALES
+      JOIN MEMBER USING(USERNO)
+      WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '/' 
                               || (SELECT TO_CHAR(SYSDATE, 'MM') FROM DUAL) || '%'
           AND USERNO = #{userNo}
-   </select>
+	</select>
 	
 	
 	

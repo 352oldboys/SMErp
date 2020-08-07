@@ -31,10 +31,13 @@ public class IntegratedController {
 	@Autowired
 	IntegrateService integrateService;
 	
+
 	
 	@RequestMapping("finance/integrated.do")
-	public String integrated(Model model, 
-												@RequestParam(value="userNo") int userNo) {
+	public String integerted(Model model, 
+												@RequestParam(value="userNo") int userNo) {		
+		
+		System.out.println("integrated userNo : " + userNo);
 		
 		List<Purchase> pList = purchaseService.selectList(userNo);
 		List<Sales> sList = salesService.selectSalList(userNo);
@@ -49,9 +52,10 @@ public class IntegratedController {
 		model.addAttribute("iList", iList);
 		model.addAttribute("tList", tList);	
 		
-		return "finance/integrated";
+		return "redirect:/index.do?userNo=" + userNo;
 		
 	}
+	
 	
 	@RequestMapping("/finance/pMonthPrice.do")
 	@ResponseBody
@@ -65,22 +69,5 @@ public class IntegratedController {
 		
 		return map;
 	}
-	
-	@RequestMapping("/finance/sMonthPrice.do")
-	@ResponseBody
-	public Map<String, Object> sMonthPrice(@RequestParam int userNo) {
-		
-		String sMonth = salesService.salesMonthPrice(userNo);
-				
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("sMonth", sMonth);
-		
-		return map;
-	}
-	
-
-
-
 	
 }
