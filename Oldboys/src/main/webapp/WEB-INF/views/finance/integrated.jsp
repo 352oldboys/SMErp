@@ -160,7 +160,7 @@
 						<!-- Card Header - Dropdown -->
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary">이달의 매출 그래프</h6>
+							<h6 class="m-0 font-weight-bold text-primary">올해의 매출 그래프</h6>
 							<div class="dropdown no-arrow">
 								<a class="dropdown-toggle" href="#" role="button"
 									id="dropdownMenuLink" data-toggle="dropdown"
@@ -248,7 +248,7 @@
 		
 		
 	
-	/* 	$.ajax({
+		$.ajax({
 			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
 			type: 'POST',
 			data: {
@@ -259,21 +259,19 @@
 			}, error : function(error, code, msg){
 				console.log(error);
 			}			
-		});	 */
+		});	
 	
 // 	$(document).ready(function(){
 		
 		$.ajax({
-			url : '${pageContext.request.contextPath}/finance/sMonthPrice.do',
+			url : '${pageContext.request.contextPath}/finance/salesPrice.do',
 			type: 'POST',
 			data: {
-				userNo : '${member.userNo}'
+				userId : '${member.userId}'
 			}, success : function(data){
-				
 				console.log(data);
-				
-				$('#salesMonth').text(data.sMonth);
-				
+				var sPrice = data;
+				$('#salesMonth').text(data.salesPrice.toLocaleString("en"));
 			}, error : function(error, code, msg){
 				console.log(error);
 			}
@@ -436,7 +434,9 @@ $.ajax({
 		      pointHitRadius: 10,
 		      pointBorderWidth: 2, 
 		      data: list
+		      
 		    }],
+		
 		  },
 		  options: {
 		    maintainAspectRatio: false,
