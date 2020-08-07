@@ -51,7 +51,7 @@ public class InsertInventoryController {
 			
 		} catch(Exception e) {
 			
-			throw e;
+
 			
 		}
 		
@@ -81,7 +81,7 @@ public class InsertInventoryController {
 			
 		} catch(Exception e) {
 			
-			throw e;
+
 			
 		}
 		

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.kh.erp.inventory.model.service.InventoryService;
 import com.kh.erp.inventory.model.vo.Inventory;
 
@@ -30,7 +31,7 @@ public class InventoryController {
 		   
 		   List<Inventory> list = inventoryService.selectInventoryList(inventory);
 		   
-		   System.out.println("inventoryList : " + list);
+		   System.out.println(list);
 		   model.addAttribute("list", list);
 		   
 		   
@@ -40,35 +41,36 @@ public class InventoryController {
 	}
 	
 	@RequestMapping("/inventory/insertInventory.do")
-	public String insertInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) {
-					
-		int result;
-		
-		try {
-			
-			result = inventoryService.insertInventoryList(inventory);
-			
-			System.out.println(result);
-			
-			if(result>0) {
-				System.out.println("삽입성공");
-			}else {
-				System.out.println("삽입실패");
-			}
-			
-		} catch(Exception e) {
-			
-			throw e;
-			
-		}
-		
-			System.out.println(model);
-		
-		    return "redirect:inventoryList.do?userNo="+userNo;
-			                      
+	public String insertInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) throws Exception {
 	
-	}
 	
+	  int result;
+	  
+	  try {
+	  
+	  result = inventoryService.insertInventoryList(inventory);
+	  
+	  System.out.println(result);
+	  
+	  if(result>0) { 
+	System.out.println("삽입성공"); 
+	  }else {
+	  System.out.println("삽입실패"); 
+	  }
+	  
+	  } catch(Exception e) {
+	  
+	  throw e;
+	  
+	  }
+	  
+	  System.out.println(model);
+	  
+	  return "redirect:inventoryList.do?userNo="+userNo;
+	  
+	  
+	  }
+	 
 	@RequestMapping("/inventory/deleteInventory.do")
 	public String deleteInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo,
 								 @RequestParam(value="inventoryNo") int inventoryNo) throws Exception {
@@ -105,7 +107,7 @@ public class InventoryController {
 		
 	}
 	@RequestMapping("/inventory/updateInventory.do")
-	public String updateInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) {
+	public String updateInventory(Inventory inventory, Model model, @RequestParam(value="userNo") int userNo) throws Exception {
 					
 		int result;
 		

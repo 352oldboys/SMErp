@@ -3,26 +3,28 @@
 <!DOCTYPE html>
 
  <html>
-	 <!-- Custom fonts for this template-->
-	<link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	
-	<!-- Custom styles for this template-->
-	<link href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css" rel="stylesheet">
-	
-	<link href="${pageContext.request.contextPath}/resources/vendor/datatables/datatables.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   
+   <!-- Custom styles for this template-->
+   <link href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css" rel="stylesheet">
+   
+   <link href="${pageContext.request.contextPath}/resources/vendor/datatables/datatables.min.css" rel="stylesheet">
     
      
    <!--    <link rel="shortcuticon" href="/resources/img/smerp.ico"> -->
     
-     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico"> 
-    
+   <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+   
+   <!-- 모달 창 아이콘 Font-Awesome 사용 CDN 선언 -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/finance/integrated.do?userNo=${member.userNo}">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${pageContext.request.contextPath}/index.do">
         <div class="sidebar-brand-icon rotate-n-15" >
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -55,7 +57,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          	<a class="collapse-item" href="${pageContext.request.contextPath}/employee/employeeList.do?userNo=${member.userNo}">인사정보</a>
+             <a class="collapse-item" href="${pageContext.request.contextPath}/employee/employeeList.do?userNo=${member.userNo}">인사정보</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/job/jobList.do?userNo=${member.userNo}">직급관리</a>
             <a class="collapse-item" href="${pageContext.request.contextPath}/attendance/attendanceList.do?userNo=${member.userNo}">출결</a>
           </div>
         </div>
@@ -89,10 +92,17 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${pageContext.request.contextPath}/inventory/inventoryList.do?userNo=${member.userNo}"  data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#"  data-toggle="collapse"data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages1">         
           <i class="fas fa-fw fa-folder"></i>
           <span>재고 관리</span>
         </a>
+       <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="${pageContext.request.contextPath}/inventory/inventoryList.do?userNo=${member.userNo}">재고 관리</a>
+           <a class="collapse-item" href="${pageContext.request.contextPath}/insertinventory/InsertinventoryList.do?userNo=${member.userNo}">품목 등록</a>
+              </div>
+        </div> 
+      </li>
        <!--  <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
@@ -253,6 +263,8 @@
                   </div>
                   <div>
                     <div class="small text-gray-800" id="to2Ymd"></div>
+                      <b>${member.name}님</b> <br />현재 매출 금액은 <p id="priceTotal" style="display: inline;"></p>원 입니다. <br />
+                      매출을 올리시기 원하시다면 <br /> 상담가와 이야기하세요!!
                   </div>
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
