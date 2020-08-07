@@ -11,13 +11,14 @@
 	
 	<insert id="insertSal" parameterType="Sales">
 		INSERT INTO SALES
-		VALUES(#{productNo}, #{userNo}, #{quantity}, #{unitPrice}, #{day})
+		VALUES(SEQ_SALES.NEXTVAL, #{productName}, #{userNo}, #{quantity}, #{unitPrice}, #{day})
 	</insert>
 	
 	<update id="updateSal" parameterType="Sales">
 		UPDATE SALES
 		<set>
 		PRODUCTNO = #{productNo},
+		PRODUCTNAME = #{productName},
 		USERNO = #{userNo},
 		QUANTITY = #{quantity},
 		UNITPRICE = #{unitPrice},

@@ -60,8 +60,14 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="productNo">상품 명</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productName }">
+											</div>
+										
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }">
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" readonly>
 											</div>
 										
 											<div class="md-form mb-3">
@@ -119,9 +125,15 @@
 										</div>
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="productNo">상품 명</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productName }">
+											</div>
+											
+											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i>
 												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }">
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" readonly>
 											</div>
 										
 											<div class="md-form mb-3">
@@ -166,7 +178,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>상품 번호</th>
+                      <th>상품 명</th>
+                      <th style="display:none">상품 번호</th>
                       <th>유저 번호</th>
                       <th>단가</th>
                       <th>날짜</th>
@@ -189,7 +202,8 @@
                   <tbody>
                   	<c:forEach var="sal" items="${list}">
                     <tr id="${sal.productNo}">
-                      <th> ${sal.productNo} </th>
+                      <th> ${sal.productName}</th>
+                      <th style="display:none"> ${sal.productNo} </th>
                       <th> ${sal.userNo} </th>
                       <th class="unitPrice"> ${sal.unitPrice} </th>
                       <th> ${sal.day} </th>
