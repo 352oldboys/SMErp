@@ -111,27 +111,25 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="quantity">수량</label>
-	                                    <input type="text" name="quantity" id="quantity" class="form-control validate" onkeyup="calcSup()">
+	                                    <input type="text" name="quantity" id="quantity" class="form-control validate" >
 	                                 </div>
 	                                 
                                 	 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="unitCost">단가</label>
-	                                    <input type="text" name="unitCost" id="unitCost" class="form-control validate" onkeyup="calcSup()">
+	                                    <input type="text" name="unitCost" id="unitCost" class="form-control validate" >
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
-	                                    <label data-error="wrong" data-success="right" for="supplyPriceComma">공급가액</label>
-	                                    <input type="hidden" name="supplyPrice" id="supplyPrice"/>
-	                                    <input type=text id="supplyPriceComma" class="form-control validate" onkeyup="calcSup()">
+	                                    <label data-error="wrong" data-success="right" for="supplyPrice">공급가액</label>
+	                                    <input type=text  name="supplyPrice" id="supplyPrice" class="form-control validate" >
 	                                 </div>	
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
-	                                    <label data-error="wrong" data-success="right" for="taxPriceComma">세액</label>
-	                                    <input type="hidden" name="taxPrice" id="taxPrice"/>
-	                                    <input type="text" id="taxPriceComma" class="form-control validate">
+	                                    <label data-error="wrong" data-success="right" for="taxPrice">세액</label>
+	                                    <input type="text"  name="taxPrice" id="taxPrice" class="form-control validate">
 	                                 </div>	   
 	                                 	                                                     
 	                              </div>
@@ -210,20 +208,20 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uQuantity">수량</label>
-	                                    <input type="text" name="quantity" id="uQuantity" class="form-control validate" onkeyup="calcSupUpdate()">
+	                                    <input type="text" name="quantity" id="uQuantity" class="form-control validate" >
 	                                 </div>
 	                                 
                                 	 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uUnitCost">단가</label>
-	                                    <input type="text" name="unitCost" id="uUnitCost" class="form-control validate" onkeyup="calcSupUpdate()">
+	                                    <input type="text" name="unitCost" id="uUnitCost" class="form-control validate" >
 	                                 </div>
 	                                
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uSupplyPriceComma">공급가액</label>
 	                                    <input type="text" name="supplyPrice" id="uSupplyPrice" class="form-control validate"/>
-	                                    <input type="hidden" id="uSupplyPriceComma" class="form-control validate" onkeyup="calcSupUpdate()">
+	                                    <input type="hidden" id="uSupplyPriceComma" class="form-control validate" >
 	                                 </div>	
 	                                       
 	                                 <div class="md-form mb-3">
