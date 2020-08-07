@@ -28,14 +28,7 @@
             location.href = "${pageContext.request.contextPath}/board/boardView.do?no="+boardNo;
          });
       }); */
-      function a() {
-      	$("tr[id]").on("click", function(){
-              var bNo = $(this).attr("id");
-              console.log("bNo="+bNo);
-              location.href = "${pageContext.request.contextPath}/board/boardView.do?no="+bNo;
-           });    	
-			
-		}
+      
       
    </script>
 </head>
@@ -58,7 +51,7 @@
              
                </tr>
                <c:forEach items="${list}" var="b"> 
-                <tr id="${b.bNo}" onclick=a();>
+                <tr id="${b.bNo}" >
       			  <td>${b.bNo}</td>
                   <td>${b.bTitle}</td>
                   <td>${b.bWriter}</td>
@@ -106,6 +99,17 @@
 </body>
 
 <script>
+
+$(function(){
+  	$("tr[id]").on("click", function(){
+          var bNo = $(this).attr("id");
+          console.log("bNo="+bNo);
+          location.href = "${pageContext.request.contextPath}/board/boardView.do?no="+bNo;
+       });    	
+		
+	});
+
+
 $(document).on('click', '#btnSearch', function(e){
 
 	e.preventDefault();

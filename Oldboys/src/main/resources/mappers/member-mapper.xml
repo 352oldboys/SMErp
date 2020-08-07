@@ -83,8 +83,8 @@
 		WHERE USERID = #{userId}
     </update>
     
-    <select id="selectIdFind" parameterType="Member">
-    SELECT NAME FROM MEMBER
+    <select id="selectIdFind" parameterType="Member" resultType="Member">
+    SELECT * FROM MEMBER
     WHERE NAME = #{name}
     </select>
     

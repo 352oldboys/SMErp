@@ -54,14 +54,16 @@
         <div class="col mb-sm-3" style="text-align: center;">
             <p class="text"> 사용자님의 이메일로 인증번호를 보냈습니다. <br /> 확인 후에 하단에 입력하세요. </p> <br />
 			<input type="text"  name="email_injeung" id="email_injeung">
+			<input type="hidden" name="dice" id="dice" value="${dice}"/>
 			<input type="hidden" id="email" value="${member.email}" />  <!-- 값이 들어가면 ajax에서 무한 루프 -->
 			<input type="hidden" id="userId" value="${member.userId}" />
         </div>
 
         <div class="col">
-            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
+            <input type="button" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
         </div>
     </form>
+    </div>
 
     
     <div class="row box_org" id="passwordMove_2" style="display: none">
@@ -69,21 +71,21 @@
     		<h3>비밀번호 변경</h3>
     	</div>
     	
-    	<form action="${pageContext.request.contextPath}/member/checkPasswordFind.do">
+    	<form action="${pageContext.request.contextPath}/member/checkPasswordFind.do" id="passwordFind">
     		<div class="col mb-sm-3">
     			<p>변경하실 비밀번호를 입력하세요.</p>
     			<input type="password" id="password" name="password" />
     			<input type="password" id="repassword" name="repassword" />
     		</div>
     		<div class="col">
-    			<input type="button" value="전송하기" />
+    			<input type="submit"  id="close" value="전송하기"  />
     		</div>
     	</form>
     </div>
- </div>
+ 
 	
 	<script>
-	function sendDice(){
+	/* function sendDice(){
 		
 		$.ajax({
 			url  : "${pageContext.request.contextPath}/member/popup_password.do",
@@ -129,7 +131,31 @@
 			
 		}
 	});
-}
+} */
+	
+	
+function sendDice(){
+		
+	if($('#email_injeung').val() == $('#dice').val()){
+		alert("인증번호 일치");
+		
+		$('#passwordMove_2').css("display", "block");	
+		$('#passwordMove_1').css("display","none");
+		
+		
+	}else{
+		 alert("인증번호가 일치하지 않습니다. 결과를 다시 확인해 보세요.");
+	}
+		
+
+			}
+		
+/* function close(){
+	$("#passwordFind").attr("action","${pageContext.request.contextPath}/member/checkPasswordFind.do");
+	$("#passwordFind").attr("method","post");
+	$('#passwordFind').submit();
+	window.close();
+}		 */
 		
 
 	</script>

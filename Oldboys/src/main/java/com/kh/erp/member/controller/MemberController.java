@@ -367,12 +367,13 @@ public class MemberController {
 
 		String loc = "";
 		String msg = "";
+		int dice = 0;
 		
 		if(m != null) {
 //			======	======	//
 			
 					Random ran = new Random();
-					int dice = 0;
+					
 					dice = ran.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
 
 					diceMap.put(email, dice);
@@ -427,9 +428,10 @@ public class MemberController {
 
 				}
 
-				model.addAttribute("loc", loc).addAttribute("msg", msg).addAttribute("member", m);
+				model.addAttribute("loc", loc).addAttribute("msg", msg).addAttribute("member", m)
+						.addAttribute("dice", dice);
 		
-		return "common/msg";
+		return "redirect:/member/checkIdFindgo.do";
 		
 		/* 이렇게 하면 안되는 이유 : 똑같은 이름이 있을 수도 있기 때문에
 		 * int result = memberService.deleteMember(m.getName(), m.getEmail());
@@ -449,7 +451,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/member/checkIdFindgo.do")
-	public String sendIdFind() {
+	public String sendIdFind(@RequestParam int dice, Model model) {
+		
+		System.out.println("idFindDice : " + dice);
+		
+		model.addAttribute("dice", dice);
 		
 		return "/login/checkIdFind";
 	}
@@ -482,15 +488,18 @@ public class MemberController {
 
 		String loc = "";
 		String msg = "";
+		int dice = 0;
 
 		if (m != null) {
 			//	======	======	//
 			
 			Random ran = new Random();
-			int dice = 0;
+			
 			dice = ran.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
 
-			diceMap.put(email, dice);
+			System.out.println("dice : " + dice);
+			
+			// diceMap.put(email, dice);
 
 			String setfrom = "towijin2100@gamil.com";
 			String tomail = email; // 받는 사람 이메일
@@ -542,19 +551,23 @@ public class MemberController {
 
 		}
 
-		model.addAttribute("loc", loc).addAttribute("msg", msg).addAttribute("member", m);
+		model.addAttribute("loc", loc).addAttribute("msg", msg).addAttribute("member", m)
+				.addAttribute("dice", dice);
 
-		return "common/msg";
+		return "redirect:/login/checkPasswordFindGo.do";
 	}
 
 	@RequestMapping("/login/checkPasswordFindGo.do")
-	public String checkPasswordFindGo(Member m, Model model) {
+	public String checkPasswordFindGo(Member m, Model model, @RequestParam int dice) {
 		
+		System.out.println("find_go_dice : " + dice);
+		
+		model.addAttribute("dice", dice);
 		
 		return "login/checkPasswordFind";
 	}
 	 
-	@RequestMapping("/login/checkPasswordFind.do")
+	@RequestMapping("/member/checkPasswordFind.do")
 	public String checkPasswordFind(Member m, Model model) {
 
 		System.out.println("password M : " + m); // -> Member 값 확인 완료
@@ -577,12 +590,10 @@ public class MemberController {
 		String msg = "";
 
 		if (result > 0) {
-			msg = "회원정보 수정 성공";
-			return "redi/login/window_close.do"; // 자동으로 팝업창 지워주는 방식
-
+			msg = "회원정보 수정 성공"; 
+			
 		} else {
 			msg = "회원 정보 수정 실패";
-			loc = "/member/updateMember.do";
 		}
 
 		model.addAttribute("loc", loc);
