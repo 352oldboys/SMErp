@@ -81,6 +81,8 @@ public interface MemberService {
 
 	Member selectIdFind(String name);
 
+	int insertSales(int userNo);
+
 
 	
 

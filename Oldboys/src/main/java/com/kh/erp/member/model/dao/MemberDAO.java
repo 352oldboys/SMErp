@@ -35,6 +35,8 @@ public interface MemberDAO {
 
 	public Member selectIdFind(String name);
 
+	public int insertSales(int userNo);
+
 
 	
 

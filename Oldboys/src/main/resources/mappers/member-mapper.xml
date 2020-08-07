@@ -88,6 +88,26 @@
     WHERE NAME = #{name}
     </select>
     
+    <insert id="insertSales" parameterType="_int">
+		
+		INSERT ALL
+			INTO SALES VALUES(0, 'test', #{userNo} , 0, 0,  '2020/01/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/02/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/03/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/04/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/05/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/06/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/07/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/08/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/09/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/10/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/11/01' , 'N')
+			INTO SALES VALUES(0, 'test', #{userNo}, 0, 0,  '2020/12/01' , 'N')
+			SELECT * FROM DUAL
+		
+	</insert>
+    
+    
 </mapper>
 
 

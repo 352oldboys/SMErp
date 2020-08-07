@@ -97,5 +97,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("MemberMapper.selectIdFind", name);
 	}
 
+	@Override
+	public int insertSales(int userNo) {
+	
+		return sqlSession.insert("MemberMapper.insertSales", userNo);
+	}
+
 
 }
