@@ -30,7 +30,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">재고관리</h1>
-          <p class="mb-4">통합재고관리 <a target="_blank" href="https://datatables.net"></a>.</p>
+          <p class="mb-4">재고에 대한 정보를 입력하는 페이지입니다. 반드시 먼저 품목등록을 하시고 이용하세요 <a target="_blank" href="https://datatables.net"></a>.</p>
            <div class="card shadow mb-4">
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary"
@@ -84,37 +84,37 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="product">제품</label>
-												<input type="text" id="product" name="product" class="form-control validate" >
+												<input type="text" id="product" name="product" class="form-control validate" placeholder="등록된 품목중 원하는 품목 입력" required >
 											</div>
 
-											<div class="md-form">
+											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="quantity">수량</label>
-												<input type="text" id="quantity" name="quantity" class="form-control validate" value="">
+												<label data-error="wrong" data-success="right" for="quantity" >수량</label>
+												<input type="number" id="quantity" name="quantity" class="form-control validate" value="" placeholder="숫자만 입력" required>
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="unitprice">단가</label>
-												<input type="text" id="unitprice" name="unitprice" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="unitprice" >단가</label>
+												<input type="number" id="unitprice" name="unitprice" class="form-control validate" placeholder="숫자만 입력" required>
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag  grey-text"></i>
-												<label data-error="wrong" data-success="right" for="origin">원산지</label>
-												<input type="text" id="origin" name="origin"class="form-control validate"> 
+												<label data-error="wrong" data-success="right" for="origin" >원산지</label>
+												<input type="text" id="origin" name="origin"class="form-control validate" placeholder="문자만 입력" required> 
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>
-												<label data-error="wrong" data-success="right" for="expirationdate">유통기한</label>
-												<input type="date" id="expirationdate" name="expirationdate" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="expirationdate" >유통기한</label>
+												<input type="date" id="expirationdate" name="expirationdate" class="form-control validate" required>
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>
-												<label data-error="wrong" data-success="right" for="note">비고</label>
-												<input type="text" id="note" name="note" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="note" >비고</label>
+												<input type="text" id="note" name="note" class="form-control validate" placeholder="문자만 입력" required>
 											</div>
 <!-- 
 											 <div class="md-form">
@@ -153,7 +153,7 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="">
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="" readonly>
 											</div>
 										
 											
@@ -164,9 +164,9 @@
 											
 										        <div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="itemname" value=>품목</label>
+												<label data-error="wrong" data-success="right" for="itemname">품목</label>
 												<%-- <input type="text" id="itemcode" name="itemcode" class="form-control validate" value="${ businessCode }" > --%>
-												<select class="form-control" name="itemcode"   required>
+												<select class="form-control" name="itemcode">
 													<option value="C02045">생선</option>
 				                                    <option value="A02045">육류</option>
 				                                    <option value="B02045">채소</option>
@@ -178,37 +178,37 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="product">제품</label>
-												<input type="text" id="product" name="product" class="form-control validate" value="" >
+												<input type="text" id="product" name="product" class="form-control validate" placeholder="등록된 품목중 원하는 품목 입력" required>
 											</div>
 
 											<div class="md-form">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="quantity">수량</label>
-												<input type="text" id="quantity" name="quantity" class="form-control validate" value="">
+												<input type="number" id="quantity" name="quantity" class="form-control validate" placeholder="숫자만 입력" required>
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="unitprice">단가</label>
-												<input type="text" id="unitprice" name="unitprice" class="form-control validate" value="">
+												<input type="number" id="unitprice" name="unitprice" class="form-control validate" placeholder="숫자만 입력" required>
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag  grey-text"></i>
 												<label data-error="wrong" data-success="right" for="origin">원산지</label>
-												<input type="text" id="origin" name="origin"class="form-control validate" value=""> 
+												<input type="text" id="origin" name="origin"class="form-control validate" placeholder="문자만 입력" required> 
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>
 												<label data-error="wrong" data-success="right" for="expirationdate">유통기한</label>
-												<input type="date" id="expirationdate" name="expirationdate" class="form-control validate" value="">
+												<input type="date" id="expirationdate" name="expirationdate" class="form-control validate" required>
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>
 												<label data-error="wrong" data-success="right" for="note">비고</label>
-												<input type="text" id="note" name="note" class="form-control validate" value="">
+												<input type="text" id="note" name="note" class="form-control validate" placeholder="메모할 사항이나 필수내용 입력" required>
 											</div>
 
 										<!-- 	 <div class="md-form">

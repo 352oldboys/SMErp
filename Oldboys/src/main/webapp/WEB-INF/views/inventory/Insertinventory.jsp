@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/smerp.png">
 <!-- <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
@@ -30,8 +30,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">재고관리</h1>
-          <p class="mb-4">통합재고관리 <a target="_blank" href="https://datatables.net"></a>.</p>
+          <h1 class="h3 mb-2 text-gray-800">품목등록</h1>
+          <p class="mb-4">품목을 새로 등록하는 창입니다. <a target="_blank" href="https://datatables.net"></a>.</p>
            <div class="card shadow mb-4">
 						<div class="card-header py-3">
 							<h6 class="m-0 font-weight-bold text-primary"
@@ -59,8 +59,8 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productNo" >제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="">
+												<label data-error="wrong" data-success="right" for="productNo">제품 번호 </label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="" placeholder="숫자로만 입력" required>
 											</div>
 										<!--  사용자 번호 (화면에는 출력 x) -->
 											<%-- <div class="md-form mb-3">
@@ -73,8 +73,8 @@
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
-												<label data-error="wrong" data-success="right" for="product">제품</label>
-												<input type="text" id="product" name="product" class="form-control validate">
+												<label data-error="wrong" data-success="right" for="product" >제품</label>
+												<input type="text" id="product" name="product" class="form-control validate"  required >
 											</div>
 
 									

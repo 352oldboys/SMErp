@@ -21,53 +21,66 @@ import com.kh.erp.finance.sales.model.vo.Sales;
 
 @Controller
 public class IntegratedController {
-	
-	@Autowired
-	SalesService salesService;
-	
-	@Autowired
-	PurchaseService purchaseService;
-	
-	@Autowired
-	IntegrateService integrateService;
-	
+   
+   @Autowired
+   SalesService salesService;
+   
+   @Autowired
+   PurchaseService purchaseService;
+   
+   @Autowired
+   IntegrateService integrateService;
+   
+   
+   @RequestMapping("finance/integrated.do")
+   public String integrated(Model model, 
+                                    @RequestParam(value="userNo") int userNo) {
+      
+      List<Purchase> pList = purchaseService.selectList(userNo);
+      List<Sales> sList = salesService.selectSalList(userNo);
+      List<Integrate> iList = integrateService.selectTotalList(userNo);
+      List<Total> tList = integrateService.selectToList(userNo);
+      System.out.println("i  : "+ iList);
+      System.out.println("t : " + tList);
+      
+      
+      model.addAttribute("pList", pList);
+      model.addAttribute("sList", sList);      
+      model.addAttribute("iList", iList);
+      model.addAttribute("tList", tList);   
+      
+      return "finance/integrated";
+      
+   }
+   
+   @RequestMapping("/finance/pMonthPrice.do")
+   @ResponseBody
+   public Map<String, Object> pMonthPrice(@RequestParam int userNo) {
+      
+      String pMonth = purchaseService.purchaseMonthPrice(userNo);
+            
+      Map<String, Object> map = new HashMap<>();
+      
+      map.put("pMonth", pMonth);
+      
+      return map;
+   }
+   
+   @RequestMapping("/finance/sMonthPrice.do")
+   @ResponseBody
+   public Map<String, Object> sMonthPrice(@RequestParam int userNo) {
+      
+      String sMonth = salesService.salesMonthPrice(userNo);
+            
+      Map<String, Object> map = new HashMap<>();
+      
+      map.put("sMonth", sMonth);
+      
+      return map;
+   }
+   
 
-	
-	@RequestMapping("finance/integrated.do")
-	public String integerted(Model model, 
-												@RequestParam(value="userNo") int userNo) {		
-		
-		System.out.println("integrated userNo : " + userNo);
-		
-		List<Purchase> pList = purchaseService.selectList(userNo);
-		List<Sales> sList = salesService.selectSalList(userNo);
-		List<Integrate> iList = integrateService.selectTotalList(userNo);
-		List<Total> tList = integrateService.selectToList(userNo);
-		System.out.println("i  : "+ iList);
-		System.out.println("t : " + tList);
-		
-		
-		model.addAttribute("pList", pList);
-		model.addAttribute("sList", sList);		
-		model.addAttribute("iList", iList);
-		model.addAttribute("tList", tList);	
-		
-		return "redirect:/index.do?userNo=" + userNo;
-		
-	}
-	
-	
-	@RequestMapping("/finance/pMonthPrice.do")
-	@ResponseBody
-	public Map<String, Object> pMonthPrice(@RequestParam int userNo) {
-		
-		String pMonth = purchaseService.purchaseMonthPrice(userNo);
-				
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pMonth", pMonth);
-		
-		return map;
-	}
-	
+
+
+   
 }
