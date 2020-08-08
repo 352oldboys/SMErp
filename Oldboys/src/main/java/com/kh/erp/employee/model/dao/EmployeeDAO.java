@@ -13,6 +13,8 @@ public interface EmployeeDAO {
 	int deleteEmployee(Employee emp);
 
 	int updateEmployee(Employee emp);
+
+	Employee selectEmpOne(String empNo);
 	
 	
 

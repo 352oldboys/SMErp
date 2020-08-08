@@ -25,6 +25,9 @@ public class TaxController {
 		
 		model.addAttribute("list", list);
 		
+		System.out.println("taxList : " + list);
+		
+		
 		return "tax/taxList";
 		
 	}

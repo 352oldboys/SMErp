@@ -52,4 +52,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.updateEmployee(emp);
 	}
 
+	@Override
+	public Employee selectEmpOne(String empNo) {
+		return employeeDAO.selectEmpOne(empNo);
+	}
+
 }

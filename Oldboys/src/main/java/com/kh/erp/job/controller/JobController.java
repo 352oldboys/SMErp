@@ -64,7 +64,7 @@ public class JobController {
 	@RequestMapping("/job/deleteJob.do")
 	public String deleteAttend(Job job, Model model,
 							@RequestParam(value="userNo") int userNo,
-							@RequestParam(value="jobCode") int jobCode) {
+							@RequestParam(value="jobCode") String jobCode) {
 		int result;
 		
 		try {
@@ -94,7 +94,7 @@ public class JobController {
 	@RequestMapping("/job/updateJob.do")
 	public String updateAttend(Job job, Model model,
 							@RequestParam(value="userNo") int userNo,
-							@RequestParam(value="jobCode") int jobCode) {
+							@RequestParam(value="jobCode") String jobCode) {
 		
 		int result;
 		

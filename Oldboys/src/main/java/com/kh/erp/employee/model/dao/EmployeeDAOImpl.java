@@ -36,4 +36,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return sqlSession.update("employeeMapper.updateEmp", emp);
 	}
 
+	@Override
+	public Employee selectEmpOne(String empNo) {
+		return sqlSession.selectOne("employeeMapper.selectEmpOne", empNo);
+	}
+
 }

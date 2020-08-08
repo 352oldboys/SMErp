@@ -13,6 +13,8 @@ public interface CustomerDAO {
 	int deleteCustomer(Customer cust);
 
 	int updateCustomer(Customer cust);
+
+	Customer selectCustOne(String businessCode);
 	
 	
 

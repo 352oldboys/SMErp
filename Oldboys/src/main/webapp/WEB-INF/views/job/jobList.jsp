@@ -124,9 +124,6 @@
 	                              </div>
 	                              
 	                              <div class="modal-footer d-flex justify-content-center">
-	                                 <%-- <button class="btn btn-unique" style="text-align: center;" onclick="location.href=${pageContext.request.contextPath}/customer/insertCustomer.do">
-	                                 Send<i class="fas fa-paper-plane-o ml-1 <-- 이모티콘 클래스"></i>
-	                                 </button> --%>
 	                                <button class="btn btn-unique">수정하기</button>	                                 
 	                              </div>
 	                              	                              
@@ -235,7 +232,7 @@
 	*/
 	
 	// 삭제하기 기능 구현부
-	function deleteAttend(){
+	function deleteJob(){
 		var table = $('#dataTable').DataTable();
 		var length = table.rows('.selected').data().length;
  	  	  
@@ -270,7 +267,7 @@
 		}
 
 	// 수정하기 기능 구현부
-	function updateAttend(){
+	function updateJob(){
 			 
 		var table = $('#dataTable').DataTable();
 		var length = table.rows('.selected').data().length;
@@ -289,8 +286,8 @@
  
 		/* DB값 가져와서 수정하기 창에 띄우기 */
 		/* $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]); */
-		$("#ujobCode").val(table.rows('.selected').data()[0][0]);
-		$("#ujobName").val(table.rows('.selected').data()[0][1]);
+		$("#uJobCode").val(table.rows('.selected').data()[0][0]);
+		$("#uJobName").val(table.rows('.selected').data()[0][1]);
 		
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();

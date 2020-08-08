@@ -31,13 +31,13 @@ public class JobServiceImpl implements JobService {
 	@Override
 	public int deleteJob(Job job) {
 		
-		return jobDAO.insertJob(job);
+		return jobDAO.deleteJob(job);
 	}
 
 	@Override
 	public int updateJob(Job job) {
 		
-		return jobDAO.insertJob(job);
+		return jobDAO.updateJob(job);
 	}
 
 }

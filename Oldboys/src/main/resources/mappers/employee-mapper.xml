@@ -40,6 +40,11 @@
 		
 		WHERE EMPNO = #{empNo} AND USERNO = #{userNo}
 	</update>
+	
+	<select id="selectEmpOne" parameterType="string" resultType="Employee">
+		SELECT * FROM EMPLOYEE
+		WHERE EMPNO= #{empNo}
+	</select>	
 </mapper>
 
 
