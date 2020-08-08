@@ -60,14 +60,15 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productNo">상품명</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productName }">
+												<label data-error="wrong" data-success="right" for="productName">상품명</label>
+												<input type="text" id="productName" name="productName" class="form-control validate" value="${ productName }">
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo">상품번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" readonly>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }">
+												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" />
 											</div>
 											
 											<div class="md-form mb-3">
@@ -120,14 +121,15 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productNo">상품명</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productName }">
+												<label data-error="wrong" data-success="right" for="productName">상품명</label>
+												<input type="text" id="productName" name="productName" class="form-control validate" value="${ productName }">
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i>
 												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
 												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" readonly>
+												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" />
 											</div>
 										
 											<div class="md-form mb-3">
@@ -174,8 +176,8 @@
                   <thead>
                     <tr>
                       <th>상품 명</th>
-                      <th style="display:none">상품 번호</th>
-                      <th>유저 번호</th>
+                      <th>상품 번호</th>
+                      <th style="display:none">유저 번호</th>
                       <th>단가</th>
                       <th>날짜</th>
                       <th>수량</th>
