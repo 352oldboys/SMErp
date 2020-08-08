@@ -45,6 +45,7 @@
 	            <div class="card-header py-3">
 	              <h6 class="m-0 font-weight-bold text-primary" style="display: inline;" >출결 관리</h6>
                      <div class="text-center" style="display: inline; float: right;">
+                  		   <input class="btn btn-info btn-sm" type="button" onclick="location.href='${pageContext.request.contextPath}/employee/employeeList.do?userNo=${member.userNo}'" value="사원조회"/>                     
                     	   <input class="btn btn-primary btn-sm" type="button" value="추가하기"
                            	       data-toggle="modal" data-target="#modalInsertForm" />
                            <input class="btn btn-secondary btn-sm" type="button" onclick="updateAttend();" value="수정하기"/>
@@ -76,7 +77,7 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fa fa-id-card-o"></i> 
 	                                    <label data-error="wrong" data-success="right" for="empNo">사원번호</label>
-	                                    <input type="text" name="empNo" id="empNo" class="form-control validate">
+	                                    <input type="text" name="empNo" id="empNo" class="form-control validate" onchange="autoFill(this);">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
@@ -463,6 +464,27 @@
         });
     });
 	</script>
+	
+	<script>
+	// 추가하기 사원번호 입력시 이름 자동 기입
+		function autoFill(obj) {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/employee/employeeSelectOne.do",
+				data : {
+					empNo : $(obj).val()
+				}, 
+				
+				success : function(data){
+					if(data == "") {
+						alert("등록된 사원이 아닙니다.");
+						$('#name').val('');
+					} else {
+						$('#name').val(data.name);
+					}
+				}
+			});
+		}
+	</script>	
     
 	
 </body>

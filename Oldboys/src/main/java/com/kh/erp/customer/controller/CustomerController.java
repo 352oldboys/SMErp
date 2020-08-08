@@ -2,12 +2,12 @@ package com.kh.erp.customer.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.erp.customer.model.service.CustomerService;
 import com.kh.erp.customer.model.vo.Customer;
@@ -29,7 +29,18 @@ public class CustomerController {
 		return "customer/customerList";
  
 	}
+	
 
+	@RequestMapping("/customer/customerSelectOne.do")
+	@ResponseBody
+	public Customer customerOne(@RequestParam(value="businessCode") String businessCode) {
+
+		Customer cu = custService.selectCustOne(businessCode);
+
+		return cu;
+ 
+	}
+																																			
 	@RequestMapping("/customer/insertCustomer.do")
 	public String insertCustomer(Customer cust, Model model,
 								@RequestParam(value="userNo") int userNo) {

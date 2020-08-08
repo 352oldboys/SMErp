@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.erp.common.encrypt.AES256Util;
+import com.kh.erp.customer.model.vo.Customer;
 import com.kh.erp.employee.model.service.EmployeeService;
 import com.kh.erp.employee.model.vo.Employee;
 
@@ -35,6 +37,16 @@ public class EmployeeController {
 		model.addAttribute("list", list);
 
 		return "employee/employeeList";
+ 
+	}
+	
+	@RequestMapping("/employee/employeeSelectOne.do")
+	@ResponseBody
+	public Employee employeeOne(@RequestParam(value="empNo") String empNo) {
+
+		Employee emp = empService.selectEmpOne(empNo);
+
+		return emp;
  
 	}
 

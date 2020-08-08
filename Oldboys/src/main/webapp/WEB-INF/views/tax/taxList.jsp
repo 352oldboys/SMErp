@@ -81,7 +81,7 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-user"></i> 
 	                                    <label data-error="wrong" data-success="right" for="businessCode">거래처 코드</label>
-	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate">
+	                                    <input type="text" name="businessCode" id="businessCode" class="form-control validate" onchange="autoFill(this);">
 	                                 </div>
 	                                 
 	                                 <div class="md-form mb-3">
@@ -96,40 +96,49 @@
 	                                    <input type="text" name="businessName" id="businessName" class="form-control validate">
 	                                 </div>
 			                                 
-	                                 <div class="md-form mb-3">
+									<div class="form-row">
+	                                 <div class="form-group col-md-6">
 	                                    <i class="fas fa-tag"></i> 
 	                                    <label data-error="wrong" data-success="right" for="item">품목</label>
 	                                    <input type="text" name="item" id="item" class="form-control validate">
 	                                 </div>
 	
-	                                 <div class="md-form mb-3">
+	                                 <div class="form-group col-md-6">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="unit">규격</label>
 	                                    <input type="text" name="unit" id="unit" class="form-control validate"> 
 	                                 </div>
-	
-	                                 <div class="md-form mb-3">
+
+									</div>			                                 
+			                                 
+									<div class="form-row">
+	                                 <div class="form-group col-md-6">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="quantity">수량</label>
-	                                    <input type="text" name="quantity" id="quantity" class="form-control validate" >
+	                                    <input type="text" id="quantity" class="form-control validate" onkeyup="calcSup()">
+	                                    <input type="hidden" name="quantity" id="quantity_val">
 	                                 </div>
 	                                 
-                                	 <div class="md-form mb-3">
+                                	 <div class="form-group col-md-6">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="unitCost">단가</label>
-	                                    <input type="text" name="unitCost" id="unitCost" class="form-control validate" >
+	                                    <input type="text" id="unitCost" class="form-control validate" onkeyup="calcSup()">
+	                                    <input type="hidden" name="unitCost" id="unitCost_val">
 	                                 </div>
-	                                 
+									</div>
+									
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
-	                                    <label data-error="wrong" data-success="right" for="supplyPrice">공급가액</label>
-	                                    <input type=text  name="supplyPrice" id="supplyPrice" class="form-control validate" >
+	                                    <label data-error="wrong" data-success="right" for="supplyPriceComma">공급가액</label>
+	                                    <input type=text id="supplyPrice" class="form-control validate">
+	                                    <input type="hidden" name="supplyPrice" id="supplyPrice_val"/>
 	                                 </div>	
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
-	                                    <label data-error="wrong" data-success="right" for="taxPrice">세액</label>
-	                                    <input type="text"  name="taxPrice" id="taxPrice" class="form-control validate">
+	                                    <label data-error="wrong" data-success="right" for="taxPriceComma">세액</label>
+	                                    <input type="text" id="taxPrice" class="form-control validate">
+	                                    <input type="hidden" name="taxPrice" id="taxPrice_val"/>
 	                                 </div>	   
 	                                 	                                                     
 	                              </div>
@@ -208,36 +217,35 @@
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uQuantity">수량</label>
-	                                    <input type="text" name="quantity" id="uQuantity" class="form-control validate" >
+	                                    <input type="text" id="uQuantity" class="form-control validate" onkeyup="calcSupUpdate()">
+	                                    <input type="hidden" name="quantity" id="uQuantity_val">
 	                                 </div>
 	                                 
                                 	 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uUnitCost">단가</label>
-	                                    <input type="text" name="unitCost" id="uUnitCost" class="form-control validate" >
+	                                    <input type="text" id="uUnitCost" class="form-control validate" onkeyup="calcSupUpdate()">
+	                                    <input type="hidden" name="unitCost" id="uUnitCost_val">
 	                                 </div>
 	                                
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uSupplyPriceComma">공급가액</label>
-	                                    <input type="text" name="supplyPrice" id="uSupplyPrice" class="form-control validate"/>
-	                                    <input type="hidden" id="uSupplyPriceComma" class="form-control validate" >
+	                                    <input type="text" id="uSupplyPrice" class="form-control validate"/>
+	                                    <input type="hidden" name="supplyPrice" id="uSupplyPrice_val">
 	                                 </div>	
 	                                       
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-tag"></i>
 	                                    <label data-error="wrong" data-success="right" for="uTaxPriceComma">세액</label>
-	                                    <input type="text" name="taxPrice" id="uTaxPrice" class="form-control validate"/>
-	                                    <input type="hidden" id="uTaxPriceComma" class="form-control validate">
+	                                    <input type="text" id="uTaxPrice" class="form-control validate"/>
+	                                    <input type="hidden" name="taxPrice" id="uTaxPrice_val">
 	                                 </div>	 
 	                                                    
 	                              </div>
 	                              
 	                              <div class="modal-footer d-flex justify-content-center">
-	                                 <%-- <button class="btn btn-unique" style="text-align: center;" onclick="location.href=${pageContext.request.contextPath}/customer/insertCustomer.do">
-	                                 Send<i class="fas fa-paper-plane-o ml-1 <-- 이모티콘 클래스"></i>
-	                                 </button> --%>
-	                                <button class="btn btn-unique">수정하기</button>	                                 
+	                                <button class="btn btn-unique">수정하기</button>	
 	                              </div>
 	                              	                              
 	                           </div>
@@ -254,7 +262,7 @@
 	                  <tr>
 	                  	<!-- <td><input type="checkbox"></td> -->
 						<!-- <th>사용자 번호</th> -->
-						<!-- <th>순번</th> -->
+						<th style="display:none">순번</th>
 						<th>발행일</th>
 						<th>거래처 코드</th>
 						<th>사업자 번호</th>
@@ -271,8 +279,8 @@
 					  <c:forEach var="tax" items="${list}">
 			  	  	  	<tr id="${tax.taxNo}">
 							<%-- <td>${tax.userNo}</td> --%>
-							<%-- <td>${tax.taxNo}</td> --%>	
-							<input type="hidden" name="_taxNo" id="_taxNo" value="${tax.taxNo}" />			
+							<td style="display:none">${tax.taxNo}</td>
+							<%-- <input type="text" name="_taxNo" id="_taxNo" value="${tax.taxNo}" /> --%>			
 							<td>${tax.publishDay}</td>
   	  	  		  	  		<td>${tax.businessCode}</td>
 							<td>${tax.businessName}</td>
@@ -280,9 +288,9 @@
 							<td>${tax.item}</td>
 							<td>${tax.unit}</td>
 							<td>${tax.quantity}</td>
-							<td>${tax.unitCost}</td>
-							<td>${tax.supplyPrice}</td>
-							<td>${tax.taxPrice}</td>
+							<td><fmt:formatNumber value="${tax.unitCost}" groupingUsed="true" currencySymbol="&#8361" /></td>
+							<td><fmt:formatNumber value="${tax.supplyPrice}" groupingUsed="true" /></td>
+							<td><fmt:formatNumber value="${tax.taxPrice}" groupingUsed="true" /></td>
 			  	  	  	</tr>
 					  </c:forEach>
 	                </tbody>
@@ -320,7 +328,6 @@
 	    } );
 	    
 	} );
-	
 	
 	// taxNo 컬럼 숨기기
 	/* $(document).ready(function() {
@@ -394,14 +401,14 @@
 		 */
 		
 		// 2번째 방식 
-		$("#modalDeleteForm input[name=taxNo]").val($('#_taxNo').val());		  
+		$("#modalDeleteForm input[name=taxNo]").val(table.rows('.selected').data()[0][0]);		  
 		$("#modalDeleteForm").submit();
 				  
 		}
 
 	// 수정하기 기능 구현
 	function updateTax(){
-			 
+		
 		var table = $('#dataTable').DataTable();
 		var length = table.rows('.selected').data().length;
 		
@@ -419,38 +426,49 @@
  
 		/* DB값 가져와서 수정하기 창에 띄우기 */
 		/* $("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]); */
-		/* $("#modalUpdateForm #uTaxNo").val(table.rows('.selected').data()[0][0]); */
-		$("#uPublishDay").val(table.rows('.selected').data()[0][0]);		  
-		$("#uBusinessCode").val(table.rows('.selected').data()[0][1]);		  
-		$("#uBusinessName").val(table.rows('.selected').data()[0][2]);		  
-		$("#uCustRegNo").val(table.rows('.selected').data()[0][3]);		  
-		$("#uItem").val(table.rows('.selected').data()[0][4]);		  
-		$("#uUnit").val(table.rows('.selected').data()[0][5]);		  
-		$("#uQuantity").val(table.rows('.selected').data()[0][6]);		  
-		$("#uUnitCost").val(table.rows('.selected').data()[0][7]);		  
-		$("#uSupplyPrice").val(table.rows('.selected').data()[0][8]);	
-		$("#uTaxPrice").val(table.rows('.selected').data()[0][9]);
-		$('#uTaxNo').val($('#_taxNo').val());
+		$("#modalUpdateForm #uTaxNo").val(table.rows('.selected').data()[0][0]);
+		$("#uPublishDay").val(table.rows('.selected').data()[0][1]);		  
+		$("#uBusinessCode").val(table.rows('.selected').data()[0][2]);		  
+		$("#uBusinessName").val(table.rows('.selected').data()[0][3]);		  
+		$("#uCustRegNo").val(table.rows('.selected').data()[0][4]);		  
+		$("#uItem").val(table.rows('.selected').data()[0][5]);		  
+		$("#uUnit").val(table.rows('.selected').data()[0][6]);
+		$("#uQuantity").val(table.rows('.selected').data()[0][7]);		  
+		$("#uUnitCost").val(table.rows('.selected').data()[0][8]);		  
+		$("#uSupplyPrice").val(table.rows('.selected').data()[0][9]);	
+		$("#uTaxPrice").val(table.rows('.selected').data()[0][10]);
+		$("#uQuantity_val").val(removeComma(table.rows('.selected').data()[0][7]));		  
+		$("#uUnitCost_val").val(removeComma(table.rows('.selected').data()[0][8]));		  
+		$("#uSupplyPrice_val").val(removeComma(table.rows('.selected').data()[0][9]));	
+		$("#uTaxPrice_val").val(removeComma(table.rows('.selected').data()[0][10]));
+		/* $('#uTaxNo').val($('#_taxNo').val()); */
 		
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();
 	}
 	
-	/* // 추가하기  창 공급가액 & 세액 자동 계산하기
+	// 추가하기  창 공급가액 & 세액 자동 계산하기
     function calcSup(){
-    	var quantity = $("#quantity").val();
-    	var unitCost = $("#unitCost").val();
+    	var quantity = removeComma($("#quantity").val());
+    	var unitCost = removeComma($("#unitCost").val());
         var resultSup = quantity * unitCost;
         var resultTax = 0.1 * resultSup;
         
-        if(unitCost == ""){
-            document.getElementById('supplyPrice').value = "0";
-            document.getElementById('supplyPriceComma').value = "0";
-        }else{
-            document.getElementById('supplyPriceComma').value = resultSup.toLocaleString();
-            document.getElementById('supplyPrice').value = resultSup;
-            document.getElementById('taxPriceComma').value = resultTax.toLocaleString();
-            document.getElementById('taxPrice').value = resultTax;
+        if(isNaN(unitCost)){
+        	
+        	$("#unitCost").val("");
+        	$("#supplyPrice").val("");
+        	$("#taxPrice").val("");
+        	
+        } else {
+			$("#quantity").val(quantity.toLocaleString());
+        	$("#unitCost").val(unitCost.toLocaleString());
+        	$("#quantity_val").val(quantity);
+        	$("#unitCost_val").val(unitCost);
+            document.getElementById('supplyPrice').value = resultSup.toLocaleString();
+            document.getElementById('supplyPrice_val').value = resultSup;
+            document.getElementById('taxPrice').value = resultTax.toLocaleString();
+            document.getElementById('taxPrice_val').value = resultTax;
             
         }
 
@@ -458,27 +476,86 @@
     
 	// 수정하기 창 공급가액 & 세액 자동 계산하기
     function calcSupUpdate(){
-    	var quantity = $("#uQuantity").val();
-    	var unitCost = $("#uUnitCost").val();
+    	var quantity = removeComma($("#uQuantity").val());
+    	var unitCost = removeComma($("#uUnitCost").val());
         var resultSup = quantity * unitCost;
         var resultTax = 0.1 * resultSup;
         
         if(unitCost == ""){
-            document.getElementById('uSupplyPrice').value = "0";
-            document.getElementById('uSupplyPriceComma').value = "0";
+        	document.getElementById('uSupplyPrice').value = "0";
+            document.getElementById('uSupplyPrice_val').value = "0";
         }else{
-            document.getElementById('uSupplyPriceComma').value = resultSup.toLocaleString();
-            document.getElementById('uSupplyPrice').value = resultSup;
-            document.getElementById('uTaxPriceComma').value = resultTax.toLocaleString();
-            document.getElementById('uTaxPrice').value = resultTax;
+			$("#uQuantity").val(quantity.toLocaleString());
+        	$("#uUnitCost").val(unitCost.toLocaleString());
+        	$("#uQuantity_val").val(quantity);
+        	$("#uUnitCost_val").val(unitCost);
+        	document.getElementById('uSupplyPrice').value = resultSup.toLocaleString();
+        	document.getElementById('uSupplyPrice_val').value = resultSup;
+            document.getElementById('uTaxPrice').value = resultTax.toLocaleString();
+            document.getElementById('uTaxPrice_val').value = resultTax;
         }
 
-    } */
-	
+    }
     </script>
     
     
+<!--     <script type="text/javascript" language="javascript">
+ 
+    $(document).ready(function(){
+    	
+        $.ajax({
+            type : "GET", //전송방식을 지정한다 (POST,GET)
+            url : "${pageContext.request.contextPath}/customer/customerList.do?userNo=${member.userNo}", //호출 URL을 설정한다. GET방식일경우 뒤에 파라티터를 붙여서 사용해도된다.
+            dataType : "text",//호출한 페이지의 형식이다. xml,json,html,text등의 여러 방식을 사용할 수 있다.
+            error : function(){
+                alert("통신실패!!!!");
+            },
+            success : function(Parse_data){
+                $("#businessCode").html(Parse_data); //div에 받아온 값을 넣는다.
+                System out.println("통신 데이터 값 : " + Parse_data);
+            }
+             
+        });
+    });
+    
+	</script>
+ -->
+ 
+	<script>
+	// 추가하기 거래처코드 입력시 사업자번호, 기업명 값 자동 기입
+		function autoFill(obj) {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/customer/customerSelectOne.do",
+				data : {
+					businessCode : $(obj).val()
+				}, 
+				
+				success : function(data){
+					if(data == "") {
+						alert("등록된 거래처가 아닙니다.");
+						$('#custRegNo').val('');
+						$('#businessName').val('');
+					} else {
+						$('#custRegNo').val(data.custRegNo);
+						$('#businessName').val(data.businessName);
+					}
+				}
+			});
+		}
+	</script>
 	
+	
+	<script>
+	// 천단위 콤마 제거 기능
+		function removeComma(str){
+	
+			n = parseInt(str.replace(/,/g,""));
+	
+			return n;
+		}
+	</script>
+    
+
 </body>
 
 </html>

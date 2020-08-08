@@ -17,6 +17,8 @@
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous"> -->
 
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+
 <title>Insert title here</title>
 
 </head>
@@ -85,7 +87,7 @@
 									
 									<div class="md-form mb-3">
 									   <i class="fa fa-users"></i> 
-									   <label data-error="wrong" data-success="right" for="jobCode">직책</label>
+									   <label data-error="wrong" data-success="right" for="jobCode">직급 코드</label>
 									   <input type="text" name="jobCode" id="jobCode" class="form-control validate">
 									</div>
 									
@@ -124,8 +126,8 @@
 										<label data-error="wrong" data-success="right" for="gender">성별</label>
 										<select class="form-control validate" name="gender" id="gender">
 											<option selected>-</option>
-											<option>F</option>
-											<option>M</option>
+											<option value="F">여성</option>
+											<option value="M">남성</option>
 										</select>
 									</div>
 									                        
@@ -146,8 +148,8 @@
 										<label data-error="wrong" data-success="right" for="status">재직여부</label>
 										<select class="form-control validate" name="status" id="status">
 											<option selected>-</option>
-											<option>Y</option>
-											<option>N</option>
+											<option value="Y">재직중</option>
+											<option value="N">퇴사</option>
 										</select>
 									</div>	                  
 									               
@@ -240,7 +242,7 @@
 	                                 
 	                                 <div class="md-form mb-3">
 	                                    <i class="fas fa-user"></i> 
-	                                    <label data-error="wrong" data-success="right" for="uJobCode">직책</label>
+	                                    <label data-error="wrong" data-success="right" for="uJobCode">직급 코드</label>
 	                                    <input type="text" name="jobCode" id="uJobCode" class="form-control validate">
 	                                 </div>
 	
@@ -303,26 +305,23 @@
 									<div class="form-row">
 									  <div class="form-group col-md-4">					      
 										<i class="fa fa-university"></i>
-										<label data-error="wrong" data-success="right" for="bank">은행</label>
-										<select class="form-control validate" name="bank" id="uBank">
-											<option value="direct">직접입력</option>
-											<option selected>-</option>
-											<option>농협</option>
-											<option>농협</option>
-											<option>신한</option>
-											<option>IBK기업</option>
-											<option>하나은행</option>
-											<option>우리</option>
-											<option>국민</option>
-											<option>카카오뱅크</option>	
-											<option>SC제일</option>
-											<option>대구</option>
-											<option>부산</option>
-											<option>광주</option>
-											<option>새마을</option>
-											<option>우체국</option>										      
-										</select>
-										<input type="text" id="selboxDirect" name="selboxDirect"/>
+										<label data-error="wrong" data-success="right" for="uBank">은행</label>
+										<input type="text" name="bank" id="uBank" list="bankList" class="form-control validate" placeholder="직접입력">
+										<datalist id="bankList">
+								            <option value="농협"></option>
+								            <option value="신한"></option>
+								            <option value="IBK기업"></option>
+								            <option value="하나은행"></option>
+								            <option value="우리"></option>
+								            <option value="국민"></option>
+								            <option value="카카오뱅크"></option>
+								            <option value="SC제일"></option>
+								            <option value="대구"></option>
+								            <option value="부산"></option>
+								            <option value="광주"></option>
+								            <option value="새마을"></option>
+								            <option value="우체국"></option>
+										</datalist>
 									  </div>
 									  
 									  <div class="form-group col-md-8">
@@ -355,7 +354,7 @@
 						<!-- <td><input type="checkbox"></td> -->
 	                    <th>사원번호</th>
 	                    <!-- <th>사용자 번호</th> -->
-	                    <th>직책</th>
+	                    <th>직급 코드</th>
 	                    <th>이름</th>
 	                    <th>연락처</th>
 	                    <th>나이</th>

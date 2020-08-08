@@ -36,6 +36,12 @@
 		
 		WHERE BUSINESSCODE = #{businessCode} AND USERNO = #{userNo}
 	</update>
+	
+	<select id="selectCustOne" parameterType="string" resultType="Customer">
+		SELECT * FROM CUSTOMER
+		WHERE BUSINESSCODE= #{businessCode}
+	</select>
+	
 </mapper>
 
 

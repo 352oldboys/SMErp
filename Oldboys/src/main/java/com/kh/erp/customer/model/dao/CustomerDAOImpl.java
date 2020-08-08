@@ -36,4 +36,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return sqlSession.update("customerMapper.updateCust", cust);
 	}
 
+	@Override
+	public Customer selectCustOne(String businessCode) {
+		return sqlSession.selectOne("customerMapper.selectCustOne", businessCode);
+	}
+
 }
