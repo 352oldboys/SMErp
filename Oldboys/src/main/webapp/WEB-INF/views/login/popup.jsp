@@ -19,7 +19,7 @@
         body{
            	margin:auto;
            	margin-top:3%;
-            background: url(${pageContext.request.contextPath}/resources/img/member/banner.jpg);
+            background: url(${pageContext.request.contextPath}/resources/img/member/find.jpg);
             padding:5%;
         }
         
@@ -52,12 +52,12 @@
         <div class="col" style="text-align: center;">
             <H3>아이디 & 비밀번호 찾기</H3>
         </div>
-
-        <div class="col mb-sm-3">
-            <input type="button" class="btn btn-info" style="display:inline-block; margin-top:10px;" id="idFind" value="아이디 찾기"> 
-            <input type="button" class="btn btn-info" style="display:inline-block; margin-top:10px;" id="passwordFind" value="비밀번호 찾기">
+        
+        <div class="col mb-sm-3" style="margin-left: 30%;">
+            <input type="button" class="btn btn-info" style="margin:auto; display:inline-block; margin-top:30px;" id="idFind" value="아이디 찾기"> 
+            <input type="button" class="btn btn-info" style="margin:auto; display:inline-block; margin-top:30px;" id="passwordFind" value="비밀번호 찾기">
         </div>
-
+        
     </div>
 
     <div class="row box_org" id="body2" style="vertical-align: middle; margin: auto; display: none;">
@@ -72,7 +72,7 @@
         </div>
         
         <div class="col mb-sm-3">
-            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;" value="전송하기">
+            <input type="submit" class="btn btn-info col-sm-3 mb-sm-3" style="float:right;" value="전송하기">
         </div>
     </form>
     </div>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="col">
-            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;"  value="전송하기" >
+            <input type="submit" class="btn btn-info col-sm-3 mb-sm-3" style="float:right;"  value="전송하기" >
         </div>
     </form>
     </div>

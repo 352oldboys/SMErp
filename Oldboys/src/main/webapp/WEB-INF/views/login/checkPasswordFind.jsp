@@ -17,8 +17,8 @@
     <style>
         body{
            	margin:auto;
-           	margin-top:3%;
-            background: url(${pageContext.request.contextPath}/resources/img/member/banner.jpg);
+           	
+            background: url(${pageContext.request.contextPath}/resources/img/member/find.jpg);
             padding:5%;
         }
         
@@ -60,25 +60,26 @@
         </div>
 
         <div class="col">
-            <input type="button" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
+            <input type="button" class="btn btn-info col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
         </div>
     </form>
     </div>
 
     
-    <div class="row box_org" id="passwordMove_2" style="display: none">
-    	<div class="col">
+    <div class="row box_org" id="passwordMove_2" style="vertical-align: middle; display: none">
+    	<div class="col" style="text-align: center;">
     		<h3>비밀번호 변경</h3>
     	</div>
     	
     	<form action="${pageContext.request.contextPath}/member/checkPasswordFind.do" id="passwordFind">
-    		<div class="col mb-sm-3">
-    			<p>변경하실 비밀번호를 입력하세요.</p>
-    			<input type="password" id="password" name="password" />
-    			<input type="password" id="repassword" name="repassword" />
+    		<div class="col mb-sm-3" style="text-align: center;">
+    			<p class="text">변경하실 비밀번호를 입력하세요.</p>
+    			<input type="password" id="password" class="form-control" name="password" />	<br />
+    			<input type="password" id="repassword" class="form-control" name="repassword" />
     		</div>
+    		<br />
     		<div class="col">
-    			<input type="submit"  id="close" value="전송하기"  />
+    			<input type="submit" class="btn btn-info"  id="close" value="전송하기"  />
     		</div>
     	</form>
     </div>

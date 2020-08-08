@@ -18,7 +18,7 @@
         body{
            	margin:auto;
            	margin-top:3%;
-            background: url(${pageContext.request.contextPath}/resources/img/member/banner.jpg);
+            background: url(${pageContext.request.contextPath}/resources/img/member/find.jpg);
             padding:5%;
         }
         
@@ -61,7 +61,7 @@
         </div>
 
         <div class="col">
-            <input type="button" class="btn col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
+            <input type="button" class="btn btn-info col-sm-3 mb-sm-3" style="float:right;" onclick="sendDice();"  value="전송하기" >
         </div>
         
     </form>
@@ -74,13 +74,11 @@
 		</div>
     <form action="${pageContext.request.contextPath}/member/popup_idCheck.do">
         <div class="col mb-sm-3" style="text-align: center;">
-            <p class="text"> 사용자님의 아이디는 <b>${member.userId}</b> 입니다.</p>
+            <p class="text"> 사용자님의 아이디는 <b style="font-size:20px; color:Gray;">" ${member.userId} "</b> 입니다.</p>
 			<input type="hidden" name="email">
         </div>
         
-        <div class="col mb-sm-3">
-            <input type="submit" class="btn col-sm-3 mb-sm-3" style="float:right;" value="전송하기">
-        </div>
+        
     </form>
     </div>
 
