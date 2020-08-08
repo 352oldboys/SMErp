@@ -11,7 +11,7 @@
 	<!-- DataSource : 연결하고자 하는 DB 설정 담당 객체 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:49161:xe"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
 		<property name="username" value="SMERP"/>
 		<property name="password" value="SMERP"/>
 	</bean>
