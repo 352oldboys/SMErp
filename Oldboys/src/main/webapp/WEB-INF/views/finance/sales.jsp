@@ -60,20 +60,14 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productNo">상품 명</label>
+												<label data-error="wrong" data-success="right" for="productNo">상품명</label>
 												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productName }">
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
+												<label data-error="wrong" data-success="right" for="productNo">상품번호</label>
 												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" readonly>
-											</div>
-										
-											<div class="md-form mb-3">
-												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="itemCode">유저 번호</label>
-												<input type="text" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" readonly>
 											</div>
 											
 											<div class="md-form mb-3">
@@ -126,7 +120,7 @@
 										<div class="modal-body mx-3">
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productNo">상품 명</label>
+												<label data-error="wrong" data-success="right" for="productNo">상품명</label>
 												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productName }">
 											</div>
 											
@@ -138,8 +132,9 @@
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="itemCode">유저 번호</label>
-												<input type="text" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" readonly>
+												<label data-error="wrong" data-success="right" for="productName">상품 코드</label>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" >
+												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" readonly>
 											</div>
 											
 											<div class="md-form mb-3">
@@ -202,9 +197,9 @@
                   <tbody>
                   	<c:forEach var="sal" items="${list}">
                     <tr id="${sal.productNo}">
+                      <th> ${sal.productNo} </th>
                       <th> ${sal.productName}</th>
-                      <th style="display:none"> ${sal.productNo} </th>
-                      <th> ${sal.userNo} </th>
+                      <th style="display:none"> ${sal.userNo} </th>
                       <th class="unitPrice"> ${sal.unitPrice} </th>
                       <th> ${sal.day} </th>
                       <th class="quantity"> ${sal.quantity} </th>
@@ -293,10 +288,11 @@
  
 		/* 값 가져오기 */
 		$("#modalUpdateForm #productNo").val(table.rows('.selected').data()[0][0]);			  
-		$("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][1]);		  
-		$("#modalUpdateForm #unitPrice").val(table.rows('.selected').data()[0][2]);		  
-		$("#modalUpdateForm #day").val(table.rows('.selected').data()[0][3]);		  
-		$("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][4]);		
+		$("#modalUpdateForm #productName").val(table.rows('.selected').data()[0][1]);	
+		$("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][2]);		  
+		$("#modalUpdateForm #unitPrice").val(table.rows('.selected').data()[0][3]);		  
+		$("#modalUpdateForm #day").val(table.rows('.selected').data()[0][4]);		  
+		$("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][5]);		
 
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();
