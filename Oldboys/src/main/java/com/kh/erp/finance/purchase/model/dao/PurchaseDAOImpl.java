@@ -30,8 +30,8 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	}
 
 	@Override
-	public int deletePurList(Purchase purchase) {
-		return session.delete("PurchaseMapper.deletePurList", purchase);
+	public int deletePurList(int purchaseNo) {
+		return session.delete("PurchaseMapper.deletePurList", purchaseNo);
 	}
 	
 	@Override
@@ -44,6 +44,12 @@ public class PurchaseDAOImpl implements PurchaseDAO {
 	public String purchaseMonthPrice(int userNo) {
 		
 		return session.selectOne("PurchaseMapper.purchaseMonthPrice", userNo);
+	}
+
+	@Override
+	public Purchase selectOnePurchase(int purchaseNo) {
+		
+		return session.selectOne("PurchaseMapper.selectOnePurchase", purchaseNo);
 	}
 
 }

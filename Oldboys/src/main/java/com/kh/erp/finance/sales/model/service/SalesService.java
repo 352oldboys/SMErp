@@ -23,10 +23,10 @@ public interface SalesService {
 
 	/**
 	 * 값을 삭제하는 내용
-	 * @param sales
+	 * @param salesNo
 	 * @return
 	 */
-	int deleteSal(Sales sales);
+	int deleteSal(int salesNo);
 
 	/**
 	 * 모든 값을 처리 후 보여지는 view
@@ -43,6 +43,8 @@ public interface SalesService {
 	int salesPrice(String userId);
 
 	String salesMonthPrice(int userNo);
+
+	Sales selectOneSales(int salesNo);
 
 
 	

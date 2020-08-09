@@ -12,7 +12,7 @@ public interface PurchaseService {
 	
 	public int updatePurList(Purchase purchase);
 	
-	public int deletePurList(Purchase purchase);
+	public int deletePurList(int purchaseNo);
 	
 	public List<Purchase> selectList(int userNo);
 
@@ -21,6 +21,8 @@ public interface PurchaseService {
 	public int purchasePrice(String userId);
 
 	public String purchaseMonthPrice(int userNo);
+
+	public Purchase selectOnePurchase(int purchaseNo);
 
 		
 }

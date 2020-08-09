@@ -11,7 +11,7 @@
 	
 	<insert id="insertSal" parameterType="Sales">
       INSERT INTO SALES
-      VALUES(#{productNo}, #{productName}, #{userNo}, #{quantity}, #{unitPrice}, #{day}, DEFAULT)
+      VALUES(#{productNo}, #{productName}, #{userNo}, #{quantity}, #{unitPrice}, #{day}, DEFAULT, SEQ_SALESNO.NEXTVAL)
    </insert>
 	
 	<update id="updateSal" parameterType="Sales">
@@ -29,7 +29,7 @@
 	
 	<delete id="deleteSal" parameterType="Sales">
 		DELETE FROM SALES
-		WHERE PRODUCTNO = #{productNo}
+		WHERE SALESNO = #{salesNo}
 	</delete>
 	
 	<select id="salesPrice" parameterType="string" resultType="_int">
@@ -45,6 +45,11 @@
       	WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '/' 
                               || (SELECT TO_CHAR(SYSDATE, 'MM') FROM DUAL) || '%'
           AND USERNO = #{userNo}
+   </select>
+   
+   <select id="selectOneSales" resultType="Sales">
+   	SELECT * FROM SALES
+   	WHERE SALESNO = #{salesNo}
    </select>
 	
 	

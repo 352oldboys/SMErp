@@ -27,8 +27,8 @@ public class SalesDAOImpl implements SalesDAO {
 	}
 
 	@Override
-	public int deleteSal(Sales sales) {
-		return sqlSession.delete("SalesMapper.deleteSal", sales);
+	public int deleteSal(int salesNo) {
+		return sqlSession.delete("SalesMapper.deleteSal", salesNo);
 	}
 
 	@Override
@@ -46,6 +46,12 @@ public class SalesDAOImpl implements SalesDAO {
 	public String salesMonthPrice(int userNo) {
 		
 		return sqlSession.selectOne("SalesMapper.salesMonthPrice", userNo);
+	}
+
+	@Override
+	public Sales selectOneSales(int salesNo) {
+		
+		return sqlSession.selectOne("SalesMapper.selectOneSales", salesNo);
 	}
 	
 

@@ -11,8 +11,8 @@
 	
 	<insert id="insertPurList" parameterType="Purchase">
 		INSERT INTO PURCHASE
-		VALUES(PURCHASE_PRODUCTNO.NEXTVAL, #{businessCode}, #{userNo}, 
-		#{itemCode}, #{product}, #{quantity}, #{price}, #{origin}, #{day})
+		VALUES(#{productNo}, #{businessCode}, #{userNo}, 
+		#{itemCode}, #{product}, #{quantity}, #{price}, #{origin}, #{day}, SEQ_PURCHASENO.NEXTVAL)
 	</insert>
 	
 	<update id="updatePurList" parameterType="Purchase">
@@ -28,9 +28,9 @@
 		WHERE PRODUCTNO = #{productNo}
 	</update>
 	
-	<delete id="deletePurList" parameterType="Purchase">
+	<delete id="deletePurList" parameterType="_int">
 		DELETE FROM PURCHASE
-		WHERE PRODUCTNO = #{productNo}
+		WHERE PURCHASENO = #{purchaseNo}
 	</delete>
 	
 	<select id="purchasePrice" parameterType="string" resultType="_int">
@@ -46,6 +46,11 @@
 		WHERE DAY LIKE (SELECT TO_CHAR(SYSDATE, 'YY') FROM DUAL) || '%'
           AND DAY LIKE '%' || (SELECT TO_CHAR(SYSDATE, 'MM') FROM DUAL) || '%'
           AND USERNO = #{userNo}
+	</select>
+	
+	<select id="selectOnePurchase" resultType="Purchase">
+	SELECT * FROM PURCHASE
+	WHERE PURCHASENO=#{purchaseNo}
 	</select>
 	
 </mapper>

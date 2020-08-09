@@ -91,11 +91,14 @@ public class SalesController {
 	
 	
 	@RequestMapping("/finance/deleteSal.do")
-	public String deleteSal(Sales sales, Model model) {
+	public String deleteSal(Sales sales, Model model, @RequestParam("salesNo") int salesNo) {
+		
 		int result;
 		
+		sales = salesService.selectOneSales(salesNo);
+		
 		try {
-			result = salesService.deleteSal(sales);
+			result = salesService.deleteSal(salesNo);
 			
 			if(result > 0) {
 				System.out.println("삭제 성공");

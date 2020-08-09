@@ -107,14 +107,16 @@ public class PurchaseController {
 	}
 	
 	@RequestMapping("/finance/deletePur.do")
-	public String deletePur(Purchase purchase, Model model) {
+	public String deletePur(Purchase purchase, Model model, @RequestParam("purchaseNo") int purchaseNo) {
 		System.out.println("purchase 확인 : " + purchase);
 		System.out.println("model 확인 : " + model);
+		
+		purchase = purchaseService.selectOnePurchase(purchaseNo);
 		
 		int result;
 		
 		try {
-		result = purchaseService.deletePurList(purchase);
+		result = purchaseService.deletePurList(purchaseNo);
 		System.out.println("delete,result :" + result);
 		
 		if(result>0) {
