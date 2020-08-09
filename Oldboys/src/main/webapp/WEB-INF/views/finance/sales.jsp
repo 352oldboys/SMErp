@@ -61,32 +61,32 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productName">상품명</label>
-												<input type="text" id="productName" name="productName" class="form-control validate" value="${ productName }">
+												<input type="text" id="productName" name="productName" class="form-control validate" >
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo">상품번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }">
+												<input type="text" id="productNo" name="productNo" class="form-control validate" >
 												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" />
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="businessCode">단가</label>
-												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" value="${ unitPrice }">
+												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" >
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="userNo">날짜</label>
-												<input type="date" id="day" name="day" class="form-control validate" value="${day}">
+												<input type="date" id="day" name="day" class="form-control validate" >
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="day">수량</label>
-												<input type="number" id="quantity" name="quantity" class="form-control validate" value="${ quantity }">
+												<input type="number" id="quantity" name="quantity" class="form-control validate" >
 											</div>
 											
 										</div>
@@ -120,42 +120,47 @@
 											</button>
 										</div>
 										<div class="modal-body mx-3">
-											<div class="md-form mb-3">
-												<i class="fas fa-user prefix grey-text"></i> 
-												<label data-error="wrong" data-success="right" for="productName">상품명</label>
-												<input type="text" id="productName" name="productName" class="form-control validate" value="${ productName }">
-											</div>
-											
+																						
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i>
 												<label data-error="wrong" data-success="right" for="productNo">상품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" readonly>
+												<input type="text" id="productNo" name="productNo" class="form-control validate" >
 												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" />
+											</div>
+											
+											<div class="md-form mb-3">
+												<i class="fas fa-user prefix grey-text"></i> 
+												<label data-error="wrong" data-success="right" for="productName">상품명</label>
+												<input type="text" id="productName" name="productName" class="form-control validate" >
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productName">상품 코드</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productNo }" >
+												<input type="text" id="productNo" name="productNo" class="form-control validate" >
 												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${ member.userNo }" readonly>
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="businessCode">단가</label>
-												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" value="${ unitPrice }">
+												<input type="text" id="unitPrice" name="unitPrice" class="form-control validate" >
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="userNo">날짜</label>
-												<input type="date" id="day" name="day" class="form-control validate" value="${day}">
+												<input type="date" id="day" name="day" class="form-control validate" >
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="day">수량</label>
-												<input type="number" id="quantity" name="quantity" class="form-control validate" value="${ quantity }">
+												<input type="number" id="quantity" name="quantity" class="form-control validate" >
+											</div>
+											
+											<div class="md-form mb-3">
+												<input type="hidden" id="salesNo" name="salesNo" class="form-control validate" >
 											</div>
 											
 										</div>
@@ -176,8 +181,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>상품 명</th>
                       <th>상품 번호</th>
+                      <th>상품 명</th>                      
                       <th style="display:none">유저 번호</th>
                       <th>단가</th>
                       <th>날짜</th>
@@ -299,6 +304,7 @@
 		$("#modalUpdateForm #unitPrice").val(table.rows('.selected').data()[0][3]);		  
 		$("#modalUpdateForm #day").val(table.rows('.selected').data()[0][4]);		  
 		$("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][5]);		
+		$("#modalUpdateForm #salesNo").val(table.rows('.selected').data()[0][6]);		
 
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();

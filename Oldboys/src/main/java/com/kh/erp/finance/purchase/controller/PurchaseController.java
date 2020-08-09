@@ -84,9 +84,11 @@ public class PurchaseController {
 	}
 
 	@RequestMapping("/finance/updatePur.do")
-	public String updatePur(Purchase purchase, Model model) {
+	public String updatePur(Purchase purchase, Model model, @RequestParam("purchaseNo") int purchaseNo,
+												@RequestParam("userNo") int userNo) {
 		System.out.println("purchase 확인 : " + purchase);
 		System.out.println("model 확인 : " + model);
+		System.out.println("purchaseNo : " + purchaseNo);
 		int result;
 		
 		try{
@@ -103,7 +105,7 @@ public class PurchaseController {
 			throw e;
 		}
 				
-		return "redirect:/finance/purchase.do?userNo=" + purchase.getUserNo();
+		return "redirect:/finance/purchase.do?userNo=" + userNo;
 	}
 	
 	@RequestMapping("/finance/deletePur.do")

@@ -15,17 +15,20 @@
 		#{itemCode}, #{product}, #{quantity}, #{price}, #{origin}, #{day}, SEQ_PURCHASENO.NEXTVAL)
 	</insert>
 	
-	<update id="updatePurList" parameterType="Purchase">
+	<update id="updatePurList" parameterType="_int">
 		UPDATE PURCHASE
 		<set>
-		ITEMCODE = #{itemCode},
+		PRODUCTNO = #{productNo},
 		BUSINESSCODE = #{businessCode},
-		ORIGIN = #{origin},
+		ITEMCODE = #{itemCode},		
 		PRODUCT = #{product},
+		QUANTITY = #{quantity} ,
 		PRICE = #{price},
-		QUANTITY = #{quantity} 
+		ORIGIN = #{origin},
+		PURCHASENO = #{purchaseNo},
+		DAY = #{day}
 		</set>
-		WHERE PRODUCTNO = #{productNo}
+		WHERE PURCHASENO = #{purchaseNo}
 	</update>
 	
 	<delete id="deletePurList" parameterType="_int">
