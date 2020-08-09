@@ -19,12 +19,11 @@
 		<set>
 		PRODUCTNO = #{productNo},
 		PRODUCTNAME = #{productName},
-		USERNO = #{userNo},
 		QUANTITY = #{quantity},
 		UNITPRICE = #{unitPrice},
 		DAY = #{day}
 		</set>
-		WHERE PRODUCTNO = #{productNo}
+		WHERE SALESNO = #{salesNo}
 	</update>
 	
 	<delete id="deleteSal" parameterType="Sales">

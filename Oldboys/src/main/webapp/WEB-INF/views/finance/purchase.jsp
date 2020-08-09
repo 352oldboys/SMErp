@@ -82,11 +82,9 @@
 												<input type="text" id="businessCode" name="businessCode" class="form-control validate" value="${ businessCode }">
 											</div>
 
-											<%-- <div class="md-form mb-3">
-												<i class="fas fa-tag prefix grey-text"></i>   
-												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-												<input type="email" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" readonly>
-											</div> --%>
+											<div class="md-form mb-3">
+												<input type="hidden" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" >
+											</div> 
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
@@ -140,7 +138,7 @@
 							<div class="modal fade" id="modalUpdateForm" tabindex="-1"
 								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
-								<form action=" updatePur.do" method="post">
+								<form action="updatePur.do" method="post">
 									<div class="modal-content">
 										<div class="modal-header text-center">
 											<h4 class="modal-title w-100 font-weight-bold">매입 수정</h4>
@@ -153,56 +151,59 @@
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="productNo">제품 번호</label>
-												<input type="text" id="productNo" name="productNo" class="form-control validate" value="${ productno }">
+												<input type="text" id="_productNo" name="productNo" class="form-control validate" >
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="product">상품</label>
-												<input type="text" id="product" name="product" class="form-control validate" value="${ product }">
+												<input type="text" id="_product" name="product" class="form-control validate" >
 											</div>
 										
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="itemCode">품목 코드</label>
-												<input type="text" id="itemCode" name="itemCode" class="form-control validate">
+												<input type="text" id="_itemCode" name="itemCode" class="form-control validate">
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-user prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="businessCode">거래 코드</label>
-												<input type="text" id="businessCode" name="businessCode" class="form-control validate" value="${ businessCode }">
+												<input type="text" id="_businessCode" name="businessCode" class="form-control validate" >
 											</div>
 
-											<%-- <div class="md-form mb-3">
-												<i class="fas fa-tag prefix grey-text"></i>   
-												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
-												<input type="email" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" readonly>
-											</div> --%>
+											<div class="md-form mb-3">
+												<input type="hidden" id="_userNo" name="userNo" class="form-control validate" readonly>
+											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="day">날짜</label>
-												<input type="date" id="day" name="day" class="form-control validate" value="${ day }">
+												<input type="date" id="_day" name="day" class="form-control validate" >
 											</div>
 											
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
 												<label data-error="wrong" data-success="right" for="price">가격</label>
-												<input type="text" id="price" name="price" class="form-control validate">
+												<input type="text" id="_price" name="price" class="form-control validate">
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag  grey-text"></i>
 												<label data-error="wrong" data-success="right" for="origin">원산지</label>
-												<input type="text" id="origin" name="origin" class="form-control validate"> 
+												<input type="text" id="_origin" name="origin" class="form-control validate"> 
 											</div>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>
 												<label data-error="wrong" data-success="right" for="quantity">수량</label>
-												<input type="number" id="quantity" name="quantity" class="form-control validate">
+												<input type="number" id="_quantity" name="quantity" class="form-control validate">
 											</div>
+											
+											<div class="md-form mb-3">
+												<input type="hidden" id="_purchaseNo" name="purchaseNo" class="form-control validate">
+											</div>
+											
 
 											<!-- <div class="md-form">
 												<i class="fas fa-pencil prefix grey-text"></i>
@@ -374,15 +375,16 @@
 		}
  
 		/* 값 가져오기 */
-		$("#modalUpdateForm #productNo").val(table.rows('.selected').data()[0][0]);		  
-		$("#modalUpdateForm #product").val(table.rows('.selected').data()[0][1]);		  
-		$("#modalUpdateForm #itemCode").val(table.rows('.selected').data()[0][2]);		  
-		$("#modalUpdateForm #businessCode").val(table.rows('.selected').data()[0][3]);		  
-		$("#modalUpdateForm #userNo").val(table.rows('.selected').data()[0][4]);		  
-		$("#modalUpdateForm #day").val(table.rows('.selected').data()[0][5]);		  
-		$("#modalUpdateForm #price").val(table.rows('.selected').data()[0][6]);		  
-		$("#modalUpdateForm #origin").val(table.rows('.selected').data()[0][7]);		  
-		$("#modalUpdateForm #quantity").val(table.rows('.selected').data()[0][8]);
+		$("#modalUpdateForm #_productNo").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalUpdateForm #_product").val(table.rows('.selected').data()[0][1]);		  
+		$("#modalUpdateForm #_itemCode").val(table.rows('.selected').data()[0][2]);		  
+		$("#modalUpdateForm #_businessCode").val(table.rows('.selected').data()[0][3]);		  
+		$("#modalUpdateForm #_userNo").val(table.rows('.selected').data()[0][4]);		  
+		$("#modalUpdateForm #_day").val(table.rows('.selected').data()[0][5]);		  
+		$("#modalUpdateForm #_price").val(table.rows('.selected').data()[0][6]);		  
+		$("#modalUpdateForm #_origin").val(table.rows('.selected').data()[0][7]);		  
+		$("#modalUpdateForm #_quantity").val(table.rows('.selected').data()[0][8]);
+		$("#modalUpdateForm #_purchaseNo").val(table.rows('.selected').data()[0][9]);
 
 		/* 창 띄우기 */
 		$("#modalUpdateForm").modal();
