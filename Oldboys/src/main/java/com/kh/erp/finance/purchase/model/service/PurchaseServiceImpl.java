@@ -26,8 +26,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	@Override
-	public int deletePurList(Purchase purchase) {
-		return purchaseDAO.deletePurList(purchase);
+	public int deletePurList(int purchaseNo) {
+		return purchaseDAO.deletePurList(purchaseNo);
 	}
 
 	@Override
@@ -45,6 +45,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public String purchaseMonthPrice(int userNo) {
 		
 		return purchaseDAO.purchaseMonthPrice(userNo);
+	}
+
+	@Override
+	public Purchase selectOnePurchase(int purchaseNo) {
+		
+		return purchaseDAO.selectOnePurchase(purchaseNo);
 	}
 
 }

@@ -32,8 +32,8 @@ public class SalesServiceImpl implements SalesService {
 	}
 
 	@Override
-	public int deleteSal(Sales sales) {
-		return salesDAO.deleteSal(sales);
+	public int deleteSal(int salesNo) {
+		return salesDAO.deleteSal(salesNo);
 	}
 	
 	@Override
@@ -46,6 +46,12 @@ public class SalesServiceImpl implements SalesService {
 	public String salesMonthPrice(int userNo) {
 		
 		return salesDAO.salesMonthPrice(userNo);
+	}
+
+	@Override
+	public Sales selectOneSales(int salesNo) {
+		
+		return salesDAO.selectOneSales(salesNo);
 	}
 
 }

@@ -82,11 +82,11 @@
 												<input type="text" id="businessCode" name="businessCode" class="form-control validate" value="${ businessCode }">
 											</div>
 
-											<div class="md-form mb-3">
+											<%-- <div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 												<input type="email" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" readonly>
-											</div>
+											</div> --%>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
@@ -133,6 +133,7 @@
 					<%-- // 삭제하기 2번째 방법 --%>
 					<form method="Post" action="deletePur.do" id="modalDeleteForm">
 						<input type="hidden" name="productNo"/>
+						<input type="hidden" name="purchaseNo"/>
 					</form>
 						
 						<%-- // 수정 모달창 시작  --%>
@@ -173,11 +174,11 @@
 												<input type="text" id="businessCode" name="businessCode" class="form-control validate" value="${ businessCode }">
 											</div>
 
-											<div class="md-form mb-3">
+											<%-- <div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i>   
 												<label data-error="wrong" data-success="right" for="userNo">사용자 번호</label>
 												<input type="email" id="userNo" name="userNo" class="form-control validate" value="${member.userNo}" readonly>
-											</div>
+											</div> --%>
 
 											<div class="md-form mb-3">
 												<i class="fas fa-tag prefix grey-text"></i> 
@@ -230,11 +231,12 @@
                       <th>상품</th>
                       <th>품목 코드</th>
                       <th>거래처 코드</th>
-                      <th>사용자 번호</th>
+                      <th style="display:none">사용자 번호</th>
                       <th>날짜</th>
                       <th>가격</th>
                       <th>원산지</th>
                       <th>수량</th>
+                      <th style="display:none"></th>
                     </tr>
                   </thead>
                   
@@ -256,11 +258,12 @@
                       <th> ${pur.product}</th>
                       <th> ${pur.itemCode} </th>
                       <th> ${pur.businessCode} </th>
-                      <th> ${pur.userNo} </th>
+                      <th style="display:none"> ${pur.userNo} </th>
                       <th id="pDay"> ${pur.day} </th>
                       <th class="purchasePrice"> ${pur.price}</th>
                       <th> ${pur.origin} </th>
                       <th class="purchaseQuantity"> ${pur.quantity} </th>
+                      <th style="display:none">${pur.purchaseNo}</th>
                     </tr>
 					</c:forEach>
                   </tbody>
@@ -346,7 +349,8 @@
 		 */
 		
 		// 2번째 방식 
-		$("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);
+		$("#modalDeleteForm input[name=purchaseNo]").val(table.rows('.selected').data()[0][9]);
 		$("#modalDeleteForm").submit();
 				  
 		}

@@ -103,6 +103,7 @@
 					<%-- // 삭제하기 2번째 방법 --%>
 					<form method="Post" action="deleteSal.do" id="modalDeleteForm">
 						<input type="hidden" name="productNo"/>
+						<input type="hidden" name="salesNo"/>
 					</form>
 						
 						<%-- // 수정 모달창 시작  --%>
@@ -181,6 +182,7 @@
                       <th>단가</th>
                       <th>날짜</th>
                       <th>수량</th>
+                      <th style="display:none"></th>
                     </tr>
                   </thead>
 
@@ -205,6 +207,7 @@
                       <th class="unitPrice"> ${sal.unitPrice} </th>
                       <th> ${sal.day} </th>
                       <th class="quantity"> ${sal.quantity} </th>
+                      <th style="display:none">${sal.salesNo}</th>
 					</tr>
 					</c:forEach>
                   </tbody>
@@ -263,7 +266,8 @@
 		}
 		
 		// 2번째 방식 
-		$("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);		  
+		$("#modalDeleteForm input[name=productNo]").val(table.rows('.selected').data()[0][0]);		 
+		$("#modalDeleteForm input[name=salesNo]").val(table.rows('.selected').data()[0][6]);
 		$("#modalDeleteForm").submit();
 				  
 		}
