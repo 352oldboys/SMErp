@@ -7,7 +7,7 @@
    <select id="selectBoardList" resultType="Board">
       SELECT B.*, (SELECT COUNT(*) FROM BOARDFILE WHERE BNO = B.BNO) FILECOUNT
       FROM BOARD B 
-      ORDER BNO DESC
+      ORDER BY BNO DESC
    
    </select>
    
@@ -67,7 +67,7 @@
    </delete>
    
    <delete id="deleteBoardFileOne" parameterType="_int">
-      DELETE FROM BAORDFILE
+      DELETE FROM BOARDFILE
       WHERE BOARDFILENO = #{bfNo}
    </delete>
    

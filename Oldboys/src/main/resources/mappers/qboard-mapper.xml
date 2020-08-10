@@ -65,7 +65,7 @@
 	</delete>
 	
 	<delete id="deleteQBoardFileOne" parameterType="_int">
-		DELETE FROM QBAORDFILE
+		DELETE FROM QBOARDFILE
 		WHERE QBOARDFILENO = #{qfNo}
 	</delete>
 	
