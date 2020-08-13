@@ -11,7 +11,7 @@
   ▶︎ 이재혁 - 게시판 및 회계관리 <br /> 
   ▶︎ 정진홍 - 회원관리 및 회계관리
 
-개발환경 : STS, Spring4, Tomcat8.5, Oracle(11g)등등
+개발환경 : STS, Spring, Tomcat8.5, Oracle(11g)등등
 
 SMERP 기능 소개 
 
